@@ -29,18 +29,46 @@ namespace Player
         {
             direction = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
 
-            // Jumping code
+            // This line basically checks if it is ok to jump
             // "|| toJump" to prevent Input.GetButtonDown from setting toJump to false
             // We only set toJump to false if we have did the physics in the FixedUpdate
-            toJump = (Input.GetButtonDown("Jump") || toJump) && jumpsLeft > 0;
+            toJump = (Input.GetButtonDown("Jump") || toJump || Input.GetAxis("Vertical") > 0) && jumpsLeft > 0;
 
             UpdateAnimationsParameters();
+            UpdateSpriteDirection();
         }
 
         void UpdateAnimationsParameters()
         {
             anim.SetBool(IsWalking, direction.x != 0);
             anim.SetBool(IsJumping, isInAir);
+        }
+
+        /**
+         * This method flips the sprite if needed base on the current direction.
+         */
+        void UpdateSpriteDirection()
+        {
+            Vector3 localScale = transform.localScale;
+            if (direction.x > 0)
+            {
+                if (localScale.x < 0) // Check if the x scale is negative (facing the wrong way)
+                {
+                    // If yes then flip it
+                    // using multiplication because it preserves original scaling
+                    localScale.x *= -1;
+                }
+            }
+            else if (direction.x < 0) // Cannot use else here because it then keep flipping to the left
+            {
+                // The inverse of above
+                if (localScale.x > 0)
+                {
+                    localScale.x *= -1;
+                }
+            }
+
+            transform.localScale = localScale;
         }
 
         private void FixedUpdate()
