@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 1804660769}
   - component: {fileID: 1804660770}
   - component: {fileID: 1804660771}
+  - component: {fileID: 1804660772}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -507,6 +508,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1804660770}
+  anim: {fileID: 1804660772}
   moveSpeed: 300
   jumpForce: 400
   jumpTimes: 2
+--- !u!95 &1804660772
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804660766}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57de65472ea2b224e9f23a477723cc26, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
