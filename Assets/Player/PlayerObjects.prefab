@@ -165,7 +165,7 @@ MonoBehaviour:
   rb: {fileID: 1393227005664639949}
   anim: {fileID: 5366424372927661299}
   moveSpeed: 300
-  dashSpeed: 500
+  dashSpeed: 5000
   jumpForce: 400
   jumpTimes: 2
 --- !u!95 &5366424372927661299

@@ -12,9 +12,11 @@ namespace Player
         private Vector3 currentDirection;
         public float moveSpeed = 10f;
         public float dashSpeed = 100f;
+
         public float jumpForce = 100f;
         public int jumpTimes = 1;
         private int jumpsLeft = 0;
+
         private float toMove; // is float so i can use in multiplication
         private bool toJump;
         private bool toDash;
@@ -52,7 +54,7 @@ namespace Player
         void UpdateAnimationsParameters()
         {
             anim.SetBool(IsWalking, toMove != 0);
-            anim.SetBool(IsJumping, isInAir);
+            anim.SetBool(IsJumping, isInAir || toDash);
         }
 
         /**
@@ -86,7 +88,7 @@ namespace Player
         {
             Vector2 move = rb.velocity;
             move.x = currentDirection.x * toMove * moveSpeed * Time.deltaTime;
-            
+
             if (toDash)
             {
                 // Use normalised direction here because GetAxis does not return discrete values even for keys
