@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1393227005664639949}
   - component: {fileID: 5366424372927661299}
   - component: {fileID: 789903477041068954}
+  - component: {fileID: 7643651796526379453}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -185,10 +186,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1393227005664639949}
   anim: {fileID: 5366424372927661299}
+  currentDirection: {x: 0, y: 0, z: 0}
   moveSpeed: 300
   dashSpeed: 5000
   jumpForce: 400
   jumpTimes: 2
+--- !u!114 &7643651796526379453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285316741704826254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfb33b444899c44088d0de05dd40b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrimaryWeapon: {fileID: 0}
+  SecondaryWeapon: {fileID: 0}
+  PrimaryWeaponContainer: {fileID: 0}
+  SecondaryWeaponContainer: {fileID: 0}
 --- !u!1 &1474557722615842630
 GameObject:
   m_ObjectHideFlags: 0

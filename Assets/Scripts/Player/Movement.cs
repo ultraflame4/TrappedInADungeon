@@ -1,4 +1,5 @@
 using System;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -9,7 +10,8 @@ namespace Player
         public Rigidbody2D rb;
         public Animator anim;
 
-        private Vector3 currentDirection;
+        [ReadOnly]
+        public Vector3 currentDirection;
         public float moveSpeed = 10f;
         public float dashSpeed = 100f;
 

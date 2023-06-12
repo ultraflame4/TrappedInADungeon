@@ -72,13 +72,15 @@ namespace Weapon
             overrideController["BaseWeaponAttack"] = attackClips[clipIndex];
         }
 
+
+        public bool IsAttacking => animator.GetCurrentAnimatorStateInfo(0).IsName("Idle");
         /// <summary>
         /// Executes an attack. THIS WILL NOT CANCEL ATTACKS
         /// </summary>
         [Button]
         public void Attack()
         {
-            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            if (IsAttacking)
             {
                 return;
             }
