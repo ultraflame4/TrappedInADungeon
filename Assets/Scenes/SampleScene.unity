@@ -242,6 +242,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e560f3956d23694c9d151717985007e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 393033839}
+  overrideController: {fileID: 22100000, guid: b8b3a84af41aa2945ab28db57c42b53e, type: 2}
+  attackClips:
+  - {fileID: 7400000, guid: b37cfa092d441494b869de18ab9e30fc, type: 2}
+  - {fileID: 7400000, guid: 846b4f81d97a61e4f8db336ccbfde945, type: 2}
+  ComboWaitPeriod_Secs: 100
+  ComboCounter: 0
 --- !u!1 &431637291
 GameObject:
   m_ObjectHideFlags: 0
