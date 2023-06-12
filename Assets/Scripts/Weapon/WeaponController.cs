@@ -86,5 +86,6 @@ namespace Weapon
             animator.SetTrigger(AttackTrigger);
             ExecuteComboCheck();
         }
+        
     }
 }
