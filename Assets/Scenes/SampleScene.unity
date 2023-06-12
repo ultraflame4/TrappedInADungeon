@@ -247,7 +247,7 @@ MonoBehaviour:
   attackClips:
   - {fileID: 7400000, guid: b37cfa092d441494b869de18ab9e30fc, type: 2}
   - {fileID: 7400000, guid: 846b4f81d97a61e4f8db336ccbfde945, type: 2}
-  ComboWaitPeriod_Secs: 100
+  ComboWaitPeriod_Secs: 1
   ComboCounter: 0
 --- !u!1 &431637291
 GameObject:
