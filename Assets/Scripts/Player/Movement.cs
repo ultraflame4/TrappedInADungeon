@@ -24,6 +24,7 @@ namespace Player
         private bool toDash;
         private bool isInAir;
 
+        private bool alreadyJumping=false;
 
         private static readonly int IsWalking = Animator.StringToHash("IsWalking");
         private static readonly int IsJumping = Animator.StringToHash("IsJumping");
@@ -48,6 +49,8 @@ namespace Player
             // include toJump in its own condition to prevent Input.GetButtonDown from setting toJump to false
             // We only set toJump to false if we have did the physics in the FixedUpdate
             toJump = Input.GetButtonDown("Jump") || toJump || Input.GetAxis("Vertical") > 0;
+            Debug.Log($"{Input.GetAxis("Vertical") > 0} | toJump {toJump}");
+            
             toDash = Input.GetButtonDown("Dash") || toDash;
             UpdateAnimationsParameters();
             UpdateSpriteDirection();
@@ -101,15 +104,26 @@ namespace Player
                 move.x = currentDirection.normalized.x * dashSpeed * Time.deltaTime;
                 toDash = false;
             }
-
-            if (toJump && jumpsLeft > 0)
+            
+            // !alreadyJumping -> Dont jump again if alreadyJumping ( when the jump key is pressed but not released yet)
+            if (toJump && jumpsLeft > 0 && !alreadyJumping)
             {
                 move.y = jumpForce * Time.deltaTime;
-                toJump = false;
+   
                 isInAir = true;
                 jumpsLeft--;
+                alreadyJumping = true;
             }
 
+            // On jump button release, toJump will be false. Reset alreadyJumping
+            if (!toJump)
+            {
+                alreadyJumping = false;
+            }
+
+            // Always set toJump to false at the end, regardless whether the jump happened.
+            // This fixes a bug where if the player tries the jump again when jumpsLeft = 0, the moment the player touches the ground they jump again.
+            toJump = false;
             rb.velocity = move;
         }
 
