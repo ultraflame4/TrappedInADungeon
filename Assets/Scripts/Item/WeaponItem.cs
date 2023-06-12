@@ -6,6 +6,6 @@ namespace Item
     public class WeaponItem: ItemScriptableObject
     {
         public GameObject weaponPrefab;
-        
+        public float base_attack;
     }
 }
