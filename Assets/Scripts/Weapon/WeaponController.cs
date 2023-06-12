@@ -1,3 +1,4 @@
+using EasyButtons;
 using UnityEngine;
 
 namespace Weapon
@@ -38,6 +39,7 @@ namespace Weapon
         
         }
         
+        [Button]
         public void Attack()
         {
             
