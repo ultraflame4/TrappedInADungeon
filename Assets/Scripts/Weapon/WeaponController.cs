@@ -73,11 +73,15 @@ namespace Weapon
         }
 
         /// <summary>
-        /// Executes an attack. 
+        /// Executes an attack. THIS WILL NOT CANCEL ATTACKS
         /// </summary>
         [Button]
         public void Attack()
         {
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                return;
+            }
             SwapAttackClip();
             animator.SetTrigger(AttackTrigger);
             ExecuteComboCheck();
