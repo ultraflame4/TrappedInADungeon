@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ namespace UI
         public Sprite InactiveSprite;
         public Sprite ActiveSprite;
         public Image image;
-        
+        public TextMeshProUGUI text;
         private TabsManager Manager = null;
         /// <summary>
         /// The index of the tab in the TabsManager.
@@ -37,9 +38,11 @@ namespace UI
             if (active)
             {
                 image.sprite = ActiveSprite;
+                text.color = Color.black;
                 return;
             }
             image.sprite = InactiveSprite;
+            text.color = Color.white;
         }
 
         public void OnPointerClick(PointerEventData eventData)

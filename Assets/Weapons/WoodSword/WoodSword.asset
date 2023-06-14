@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dc9600843842c2b93a49de49c56594, type: 3}
+  m_Name: WoodSword
+  m_EditorClassIdentifier: 
+  item_name: Wood Sword
+  itemSprite: {fileID: 610319333, guid: 59277d85efc71644e89e13e1e99f85a5, type: 3}
+  weaponPrefab: {fileID: 7331100435831376867, guid: 267c5ea78626e734baf1b01f546ac142, type: 3}
+  base_attack: 10

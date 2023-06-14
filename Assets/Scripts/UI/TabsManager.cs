@@ -20,6 +20,8 @@ namespace UI
                 var tab = tabs[i];
                 tab.Setup(this, i);
             }
+
+            OpenTab(0);
         }
 
         /// <summary>
