@@ -49,7 +49,7 @@ namespace Player
             // include toJump in its own condition to prevent Input.GetButtonDown from setting toJump to false
             // We only set toJump to false if we have did the physics in the FixedUpdate
             toJump = Input.GetButtonDown("Jump") || toJump || Input.GetAxis("Vertical") > 0;
-            Debug.Log($"{Input.GetAxis("Vertical") > 0} | toJump {toJump}");
+            // Debug.Log($"{Input.GetAxis("Vertical") > 0} | toJump {toJump}");
             
             toDash = Input.GetButtonDown("Dash") || toDash;
             UpdateAnimationsParameters();
