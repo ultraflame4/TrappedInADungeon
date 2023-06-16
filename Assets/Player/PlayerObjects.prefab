@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5366424372927661299}
   - component: {fileID: 789903477041068954}
   - component: {fileID: 7643651796526379453}
+  - component: {fileID: 8859430247875032822}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -203,10 +204,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfb33b444899c44088d0de05dd40b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrimaryWeapon: {fileID: 0}
-  SecondaryWeapon: {fileID: 0}
-  PrimaryWeaponContainer: {fileID: 0}
-  SecondaryWeaponContainer: {fileID: 0}
+--- !u!114 &8859430247875032822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285316741704826254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfb33b444899c44088d0de05dd40b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1474557722615842630
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4312131506648344175}
   - component: {fileID: 403204893017032825}
+  - component: {fileID: 1624317759199676601}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -494,6 +504,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 4408467375968869430}
+--- !u!114 &1624317759199676601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2895140252976405284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8327489602000194119
 GameObject:
   m_ObjectHideFlags: 0
