@@ -1595,6 +1595,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c80a209f2ae52b74caeab99e05f96255, type: 2}
   Skills: []
   player: {fileID: 1831942397}
+  inventoryUi: {fileID: 694538792}
 --- !u!1001 &1143905253
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -33,7 +33,6 @@ namespace UI
         void UpdateList()
         {
             UpdateWeaponList();
-            
         }
     }
 }

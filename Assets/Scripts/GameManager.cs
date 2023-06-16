@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public SkillItem[] Skills;
 
     public PlayerController player;
+    public GameObject inventoryUi;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Inventory Toggle"))
+        {
+            inventoryUi.SetActive(!inventoryUi.activeSelf);
+        }
     }
     /// <summary>
     /// Gives a wood sword to the player.
