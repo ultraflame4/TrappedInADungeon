@@ -60,9 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: PixelifySans-Bold
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 1914376601
   material: {fileID: 2808369928864624391}
-  materialHashCode: 0
+  materialHashCode: 1051229337
   m_Version: 1.1.0
   m_SourceFontFileGUID: bd06b9718a44d534991c86e00c41ae6e
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: bd06b9718a44d534991c86e00c41ae6e, type: 3}
@@ -2533,7 +2533,7 @@ MonoBehaviour:
     italicTypeface: {fileID: 0}
   fontWeights: []
   normalStyle: 0
-  normalSpacingOffset: 0
+  normalSpacingOffset: 1
   boldStyle: 0.75
   boldSpacing: 7
   italicStyle: 35

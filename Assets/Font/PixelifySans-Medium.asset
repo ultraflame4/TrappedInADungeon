@@ -60,9 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: PixelifySans-Medium
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 1282600897
   material: {fileID: 3731857086074166551}
-  materialHashCode: 0
+  materialHashCode: 1723921729
   m_Version: 1.1.0
   m_SourceFontFileGUID: 1eff3f5cf37995c41aff2d25120c2f35
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 1eff3f5cf37995c41aff2d25120c2f35, type: 3}
@@ -2625,7 +2625,7 @@ MonoBehaviour:
     italicTypeface: {fileID: 0}
   fontWeights: []
   normalStyle: 0
-  normalSpacingOffset: 0
+  normalSpacingOffset: -5
   boldStyle: 0.75
   boldSpacing: 7
   italicStyle: 35
