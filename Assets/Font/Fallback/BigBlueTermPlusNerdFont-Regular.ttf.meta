@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0db57c940305d084c92d995e0aa66295
+guid: 2e9ce3d5f0b6de84a847b1c4ae1ef028
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,9 +9,8 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Pixelify Sans
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: bd06b9718a44d534991c86e00c41ae6e, type: 3}
+  - BigBlueTermPlus Nerd Font
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
