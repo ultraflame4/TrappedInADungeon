@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 216.7, y: -12.2}
-  m_SizeDelta: {x: 315.98, y: -30.3507}
+  m_AnchoredPosition: {x: 192.4033, y: -13.110302}
+  m_SizeDelta: {x: 237.8166, y: -30.4372}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1609589401963294231
 CanvasRenderer:
@@ -66,8 +66,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'overflowing text overflowing text overflowing text overflowing text overflowing
-    text overflowing text overflowing text overflowing text overflowing text '
+  m_text: "overflowing text overflowing text overflowing text overflowing text overflowing
+    text overflowing text overflowing text overflowing text overflowing text \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3edec0015fdf5664f9ac1ac9a6d92bfb, type: 2}
   m_sharedMaterial: {fileID: 3731857086074166551, guid: 3edec0015fdf5664f9ac1ac9a6d92bfb, type: 2}
@@ -94,8 +94,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 13
+  m_fontSizeBase: 13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 2
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 62.562775, w: 0}
+  m_margin: {x: 0, y: 0.67795944, z: 2.8202667, w: 0.8251705}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -171,8 +171,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 29, y: -29}
-  m_SizeDelta: {x: 49.5532, y: 47.8936}
+  m_AnchoredPosition: {x: 36.1, y: -37.358}
+  m_SizeDelta: {x: 59.6874, y: 59.6873}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8644791412303615640
 CanvasRenderer:
@@ -247,8 +247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 30.845, y: -14.933}
-  m_SizeDelta: {x: -55.7305, y: 19.7593}
+  m_AnchoredPosition: {x: 32.6, y: -15.3}
+  m_SizeDelta: {x: -81.7797, y: 20.587}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8640242382280160951
 CanvasRenderer:
@@ -278,10 +278,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Death Scythe
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a3965752cadec241b5f4d5c389d8c81, type: 2}
-  m_sharedMaterial: {fileID: 2808369928864624391, guid: 9a3965752cadec241b5f4d5c389d8c81, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3edec0015fdf5664f9ac1ac9a6d92bfb, type: 2}
+  m_sharedMaterial: {fileID: 3731857086074166551, guid: 3edec0015fdf5664f9ac1ac9a6d92bfb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -305,8 +305,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_wordSpacing: 5
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: -2.9995918}
+  m_margin: {x: 0, y: 0, z: 0, w: 1.63237}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 1423715417802082915}
   - component: {fileID: 8901091960498885117}
   m_Layer: 5
-  m_Name: WeaponItem
+  m_Name: InventoryListItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,8 +385,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -539.6784, y: -356.19568}
-  m_SizeDelta: {x: 315.1932, y: 58.6}
+  m_AnchoredPosition: {x: -539.6784, y: -364.25336}
+  m_SizeDelta: {x: 315.1932, y: 74.7152}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1423715417802082915
 CanvasRenderer:
