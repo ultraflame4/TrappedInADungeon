@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Utils
@@ -26,6 +27,11 @@ namespace Utils
         {
             image.sprite = sprite;
             image.enabled = sprite != null;
+        }
+        
+        public static string JoinString(this IEnumerable<string> strings, string separator = ",")
+        {
+            return string.Join(separator, strings);
         }
     }
 }

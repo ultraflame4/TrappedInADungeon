@@ -8,7 +8,7 @@ using Utils;
 
 namespace UI
 {
-    public class InventorySlot : MonoBehaviour, IDropHandler
+    public class InventorySlot : MonoBehaviour
     {
         public Image itemImage;
 
@@ -45,17 +45,5 @@ namespace UI
             itemImage.SetSprite(itemInstance.itemType.itemSprite);
             itemChanged?.Invoke(itemInstance);
         }
-
-        public void OnDrop(PointerEventData eventData)
-        {
-            Debug.Log("OnDrop");
-            ItemInstance item = CursorController.GetInstance().GetDragEventData<InventoryDragEventData>()?.itemInstance;
-            if (item is not null)
-            {
-                SetItem(item);
-            } 
-        }
-        
-        
     }
 }

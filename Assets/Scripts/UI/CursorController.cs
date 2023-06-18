@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Item;
 using UI.Dragging;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utils;
@@ -58,5 +59,6 @@ namespace UI
         {
             transform.position = Vector3.Lerp(transform.position,Input.mousePosition,0.5f);
         }
+        
     }
 }

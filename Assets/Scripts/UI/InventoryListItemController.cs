@@ -1,9 +1,12 @@
-﻿using Item;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Item;
 using TMPro;
 using UI.Dragging;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Utils;
 
 namespace UI
 {
@@ -34,6 +37,13 @@ namespace UI
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            List<RaycastResult> resultList = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventData, resultList);
+            InventorySlot slot = resultList.Select(x => x.gameObject.GetComponent<InventorySlot>()).Where(x=>x is not null).FirstOrDefault();
+            if (slot is not null)
+            {
+                slot.SetItem(itemInstance);
+            }
             CursorController.GetInstance().SetDragEventData(null);
         }
 
