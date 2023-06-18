@@ -9,12 +9,12 @@ namespace Player
 {
     public class PlayerInventory : MonoBehaviour
     {
-        private List<ItemInstance> items = new List<ItemInstance>();
-
         /// <summary>
         /// Just a debug weapon to give to the user (when GiveDebugWeapon is called)
         /// </summary>
         public WeaponItem debugWeapon;
+
+        private readonly List<ItemInstance> items = new();
 
         /// <summary>
         /// This event is called whenever an item is added or removed from the inventory

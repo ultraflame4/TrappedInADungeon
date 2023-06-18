@@ -15,22 +15,14 @@ namespace UI
         private bool isHovering;
         private bool isPressed;
 
-        private void UpdateImageSprite()
+
+        private void Update()
         {
-            if (isPressed && isHovering)
-            {
-                image.sprite = active;
-            }
-            else if (isHovering)
-            {
-                image.sprite = hover;
-            }
-            else
-            {
-                image.sprite = neutral;
-            }
+            var last = isPressed;
+            isPressed = Input.GetKey(KeyCode.Mouse0);
+            if (isPressed != last) UpdateImageSprite();
         }
-        
+
         public void OnPointerEnter(PointerEventData eventData)
         {
             isHovering = true;
@@ -43,17 +35,14 @@ namespace UI
             UpdateImageSprite();
         }
 
-        
-        
-        private void Update()
+        private void UpdateImageSprite()
         {
-            bool last = isPressed;
-            isPressed = Input.GetKey(KeyCode.Mouse0);
-            if (isPressed != last)
-            {
-                UpdateImageSprite();
-            }
-
+            if (isPressed && isHovering)
+                image.sprite = active;
+            else if (isHovering)
+                image.sprite = hover;
+            else
+                image.sprite = neutral;
         }
     }
 }

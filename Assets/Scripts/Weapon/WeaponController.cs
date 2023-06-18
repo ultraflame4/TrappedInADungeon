@@ -6,6 +6,7 @@ namespace Weapon
 {
     public class WeaponController : MonoBehaviour
     {
+        private static readonly int AttackTrigger = Animator.StringToHash("Attack");
         public Animator animator;
 
         public AnimatorOverrideController overrideController;
@@ -26,22 +27,21 @@ namespace Weapon
         /// <summary>
         /// Number of combos
         /// </summary>
-        [ReadOnly(true)] public int ComboCounter = 0;
+        [ReadOnly(true)] public int ComboCounter;
 
-        private float lastAttackTime = 0f;
-        private static readonly int AttackTrigger = Animator.StringToHash("Attack");
+        private float lastAttackTime;
+
+
+        public bool IsAttacking => animator.GetCurrentAnimatorStateInfo(0).IsName("Idle");
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
-            if (attackClips.Length == 0)
-            {
-                Debug.LogError("No Available Attack Clips!");
-            }
+            if (attackClips.Length == 0) Debug.LogError("No Available Attack Clips!");
         }
 
         // Update is called once per frame
-        void Update() { }
+        private void Update() { }
 
 
         /// <summary>
@@ -49,18 +49,14 @@ namespace Weapon
         /// </summary>
         private void ExecuteComboCheck()
         {
-            float currentAttackTime = Time.time;
+            var currentAttackTime = Time.time;
             // If time between last attack and now is lesser than wait period, it is a consecutive attack
-            bool isConsecutive = (currentAttackTime - lastAttackTime) < ComboWaitPeriod_Secs;
+            var isConsecutive = currentAttackTime - lastAttackTime < ComboWaitPeriod_Secs;
             lastAttackTime = currentAttackTime;
             if (isConsecutive) // If consecutive attack, increase combo counter
-            {
                 ComboCounter++;
-            }
             else // Else reset combo
-            {
                 ComboCounter = 0;
-            }
         }
 
         /// <summary>
@@ -68,26 +64,20 @@ namespace Weapon
         /// </summary>
         private void SwapAttackClip()
         {
-            int clipIndex = ComboCounter % attackClips.Length;
+            var clipIndex = ComboCounter % attackClips.Length;
             overrideController["BaseWeaponAttack"] = attackClips[clipIndex];
         }
 
-
-        public bool IsAttacking => animator.GetCurrentAnimatorStateInfo(0).IsName("Idle");
         /// <summary>
         /// Executes an attack. THIS WILL NOT CANCEL ATTACKS
         /// </summary>
         [Button]
         public void Attack()
         {
-            if (IsAttacking)
-            {
-                return;
-            }
+            if (IsAttacking) return;
             SwapAttackClip();
             animator.SetTrigger(AttackTrigger);
             ExecuteComboCheck();
         }
-        
     }
 }

@@ -1,9 +1,9 @@
 ﻿namespace Item
 {
-    
     public class ItemInstance
     {
         public ItemScriptableObject itemType;
+
         public ItemInstance(ItemScriptableObject itemType)
         {
             this.itemType = itemType;
@@ -18,6 +18,7 @@
         {
             return itemType.name;
         }
+
         /// <summary>
         /// Returns the description to be shown in the inventory list
         /// Can contain text mesh pro rich text
@@ -28,18 +29,14 @@
             return itemType.item_description;
         }
     }
+
     public class WeaponItemInstance : ItemInstance
     {
-        public WeaponItemInstance(WeaponItem itemType) : base(itemType)
-        {
-            
-        }
+        public WeaponItemInstance(WeaponItem itemType) : base(itemType) { }
     }
+
     public class SkillItemInstance : ItemInstance
     {
-        public SkillItemInstance(SkillItem itemType) : base(itemType)
-        {
-            
-        }
+        public SkillItemInstance(SkillItem itemType) : base(itemType) { }
     }
 }

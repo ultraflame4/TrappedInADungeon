@@ -10,22 +10,23 @@ namespace UI
         public Transform WeaponListContent;
         public GameObject WeaponListItemPrefab;
         public PlayerInventory playerInventory;
+
         private void Start()
         {
             playerInventory.inventoryUpdate += UpdateList;
         }
 
-        void UpdateWeaponList()
+        private void UpdateWeaponList()
         {
             WeaponListContent.DestroyChildren();
-            foreach (WeaponItemInstance instance in playerInventory.GetAllItemOfType<WeaponItemInstance>())
+            foreach (var instance in playerInventory.GetAllItemOfType<WeaponItemInstance>())
             {
-                GameObject item = Instantiate(WeaponListItemPrefab, WeaponListContent);
+                var item = Instantiate(WeaponListItemPrefab, WeaponListContent);
                 item.GetComponent<InventoryListItemController>().SetItem(instance);
             }
         }
 
-        void UpdateList()
+        private void UpdateList()
         {
             UpdateWeaponList();
         }
