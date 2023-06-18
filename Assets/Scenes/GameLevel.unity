@@ -1841,8 +1841,8 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5784642689531566117, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
+    - target: {fileID: 8852456981225754324, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
+      propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
