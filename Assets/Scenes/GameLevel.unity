@@ -1200,10 +1200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfda35bdff9d2524392092f16ef1dbec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapons:
-  - {fileID: 11400000, guid: c80a209f2ae52b74caeab99e05f96255, type: 2}
-  Skills: []
-  player: {fileID: 1831942397}
+  player: {fileID: 0}
   inventoryUi: {fileID: 694538792}
 --- !u!1001 &1039374597
 PrefabInstance:
@@ -2672,17 +2669,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4775514698680601567, guid: 7e954b7577ac53b4d9130f92e7bdaff6, type: 3}
   m_PrefabInstance: {fileID: 4945961581009565677}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1831942397 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7643651796526379453, guid: 4b3ffa64b4b175445bb5b914adb6623e, type: 3}
-  m_PrefabInstance: {fileID: 5324039828347914114}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cfb33b444899c44088d0de05dd40b87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1854904976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2905,7 +2891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponListContent: {fileID: 1167247313}
   WeaponListItemPrefab: {fileID: 3241950385909181290, guid: 20ca5ec9134df824890dfff98fe20bb7, type: 3}
-  player: {fileID: 1831942397}
+  playerInventory: {fileID: 5324039828347914115}
 --- !u!1001 &1990248565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3358,3 +3344,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3ffa64b4b175445bb5b914adb6623e, type: 3}
+--- !u!114 &5324039828347914115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2125997414176689329, guid: 4b3ffa64b4b175445bb5b914adb6623e, type: 3}
+  m_PrefabInstance: {fileID: 5324039828347914114}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7854447c723489c864e1ff72a7c8f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

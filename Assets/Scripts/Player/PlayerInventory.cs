@@ -1,15 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using EasyButtons;
 using Item;
+using UnityEngine;
 
 namespace Player
 {
-    public class PlayerInventory
+    public class PlayerInventory : MonoBehaviour
     {
         private List<ItemInstance> items = new List<ItemInstance>();
+
+        /// <summary>
+        /// Just a debug weapon to give to the user (when GiveDebugWeapon is called)
+        /// </summary>
+        public WeaponItem debugWeapon;
+
+        /// <summary>
+        /// This event is called whenever an item is added or removed from the inventory
+        /// </summary>
         public event Action inventoryUpdate;
-        
+
         /// <summary>
         /// Adds an item instance to the inventory
         /// </summary>
@@ -20,6 +31,7 @@ namespace Player
             items.Add(item);
             inventoryUpdate?.Invoke();
         }
+
         /// <summary>
         /// Removes the specific item instance
         /// </summary>
@@ -30,6 +42,7 @@ namespace Player
             items.Remove(item);
             inventoryUpdate?.Invoke();
         }
+
         /// <summary>
         /// Removes an item instance by index
         /// </summary>
@@ -53,10 +66,25 @@ namespace Player
             return items.Where(x => x is T).Cast<T>().ToArray();
         }
 
+        /// <summary>
+        /// Clears the player inventory
+        /// Mainly for debugging purposes
+        /// </summary>
+        [Button]
         public void Clear()
         {
             items.Clear();
             inventoryUpdate?.Invoke();
+        }
+
+        /// <summary>
+        /// Gives the player a debug weapon
+        /// Mainly for debugging purposes
+        /// </summary>
+        [Button]
+        public void GiveDebugWeapon()
+        {
+            AddItem(new WeaponItemInstance(debugWeapon));
         }
     }
 }

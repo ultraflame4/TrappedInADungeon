@@ -1,9 +1,6 @@
-﻿using System;
-using Item;
+﻿using Item;
 using Player;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Utils;
 
 namespace UI
@@ -12,16 +9,16 @@ namespace UI
     {
         public Transform WeaponListContent;
         public GameObject WeaponListItemPrefab;
-        public PlayerController player;
+        public PlayerInventory playerInventory;
         private void Start()
         {
-            player.Inventory.inventoryUpdate += UpdateList;
+            playerInventory.inventoryUpdate += UpdateList;
         }
 
         void UpdateWeaponList()
         {
             WeaponListContent.DestroyChildren();
-            foreach (WeaponItemInstance instance in player.Inventory.GetAllItemOfType<WeaponItemInstance>())
+            foreach (WeaponItemInstance instance in playerInventory.GetAllItemOfType<WeaponItemInstance>())
             {
                 GameObject item = Instantiate(WeaponListItemPrefab, WeaponListContent);
                 item.GetComponent<InventoryListItemController>().SetItem(instance);

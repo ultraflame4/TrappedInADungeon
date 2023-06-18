@@ -9,7 +9,7 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
-        public PlayerInventory Inventory = new PlayerInventory();
+        public PlayerInventory Inventory;
 
     }
 }

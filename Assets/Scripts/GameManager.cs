@@ -7,17 +7,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    public WeaponItem[] Weapons;
-    public SkillItem[] Skills;
-
     public PlayerController player;
     public GameObject inventoryUi;
-
-    // Start is called before the first frame update
-    void Start()
+    private static GameManager instance; 
+    void Awake()
     {
-        
+        if (instance != null)
+        {
+            Debug.LogError("Warning: multiple instances of GameManager found! The static instance will be changed to this one!!!! This is probably not what you want!");
+        }
+        instance = this;
+    }
+    public static GameManager GetInstance()
+    {
+        return instance;
     }
 
     // Update is called once per frame
@@ -28,22 +31,5 @@ public class GameManager : MonoBehaviour
             inventoryUi.SetActive(!inventoryUi.activeSelf);
         }
     }
-    /// <summary>
-    /// Gives a wood sword to the player.
-    /// Mainly for debugging purposes
-    /// </summary>
-    [Button]
-    void GiveWoodSword()
-    {
-        player.Inventory.AddItem(new WeaponItemInstance(Weapons[0]));
-    }
-    /// <summary>
-    /// Clears the player inventory
-    /// Mainly for debugging purposes
-    /// </summary>
-    [Button]
-    void ClearPlayerInventory()
-    {
-        player.Inventory.Clear();
-    }
+
 }
