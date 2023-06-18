@@ -30,7 +30,7 @@ namespace UI
                 image.sprite = neutral;
             }
         }
-        
+
         public void OnPointerEnter(PointerEventData eventData)
         {
             isHovering = true;
@@ -43,8 +43,7 @@ namespace UI
             UpdateImageSprite();
         }
 
-        
-        
+
         private void Update()
         {
             bool last = isPressed;
@@ -53,7 +52,6 @@ namespace UI
             {
                 UpdateImageSprite();
             }
-
         }
     }
 }

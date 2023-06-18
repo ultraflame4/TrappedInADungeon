@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using Weapon;
+﻿using UnityEngine;
 
 namespace Item
 {
