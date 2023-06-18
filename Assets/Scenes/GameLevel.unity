@@ -1424,6 +1424,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemsList
       objectReference: {fileID: 0}
+    - target: {fileID: 583279092942313632, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1637604546434878330, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1805,6 +1809,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.00051185937
       objectReference: {fileID: 0}
+    - target: {fileID: 4962663197956963394, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962663197956963394, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962663197956963394, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962663197956963394, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5651787321069353068, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1820,6 +1840,10 @@ PrefabInstance:
     - target: {fileID: 5651787321069353068, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784642689531566117, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1933,6 +1957,10 @@ PrefabInstance:
     - target: {fileID: 583279092942313632, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
       propertyPath: m_Name
       value: SkillList
+      objectReference: {fileID: 0}
+    - target: {fileID: 583279092942313632, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1637604546434878330, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
       propertyPath: m_AnchorMax.x
