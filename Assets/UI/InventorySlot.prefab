@@ -92,6 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 5813458276659606744}
+  spriteButton: {fileID: 6176721506154770443}
+  buttonName: 
   isWeaponSlot: 0
 --- !u!114 &6176721506154770443
 MonoBehaviour:
@@ -109,6 +111,7 @@ MonoBehaviour:
   neutral: {fileID: 1493641125, guid: 0358e59f42a376043a8d4c4b5c2ae458, type: 3}
   hover: {fileID: 1493641125, guid: 0358e59f42a376043a8d4c4b5c2ae458, type: 3}
   active: {fileID: -1933473947, guid: 0358e59f42a376043a8d4c4b5c2ae458, type: 3}
+  activeOverride: 0
 --- !u!1 &5411877130985162339
 GameObject:
   m_ObjectHideFlags: 0

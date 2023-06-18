@@ -10,15 +10,45 @@ namespace UI
     public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
     {
         public Image itemImage;
-
+        public SpriteButton spriteButton;
+        /// <summary>
+        /// The input button name to use for this slot. If this is set, the slot will be activated when the button is pressed.
+        /// </summary>
+        public string buttonName = "";
         /// <summary>
         /// Set this to true if this inventory slot is meant to hold weapons.
         /// Weapon slots can only hold weapons. non-Weapon slots can hold anything except weapons.
         /// </summary>
         public bool isWeaponSlot = false;
-
-        public event Action<ItemInstance> itemChanged;
+        /// <summary>
+        /// This event is fired whenever the item in this slot changes. The value passed is the new item instance or null (if cleared).
+        /// </summary>
+        public event Action<ItemInstance> onItemChanged;
+        /// <summary>
+        /// This event is fired whenever the item in this slot is used. The value passed is the current item instance or null (if empty).
+        /// </summary>
+        public event Action<ItemInstance> onItemUsed;
+        
         private ItemInstance itemInstance = null;
+        
+        
+        void Update()
+        {
+            if (buttonName.Length != 0)
+            {
+                if (Input.GetButtonDown(buttonName))
+                {
+                    spriteButton.activeOverride = true;
+                    onItemUsed?.Invoke(itemInstance);
+                    spriteButton.UpdateImageSprite();
+                }
+                else if (Input.GetButtonUp(buttonName))
+                {
+                    spriteButton.activeOverride = false;
+                    spriteButton.UpdateImageSprite();
+                }
+            }
+        }
 
         /// <summary>
         /// Sets the current item instance in this slot.
@@ -49,7 +79,7 @@ namespace UI
         {
             itemInstance = item;
             itemImage.SetSprite(itemInstance?.itemType.itemSprite);
-            itemChanged?.Invoke(itemInstance);
+            onItemChanged?.Invoke(itemInstance);
         }
 
         public void OnDrag(PointerEventData eventData) { }

@@ -11,13 +11,19 @@ namespace UI
         public Sprite neutral;
         public Sprite hover;
         public Sprite active;
+        
+        /// <summary>
+        /// Set this to true to force the button to be active (display the active sprite)
+        /// When overriding call UpdateImageSprite() to update the sprite
+        /// </summary>
+        public bool activeOverride = false;
 
         private bool isHovering;
         private bool isPressed;
 
-        private void UpdateImageSprite()
+        public void UpdateImageSprite()
         {
-            if (isPressed && isHovering)
+            if ((isPressed && isHovering) || activeOverride)
             {
                 image.sprite = active;
             }
