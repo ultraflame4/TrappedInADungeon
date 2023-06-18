@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using EasyButtons;
 using Item;
+using UI;
+using Unity.Collections;
 using UnityEngine;
 
 namespace Player
@@ -10,7 +12,11 @@ namespace Player
     public class PlayerInventory : MonoBehaviour
     {
         private List<ItemInstance> items = new List<ItemInstance>();
-
+        public GameObject inventorySlotsParent;
+        [ReadOnly]
+        public InventorySlot[] weaponSlots;
+        [ReadOnly]
+        public InventorySlot[] itemSlots;
         /// <summary>
         /// Just a debug weapon to give to the user (when GiveDebugWeapon is called)
         /// </summary>
@@ -20,6 +26,22 @@ namespace Player
         /// This event is called whenever an item is added or removed from the inventory
         /// </summary>
         public event Action inventoryUpdate;
+
+
+        private void Start()
+        {
+            // Very overkill way of getting and sorting all the inventory slots using linq extensions ------
+            // get all the inventory slots
+            var slots = inventorySlotsParent.GetComponentsInChildren<InventorySlot>();
+            // group them by whether they are weapon slots or not.
+            var groupBy = slots.GroupBy(a => a.isWeaponSlot, b => b, (a, b) => new { isWeaponSlot = a, slots = b.ToArray() }).ToList();
+            // find the group that is weapon slots and assign the slots to the weaponSlots variable
+            weaponSlots = groupBy.First(x => x.isWeaponSlot).slots;
+            // find the group that is item slots and assign the slots to the itemSlots variable
+            itemSlots = groupBy.First(x => !x.isWeaponSlot).slots;
+            // -----------------------------------------------------------------------
+            
+        }
 
         /// <summary>
         /// Adds an item instance to the inventory
