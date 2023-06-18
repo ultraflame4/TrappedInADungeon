@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Utils
 {
@@ -14,6 +15,17 @@ namespace Utils
         public static void DestroyChildren(this GameObject gameObject)
         {
             gameObject.transform.DestroyChildren();
+        }
+        
+        /// <summary>
+        /// Sets the sprite of an image, and automatically enables/disables the image if the sprite is null or not.
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="sprite"></param>
+        public static void SetSprite(this Image image, Sprite sprite=null)
+        {
+            image.sprite = sprite;
+            image.enabled = sprite != null;
         }
     }
 }

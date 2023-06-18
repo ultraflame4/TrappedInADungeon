@@ -24,9 +24,7 @@ namespace UI
             foreach (WeaponItemInstance instance in player.Inventory.GetAllItemOfType<WeaponItemInstance>())
             {
                 GameObject item = Instantiate(WeaponListItemPrefab, WeaponListContent);
-                item.transform.Find("itemSprite").GetComponent<Image>().sprite = instance.itemType.itemSprite;
-                item.transform.Find("Title").GetComponent<TextMeshProUGUI>().text = instance.itemType.item_name;
-                item.transform.Find("Description").GetComponent<TextMeshProUGUI>().text = instance.itemType.item_description;
+                item.GetComponent<InventoryListItemController>().SetInstance(instance);
             }
         }
 
