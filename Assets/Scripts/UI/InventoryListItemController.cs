@@ -2,7 +2,6 @@
 using System.Linq;
 using Item;
 using TMPro;
-using UI.Dragging;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,7 +9,7 @@ using Utils;
 
 namespace UI
 {
-    public class InventoryListItemController : DraggableItem<InventorySlot>
+    public class InventoryListItemController : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
         public Image itemImage;
         public TextMeshProUGUI title;
@@ -29,14 +28,16 @@ namespace UI
             itemInstance = item;
         }
 
-        public override Sprite GetDragCursorSprite()
+        public void OnDrag(PointerEventData eventData) { }
+
+        public void OnBeginDrag(PointerEventData eventData)
         {
-            return itemInstance.itemType.itemSprite;
+            CursorController.GetInstance().StartDrag(itemInstance,itemInstance.itemType.itemSprite);
         }
 
-        public override void DropOnSlot(InventorySlot slot)
+        public void OnEndDrag(PointerEventData eventData)
         {
-            slot.SetItem(itemInstance);
+            CursorController.GetInstance().EndDrag();
         }
     }
 }

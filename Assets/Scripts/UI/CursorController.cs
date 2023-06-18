@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Item;
-using UI.Dragging;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Utils;
 
@@ -15,6 +9,7 @@ namespace UI
     {
         public Image image;
         private static CursorController instance;
+        private object draggedData;
         private void Awake()
         {
             if (instance != null)
@@ -41,13 +36,28 @@ namespace UI
         }
 
         /// <summary>
-        /// Set the cursor sprite
+        /// Starts dragging with the given data. The cursor sprite will be set to the given sprite.
         /// </summary>
-        /// <param name="sprite"></param>
-        public void SetSprite(Sprite sprite = null)
+        /// <param name="data"></param>
+        /// <param name="cursorSprite"></param>
+        public void StartDrag(object data, Sprite cursorSprite = null)
         {
-            image.SetSprite(sprite);
+            draggedData = data;
+            image.SetSprite(cursorSprite);
         }
+        /// <summary>
+        /// Ends the dragging. Clears draggedData. The cursor sprite will be set to null.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="cursorSprite"></param>
+        public void EndDrag()
+        {
+            draggedData = null;
+            image.SetSprite(null);
+        }
+
+        public object GetDraggedData() => draggedData;
+
 
         void Update()
         {

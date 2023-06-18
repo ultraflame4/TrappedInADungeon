@@ -1,6 +1,5 @@
 ﻿using System;
 using Item;
-using UI.Dragging;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,7 +8,7 @@ using Utils;
 namespace UI
 {
 
-    public class InventorySlot : DraggableItem<InventorySlot>
+    public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
     {
         public Image itemImage;
 
@@ -47,22 +46,23 @@ namespace UI
             itemChanged?.Invoke(itemInstance);
         }
 
-        public override Sprite GetDragCursorSprite()
+        public void OnDrag(PointerEventData eventData) { }
+
+        public void OnBeginDrag(PointerEventData eventData)
         {
-            return itemImage.sprite;
+            // CursorController.GetInstance().StartDrag(itemInstance,itemInstance.itemType.itemSprite);
         }
 
-        public override void DropOnSlot(InventorySlot slot)
+        public void OnEndDrag(PointerEventData eventData)
         {
-            if (slot.SetItem(itemInstance))
-            {
-                SetItem(null);
-            }
+            // CursorController.GetInstance().EndDrag();
         }
 
-        public override bool AllowDrag()
+        public void OnDrop(PointerEventData eventData)
         {
-            return itemInstance != null;
+            var data = CursorController.GetInstance().GetDraggedData() as ItemInstance;
+            if (data is null) return;
+            SetItem(data);
         }
     }
 }
