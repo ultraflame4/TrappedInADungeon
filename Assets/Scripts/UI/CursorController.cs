@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utils;
 
@@ -10,6 +12,14 @@ namespace UI
         public Image image;
         private static CursorController instance;
         private object draggedData;
+        /// <summary>
+        /// Optionally to be set by the drop target. If true, the drop was successful.
+        /// This is only really meant to be used between the drop target and drag source during the drop and drag end event.
+        /// In the event it was not set, it will default to false.
+        /// Will be reset to false when DragStart() is called.
+        /// </summary>
+        [NonSerialized]
+        public bool optionalDropSuccess = false;
         private void Awake()
         {
             if (instance != null)
@@ -42,6 +52,7 @@ namespace UI
         /// <param name="cursorSprite"></param>
         public void StartDrag(object data, Sprite cursorSprite = null)
         {
+            optionalDropSuccess = false;
             draggedData = data;
             image.SetSprite(cursorSprite);
         }

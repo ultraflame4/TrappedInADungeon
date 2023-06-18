@@ -63,6 +63,11 @@ namespace UI
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            // if the item was not dropped in another slot, count as user throwing the item into the void
+            if (!CursorController.GetInstance().optionalDropSuccess)
+            {
+                SetItem(null);
+            }
             // show item image if there is an item in this slot
             itemImage.enabled = itemInstance != null;
             CursorController.GetInstance().EndDrag();
@@ -80,9 +85,10 @@ namespace UI
                 item = inventorySlot.itemInstance; // get item from the other slot
                 if (SetItem(item)) // if successfully set item
                 {
-                    
                     inventorySlot.SetItem(null); // clear the item in the other slot
                 }
+                // Tell the other slot that the item was dropped in another slot (regardless of whether the inventorySlot.SetItem() was successful
+                CursorController.GetInstance().optionalDropSuccess = true; 
             }
         }
     }
