@@ -10,18 +10,18 @@ using Utils;
 
 namespace UI
 {
-    public class InventoryListItemController : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+    public class InventoryListItemController : DraggableItem<InventorySlot>
     {
         public Image itemImage;
         public TextMeshProUGUI title;
         public TextMeshProUGUI description;
         private ItemInstance itemInstance;
-        
+
         /// <summary>
         /// Sets the item instance this list item is showing
         /// </summary>
         /// <param name="item"></param>
-        public void SetInstance(ItemInstance item)
+        public void SetItem(ItemInstance item)
         {
             itemImage.sprite = item.itemType.itemSprite;
             title.text = item.GetDisplayName();
@@ -29,27 +29,14 @@ namespace UI
             itemInstance = item;
         }
 
-        public void OnBeginDrag(PointerEventData eventData)
+        public override Sprite GetDragCursorSprite()
         {
-            CursorController.GetInstance().SetDragEventData(new InventoryDragEventData(itemInstance));
-            
+            return itemInstance.itemType.itemSprite;
         }
 
-        public void OnEndDrag(PointerEventData eventData)
+        public override void DropOnSlot(InventorySlot slot)
         {
-            List<RaycastResult> resultList = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(eventData, resultList);
-            InventorySlot slot = resultList.Select(x => x.gameObject.GetComponent<InventorySlot>()).Where(x=>x is not null).FirstOrDefault();
-            if (slot is not null)
-            {
-                slot.SetItem(itemInstance);
-            }
-            CursorController.GetInstance().SetDragEventData(null);
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            
+            slot.SetItem(itemInstance);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace UI
             foreach (WeaponItemInstance instance in player.Inventory.GetAllItemOfType<WeaponItemInstance>())
             {
                 GameObject item = Instantiate(WeaponListItemPrefab, WeaponListContent);
-                item.GetComponent<InventoryListItemController>().SetInstance(instance);
+                item.GetComponent<InventoryListItemController>().SetItem(instance);
             }
         }
 
