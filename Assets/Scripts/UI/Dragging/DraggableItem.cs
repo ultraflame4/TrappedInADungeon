@@ -15,25 +15,31 @@ namespace UI.Dragging
     ///     This game object is referred to as the "slot" in this class.<br/>
     /// </summary>
     /// <typeparam name="C">The component of the slot to retrieve</typeparam>
-    public abstract class DraggableItem<C> : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler where C : MonoBehaviour 
+    public abstract class DraggableItem<C> : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
+        private bool dragAllowed = false;
         public void OnDrag(PointerEventData eventData) { }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            dragAllowed= AllowDrag();
+            if (!dragAllowed) return;
             CursorController.GetInstance().SetSprite(GetDragCursorSprite());
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (!dragAllowed) return;
             List<RaycastResult> resultList = new List<RaycastResult>();
             EventSystem.current.RaycastAll(eventData, resultList);
             // Get the first component of type C from the list of raycast results
-            C slot = resultList.Select(x => x.gameObject.GetComponent<C>()).Where(x=>x is not null).FirstOrDefault();
+            C slot = resultList.Select(x => x.gameObject.GetComponent<C>()).Where(x => x is not null).FirstOrDefault();
             if (slot is not null)
             {
                 DropOnSlot(slot);
-            }
+            } 
+            CursorController.GetInstance().SetSprite(null);
+            dragAllowed= false;
         }
 
         /// <summary>
@@ -41,7 +47,15 @@ namespace UI.Dragging
         /// </summary>
         /// <returns></returns>
         public abstract Sprite GetDragCursorSprite();
+        /// <summary>
+        /// Called when the item is dropped on a slot
+        /// </summary>
+        /// <param name="slot">The slot the item was dropped on</param>
         public abstract void DropOnSlot(C slot);
-
+        /// <summary>
+        /// Optional. Override this to set additional conditions for dragging to start
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool AllowDrag() => true;
     }
 }

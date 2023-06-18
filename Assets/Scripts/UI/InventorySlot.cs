@@ -8,7 +8,8 @@ using Utils;
 
 namespace UI
 {
-    public class InventorySlot : MonoBehaviour
+
+    public class InventorySlot : DraggableItem<InventorySlot>
     {
         public Image itemImage;
 
@@ -44,6 +45,24 @@ namespace UI
             itemInstance = item;
             itemImage.SetSprite(itemInstance.itemType.itemSprite);
             itemChanged?.Invoke(itemInstance);
+        }
+
+        public override Sprite GetDragCursorSprite()
+        {
+            return itemImage.sprite;
+        }
+
+        public override void DropOnSlot(InventorySlot slot)
+        {
+            if (slot.SetItem(itemInstance))
+            {
+                SetItem(null);
+            }
+        }
+
+        public override bool AllowDrag()
+        {
+            return itemInstance != null;
         }
     }
 }
