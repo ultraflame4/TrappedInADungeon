@@ -56,6 +56,8 @@ namespace UI
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            // dont allow dragging if there is no item in this slot
+            if (itemInstance == null) return;
             // hide item image
             itemImage.enabled = false;
             CursorController.GetInstance().StartDrag(this, itemInstance.itemType.itemSprite);
