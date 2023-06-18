@@ -2,6 +2,9 @@
 
 namespace Item
 {
-    [CreateAssetMenu(fileName = "skill_item", menuName = "GameContent/Items/Skill")]
-    public class SkillItem : ItemScriptableObject { }
+    [CreateAssetMenu(fileName = "skill_item",menuName = "GameContent/Items/Skill")]
+    public class SkillItem : ItemScriptableObject
+    {
+        
+    }
 }
