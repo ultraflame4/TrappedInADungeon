@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 2276650233320964744}
   neutral: {fileID: 1493641125, guid: 0358e59f42a376043a8d4c4b5c2ae458, type: 3}
-  hover: {fileID: -1933473947, guid: 0358e59f42a376043a8d4c4b5c2ae458, type: 3}
+  hover: {fileID: 1493641125, guid: 0358e59f42a376043a8d4c4b5c2ae458, type: 3}
   active: {fileID: -1933473947, guid: 0358e59f42a376043a8d4c4b5c2ae458, type: 3}
 --- !u!1 &5411877130985162339
 GameObject:
