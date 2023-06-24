@@ -2,6 +2,7 @@
 using Item;
 using UI;
 using UnityEngine;
+using Weapon;
 
 namespace Player
 {
@@ -21,20 +22,22 @@ namespace Player
                 if (slot.isWeaponSlot)
                 {
                     int slotIndex = i; // make local scope else rider(ide) will complain.
-                    slot.onItemChanged += (ItemInstance item)=>EquipWeapon(item, slotIndex);
+                    slot.onItemChanged += (ItemInstance item)=>EquipWeapon(item as WeaponItemInstance, slotIndex);
                 }
             }
         }
 
 
-        public void EquipWeapon(ItemInstance weapon, int slotIndex)
+        public void EquipWeapon(WeaponItemInstance weapon, int slotIndex)
         {
             equippedWeapons[slotIndex] = weapon;
             if (weaponObjects[slotIndex] != null)
             {
                 Destroy(weaponObjects[slotIndex]);
             }
-            // weaponObjects[slotIndex] = Instantiate(weapon.itemType.);
+            GameObject obj = Instantiate(weapon.weaponType.weaponPrefab);
+            obj.AddComponent<WeaponController>();
+            weaponObjects[slotIndex] = obj;
         }
     }
 }
