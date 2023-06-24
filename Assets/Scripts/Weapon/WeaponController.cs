@@ -9,6 +9,7 @@ namespace Weapon
         public Animator animator;
         public Transform player;
         public float offset=0.5f;
+        public float travelSpeed=0.05f;
         public AnimatorOverrideController overrideController;
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace Weapon
         // Update is called once per frame
         void Update()
         {
-            transform.position = Vector3.Lerp(transform.position,player.transform.position - player.transform.right * offset, 0.1f);
+            transform.position = Vector3.Lerp(transform.position,player.transform.position - player.transform.right * offset, travelSpeed);
         }
 
 
