@@ -22,20 +22,27 @@ namespace Player
                 if (slot.isWeaponSlot)
                 {
                     int slotIndex = i; // make local scope else rider(ide) will complain.
-                    slot.onItemChanged += (ItemInstance item)=>EquipWeapon(item as WeaponItemInstance, slotIndex);
+                    slot.onItemChanged += (ItemInstance item)=>EquipWeapon(item , slotIndex);
                 }
             }
         }
 
 
-        public void EquipWeapon(WeaponItemInstance weapon, int slotIndex)
+        public void EquipWeapon(ItemInstance weaponInstance, int slotIndex)
         {
-            equippedWeapons[slotIndex] = weapon;
+            WeaponItem weapon = weaponInstance.itemType as WeaponItem;
+            if (weapon is null)
+            {
+                Debug.LogError($"Error: Tried to equip non-weapon item instance in weapon slot {slotIndex}. weaponInstance: {weaponInstance}. This probably should not be happening!");
+                return;
+            }
+            
+            equippedWeapons[slotIndex] = weaponInstance;
             if (weaponObjects[slotIndex] != null)
             {
                 Destroy(weaponObjects[slotIndex]);
             }
-            GameObject obj = Instantiate(weapon.weaponType.weaponPrefab);
+            GameObject obj = Instantiate(weapon.weaponPrefab);
             obj.AddComponent<WeaponController>();
             weaponObjects[slotIndex] = obj;
         }

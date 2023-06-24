@@ -28,10 +28,4 @@
             return itemType.item_description;
         }
     }
-
-    public class WeaponItemInstance : ItemInstance // Convenience class so that we don't have to check and cast itemType to WeaponItem every time
-    {
-        public WeaponItem weaponType => (WeaponItem)itemType;
-        public WeaponItemInstance(WeaponItem itemType) : base(itemType) { }
-    }
 }

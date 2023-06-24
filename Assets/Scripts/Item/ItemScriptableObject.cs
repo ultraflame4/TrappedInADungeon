@@ -8,6 +8,7 @@ namespace Item
         [Multiline(5)]
         public string item_description;
         public Sprite itemSprite;
+        
 
     }
 }
