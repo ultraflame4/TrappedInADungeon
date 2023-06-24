@@ -30,10 +30,19 @@ namespace Player
 
         public void EquipWeapon(ItemInstance weaponInstance, int slotIndex)
         {
-            WeaponItem weapon = weaponInstance.itemType as WeaponItem;
-            if (weapon is null)
+            if (weaponInstance is null) // if null empty the slot
             {
-                Debug.LogError($"Error: Tried to equip non-weapon item instance in weapon slot {slotIndex}. weaponInstance: {weaponInstance}. This probably should not be happening!");
+                equippedWeapons[slotIndex] = null;
+                if (weaponObjects[slotIndex] != null)
+                {
+                    Destroy(weaponObjects[slotIndex]);
+                }
+                weaponObjects[slotIndex] = null;
+                return;
+            }
+            if (weaponInstance.itemType is not WeaponItem weapon)
+            {
+                Debug.LogError($"Error: Tried to equip non-weapon item instance in weapon slot {slotIndex}. itemType: {weaponInstance.itemType}. This probably should not be happening!");
                 return;
             }
             
