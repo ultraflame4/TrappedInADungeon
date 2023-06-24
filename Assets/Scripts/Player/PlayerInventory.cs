@@ -71,9 +71,9 @@ namespace Player
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T[] GetAllItemOfType<T>() where T : ItemInstance
+        public ItemInstance[] GetAllItemOfType<T>() where T : ItemScriptableObject
         {
-            return items.Where(x => x is T).Cast<T>().ToArray();
+            return items.Where(x => x.itemType is T).ToArray();
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Player
         [Button]
         public void GiveDebugWeapon()
         {
-            AddItem(new WeaponItemInstance(debugWeapon));
+            AddItem(new ItemInstance(debugWeapon));
         }
     }
 }

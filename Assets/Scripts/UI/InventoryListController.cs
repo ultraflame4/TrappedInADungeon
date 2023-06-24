@@ -18,7 +18,7 @@ namespace UI
         void UpdateWeaponList()
         {
             WeaponListContent.DestroyChildren();
-            foreach (WeaponItemInstance instance in playerInventory.GetAllItemOfType<WeaponItemInstance>())
+            foreach (ItemInstance instance in playerInventory.GetAllItemOfType<WeaponItem>())
             {
                 GameObject item = Instantiate(WeaponListItemPrefab, WeaponListContent);
                 item.GetComponent<InventoryListItemController>().SetItem(instance);

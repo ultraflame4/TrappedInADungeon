@@ -28,18 +28,4 @@
             return itemType.item_description;
         }
     }
-    public class WeaponItemInstance : ItemInstance
-    {
-        public WeaponItemInstance(WeaponItem itemType) : base(itemType)
-        {
-            
-        }
-    }
-    public class SkillItemInstance : ItemInstance
-    {
-        public SkillItemInstance(SkillItem itemType) : base(itemType)
-        {
-            
-        }
-    }
 }

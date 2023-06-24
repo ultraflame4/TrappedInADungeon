@@ -7,6 +7,6 @@ namespace Item
     {
         public GameObject weaponPrefab;
         public float base_attack;
-
+        public AnimatorOverrideController animatorOverrideController;
     }
 }

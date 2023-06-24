@@ -63,7 +63,7 @@ namespace UI
                 return true;
             }
             
-            if (item is WeaponItemInstance)
+            if (item.itemType is WeaponItem)
             {
                 if (!isWeaponSlot) return false;
                 _SetItem(item);
