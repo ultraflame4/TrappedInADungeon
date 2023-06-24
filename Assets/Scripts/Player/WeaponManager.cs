@@ -52,6 +52,7 @@ namespace Player
                 Destroy(weaponObjects[slotIndex]);
             }
             GameObject obj = Instantiate(weapon.weaponPrefab);
+            obj.GetComponent<WeaponController>().player= transform;
             weaponObjects[slotIndex] = obj;
         }
     }
