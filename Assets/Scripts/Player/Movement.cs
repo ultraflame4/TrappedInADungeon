@@ -63,30 +63,21 @@ namespace Player
         }
 
         /**
-         * This method flips the sprite if needed base on the current direction.
+         * This method rotates the sprite if needed base on the current direction.
          */
         void UpdateSpriteDirection()
         {
-            Vector3 localScale = transform.localScale;
+            Quaternion localRotation = transform.localRotation;
             if (currentDirection.x > 0)
             {
-                if (localScale.x < 0) // Check if the x scale is negative (facing the wrong way)
-                {
-                    // If yes then flip it
-                    // using multiplication because it preserves original scaling
-                    localScale.x *= -1;
-                }
+                localRotation.eulerAngles = Vector3.up*0;
             }
             else if (currentDirection.x < 0) // Cannot use else here because it then keep flipping to the left
             {
-                // The inverse of above
-                if (localScale.x > 0)
-                {
-                    localScale.x *= -1;
-                }
+                localRotation.eulerAngles = Vector3.up*180;
             }
 
-            transform.localScale = localScale;
+            transform.localRotation = localRotation;
         }
 
         private void FixedUpdate()
