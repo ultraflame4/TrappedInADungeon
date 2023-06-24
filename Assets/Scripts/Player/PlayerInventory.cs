@@ -28,7 +28,7 @@ namespace Player
 
         private void Start()
         {
-            itemSlots = inventorySlotsParent.GetComponentsInChildren<InventorySlot>();
+            itemSlots = inventorySlotsParent.GetComponentsInChildren<InventorySlot>(); // automatically finds all item slots
         }
 
         /// <summary>
