@@ -38,13 +38,18 @@ namespace UI
             {
                 if (Input.GetButtonDown(buttonName))
                 {
-                    spriteButton.activeOverride = true;
-                    onItemUsed?.Invoke(itemInstance);
-                    spriteButton.UpdateImageSprite();
+                    // only activate if player is not pointing at ui
+                    if (!EventSystem.current.IsPointerOverGameObject())
+                    {
+                        spriteButton.activeOverride = true;
+                        onItemUsed?.Invoke(itemInstance);
+                        spriteButton.UpdateImageSprite();
+                    }
+
                 }
                 else if (Input.GetButtonUp(buttonName))
                 {
-                    spriteButton.activeOverride = false;
+                    spriteButton.activeOverride = false ;
                     spriteButton.UpdateImageSprite();
                 }
             }
