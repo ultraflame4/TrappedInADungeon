@@ -26,7 +26,7 @@ namespace Player
         public event Action inventoryUpdate;
 
 
-        private void Start()
+        private void Awake()
         {
             itemSlots = inventorySlotsParent.GetComponentsInChildren<InventorySlot>(); // automatically finds all item slots
         }
