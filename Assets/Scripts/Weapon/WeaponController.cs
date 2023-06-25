@@ -93,6 +93,14 @@ namespace Weapon
             animator.SetTrigger(AttackTrigger);
             ExecuteComboCheck();
         }
+        /// <summary>
+        /// When the player releases the attack button, this function is called. cCn be used to cancel attacks
+        /// </summary>
+        [Button]
+        public void AttackRelease()
+        {
+
+        }
         
     }
 }
