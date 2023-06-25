@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory Toggle"))
         {
-            gameObject.SetActive(!gameObject.activeSelf);
+            inventoryUi.SetActive(!inventoryUi.activeSelf);
         }
     }
 }
