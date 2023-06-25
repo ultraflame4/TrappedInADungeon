@@ -3722,8 +3722,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 6080920965029759795}
-  WeaponOffset: 0.5
-  weaponTravelSpeed: 0.05
+  WeaponOffset: 0.4
+  weaponTravelSpeed: 0.4
 --- !u!1 &6743124955957166276
 GameObject:
   m_ObjectHideFlags: 3
