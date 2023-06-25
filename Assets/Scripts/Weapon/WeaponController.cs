@@ -10,6 +10,7 @@ namespace Weapon
         public Transform player;
         public float offset=0.5f;
         public float travelSpeed=0.05f;
+        public float RotationWhenIdle = 90f;
         public AnimatorOverrideController overrideController;
 
         /// <summary>
@@ -46,6 +47,7 @@ namespace Weapon
         void FixedUpdate()
         {
             transform.position = Vector3.Lerp(transform.position,player.transform.position - player.transform.right * offset, travelSpeed);
+            transform.rotation = Quaternion.Euler(0, 0, IsAttacking?0:RotationWhenIdle);
         }
 
 
@@ -92,6 +94,7 @@ namespace Weapon
             SwapAttackClip();
             animator.SetTrigger(AttackTrigger);
             ExecuteComboCheck();
+            
         }
         /// <summary>
         /// When the player releases the attack button, this function is called. cCn be used to cancel attacks
@@ -99,8 +102,10 @@ namespace Weapon
         [Button]
         public void AttackRelease()
         {
-
+            
         }
+        
+        
         
     }
 }
