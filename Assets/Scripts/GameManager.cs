@@ -21,14 +21,5 @@ public class GameManager : MonoBehaviour
     {
         return instance;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Inventory Toggle"))
-        {
-            inventoryUi.SetActive(!inventoryUi.activeSelf);
-        }
-    }
-
+    
 }

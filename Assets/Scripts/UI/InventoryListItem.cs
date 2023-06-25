@@ -9,7 +9,7 @@ using Utils;
 
 namespace UI
 {
-    public class InventoryListItemController : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+    public class InventoryListItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
         public Image itemImage;
         public TextMeshProUGUI title;

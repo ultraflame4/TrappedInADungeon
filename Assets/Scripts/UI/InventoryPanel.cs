@@ -5,7 +5,7 @@ using Utils;
 
 namespace UI
 {
-    public class InventoryListController : MonoBehaviour
+    public class InventoryPanel : MonoBehaviour
     {
         public Transform WeaponListContent;
         public GameObject WeaponListItemPrefab;
@@ -21,13 +21,21 @@ namespace UI
             foreach (ItemInstance instance in playerInventory.GetAllItemOfType<WeaponItem>())
             {
                 GameObject item = Instantiate(WeaponListItemPrefab, WeaponListContent);
-                item.GetComponent<InventoryListItemController>().SetItem(instance);
+                item.GetComponent<InventoryListItem>().SetItem(instance);
             }
         }
 
         void UpdateList()
         {
             UpdateWeaponList();
+        }
+        
+        void Update()
+        {
+            if (Input.GetButtonDown("Inventory Toggle"))
+            {
+                gameObject.SetActive(!gameObject.activeSelf);
+            }
         }
     }
 }
