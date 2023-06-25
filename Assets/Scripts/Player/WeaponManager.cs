@@ -64,5 +64,25 @@ namespace Player
             controller.travelSpeed = weaponTravelSpeed;
             weaponObjects[slotIndex] = obj;
         }
+
+        public void Update()
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                weaponObjects[PrimaryWeaponIndex]?.GetComponent<WeaponController>()?.Attack();
+            }
+            else if (Input.GetButtonDown("Fire2"))
+            {
+                weaponObjects[SecondaryWeaponIndex]?.GetComponent<WeaponController>()?.Attack();
+            }
+            if (Input.GetButtonUp("Fire1"))
+            {
+                weaponObjects[PrimaryWeaponIndex]?.GetComponent<WeaponController>()?.AttackRelease();
+            }
+            else if (Input.GetButtonUp("Fire2"))
+            {
+                weaponObjects[SecondaryWeaponIndex]?.GetComponent<WeaponController>()?.AttackRelease();
+            }
+        }
     }
 }
