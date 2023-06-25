@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using EasyButtons;
@@ -21,5 +22,12 @@ public class GameManager : MonoBehaviour
     {
         return instance;
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Inventory Toggle"))
+        {
+            gameObject.SetActive(!gameObject.activeSelf);
+        }
+    }
 }

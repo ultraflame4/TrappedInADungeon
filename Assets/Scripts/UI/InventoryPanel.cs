@@ -32,10 +32,7 @@ namespace UI
         
         void Update()
         {
-            if (Input.GetButtonDown("Inventory Toggle"))
-            {
-                gameObject.SetActive(!gameObject.activeSelf);
-            }
+
         }
     }
 }
