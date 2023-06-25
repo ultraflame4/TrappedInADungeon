@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
         return instance;
     }
 
+    private void Start()
+    {
+        inventoryUi.SetActive(false);
+    }
+
     private void Update()
     {
         if (Input.GetButtonDown("Inventory Toggle"))
