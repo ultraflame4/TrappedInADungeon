@@ -10,7 +10,7 @@ namespace Player
     public class WeaponManager : MonoBehaviour
     {
         public readonly int PrimaryWeaponIndex = 0;
-        public readonly int SecondaryWeaponIndex = 0;
+        public readonly int SecondaryWeaponIndex = 1;
         private ItemInstance[] equippedWeapons = new ItemInstance[2];
         private GameObject[] weaponObjects = new GameObject[2];
         public PlayerInventory playerInventory;
