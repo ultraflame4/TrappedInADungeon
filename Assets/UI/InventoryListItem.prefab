@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 189.66, y: -13.110302}
-  m_SizeDelta: {x: 232.33, y: -30.4372}
+  m_AnchoredPosition: {x: 189.66, y: -11.547}
+  m_SizeDelta: {x: 232.33, y: -23.093}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1609589401963294231
 CanvasRenderer:
@@ -96,8 +96,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -168,7 +168,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4391315420809655242}
   m_RootOrder: -1
@@ -176,7 +176,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 36.1, y: -37.358}
-  m_SizeDelta: {x: 59.6874, y: 59.6873}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8644791412303615640
 CanvasRenderer:
@@ -206,9 +206,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 610319333, guid: 59277d85efc71644e89e13e1e99f85a5, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -251,8 +251,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 32.605, y: -17.808}
-  m_SizeDelta: {x: -81.7797, y: 20.587}
+  m_AnchoredPosition: {x: 32.605, y: -13.2}
+  m_SizeDelta: {x: -81.7797, y: 23.094}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8640242382280160951
 CanvasRenderer:
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Death Scythe
+  m_text: Wooden Sword
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e258cc9fe9110e146933bcafde81cc46, type: 2}
   m_sharedMaterial: {fileID: 5844975044651656415, guid: e258cc9fe9110e146933bcafde81cc46, type: 2}
@@ -309,8 +309,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

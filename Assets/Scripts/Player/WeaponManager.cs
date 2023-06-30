@@ -60,7 +60,7 @@ namespace Player
             GameObject obj = Instantiate(weapon.weaponPrefab);
             WeaponController controller = obj.GetComponent<WeaponController>();
             controller.player = transform;
-            controller.offset = WeaponOffset + 0.3f*slotIndex;
+            controller.follow_offset = WeaponOffset + 0.3f*slotIndex;
             controller.travelSpeed = weaponTravelSpeed;
             weaponObjects[slotIndex] = obj;
         }

@@ -2949,6 +2949,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Primary
       objectReference: {fileID: 0}
+    - target: {fileID: 3596730960532860722, guid: d9b90211d3984a04098ae84dec031721, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4768858447970567795, guid: d9b90211d3984a04098ae84dec031721, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

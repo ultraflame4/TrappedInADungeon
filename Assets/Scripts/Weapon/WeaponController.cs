@@ -8,7 +8,8 @@ namespace Weapon
     {
         public Animator animator;
         public Transform player;
-        public float offset=0.5f;
+        public float follow_offset=0.5f;
+        public float attack_offset=0.5f;
         public float travelSpeed=0.05f;
         public float RotationWhenIdle = 90f;
         public AnimatorOverrideController overrideController;
@@ -46,8 +47,9 @@ namespace Weapon
         
         void FixedUpdate()
         {
+            float offset = IsAttacking ? -attack_offset : follow_offset; 
             transform.position = Vector3.Lerp(transform.position,player.transform.position - player.transform.right * offset, travelSpeed);
-            transform.rotation = Quaternion.Euler(0, 0, IsAttacking?0:RotationWhenIdle);
+            transform.rotation = IsAttacking ? player.transform.rotation: Quaternion.Euler(0, 0, RotationWhenIdle);
         }
 
 
