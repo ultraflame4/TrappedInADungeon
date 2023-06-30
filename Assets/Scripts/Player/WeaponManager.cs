@@ -15,7 +15,8 @@ namespace Player
         private GameObject[] weaponObjects = new GameObject[2];
         public PlayerInventory playerInventory;
         [FormerlySerializedAs("offset")] public float WeaponOffset = 0.5f;
-        public float weaponTravelSpeed = 0.05f;
+        public float weaponTravelSpeed = 0.4f;
+        public float weaponAttackTravelSpeed = 0.8f;
 
         private void Start()
         {
@@ -62,6 +63,7 @@ namespace Player
             controller.player = transform;
             controller.follow_offset = WeaponOffset + 0.3f*slotIndex;
             controller.travelSpeed = weaponTravelSpeed;
+            controller.attackingTravelSpeed = weaponAttackTravelSpeed;
             weaponObjects[slotIndex] = obj;
         }
 

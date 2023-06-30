@@ -284,8 +284,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 854eca033dfdcdd4ca62e53eaed3c9a2
+      spriteID: 68262675259bfcb4fbe8363dc3e89e0d
       internalID: -652767261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WoodenSwordSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19e30148bb84ff54f983060fe7d62e96
+      internalID: 539796227
       vertices: []
       indices: 
       edges: []
@@ -309,6 +330,7 @@ TextureImporter:
       WoodenSwordSpriteSheet_5: 506956274
       WoodenSwordSpriteSheet_6: 939582425
       WoodenSwordSpriteSheet_7: -652767261
+      WoodenSwordSpriteSheet_8: 539796227
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

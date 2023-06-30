@@ -10,7 +10,8 @@ namespace Weapon
         public Transform player;
         public float follow_offset=0.5f;
         public float attack_offset=0.5f;
-        public float travelSpeed=0.05f;
+        public float travelSpeed=0.4f;
+        public float attackingTravelSpeed=0.8f;
         public float RotationWhenIdle = 90f;
         public AnimatorOverrideController overrideController;
 
@@ -47,9 +48,19 @@ namespace Weapon
         
         void FixedUpdate()
         {
-            float offset = IsAttacking ? -attack_offset : follow_offset; 
-            transform.position = Vector3.Lerp(transform.position,player.transform.position - player.transform.right * offset, travelSpeed);
-            transform.rotation = IsAttacking ? player.transform.rotation: Quaternion.Euler(0, 0, RotationWhenIdle);
+            
+            if (IsAttacking) // Using if else statement to avoid many tenery operators (?:) checking for IsAttacking
+            {
+                float offset = -attack_offset;
+                transform.position = Vector3.Lerp(transform.position,player.transform.position - player.transform.right * offset, attackingTravelSpeed);
+                transform.rotation = player.transform.rotation;
+            }
+            else
+            {
+                float offset =  follow_offset;
+                transform.position = Vector3.Lerp(transform.position,player.transform.position - player.transform.right * offset, travelSpeed);
+                transform.rotation = Quaternion.Euler(0, 0, RotationWhenIdle);
+            }
         }
 
 

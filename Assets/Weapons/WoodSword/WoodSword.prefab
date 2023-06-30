@@ -121,12 +121,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4244722350919500509}
   player: {fileID: 0}
-  offset: 0.5
+  follow_offset: 0.5
+  attack_offset: 0.5
   travelSpeed: 0.05
   RotationWhenIdle: 225
   overrideController: {fileID: 22100000, guid: b8b3a84af41aa2945ab28db57c42b53e, type: 2}
   attackClips:
   - {fileID: 7400000, guid: b37cfa092d441494b869de18ab9e30fc, type: 2}
   - {fileID: 7400000, guid: 846b4f81d97a61e4f8db336ccbfde945, type: 2}
-  ComboWaitPeriod_Secs: 0.5
+  ComboWaitPeriod_Secs: 0.75
   ComboCounter: 0
