@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -137,7 +137,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 078b30b17a3ec7a4a86efcb48c5c34dc
+      spriteID: e6728309271e9b945891873a8f5f63cf
       internalID: 610319333
       vertices: []
       indices: 
@@ -158,7 +158,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7300962cb67472040873962a1d9b58bc
+      spriteID: f3a2a92a6eb7abd4a84b20de8778070c
       internalID: -1895639951
       vertices: []
       indices: 
@@ -179,7 +179,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 531f218ad3436a54cbae4172a15b2232
+      spriteID: d9ef5d723c0a8254fa8170a98cb14413
       internalID: -977975878
       vertices: []
       indices: 
@@ -200,7 +200,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 987820279a84fde4eb8045fc453ec35b
+      spriteID: 67907c45d3d48c2478d99c97730a9b3e
       internalID: -434177730
       vertices: []
       indices: 
@@ -221,7 +221,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aadf13ebfaf6537448e471898916448f
+      spriteID: 7dd6794a1513b8b44aeede202a964e24
       internalID: 877179089
       vertices: []
       indices: 
@@ -242,7 +242,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dd72a80557cd2648a3b2050d6399671
+      spriteID: 2f69cbf6fad26c44fae33589fc88b00b
       internalID: 506956274
       vertices: []
       indices: 
@@ -263,7 +263,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7beb19b79079fe64285009291a8af76f
+      spriteID: 65af51cb5eed1c541bc253cb4c0d25bc
       internalID: 939582425
       vertices: []
       indices: 
@@ -284,113 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1065d6d4276cddd49a9687e61f8bec01
+      spriteID: 854eca033dfdcdd4ca62e53eaed3c9a2
       internalID: -652767261
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WoodenSwordSpriteSheet_8
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e697ee9deb1f8c45a71a7c8a79ededd
-      internalID: -1119199602
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WoodenSwordSpriteSheet_9
-      rect:
-        serializedVersion: 2
-        x: 432
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 568e3a57ede102742bbdded5e18a8dda
-      internalID: -451443245
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WoodenSwordSpriteSheet_10
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 097a0a37dbcf69e459ddd5dcd4751ab4
-      internalID: -2095580127
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WoodenSwordSpriteSheet_11
-      rect:
-        serializedVersion: 2
-        x: 528
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a55e0f22a4d8f9241907e434b0cc2706
-      internalID: 224755166
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WoodenSwordSpriteSheet_12
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c6f1f947928247140bc3511892c5b85f
-      internalID: 622325572
       vertices: []
       indices: 
       edges: []
@@ -408,17 +303,12 @@ TextureImporter:
     nameFileIdTable:
       WoodenSwordSpriteSheet_0: 610319333
       WoodenSwordSpriteSheet_1: -1895639951
-      WoodenSwordSpriteSheet_10: -2095580127
-      WoodenSwordSpriteSheet_11: 224755166
-      WoodenSwordSpriteSheet_12: 622325572
       WoodenSwordSpriteSheet_2: -977975878
       WoodenSwordSpriteSheet_3: -434177730
       WoodenSwordSpriteSheet_4: 877179089
       WoodenSwordSpriteSheet_5: 506956274
       WoodenSwordSpriteSheet_6: 939582425
       WoodenSwordSpriteSheet_7: -652767261
-      WoodenSwordSpriteSheet_8: -1119199602
-      WoodenSwordSpriteSheet_9: -451443245
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
