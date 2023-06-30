@@ -1,6 +1,4 @@
-﻿using System;
-using Item;
-using UI;
+﻿using Item;
 using UI.Inventory;
 using UnityEngine;
 using UnityEngine.Serialization;
