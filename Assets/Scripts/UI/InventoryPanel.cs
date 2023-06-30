@@ -10,7 +10,7 @@ namespace UI
         public Transform WeaponListContent;
         public GameObject WeaponListItemPrefab;
         public PlayerInventory playerInventory;
-        private void Start()
+        private void Awake()
         {
             playerInventory.inventoryUpdate += UpdateList;
         }
