@@ -3326,7 +3326,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.020774603, y: -0.34891808}
+  m_Offset: {x: 0.020774603, y: -0.07}
   m_Size: {x: 0.34686422, y: 1.2978079}
   m_Direction: 0
 --- !u!4 &2276549158430765714
@@ -3727,7 +3727,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 6080920965029759795}
   WeaponOffset: 0.4
-  weaponTravelSpeed: 0.4
+  weaponTravelSpeed: 0.2
+  weaponAttackTravelSpeed: 0.8
 --- !u!1 &6743124955957166276
 GameObject:
   m_ObjectHideFlags: 3
