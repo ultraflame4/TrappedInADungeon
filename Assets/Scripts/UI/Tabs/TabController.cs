@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.Tabs
 {
     [RequireComponent(typeof(Image))]
     public class TabController : MonoBehaviour, IPointerClickHandler
