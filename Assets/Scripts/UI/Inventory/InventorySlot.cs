@@ -33,7 +33,7 @@ namespace UI.Inventory
         /// </summary>
         public event Action<ItemInstance> onItemUsed;
 
-        private ItemInstance itemInstance = null;
+        private InventoryItemInstance itemInstance = null;
 
 
         void Update()
@@ -46,7 +46,7 @@ namespace UI.Inventory
                     if (!EventSystem.current.IsPointerOverGameObject() && isWeaponSlot)
                     {
                         spriteButton.activeOverride = true;
-                        onItemUsed?.Invoke(itemInstance);
+                        onItemUsed?.Invoke(itemInstance.itemInstance);
                         spriteButton.UpdateImageSprite();
                     }
                 }
@@ -63,7 +63,7 @@ namespace UI.Inventory
         /// </summary>
         /// <param name="item"></param>
         /// <returns>Returns true if successful, vice versa</returns>
-        public bool SetItem(ItemInstance item)
+        public bool SetItem(InventoryItemInstance item)
         {
             if (item == null)
             {
@@ -71,7 +71,7 @@ namespace UI.Inventory
                 return true;
             }
 
-            if (item.itemType is WeaponItem)
+            if (item.itemInstance.itemType is WeaponItem)
             {
                 if (!isWeaponSlot) return false;
                 _SetItem(item);
@@ -83,7 +83,7 @@ namespace UI.Inventory
             return true;
         }
 
-        private void _SetItem(ItemInstance item)
+        private void _SetItem(InventoryItemInstance item)
         {
             if (itemInstance == item) return; // If item instance is the same in this slot, do nothing
             if (item is null) // If clearing this slot
@@ -97,8 +97,8 @@ namespace UI.Inventory
             }
 
             itemInstance = item;
-            itemImage.SetSprite(itemInstance?.itemType.itemSprite);
-            onItemChanged?.Invoke(itemInstance);
+            itemImage.SetSprite(itemInstance?.itemInstance.itemType.itemSprite);
+            onItemChanged?.Invoke(itemInstance?.itemInstance);
         }
 
         public void OnDrag(PointerEventData eventData) { }
@@ -109,7 +109,7 @@ namespace UI.Inventory
             if (itemInstance == null) return;
             // hide item image
             itemImage.enabled = false;
-            CursorController.GetInstance().StartDrag(this, itemInstance.itemType.itemSprite);
+            CursorController.GetInstance().StartDrag(this, itemInstance.itemInstance.itemType.itemSprite);
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -128,7 +128,7 @@ namespace UI.Inventory
         public void OnDrop(PointerEventData eventData)
         {
             var draggedData = CursorController.GetInstance().GetDraggedData();
-            if (draggedData is ItemInstance item)
+            if (draggedData is InventoryItemInstance item)
             {
                 SetItem(item);
             }
