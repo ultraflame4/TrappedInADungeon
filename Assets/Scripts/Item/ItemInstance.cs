@@ -1,9 +1,12 @@
-﻿namespace Item
+﻿using UI;
+
+namespace Item
 {
     
     public class ItemInstance
     {
         public ItemScriptableObject itemType { get; }
+        public InventorySlot assignedSlot = null;
         public ItemInstance(ItemScriptableObject itemType)
         {
             this.itemType = itemType;
