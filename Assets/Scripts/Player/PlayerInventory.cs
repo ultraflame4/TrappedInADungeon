@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using EasyButtons;
 using Item;
-using UI;
+using UI.Inventory;
 using UnityEngine;
 
 namespace Player

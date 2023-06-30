@@ -1,6 +1,7 @@
 ﻿using System;
 using Item;
 using UI;
+using UI.Inventory;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Weapon;

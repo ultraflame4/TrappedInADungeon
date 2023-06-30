@@ -3,7 +3,7 @@ using Player;
 using UnityEngine;
 using Utils;
 
-namespace UI
+namespace UI.Inventory
 {
     public class InventoryPanel : MonoBehaviour
     {
