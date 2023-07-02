@@ -42,6 +42,11 @@ namespace Entities
         public void Damage(float amt)
         {
             CurrentHealth -= amt;
+            OnDamagedEvent?.Invoke();
+            if (CurrentHealth <= 0)
+            {
+                OnDeathEvent?.Invoke();
+            }
         }
         // todo include methods to get the actual values that includes effects from equipment, buffs, etc.
     }
