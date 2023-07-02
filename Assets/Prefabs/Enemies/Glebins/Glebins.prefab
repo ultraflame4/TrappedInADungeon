@@ -146,7 +146,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 320
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -163,8 +163,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04170811, y: 0.22212815}
-  m_Size: {x: 0.23412585, y: 0.4442563}
+  m_Offset: {x: -0.043403745, y: 0.18353474}
+  m_Size: {x: 0.075170755, y: 0.36706948}
   m_Direction: 0
 --- !u!50 &2967751085501941301
 Rigidbody2D:
