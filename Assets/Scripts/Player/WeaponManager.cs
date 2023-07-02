@@ -10,7 +10,7 @@ namespace Player
     {
         public readonly int PrimaryWeaponIndex = 0;
         public readonly int SecondaryWeaponIndex = 1;
-        private ItemInstance[] equippedWeapons = new ItemInstance[2];
+        private WeaponItem[] equippedWeapons = new WeaponItem[2];
         private GameObject[] weaponObjects = new GameObject[2];
         public PlayerInventory playerInventory;
         [FormerlySerializedAs("offset")] public float WeaponOffset = 0.5f;
@@ -25,15 +25,14 @@ namespace Player
                 if (slot.isWeaponSlot)
                 {
                     int slotIndex = i; // make local scope else rider(ide) will complain.
-                    slot.onItemChanged += (ItemInstance item) => EquipWeapon(item, slotIndex);
+                    slot.onItemChanged += ( item) => EquipWeapon(item as WeaponItem, slotIndex);
                 }
             }
         }
-
-
-        public void EquipWeapon(ItemInstance weaponInstance, int slotIndex)
+        
+        public void EquipWeapon(WeaponItem weaponItem, int slotIndex)
         {
-            if (weaponInstance is null) // if null empty the slot
+            if (weaponItem is null) // if null empty the slot
             {
                 equippedWeapons[slotIndex] = null;
                 if (weaponObjects[slotIndex] != null)
@@ -44,26 +43,21 @@ namespace Player
                 weaponObjects[slotIndex] = null;
                 return;
             }
+            
 
-            if (weaponInstance.itemType is not WeaponItem weapon)
-            {
-                Debug.LogError($"Error: Tried to equip non-weapon item instance in weapon slot {slotIndex}. itemType: {weaponInstance.itemType}. This probably should not be happening!");
-                return;
-            }
-
-            equippedWeapons[slotIndex] = weaponInstance;
+            equippedWeapons[slotIndex] = weaponItem;
             if (weaponObjects[slotIndex] != null)
             {
                 Destroy(weaponObjects[slotIndex]);
             }
 
-            GameObject obj = Instantiate(weapon.weaponPrefab);
+            GameObject obj = Instantiate(weaponItem.weaponType.weaponPrefab);
             WeaponController controller = obj.GetComponent<WeaponController>();
             controller.player = transform;
             controller.follow_offset = WeaponOffset + 0.3f*slotIndex;
             controller.travelSpeed = weaponTravelSpeed;
             controller.attackingTravelSpeed = weaponAttackTravelSpeed;
-            controller.weaponInstance = weaponInstance;
+            controller.WeaponItem = weaponItem;
             weaponObjects[slotIndex] = obj;
         }
 

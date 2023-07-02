@@ -1,32 +1,25 @@
 ﻿
+using UnityEngine;
+
 namespace Item
 {
     
-    public class ItemInstance
+    public interface IItemInstance
     {
-        public ItemScriptableObject itemType { get; }
-        public ItemInstance(ItemScriptableObject itemType)
-        {
-            this.itemType = itemType;
-        }
-
+        // public ItemScriptableObject itemType { get; }
         /// <summary>
         /// Returns the name to be shown in the inventory list.
         /// Can contain text mesh pro rich text
         /// </summary>
         /// <returns></returns>
-        public virtual string GetDisplayName()
-        {
-            return itemType.name;
-        }
+        public string GetDisplayName();
+
         /// <summary>
         /// Returns the description to be shown in the inventory list
         /// Can contain text mesh pro rich text
         /// </summary>
         /// <returns></returns>
-        public virtual string GetDisplayDescription()
-        {
-            return itemType.item_description;
-        }
+        public string GetDisplayDescription();
+        public Sprite sprite { get; }
     }
 }

@@ -17,9 +17,9 @@ namespace UI.Inventory
         /// Sets the item instance this list item is showing
         /// </summary>
         /// <param name="item"></param>
-        public void SetItem(ItemInstance item)
+        public void SetItem(IItemInstance item)
         {
-            itemImage.sprite = item.itemType.itemSprite;
+            itemImage.sprite = item.sprite;
             title.text = item.GetDisplayName();
             description.text = item.GetDisplayDescription();
             itemInstance = new InventoryItemInstance(item);
@@ -29,7 +29,7 @@ namespace UI.Inventory
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            CursorController.GetInstance().StartDrag(itemInstance,itemInstance.itemInstance.itemType.itemSprite);
+            CursorController.GetInstance().StartDrag(itemInstance,itemInstance.itemInstance.sprite);
         }
 
         public void OnEndDrag(PointerEventData eventData)

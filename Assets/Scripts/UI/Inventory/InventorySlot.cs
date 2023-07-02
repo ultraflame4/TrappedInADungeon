@@ -26,12 +26,12 @@ namespace UI.Inventory
         /// <summary>
         /// This event is fired whenever the item in this slot changes. The value passed is the new item instance or null (if cleared).
         /// </summary>
-        public event Action<ItemInstance> onItemChanged;
+        public event Action<IItemInstance> onItemChanged;
 
         /// <summary>
         /// This event is fired whenever the item in this slot is used. The value passed is the current item instance or null (if empty).
         /// </summary>
-        public event Action<ItemInstance> onItemUsed;
+        public event Action<IItemInstance> onItemUsed;
 
         private InventoryItemInstance itemInstance = null;
 
@@ -71,7 +71,7 @@ namespace UI.Inventory
                 return true;
             }
 
-            if (item.itemInstance.itemType is WeaponItem)
+            if (item.itemInstance is WeaponItem)
             {
                 if (!isWeaponSlot) return false;
                 _SetItem(item);
@@ -97,7 +97,7 @@ namespace UI.Inventory
             }
 
             itemInstance = item;
-            itemImage.SetSprite(itemInstance?.itemInstance.itemType.itemSprite);
+            itemImage.SetSprite(itemInstance?.itemInstance.sprite);
             onItemChanged?.Invoke(itemInstance?.itemInstance);
         }
 
@@ -109,7 +109,7 @@ namespace UI.Inventory
             if (itemInstance == null) return;
             // hide item image
             itemImage.enabled = false;
-            CursorController.GetInstance().StartDrag(this, itemInstance.itemInstance.itemType.itemSprite);
+            CursorController.GetInstance().StartDrag(this, itemInstance.itemInstance.sprite);
         }
 
         public void OnEndDrag(PointerEventData eventData)
