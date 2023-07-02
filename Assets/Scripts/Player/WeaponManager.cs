@@ -25,11 +25,11 @@ namespace Player
                 if (slot.isWeaponSlot)
                 {
                     int slotIndex = i; // make local scope else rider(ide) will complain.
-                    slot.onItemChanged += ( item) => EquipWeapon(item as WeaponItem, slotIndex);
+                    slot.onItemChanged += (item) => EquipWeapon(item as WeaponItem, slotIndex);
                 }
             }
         }
-        
+
         public void EquipWeapon(WeaponItem weaponItem, int slotIndex)
         {
             if (weaponItem is null) // if null empty the slot
@@ -43,18 +43,18 @@ namespace Player
                 weaponObjects[slotIndex] = null;
                 return;
             }
-            
+
 
             equippedWeapons[slotIndex] = weaponItem;
             if (weaponObjects[slotIndex] != null)
             {
                 Destroy(weaponObjects[slotIndex]);
             }
-    
+
             GameObject obj = Instantiate(weaponItem.weaponType.weaponPrefab);
             WeaponController controller = obj.GetComponent<WeaponController>();
             controller.player = transform;
-            controller.follow_offset = WeaponOffset + 0.3f*slotIndex;
+            controller.follow_offset = WeaponOffset + 0.3f * slotIndex;
             controller.travelSpeed = weaponTravelSpeed;
             controller.attackingTravelSpeed = weaponAttackTravelSpeed;
             controller.weaponItem = weaponItem;
@@ -63,19 +63,22 @@ namespace Player
 
         public void Update()
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (GameManager.Controls.Hotbar.Primary.WasPerformedThisFrame())
             {
                 weaponObjects[PrimaryWeaponIndex]?.GetComponent<WeaponController>()?.Attack();
             }
-            else if (Input.GetButtonDown("Fire2"))
+
+            if (GameManager.Controls.Hotbar.Secondary.WasPerformedThisFrame())
             {
                 weaponObjects[SecondaryWeaponIndex]?.GetComponent<WeaponController>()?.Attack();
             }
-            if (Input.GetButtonUp("Fire1"))
+
+            if (GameManager.Controls.Hotbar.Primary.WasReleasedThisFrame())
             {
                 weaponObjects[PrimaryWeaponIndex]?.GetComponent<WeaponController>()?.AttackRelease();
             }
-            else if (Input.GetButtonUp("Fire2"))
+
+            if (GameManager.Controls.Hotbar.Secondary.WasReleasedThisFrame())
             {
                 weaponObjects[SecondaryWeaponIndex]?.GetComponent<WeaponController>()?.AttackRelease();
             }

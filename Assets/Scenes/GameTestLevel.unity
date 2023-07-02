@@ -3081,6 +3081,14 @@ PrefabInstance:
       propertyPath: isWeaponSlot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
+      propertyPath: inputAction.m_Id
+      value: 53879c46-3e97-4fac-add8-a485a7c0051b
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -51,7 +51,7 @@ namespace UI.Inventory
             
             if (inputAction is not null)
             {
-                if (inputAction.WasPressedThisFrame())
+                if (inputAction.WasPerformedThisFrame())
                 {
                     // only activate if player is not pointing at ui
                     if (!EventSystem.current.IsPointerOverGameObject())
@@ -61,7 +61,7 @@ namespace UI.Inventory
                         spriteButton.UpdateImageSprite();
                     }
                 }
-                else if (inputAction.WasReleasedThisFrame())
+                if (inputAction.WasReleasedThisFrame())
                 {
                     spriteButton.activeOverride = false;
                     spriteButton.UpdateImageSprite();
