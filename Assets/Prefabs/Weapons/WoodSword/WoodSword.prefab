@@ -96,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 7331100435831376867}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: b8b3a84af41aa2945ab28db57c42b53e, type: 2}
+  m_Controller: {fileID: 9100000, guid: b0f5154809b1b8542bfe67066eb1a7c9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -127,8 +127,6 @@ MonoBehaviour:
   attackingTravelSpeed: 0.2
   RotationWhenIdle: 225
   overrideController: {fileID: 22100000, guid: b8b3a84af41aa2945ab28db57c42b53e, type: 2}
-  attackClips:
-  - {fileID: 7400000, guid: b37cfa092d441494b869de18ab9e30fc, type: 2}
-  - {fileID: 7400000, guid: 846b4f81d97a61e4f8db336ccbfde945, type: 2}
+  AttacksCount: 3
   ComboWaitPeriod_Secs: 0.75
   ComboCounter: 0
