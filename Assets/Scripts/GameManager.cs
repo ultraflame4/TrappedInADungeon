@@ -1,23 +1,38 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using EasyButtons;
-using Item;
-using Player;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject inventoryUi;
-    private static GameManager instance; 
+    private static GameManager instance;
+    public GameControls inputs;
+
     void Awake()
     {
         if (instance != null)
         {
             Debug.LogError("Warning: multiple instances of GameManager found! The static instance will be changed to this one!!!! This is probably not what you want!");
         }
+
         instance = this;
     }
+
+    private void OnEnable()
+    {
+        if (inputs == null)
+        {
+            inputs = new GameControls();
+        }
+        inputs.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputs.Disable();
+    }
+
+
     public static GameManager GetInstance()
     {
         return instance;
