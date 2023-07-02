@@ -2,6 +2,8 @@
 using Item;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utils;
 
@@ -15,7 +17,9 @@ namespace UI.Inventory
         /// <summary>
         /// The input button name to use for this slot. If this is set, the slot will be activated when the button is pressed.
         /// </summary>
-        public string buttonName = "";
+        // public string buttonName = "";
+
+        public InputActionReference inputRef;
 
         /// <summary>
         /// Set this to true if this inventory slot is meant to hold weapons.
@@ -34,13 +38,20 @@ namespace UI.Inventory
         public event Action<IItemInstance> onItemUsed;
 
         private InventoryItemInstance itemInstance = null;
+        public InputAction inputAction;
 
-
+        private void Start()
+        {
+            // We need to find the input action from the instance of GameControls
+            inputAction = GameManager.Controls.FindAction(inputRef.action.id.ToString(),true);
+        }
+        
         void Update()
         {
-            if (buttonName.Length != 0)
+            
+            if (inputAction is not null)
             {
-                if (Input.GetButtonDown(buttonName))
+                if (inputAction.WasPressedThisFrame())
                 {
                     // only activate if player is not pointing at ui
                     if (!EventSystem.current.IsPointerOverGameObject())
@@ -50,7 +61,7 @@ namespace UI.Inventory
                         spriteButton.UpdateImageSprite();
                     }
                 }
-                else if (Input.GetButtonUp(buttonName))
+                else if (inputAction.WasReleasedThisFrame())
                 {
                     spriteButton.activeOverride = false;
                     spriteButton.UpdateImageSprite();
