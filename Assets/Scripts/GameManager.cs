@@ -33,10 +33,9 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public static GameManager GetInstance()
-    {
-        return instance;
-    }
+    public static GameManager Instance => instance;
+    
+    public static GameControls Controls => instance.inputs;
 
     private void Start()
     {

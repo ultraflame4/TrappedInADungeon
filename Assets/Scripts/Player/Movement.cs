@@ -37,7 +37,7 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            float vertical = GameManager.GetInstance().inputs.Player.Movement.ReadValue<float>();
+            float vertical = GameManager.Controls.Player.Movement.ReadValue<float>();
             toMove = 0f;
             if (vertical != 0) // Only change current direction when there is input
             {
@@ -48,7 +48,7 @@ namespace Player
             // This line basically checks if it is ok to jump
             // include toJump in its own condition to prevent Input.GetButtonDown from setting toJump to false
             // We only set toJump to false if we have did the physics in the FixedUpdate
-            toJump = Input.GetButtonDown("Jump") || toJump;
+            toJump = GameManager.Controls.Player.Jump.triggered || toJump;
             // Debug.Log($"{Input.GetAxis("Vertical") > 0} | toJump {toJump}");
             
             toDash = Input.GetButtonDown("Dash") || toDash;
