@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Entities
 {
@@ -30,6 +31,8 @@ namespace Entities
         public float Speed => BaseSpeed; //todo figure out scaling
         public float Defense => BaseDefense; //todo figure out scaling
         
+        public event Action OnDeathEvent; // Event that is invoked when entity dies
+        public event Action OnDamagedEvent; // Event that is invoked when entity takes damage
         void Start()
         {
             CurrentHealth = MaxHealth;
