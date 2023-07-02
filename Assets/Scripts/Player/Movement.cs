@@ -51,7 +51,7 @@ namespace Player
             toJump = GameManager.Controls.Player.Jump.triggered || toJump;
             // Debug.Log($"{Input.GetAxis("Vertical") > 0} | toJump {toJump}");
             
-            toDash = Input.GetButtonDown("Dash") || toDash;
+            toDash = GameManager.Controls.Player.Dash.triggered || toDash;
             UpdateAnimationsParameters();
             UpdateSpriteDirection();
         }
