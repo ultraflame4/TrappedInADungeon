@@ -43,7 +43,7 @@ namespace UI.Inventory
                 if (Input.GetButtonDown(buttonName))
                 {
                     // only activate if player is not pointing at ui
-                    if (!EventSystem.current.IsPointerOverGameObject() && isWeaponSlot)
+                    if (!EventSystem.current.IsPointerOverGameObject())
                     {
                         spriteButton.activeOverride = true;
                         onItemUsed?.Invoke(itemInstance.itemInstance);
