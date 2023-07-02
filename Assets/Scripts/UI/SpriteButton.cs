@@ -53,7 +53,7 @@ namespace UI
         private void Update()
         {
             bool last = isPressed;
-            isPressed = Input.GetKey(KeyCode.Mouse0);
+            isPressed = GameManager.Controls.Menus.MouseClick.IsPressed();
             if (isPressed != last)
             {
                 UpdateImageSprite();

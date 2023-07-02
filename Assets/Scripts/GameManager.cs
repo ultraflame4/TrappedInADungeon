@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         inputs.Disable();
     }
 
-
+    //todo add ui support for gamepad mouse 
     public static GameManager Instance => instance;
     
     public static GameControls Controls => instance.inputs;
