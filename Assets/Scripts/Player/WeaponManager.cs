@@ -63,6 +63,7 @@ namespace Player
             controller.follow_offset = WeaponOffset + 0.3f*slotIndex;
             controller.travelSpeed = weaponTravelSpeed;
             controller.attackingTravelSpeed = weaponAttackTravelSpeed;
+            controller.weaponInstance = weaponInstance;
             weaponObjects[slotIndex] = obj;
         }
 

@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using EasyButtons;
+using Item;
 using UnityEngine;
 
 namespace Weapon
@@ -14,6 +15,7 @@ namespace Weapon
         public float attackingTravelSpeed=0.8f;
         public float RotationWhenIdle = 90f;
         public AnimatorOverrideController overrideController;
+        public ItemInstance weaponInstance;
         
         public int AttacksCount = 3; // Number of attacks for this weapon
         /// <summary>
