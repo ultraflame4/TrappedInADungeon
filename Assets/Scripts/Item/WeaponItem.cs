@@ -23,6 +23,13 @@ namespace Item
             return weaponType.item_description;
         }
 
-        
+        /// <summary>
+        /// Calculates & returns the total attack damage of the weapon
+        /// </summary>
+        /// <returns></returns>
+        public float CalculateAttackDamage()
+        {
+            return weaponType.base_attack; //todo later on: add in a other factors later such as weapon modifiers
+        }
     }
 }

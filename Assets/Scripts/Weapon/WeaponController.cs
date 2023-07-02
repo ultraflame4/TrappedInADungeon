@@ -15,7 +15,7 @@ namespace Weapon
         public float attackingTravelSpeed=0.8f;
         public float RotationWhenIdle = 90f;
         public AnimatorOverrideController overrideController;
-        public WeaponItem WeaponItem;
+        public WeaponItem weaponItem;
         
         public int AttacksCount = 3; // Number of attacks for this weapon
         /// <summary>

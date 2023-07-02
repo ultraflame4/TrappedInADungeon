@@ -50,14 +50,14 @@ namespace Player
             {
                 Destroy(weaponObjects[slotIndex]);
             }
-
+    
             GameObject obj = Instantiate(weaponItem.weaponType.weaponPrefab);
             WeaponController controller = obj.GetComponent<WeaponController>();
             controller.player = transform;
             controller.follow_offset = WeaponOffset + 0.3f*slotIndex;
             controller.travelSpeed = weaponTravelSpeed;
             controller.attackingTravelSpeed = weaponAttackTravelSpeed;
-            controller.WeaponItem = weaponItem;
+            controller.weaponItem = weaponItem;
             weaponObjects[slotIndex] = obj;
         }
 

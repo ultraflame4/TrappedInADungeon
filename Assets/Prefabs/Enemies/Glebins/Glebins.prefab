@@ -122,15 +122,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ecae3e1f09444e8ab4a0f5a777a785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Health: 100
-  _Stamina: 0
-  _Mana: 0
-  _Strength: 0
-  _Speed: 0
-  _Defense: 0
-  _CurrentHealth: 0
-  _CurrentStamina: 0
-  _CurrentMana: 0
+  BaseHealth: 30
+  BaseStamina: 0
+  BaseMana: 0
+  BaseStrength: 0
+  BaseSpeed: 0
+  BaseDefense: 0
+  CurrentHealth: 0
+  CurrentStamina: 0
+  CurrentMana: 0
 --- !u!70 &4281439559219646697
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

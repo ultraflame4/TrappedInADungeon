@@ -10,28 +10,35 @@ namespace Entities
     /// </summary>
     public class EntityBody : MonoBehaviour
     {
-        public int _Health; // Health of entity
-        public int _Stamina; // Used for dashing
-        public int _Mana; // Used for casting spells
-        public int _Strength; // Increases physical damage
-        public int _Speed; // Movement speed
-        public int _Defense; // Reduces damage taken
+        public float BaseHealth; // Health of entity
+        public int BaseStamina; // Used for dashing
+        public int BaseMana; // Used for casting spells
+        public int BaseStrength; // Increases physical damage
+        public int BaseSpeed; // Movement speed
+        public int BaseDefense; // Reduces damage taken
         
-        public int _CurrentHealth; // Automatically set to _Health on start
-        public int _CurrentStamina; // Automatically set to _Stamina on start
-        public int _CurrentMana; // Automatically set to _Mana on start
+        public float CurrentHealth; // Automatically set to _Health on start
+        public float CurrentStamina; // Automatically set to _Stamina on start
+        public float CurrentMana; // Automatically set to _Mana on start
 
-        public IStatusEffect[] StatusEffects; // Curent status effects on entity
+        public IStatusEffect[] StatusEffects; // Current status effects on entity
+        
+        public float MaxHealth => BaseHealth; //todo figure out scaling
+        public float MaxStamina => BaseStamina; //todo figure out scaling
+        public float MaxMana => BaseMana; //todo figure out scaling
+        public float Strength => BaseStrength; //todo figure out scaling
+        public float Speed => BaseSpeed; //todo figure out scaling
+        public float Defense => BaseDefense; //todo figure out scaling
         
         void Start()
         {
-            _CurrentHealth = _Health;
-            _CurrentStamina = _Stamina;
-            _CurrentMana = _Mana;
+            CurrentHealth = MaxHealth;
+            CurrentStamina = MaxStamina;
+            CurrentMana = MaxMana;
         }
-        public void Damage(int amt)
+        public void Damage(float amt)
         {
-            _Health -= amt;
+            CurrentHealth -= amt;
         }
         // todo include methods to get the actual values that includes effects from equipment, buffs, etc.
     }
