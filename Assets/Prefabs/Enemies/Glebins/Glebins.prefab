@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4281439559219646697}
   - component: {fileID: 2967751085501941301}
   - component: {fileID: 5871894113917341172}
+  - component: {fileID: 5784955308027097198}
   m_Layer: 7
   m_Name: Glebins
   m_TagString: Enemy
@@ -238,3 +239,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.53125, y: 0.78125}
   m_EdgeRadius: 0
+--- !u!114 &5784955308027097198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713372788904983843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205cd61ff6b74138836cdb4ca6b80abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2967751085501941301}
+  body: {fileID: 7772803838891208523}
+  player: {fileID: 0}
+  knockbackForce: 4
+  state: 1
