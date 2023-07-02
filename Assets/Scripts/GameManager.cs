@@ -40,13 +40,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         inventoryUi.SetActive(false);
+        Controls.Menus.InventoryToggle.performed += (ctx) => inventoryUi.SetActive(!inventoryUi.activeSelf);
     }
-
-    private void Update()
-    {
-        if (Input.GetButtonDown("Inventory Toggle"))
-        {
-            inventoryUi.SetActive(!inventoryUi.activeSelf);
-        }
-    }
+    
 }

@@ -372,7 +372,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d8c952a0-3a25-449b-a05c-65ec393279d0"",
-                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -394,7 +394,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""cf9bb48c-9f42-4c44-921b-fc15871783ec"",
-                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -416,7 +416,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0458fa32-a5f9-43b7-92cc-fd692e5078a5"",
-                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -438,11 +438,50 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2d7b6062-9566-4b83-8a91-acdb072dbd9e"",
-                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Slot5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Menus"",
+            ""id"": ""380b02ae-f37d-43f8-bee9-735b71667fd5"",
+            ""actions"": [
+                {
+                    ""name"": ""Inventory Toggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""562b598b-f1a6-4e60-be86-e7cffbc40f64"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""55d72a31-255a-446f-899c-32c231c8f845"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory Toggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""924e59f1-2518-4da3-9447-9b9b283a06c3"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory Toggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -465,6 +504,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Hotbar_Slot3 = m_Hotbar.FindAction("Slot3", throwIfNotFound: true);
         m_Hotbar_Slot4 = m_Hotbar.FindAction("Slot4", throwIfNotFound: true);
         m_Hotbar_Slot5 = m_Hotbar.FindAction("Slot5", throwIfNotFound: true);
+        // Menus
+        m_Menus = asset.FindActionMap("Menus", throwIfNotFound: true);
+        m_Menus_InventoryToggle = m_Menus.FindAction("Inventory Toggle", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -678,6 +720,52 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         }
     }
     public HotbarActions @Hotbar => new HotbarActions(this);
+
+    // Menus
+    private readonly InputActionMap m_Menus;
+    private List<IMenusActions> m_MenusActionsCallbackInterfaces = new List<IMenusActions>();
+    private readonly InputAction m_Menus_InventoryToggle;
+    public struct MenusActions
+    {
+        private @GameControls m_Wrapper;
+        public MenusActions(@GameControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @InventoryToggle => m_Wrapper.m_Menus_InventoryToggle;
+        public InputActionMap Get() { return m_Wrapper.m_Menus; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenusActions set) { return set.Get(); }
+        public void AddCallbacks(IMenusActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MenusActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MenusActionsCallbackInterfaces.Add(instance);
+            @InventoryToggle.started += instance.OnInventoryToggle;
+            @InventoryToggle.performed += instance.OnInventoryToggle;
+            @InventoryToggle.canceled += instance.OnInventoryToggle;
+        }
+
+        private void UnregisterCallbacks(IMenusActions instance)
+        {
+            @InventoryToggle.started -= instance.OnInventoryToggle;
+            @InventoryToggle.performed -= instance.OnInventoryToggle;
+            @InventoryToggle.canceled -= instance.OnInventoryToggle;
+        }
+
+        public void RemoveCallbacks(IMenusActions instance)
+        {
+            if (m_Wrapper.m_MenusActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMenusActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MenusActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MenusActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MenusActions @Menus => new MenusActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -693,5 +781,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnSlot3(InputAction.CallbackContext context);
         void OnSlot4(InputAction.CallbackContext context);
         void OnSlot5(InputAction.CallbackContext context);
+    }
+    public interface IMenusActions
+    {
+        void OnInventoryToggle(InputAction.CallbackContext context);
     }
 }
