@@ -17,12 +17,18 @@ namespace Entities
         public int _Speed; // Movement speed
         public int _Defense; // Reduces damage taken
         
-        public int _CurrentHealth;
-        public int _CurrentStamina;
-        public int _CurrentMana;
+        public int _CurrentHealth; // Automatically set to _Health on start
+        public int _CurrentStamina; // Automatically set to _Stamina on start
+        public int _CurrentMana; // Automatically set to _Mana on start
 
         public IStatusEffect[] StatusEffects; // Curent status effects on entity
         
+        void Start()
+        {
+            _CurrentHealth = _Health;
+            _CurrentStamina = _Stamina;
+            _CurrentMana = _Mana;
+        }
         public void Damage(int amt)
         {
             _Health -= amt;
