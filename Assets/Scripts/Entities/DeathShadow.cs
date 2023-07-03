@@ -17,6 +17,7 @@ namespace Entities
         
         IEnumerator StartFade()
         {
+            yield return new WaitForSeconds(0.5f);
             for (int i = 0; i < 100; i++)
             {
                 spriteRenderer.material.SetFloat(Threshold, i/100f);
