@@ -18,6 +18,7 @@ Shader "Unlit/ShadowDistintegration"
       }
       ZWrite Off
       Blend SrcAlpha OneMinusSrcAlpha
+      Cull off // needed for the shadow to be visible from both sides (even when rotated 180 on y axis)
       LOD 100
 
       Pass
