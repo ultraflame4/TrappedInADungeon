@@ -148,7 +148,12 @@ namespace Enemies
             float distance = Vector3.Distance(transform.position, player.position) - attackDist + 0.05f;
             // Clamp distance to 0-1. distFactor makes velocity lower the closer the enemy is to the player
             float distFactor = Mathf.Clamp(Mathf.Pow(2*distance,2)+0.2f, 0, 1);
-            rb.velocity = vel * distFactor * Time.deltaTime;
+            vel *= distFactor * Time.deltaTime; // Scale velocity by distFactor & deltaTime
+            if (!allowFlight) // Preserve y velocity if enemy can't fly
+            {
+                vel.y = rb.velocity.y;
+            }
+            rb.velocity = vel;
         }
         private bool CheckPlayerWithinAttackRange()
         {
