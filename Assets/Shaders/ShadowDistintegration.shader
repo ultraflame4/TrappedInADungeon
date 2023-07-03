@@ -2,9 +2,12 @@ Shader "Unlit/ShadowDistintegration"
 {
    Properties
    {
+      // Sprite Texture
       _MainTex ("Texture", 2D) = "white" {}
       _Color ("Shadow Color", Color) = (0,0,0,1)
+      // Noise Texture to determine which pixels (that crosses the threshold) are made transparent
       _Noise ("Noise", 2D) = "white" {}
+      // Noise Threshold before the pixel is made transparent
       _Threshold ("Distintegration Threshold", Range(0.0, 1.0)) = 0.1
    }
    SubShader
@@ -38,7 +41,7 @@ Shader "Unlit/ShadowDistintegration"
             float2 uv : TEXCOORD0;
             float4 vertex : SV_POSITION;
          };
-
+         
          sampler2D _MainTex;
          float4 _MainTex_ST;
          fixed4 _Color;
@@ -56,13 +59,11 @@ Shader "Unlit/ShadowDistintegration"
 
          fixed4 frag(v2f i) : SV_Target
          {
-            // sample the texture
+            // sample the noise & sprite texture
             fixed4 val = tex2D(_Noise, i.uv);
             fixed4 col = tex2D(_MainTex, i.uv).a * _Color;
-            // col.a = 1;
-            // apply fog
             UNITY_APPLY_FOG(i.fogCoord, col);
-            if (val.r < _Threshold)
+            if (val.r < _Threshold) // If the noise is below the threshold, make the pixel transparent
             {
                return fixed4(1,0,0,0);
             }
