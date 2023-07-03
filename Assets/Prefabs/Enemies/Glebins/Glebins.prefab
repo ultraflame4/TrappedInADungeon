@@ -293,3 +293,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityBody: {fileID: 7772803838891208523}
   spriteRenderer: {fileID: 4271550116412811328}
+  DeadShadowPrefab: {fileID: 7715831331796477733, guid: 568f0fee3973e1d41bf8aec4c81585b6, type: 3}
