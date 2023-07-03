@@ -20,7 +20,8 @@ namespace Enemies
 
         public float knockbackForce = 100f;
         public EnemyState state;
-
+        
+        public float followRange = 5f;
         public float eyeSightRange = 2f;
         public float eyeSightOffset = 0.5f;
 
@@ -67,6 +68,11 @@ namespace Enemies
                     break;
                 case EnemyState.ALERT:
                     if (isAttacking) break;
+                    if (Vector3.Distance(transform.position,player.position) > followRange)
+                    {
+                        state = EnemyState.PATROL;
+                        break;
+                    }
                     MoveTowardsPlayer();
                     break;
 
@@ -133,8 +139,10 @@ namespace Enemies
         {
             Gizmos.color = Color.red;
             Gizmos.DrawRay(raycastOrigin, transform.right * eyeSightRange);
-            Gizmos.color = Color.magenta * 0.5f;
-            Gizmos.DrawSphere(raycastOrigin, attackDist);
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(transform.position, attackDist);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, followRange);
         }
     }
 }
