@@ -31,6 +31,10 @@ namespace Enemies
         public float attackDist = 0.1f;
 
         private Vector3 directionToPlayer;
+        /// <summary>
+        /// Direction to the player but snapped to the x axis. (y=0)
+        /// </summary>
+        private Vector3 directionToPlayerSnapped;
 
         // todo implement state machine ai stuff
         Vector3 raycastOrigin => transform.position + Vector3.up * eyeSightOffset;
@@ -51,14 +55,14 @@ namespace Enemies
 
         private void Update()
         {
+            animator.SetBool("isWalking", rb.velocity.magnitude > 0);
             animator.SetBool("Attack", state == EnemyState.ATTACK);
-            animator.SetBool("isWalking", rb.velocity.magnitude > 0.01f);
         }
 
         private void FixedUpdate()
         {
             directionToPlayer = (player.position - transform.position).normalized;
-
+            directionToPlayerSnapped = new Vector3(directionToPlayer.x, 0).normalized;
             switch (state)
             {
                 case EnemyState.STUNNED:
@@ -81,6 +85,11 @@ namespace Enemies
                     {
                         state = EnemyState.ALERT;
                     }
+                    else
+                    {
+                        RotateTowardsPlayer();
+                        rb.velocity = Vector2.zero; // Stop immediately when withing range
+                    }
                     break;
 
                 default:
@@ -98,26 +107,27 @@ namespace Enemies
             }
         }
 
-        private void MoveTowardsPlayer()
+        public void RotateTowardsPlayer()
         {
             // Rotate towards player
             // snaps direction to x axis
-            Vector3 snapped = new Vector3(directionToPlayer.x, 0).normalized;
-            transform.right = snapped;
-
+            transform.right = directionToPlayerSnapped;
+        }
+        private void MoveTowardsPlayer()
+        {
+            RotateTowardsPlayer();
             if (CheckPlayerWithinAttackRange())
             {
                 // rb.velocity = Vector2.zero;
                 return;
             }
 
-            Vector3 vel = (allowFlight ? directionToPlayer : snapped) * body.Speed;
+            Vector3 vel = (allowFlight ? directionToPlayer : directionToPlayerSnapped) * body.Speed;
             // Get distance to player and subtract attack distance
             // 0.01f is a small buffer so that the player is actually within the attack range
-            float distance = Vector3.Distance(transform.position, player.position) - attackDist + 0.01f;
+            float distance = Vector3.Distance(transform.position, player.position) - attackDist + 0.05f;
             // Clamp distance to 0-1. distFactor makes velocity lower the closer the enemy is to the player
-            // The Mathf.Pow(2*distance,3) (easing function) makes the velocity drop off faster the closer the enemy is to the player
-            float distFactor = Mathf.Clamp(Mathf.Pow(2*distance,2), 0, 1);
+            float distFactor = Mathf.Clamp(Mathf.Pow(2*distance,2)+0.2f, 0, 1);
             rb.velocity = vel * distFactor * Time.deltaTime;
         }
         private bool CheckPlayerWithinAttackRange()
