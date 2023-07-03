@@ -93,7 +93,6 @@ namespace Weapon
         }
 
 
-        public bool IsAttacking => !animator.GetCurrentAnimatorStateInfo(0).IsName("Idle");
         /// <summary>
         /// Executes an attack. THIS WILL NOT CANCEL ATTACKS
         /// </summary>
@@ -109,6 +108,9 @@ namespace Weapon
             ExecuteComboCheck();
             
         }
+
+        public bool IsAttacking => !animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle");
+
         /// <summary>
         /// When the player releases the attack button, this function is called. cCn be used to cancel attacks
         /// </summary>
