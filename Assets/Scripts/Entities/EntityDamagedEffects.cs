@@ -20,6 +20,7 @@ namespace Entities
         void OnDamaged()
         {
             Instantiate(bloodParticles, transform.position, Quaternion.identity);
+            // todo move the particles to the weapon for performance reasons.
         }
     }
 }
