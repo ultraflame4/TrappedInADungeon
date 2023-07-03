@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Entities
 {
-    public class DeadShadow : MonoBehaviour
+    public class DeathShadow : MonoBehaviour
     {
         public float durationMS = 1000f;
         public SpriteRenderer spriteRenderer;
