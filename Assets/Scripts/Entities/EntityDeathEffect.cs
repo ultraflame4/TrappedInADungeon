@@ -21,7 +21,7 @@ namespace Entities
 
         void OnDeath()
         {
-            var shadow = Instantiate(DeadShadowPrefab, transform.position, Quaternion.identity);
+            var shadow = Instantiate(DeadShadowPrefab, transform.position, transform.rotation);
             shadow.GetComponent<SpriteRenderer>().sprite = spriteRenderer.sprite; // Set shadow sprite to the sprite of this entity
             Destroy(gameObject);
         }
