@@ -70,7 +70,7 @@ namespace Enemies
             animator.SetTrigger("Stun");
             state = EnemyState.STUNNED;
             yield return new WaitForSeconds(durationMS / 1000);
-            state = EnemyState.PATROL;
+            state = EnemyState.ALERT;
             spriteRenderer.color = Color.white;
         }
         private void Update()
