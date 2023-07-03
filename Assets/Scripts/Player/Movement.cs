@@ -37,7 +37,7 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            float vertical = GameManager.Controls.Player.Movement.ReadValue<float>();
+            float horizontal = GameManager.Controls.Player.Movement.ReadValue<float>();
             toMove = 0f;
             if (horizontal != 0) // Only change current direction when there is input
             {
