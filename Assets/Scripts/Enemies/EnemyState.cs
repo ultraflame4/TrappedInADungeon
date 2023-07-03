@@ -4,11 +4,14 @@
     {
         // Stunned
         STUNNED,
+
         // Idle
         PATROL,
-        // Attacking player
-        ATTACK,
+
         // Moving towards player
-        MOVE
+        ALERT,
+
+        // Attacking player
+        ATTACK
     }
 }
