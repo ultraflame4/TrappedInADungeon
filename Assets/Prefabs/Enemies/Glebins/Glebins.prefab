@@ -148,6 +148,7 @@ MonoBehaviour:
   body: {fileID: 7772803838891208523}
   player: {fileID: 0}
   animator: {fileID: 2397109330692920770}
+  spriteRenderer: {fileID: 4271550116412811328}
   allowFlight: 0
   knockbackForce: 4
   state: 1

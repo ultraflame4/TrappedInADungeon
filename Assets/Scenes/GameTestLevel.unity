@@ -3861,6 +3861,18 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4271550116412811328, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271550116412811328, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271550116412811328, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5784955308027097198, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: patrolEnd.x
       value: -3.13

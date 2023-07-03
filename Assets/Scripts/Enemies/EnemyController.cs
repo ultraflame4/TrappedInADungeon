@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Entities;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Enemies
         public EntityBody body;
         public Transform player;
         public Animator animator;
+        public SpriteRenderer spriteRenderer;
 
         /// <summary>
         /// Moves directly towards player. Set this to true if enemy can fly.
@@ -51,8 +53,26 @@ namespace Enemies
         public void OnAttacked()
         {
             rb.velocity = (Vector3.up - directionToPlayer / 4).normalized * knockbackForce;
+            Stun(500);
         }
-
+        
+        /// <summary>
+        /// Stuns this enemy for a duration in milliseconds
+        /// </summary>
+        /// <param name="durationMS">Stun duration in milliseconds</param>
+        public void Stun(float durationMS)
+        {
+            StartCoroutine(StunCoroutine(durationMS));
+        }
+        private IEnumerator StunCoroutine(float durationMS)
+        {
+            spriteRenderer.color = Color.grey;
+            animator.SetTrigger("Stun");
+            state = EnemyState.STUNNED;
+            yield return new WaitForSeconds(durationMS / 1000);
+            state = EnemyState.PATROL;
+            spriteRenderer.color = Color.white;
+        }
         private void Update()
         {
             animator.SetBool("isWalking", rb.velocity.magnitude > 0);
