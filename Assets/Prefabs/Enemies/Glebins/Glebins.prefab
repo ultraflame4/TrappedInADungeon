@@ -151,6 +151,7 @@ MonoBehaviour:
   allowFlight: 0
   knockbackForce: 4
   state: 1
+  followRange: 6
   eyeSightRange: 1.5
   eyeSightOffset: 0.5
   attackDist: 0.7
@@ -186,8 +187,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.043403745, y: 0.18353474}
-  m_Size: {x: 0.075170755, y: 0.36706948}
+  m_Offset: {x: -0.01641953, y: -0.26980114}
+  m_Size: {x: 0.12913918, y: 0.46061516}
   m_Direction: 0
 --- !u!50 &2967751085501941301
 Rigidbody2D:
@@ -248,10 +249,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.078125, y: 0.390625}
+  m_Offset: {x: 0.06252432, y: -0.12159765}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.3529412, y: 0}
+    pivot: {x: 0.3529412, y: 0.64}
     oldSize: {x: 0.53125, y: 0.78125}
     newSize: {x: 0.53125, y: 0.78125}
     adaptiveTilingThreshold: 0.5
@@ -259,5 +260,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.53125, y: 0.78125}
+  m_Size: {x: 0.58325243, y: 0.85925364}
   m_EdgeRadius: 0

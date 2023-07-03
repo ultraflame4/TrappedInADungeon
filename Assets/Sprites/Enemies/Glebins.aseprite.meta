@@ -85,7 +85,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -97,7 +97,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -105,7 +105,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638239103531131185
+  platformSettingsDirtyTick: 638239934404920083
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -131,7 +131,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Glebins_Frame_0
     originalName: 
-    pivot: {x: 0.3529412, y: 0}
+    pivot: {x: 0.3529412, y: 0.64}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -151,7 +151,7 @@ ScriptedImporter:
     uvTransform: {x: 39, y: 141}
   - name: Glebins_Frame_1
     originalName: 
-    pivot: {x: 0.3529412, y: 0}
+    pivot: {x: 0.3529412, y: 0.64}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -171,7 +171,7 @@ ScriptedImporter:
     uvTransform: {x: 39, y: 174}
   - name: Glebins_Frame_2
     originalName: 
-    pivot: {x: 0.3529412, y: 0}
+    pivot: {x: 0.3529412, y: 0.6666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -191,7 +191,7 @@ ScriptedImporter:
     uvTransform: {x: 76, y: 37}
   - name: Glebins_Frame_3
     originalName: 
-    pivot: {x: 0.3529412, y: 0}
+    pivot: {x: 0.3529412, y: 0.6666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -211,7 +211,7 @@ ScriptedImporter:
     uvTransform: {x: 76, y: 69}
   - name: Glebins_Frame_4
     originalName: 
-    pivot: {x: 0.3529412, y: 0}
+    pivot: {x: 0.3529412, y: 0.64}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -231,7 +231,7 @@ ScriptedImporter:
     uvTransform: {x: 39, y: 207}
   - name: Glebins_Frame_5
     originalName: 
-    pivot: {x: 0.3529412, y: 0}
+    pivot: {x: 0.3529412, y: 0.5925926}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -251,7 +251,7 @@ ScriptedImporter:
     uvTransform: {x: 39, y: 106}
   - name: Glebins_Frame_6
     originalName: 
-    pivot: {x: 0.3529412, y: 0}
+    pivot: {x: 0.3529412, y: 0.5714286}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -271,7 +271,7 @@ ScriptedImporter:
     uvTransform: {x: 39, y: 70}
   - name: Glebins_Frame_7
     originalName: 
-    pivot: {x: 0.3529412, y: 0}
+    pivot: {x: 0.3529412, y: 0.516129}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -291,7 +291,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 77}
   - name: Glebins_Frame_8
     originalName: 
-    pivot: {x: 0.3529412, y: 0}
+    pivot: {x: 0.3529412, y: 0.55172414}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -311,7 +311,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 193}
   - name: Glebins_Frame_9
     originalName: 
-    pivot: {x: 0.3529412, y: 0}
+    pivot: {x: 0.3529412, y: 0.53333336}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -331,7 +331,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 155}
   - name: Glebins_Frame_10
     originalName: 
-    pivot: {x: 0.3529412, y: 0}
+    pivot: {x: 0.3529412, y: 0.516129}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -351,7 +351,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 116}
   - name: Glebins_Frame_11
     originalName: 
-    pivot: {x: 0.25, y: 0}
+    pivot: {x: 0.25, y: 0.53333336}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -371,7 +371,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 39}
   - name: Glebins_Frame_12
     originalName: 
-    pivot: {x: 0.22222222, y: 0}
+    pivot: {x: 0.22222222, y: 0.5925926}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -391,7 +391,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Glebins_Frame_13
     originalName: 
-    pivot: {x: 0.21428572, y: 0}
+    pivot: {x: 0.21428572, y: 0.64}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -411,7 +411,7 @@ ScriptedImporter:
     uvTransform: {x: 39, y: 37}
   - name: Glebins_Frame_14
     originalName: 
-    pivot: {x: 0.20689656, y: 0}
+    pivot: {x: 0.20689656, y: 0.64}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -431,7 +431,7 @@ ScriptedImporter:
     uvTransform: {x: 39, y: 4}
   - name: Glebins_Frame_15
     originalName: 
-    pivot: {x: 0.3529412, y: 0}
+    pivot: {x: 0.3529412, y: 0.64}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
