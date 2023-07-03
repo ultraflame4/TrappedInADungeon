@@ -39,9 +39,9 @@ namespace Player
         {
             float vertical = GameManager.Controls.Player.Movement.ReadValue<float>();
             toMove = 0f;
-            if (vertical != 0) // Only change current direction when there is input
+            if (horizontal != 0) // Only change current direction when there is input
             {
-                currentDirection = new Vector3(vertical, 0, 0);
+                currentDirection = new Vector3(horizontal, 0, 0);
                 toMove = 1;
             }
 
