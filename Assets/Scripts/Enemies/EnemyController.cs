@@ -52,14 +52,13 @@ namespace Enemies
         private void Start()
         {
             player = GameObject.FindWithTag("Player").transform;
-            body.OnDamagedEvent += OnAttacked;
+            body.OnDamagedEvent += () =>
+            {
+                rb.velocity = (Vector3.up - directionToPlayer / 2).normalized * knockbackForce;
+                Stun(500);
+            };
         }
 
-        public void OnAttacked()
-        {
-            rb.velocity = (Vector3.up - directionToPlayer / 4).normalized * knockbackForce;
-            Stun(500);
-        }
 
         /// <summary>
         /// Stuns this enemy for a duration in milliseconds
