@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2397109330692920770}
   - component: {fileID: 7772803838891208523}
   - component: {fileID: 5784955308027097198}
+  - component: {fileID: 7476105827066563008}
   - component: {fileID: 4281439559219646697}
   - component: {fileID: 2967751085501941301}
   - component: {fileID: 5871894113917341172}
@@ -156,6 +157,20 @@ MonoBehaviour:
   eyeSightRange: 1.5
   eyeSightOffset: 0.5
   attackDist: 0.7
+--- !u!114 &7476105827066563008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713372788904983843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b29345fe32b4492a9c1848437226e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityBody: {fileID: 7772803838891208523}
+  bloodParticles: {fileID: 527914753178123709, guid: b4a6ede691e80394a8569ff556cbb00a, type: 3}
 --- !u!70 &4281439559219646697
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -26,7 +26,6 @@ namespace Enemies
         public float followRange = 5f;
         public float eyeSightRange = 2f;
         public float eyeSightOffset = 0.5f;
-
         /// <summary>
         /// How close the enemy needs to be to attack the player
         /// </summary>
