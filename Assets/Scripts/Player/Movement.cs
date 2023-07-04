@@ -12,6 +12,8 @@ namespace Player
 
         [ReadOnly]
         public Vector3 currentDirection;
+        [Range(0,1)]
+        public float acceleration = 0.5f;
         public float moveSpeed = 10f;
         public float dashSpeed = 100f;
 
@@ -19,7 +21,7 @@ namespace Player
         public int jumpTimes = 1;
         private int jumpsLeft = 0;
 
-        private float toMove; // is float so i can use in multiplication
+        private float inputFactor;
         private bool toJump;
         private bool toDash;
         private bool isInAir;
@@ -38,11 +40,11 @@ namespace Player
         void Update()
         {
             float horizontal = GameManager.Controls.Player.Movement.ReadValue<float>();
-            toMove = 0f;
+            inputFactor = 0f;
             if (horizontal != 0) // Only change current direction when there is input
             {
                 currentDirection = new Vector3(horizontal, 0, 0);
-                toMove = 1;
+                inputFactor = 1;
             }
 
             // This line basically checks if it is ok to jump
@@ -58,7 +60,7 @@ namespace Player
 
         void UpdateAnimationsParameters()
         {
-            anim.SetBool(IsWalking, toMove != 0);
+            anim.SetBool(IsWalking, inputFactor!=0);
             anim.SetBool(IsJumping, isInAir || toDash);
         }
 
@@ -83,7 +85,7 @@ namespace Player
         private void FixedUpdate()
         {
             Vector2 move = rb.velocity;
-            move.x = currentDirection.x * toMove * moveSpeed * Time.deltaTime;
+            move.x = currentDirection.x * inputFactor * moveSpeed * Time.deltaTime;
 
             if (toDash)
             {
@@ -118,6 +120,10 @@ namespace Player
             rb.velocity = move;
         }
 
+        public void JumpUpdate()
+        {
+            
+        }
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.CompareTag("Ground"))

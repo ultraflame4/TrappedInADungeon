@@ -4459,6 +4459,7 @@ MonoBehaviour:
   rb: {fileID: 6536823746855615567}
   anim: {fileID: 259964735958516593}
   currentDirection: {x: 0, y: 0, z: 0}
+  acceleration: 0.5
   moveSpeed: 300
   dashSpeed: 5000
   jumpForce: 400
@@ -4689,7 +4690,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
