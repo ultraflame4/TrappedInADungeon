@@ -61,7 +61,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""id"": ""ffa41e77-b340-4184-b8f6-40f3a01f420f"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
-                    ""processors"": ""ValueLerp(duration=0.1)"",
+                    ""processors"": ""ValueLerp"",
                     ""groups"": """",
                     ""action"": ""Movement"",
                     ""isComposite"": true,
