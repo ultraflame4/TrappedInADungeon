@@ -4298,7 +4298,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -4668,6 +4668,7 @@ GameObject:
   - component: {fileID: 259964735958516593}
   - component: {fileID: 4833636746649762840}
   - component: {fileID: 6080920965029759795}
+  - component: {fileID: 6536823746855615568}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -4702,6 +4703,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6536823746855615568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355870726974093836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ecae3e1f09444e8ab4a0f5a777a785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseHealth: 9999999
+  BaseStamina: 0
+  BaseMana: 0
+  BaseStrength: 0
+  BaseSpeed: 0
+  BaseDefense: 0
+  CurrentHealth: 0
+  CurrentStamina: 0
+  CurrentMana: 0
 --- !u!1 &6743124955957166276
 GameObject:
   m_ObjectHideFlags: 3

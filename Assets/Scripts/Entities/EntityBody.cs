@@ -49,5 +49,15 @@ namespace Entities
             }
         }
         // todo include methods to get the actual values that includes effects from equipment, buffs, etc.
+        
+        /// <summary>
+        /// Calculates the damage to be dealt by an attack based on the current stats of this entity.
+        /// </summary>
+        /// <param name="baseDamage"></param>
+        /// <returns></returns>
+        public float CalculateAttackDamage(float baseDamage)
+        {
+            return baseDamage+Strength;
+        }
     }
 }
