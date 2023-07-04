@@ -153,11 +153,11 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4271550116412811328}
   allowFlight: 0
   knockbackForce: 4
-  addRandomKnockbackForce: 1
   state: 2
   followRange: 6
   eyeSightRange: 1.5
   eyeSightOffset: 0.5
+  obstacleCheckRange: 0.15
   attackDist: 0.7
 --- !u!114 &7476105827066563008
 MonoBehaviour:
@@ -205,8 +205,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01641953, y: -0.26980114}
-  m_Size: {x: 0.12913918, y: 0.46061516}
+  m_Offset: {x: 0.055745482, y: -0.2261101}
+  m_Size: {x: 0.054714918, y: 0.54799724}
   m_Direction: 0
 --- !u!50 &2967751085501941301
 Rigidbody2D:

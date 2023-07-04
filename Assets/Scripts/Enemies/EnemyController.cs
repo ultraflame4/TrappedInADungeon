@@ -27,8 +27,6 @@ namespace Enemies
         public float followRange = 5f;
         public float eyeSightRange = 2f;
         public float eyeSightOffset = 0.5f;
-        
-        private bool obstacleCollided = false;
 
         /// <summary>
         /// How close the enemy needs to be to attack the player
@@ -57,7 +55,7 @@ namespace Enemies
             player = GameObject.FindWithTag("Player").transform;
             body.OnDamagedEvent += () =>
             {
-                rb.velocity = (Vector3.up - directionToPlayer).normalized * knockbackForce  * (1+Random.value/4);
+                rb.velocity = (Vector3.up - directionToPlayer).normalized * knockbackForce * (1 + Random.value / 4);
                 Stun(500);
             };
         }
@@ -120,6 +118,7 @@ namespace Enemies
                         state = EnemyState.ALERT;
                         break;
                     }
+
                     break;
 
                 default:
@@ -138,6 +137,7 @@ namespace Enemies
 
             return false;
         }
+
         public void RotateTowardsPlayer()
         {
             // Rotate towards player
@@ -152,8 +152,8 @@ namespace Enemies
             {
                 rb.velocity = new Vector2(0, allowFlight ? 0 : rb.velocity.y); // Stop immediately when within range
                 return;
-            };
-            if (obstacleCollided) return;
+            }
+            
             if (!isTouchingGround && !allowFlight) return;
 
             Vector3 vel = (allowFlight ? directionToPlayer : directionToPlayerSnapped) * body.Speed;
@@ -173,8 +173,7 @@ namespace Enemies
 
         private bool CheckPlayerWithinAttackRange()
         {
-            
-            if (Vector3.Distance(transform.position, player.position) < attackDist && Vector2.Angle(directionToPlayer,transform.right) < 90)
+            if (Vector3.Distance(transform.position, player.position) < attackDist && Vector2.Angle(directionToPlayer, transform.right) < 90)
             {
                 state = EnemyState.ATTACK;
                 return true;
@@ -182,7 +181,7 @@ namespace Enemies
 
             return false;
         }
-
+        
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
@@ -199,10 +198,6 @@ namespace Enemies
             {
                 isTouchingGround = true;
             }
-            else if (other.gameObject.CompareTag("Enemy"))
-            {
-                obstacleCollided = true;
-            }
         }
 
         private void OnCollisionExit2D(Collision2D other)
@@ -210,10 +205,6 @@ namespace Enemies
             if (other.gameObject.CompareTag("Ground"))
             {
                 isTouchingGround = false;
-            }
-            else if (other.gameObject.CompareTag("Enemy"))
-            {
-                obstacleCollided = false;
             }
         }
     }
