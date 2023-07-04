@@ -6,13 +6,12 @@ namespace Item
     {
         public WeaponItemType weaponType;
         public Sprite sprite => weaponType.itemSprite;
-        
+        public GameObject prefab => weaponType.itemPrefab;
         public WeaponItem(WeaponItemType weaponType)
         {
             this.weaponType = weaponType;
         }
-
-
+        
         public string GetDisplayName()
         {
             return weaponType.item_name;

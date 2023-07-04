@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1248794462227867589}
   - component: {fileID: 5147138707888645028}
   - component: {fileID: 4244722350919500509}
+  - component: {fileID: -9067415146693287660}
   - component: {fileID: 7882833875527219802}
   - component: {fileID: 8245649902216562837}
   - component: {fileID: 9155064798995713926}
@@ -109,6 +110,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-9067415146693287660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7331100435831376867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8630249e9b45f58c5b6cf8db1d17ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot: {fileID: 0}
 --- !u!114 &7882833875527219802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,16 +136,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4244722350919500509}
-  player: {fileID: 0}
-  follow_offset: 0.5
+  followConfig: {fileID: 11400000, guid: 1712d02726dfd014b8188ff3fafa3ef5, type: 2}
   attack_offset: 0.5
-  travelSpeed: 0.05
-  attackingTravelSpeed: 0.2
   RotationWhenIdle: 225
-  overrideController: {fileID: 22100000, guid: b8b3a84af41aa2945ab28db57c42b53e, type: 2}
   AttacksCount: 3
   ComboWaitPeriod_Secs: 0.75
   ComboCounter: 0
+  gateway: {fileID: -9067415146693287660}
+  player: {fileID: 0}
 --- !u!114 &8245649902216562837
 MonoBehaviour:
   m_ObjectHideFlags: 0

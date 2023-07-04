@@ -8,15 +8,10 @@ namespace Weapon
     public class WeaponController : MonoBehaviour
     {
         public Animator animator;
-        public Transform player;
-        public float follow_offset=0.5f;
+        public WeaponFollowConfig followConfig;
+        public ItemPrefabHotbarGateway gateway;
         public float attack_offset=0.5f;
-        public float travelSpeed=0.4f;
-        public float attackingTravelSpeed=0.8f;
         public float RotationWhenIdle = 90f;
-        public AnimatorOverrideController overrideController;
-        public WeaponItem weaponItem;
-        
         public int AttacksCount = 3; // Number of attacks for this weapon
         /// <summary>
         /// The amount of time to wait for.
@@ -30,11 +25,13 @@ namespace Weapon
         /// </summary>
         [ReadOnly(true)] public int ComboCounter = 0;
 
+        public Transform player;
+
         private float lastAttackTime = 0f;
         private static readonly int AttackTrigger = Animator.StringToHash("Attack");
         private static readonly int AttackIndex = Animator.StringToHash("AttackIndex");
 
-
+        public WeaponItem weaponItem => gateway?.slot.Item.itemInstance as WeaponItem;
         // Start is called before the first frame update
         void Start()
         {
@@ -42,6 +39,13 @@ namespace Weapon
             {
                 Debug.LogError("No Available Attacks!");
             }
+
+            if (gateway)
+            {
+                gateway.OnItemUsed += Attack;
+                gateway.OnItemReleased += AttackRelease;   
+            }
+            player = GameObject.FindWithTag("Player").transform;
         }
 
         
@@ -51,13 +55,13 @@ namespace Weapon
             if (IsAttacking) // Using if else statement to avoid many tenery operators (?:) checking for IsAttacking
             {
                 float offset = -attack_offset;
-                transform.position = Vector3.Lerp(transform.position,player.transform.position - player.transform.right * offset, attackingTravelSpeed);
+                transform.position = Vector3.Lerp(transform.position,player.transform.position - player.transform.right * offset, followConfig.attackTravelSpeed);
                 transform.rotation = player.transform.rotation;
             }
             else
             {
-                float offset =  follow_offset;
-                transform.position = Vector3.Lerp(transform.position,player.transform.position - player.transform.right * offset, travelSpeed);
+                float offset =  followConfig.followOffset+gateway.slot.slotIndex*followConfig.indexOffset;
+                transform.position = Vector3.Lerp(transform.position,player.transform.position - player.transform.right * offset, followConfig.travelSpeed);
                 transform.rotation = Quaternion.Euler(0, 0, RotationWhenIdle);
             }
         }

@@ -15,5 +15,5 @@ MonoBehaviour:
   item_name: Wood Sword
   item_description: A basic wood sword.
   itemSprite: {fileID: 610319333, guid: 59277d85efc71644e89e13e1e99f85a5, type: 3}
-  weaponPrefab: {fileID: 7331100435831376867, guid: 267c5ea78626e734baf1b01f546ac142, type: 3}
+  itemPrefab: {fileID: 7331100435831376867, guid: 267c5ea78626e734baf1b01f546ac142, type: 3}
   base_attack: 10

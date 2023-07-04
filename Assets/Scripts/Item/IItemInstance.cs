@@ -21,5 +21,6 @@ namespace Item
         /// <returns></returns>
         public string GetDisplayDescription();
         public Sprite sprite { get; }
+        public GameObject prefab { get; }
     }
 }

@@ -11,6 +11,7 @@ namespace UI.Inventory
 {
     public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
     {
+        public int slotIndex;
         public Image itemImage;
         public SpriteButton spriteButton;
 
@@ -37,9 +38,11 @@ namespace UI.Inventory
         /// </summary>
         public event Action<IItemInstance> onItemUsed;
 
-        private InventoryItemInstance itemInstance = null;
+        private InventoryItemInstance currentItem = null;
+        private ItemPrefabHotbarGateway itemGateway = null;
         public InputAction inputAction;
-
+        
+        public InventoryItemInstance Item => currentItem;
         private void Start()
         {
             // We need to find the input action from the instance of GameControls
@@ -57,12 +60,14 @@ namespace UI.Inventory
                     if (!EventSystem.current.IsPointerOverGameObject())
                     {
                         spriteButton.activeOverride = true;
-                        onItemUsed?.Invoke(itemInstance.itemInstance);
+                        if (itemGateway) itemGateway.UseItem();
+                        onItemUsed?.Invoke(currentItem.itemInstance);
                         spriteButton.UpdateImageSprite();
                     }
                 }
                 if (inputAction.WasReleasedThisFrame())
                 {
+                    if (itemGateway) itemGateway.ReleaseItem();
                     spriteButton.activeOverride = false;
                     spriteButton.UpdateImageSprite();
                 }
@@ -96,20 +101,32 @@ namespace UI.Inventory
 
         private void _SetItem(InventoryItemInstance item)
         {
-            if (itemInstance == item) return; // If item instance is the same in this slot, do nothing
+            if (currentItem == item) return; // If item instance is the same in this slot, do nothing
             if (item is null) // If clearing this slot
             {
-                itemInstance.assignedSlot = null; // First clear the reference to this slot
+                currentItem.assignedSlot = null; // First clear the reference to this slot
+                if (itemGateway != null) Destroy(itemGateway.gameObject); // Then destroy the item prefab object
             }
             else
             {
+                var obj = Instantiate(item.itemInstance.prefab);
+                itemGateway = obj.GetComponent<ItemPrefabHotbarGateway>();
+                if (itemGateway is null)
+                {
+                    Debug.Log($"Prefab  {currentItem.itemInstance.prefab} does not have ItemPrefabHotbarGateway component!");
+                    Destroy(obj);
+                    return; // Cannot instantiate item prefab, do nothing
+                }
+
+                itemGateway.slot = this;
+                
                 item.assignedSlot?.SetItem(null); // If new item is already in a slot, clear that slot first
                 item.assignedSlot = this; // Set reference (for new item) before setting this slot
             }
 
-            itemInstance = item;
-            itemImage.SetSprite(itemInstance?.itemInstance.sprite);
-            onItemChanged?.Invoke(itemInstance?.itemInstance);
+            currentItem = item;
+            itemImage.SetSprite(currentItem?.itemInstance.sprite);
+            onItemChanged?.Invoke(currentItem?.itemInstance);
         }
 
         public void OnDrag(PointerEventData eventData) { }
@@ -117,10 +134,10 @@ namespace UI.Inventory
         public void OnBeginDrag(PointerEventData eventData)
         {
             // dont allow dragging if there is no item in this slot
-            if (itemInstance == null) return;
+            if (currentItem == null) return;
             // hide item image
             itemImage.enabled = false;
-            CursorController.GetInstance().StartDrag(this, itemInstance.itemInstance.sprite);
+            CursorController.GetInstance().StartDrag(this, currentItem.itemInstance.sprite);
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -132,7 +149,7 @@ namespace UI.Inventory
             }
 
             // show item image if there is an item in this slot
-            itemImage.enabled = itemInstance != null;
+            itemImage.enabled = currentItem != null;
             CursorController.GetInstance().EndDrag();
         }
 
@@ -145,7 +162,7 @@ namespace UI.Inventory
             }
             else if (draggedData is InventorySlot inventorySlot)
             {
-                item = inventorySlot.itemInstance; // get item from the other slot
+                item = inventorySlot.currentItem; // get item from the other slot
                 if (SetItem(item)) // if successfully set item
                 {
                     inventorySlot.SetItem(null); // clear the item in the other slot
