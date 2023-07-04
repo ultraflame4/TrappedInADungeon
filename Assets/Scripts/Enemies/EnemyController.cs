@@ -115,7 +115,7 @@ namespace Enemies
                     else
                     {
                         RotateTowardsPlayer();
-                        rb.velocity = new Vector2(0, allowFlight ? 0 : rb.velocity.y); // Stop immediately when withing range
+                        rb.velocity = new Vector2(0, allowFlight ? 0 : rb.velocity.y); // Stop immediately when within range
                     }
 
                     break;
