@@ -10,7 +10,7 @@ namespace Enemies
         public float hitboxRadius;
         public float baseDamage=10;
         
-        private Vector2 hitboxPos => (Vector2)transform.position + hitboxPosition;
+        private Vector2 hitboxPos => transform.TransformPoint(hitboxPosition);
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red * 0.5f;
