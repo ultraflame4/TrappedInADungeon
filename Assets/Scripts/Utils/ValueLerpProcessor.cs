@@ -36,10 +36,7 @@ namespace Utils
             }
 
             currentValue = Mathf.Clamp(currentValue + (value / duration) * Time.deltaTime, -1f, 1f);
-            if (currentValue != value)
-            {
-                Debug.Log($"currentValue {currentValue} | value {value}");
-            }
+            
             return currentValue;
         }
     }
