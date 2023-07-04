@@ -153,6 +153,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4271550116412811328}
   allowFlight: 0
   knockbackForce: 4
+  addRandomKnockbackForce: 1
   state: 2
   followRange: 6
   eyeSightRange: 1.5

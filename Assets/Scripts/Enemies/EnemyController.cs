@@ -4,6 +4,7 @@ using Entities;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Enemies
 {
@@ -56,7 +57,7 @@ namespace Enemies
             player = GameObject.FindWithTag("Player").transform;
             body.OnDamagedEvent += () =>
             {
-                rb.velocity = (Vector3.up - directionToPlayer / 2).normalized * knockbackForce;
+                rb.velocity = (Vector3.up - directionToPlayer).normalized * knockbackForce  * (1+Random.value/4);
                 Stun(500);
             };
         }
