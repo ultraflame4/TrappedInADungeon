@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Item;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,7 +12,6 @@ namespace UI.Inventory
 {
     public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
     {
-        public int slotIndex;
         public Image itemImage;
         public SpriteButton spriteButton;
 
@@ -19,7 +19,6 @@ namespace UI.Inventory
         /// The input button name to use for this slot. If this is set, the slot will be activated when the button is pressed.
         /// </summary>
         // public string buttonName = "";
-
         public InputActionReference inputRef;
 
         /// <summary>
@@ -38,20 +37,21 @@ namespace UI.Inventory
         /// </summary>
         public event Action<IItemInstance> onItemUsed;
 
+        [ReadOnly(true)] public InputAction inputAction;
+        [ReadOnly(true)] public int slotIndex;
         private InventoryItemInstance currentItem = null;
-        private ItemPrefabHotbarGateway itemGateway = null;
-        public InputAction inputAction;
-        
+        private ItemPrefabController itemGateway = null;
+
         public InventoryItemInstance Item => currentItem;
+
         private void Start()
         {
             // We need to find the input action from the instance of GameControls
-            inputAction = GameManager.Controls.FindAction(inputRef.action.id.ToString(),true);
+            inputAction = GameManager.Controls.FindAction(inputRef.action.id.ToString(), true);
         }
-        
+
         void Update()
         {
-            
             if (inputAction is not null)
             {
                 if (inputAction.WasPerformedThisFrame())
@@ -65,6 +65,7 @@ namespace UI.Inventory
                         spriteButton.UpdateImageSprite();
                     }
                 }
+
                 if (inputAction.WasReleasedThisFrame())
                 {
                     if (itemGateway) itemGateway.ReleaseItem();
@@ -110,7 +111,7 @@ namespace UI.Inventory
             else
             {
                 var obj = Instantiate(item.itemInstance.prefab);
-                itemGateway = obj.GetComponent<ItemPrefabHotbarGateway>();
+                itemGateway = obj.GetComponent<ItemPrefabController>();
                 if (itemGateway is null)
                 {
                     Debug.Log($"Prefab  {currentItem.itemInstance.prefab} does not have ItemPrefabHotbarGateway component!");
@@ -119,7 +120,7 @@ namespace UI.Inventory
                 }
 
                 itemGateway.slot = this;
-                
+
                 item.assignedSlot?.SetItem(null); // If new item is already in a slot, clear that slot first
                 item.assignedSlot = this; // Set reference (for new item) before setting this slot
             }

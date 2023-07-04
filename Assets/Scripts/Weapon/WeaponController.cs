@@ -9,7 +9,7 @@ namespace Weapon
     {
         public Animator animator;
         public WeaponFollowConfig followConfig;
-        public ItemPrefabHotbarGateway gateway;
+        public ItemPrefabController gateway;
         public float attack_offset=0.5f;
         public float RotationWhenIdle = 90f;
         public int AttacksCount = 3; // Number of attacks for this weapon

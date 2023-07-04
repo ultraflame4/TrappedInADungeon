@@ -7,7 +7,7 @@ namespace Item
     /// <summary>
     /// This component is used to communicate between the item prefab and the hotbar.
     /// </summary>
-    public class ItemPrefabHotbarGateway : MonoBehaviour
+    public class ItemPrefabController : MonoBehaviour
     {
         /// <summary>
         /// When player use the item (aka press the keybind for the hotbar with this item)

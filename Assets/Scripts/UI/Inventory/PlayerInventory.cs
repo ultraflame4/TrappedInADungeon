@@ -27,6 +27,10 @@ namespace UI.Inventory
         private void Awake()
         {
             itemSlots = inventorySlotsParent.GetComponentsInChildren<InventorySlot>(); // automatically finds all item slots
+            for (var i = 0; i < itemSlots.Length; i++)
+            {
+                itemSlots[i].slotIndex = i; // set the slot index fpr each slot
+            }
         }
 
         /// <summary>
