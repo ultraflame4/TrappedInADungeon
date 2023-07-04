@@ -26,6 +26,8 @@ namespace Enemies
         public float followRange = 5f;
         public float eyeSightRange = 2f;
         public float eyeSightOffset = 0.5f;
+        
+        private bool obstacleCollided = false;
 
         /// <summary>
         /// How close the enemy needs to be to attack the player
@@ -94,7 +96,11 @@ namespace Enemies
                 case EnemyState.STUNNED:
                     break;
                 case EnemyState.PATROL:
-                    CheckPlayerVisible();
+                    if (CheckPlayerVisible())
+                    {
+                        state = EnemyState.ALERT;
+                    }
+
                     break;
                 case EnemyState.ALERT:
                     if (isAttacking) break;
@@ -111,13 +117,10 @@ namespace Enemies
                     if (!CheckPlayerWithinAttackRange())
                     {
                         state = EnemyState.ALERT;
+                        break;
                     }
-                    else
-                    {
-                        RotateTowardsPlayer();
-                        rb.velocity = new Vector2(0, allowFlight ? 0 : rb.velocity.y); // Stop immediately when within range
-                    }
-
+                    RotateTowardsPlayer();
+                    rb.velocity = new Vector2(0, allowFlight ? 0 : rb.velocity.y); // Stop immediately when within range
                     break;
 
                 default:
@@ -125,16 +128,17 @@ namespace Enemies
             }
         }
 
-        public void CheckPlayerVisible()
+        public bool CheckPlayerVisible()
         {
             RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, transform.right, eyeSightRange, LayerMask.GetMask("Player"));
-            if (!hit.transform) return;
+            if (!hit.transform) return false;
             if (hit.transform.CompareTag("Player"))
             {
-                state = EnemyState.ALERT;
+                return true;
             }
-        }
 
+            return false;
+        }
         public void RotateTowardsPlayer()
         {
             // Rotate towards player
@@ -146,6 +150,7 @@ namespace Enemies
         {
             RotateTowardsPlayer();
             if (CheckPlayerWithinAttackRange()) return;
+            if (obstacleCollided) return;
             if (!isTouchingGround && !allowFlight) return;
 
             Vector3 vel = (allowFlight ? directionToPlayer : directionToPlayerSnapped) * body.Speed;
@@ -190,6 +195,10 @@ namespace Enemies
             {
                 isTouchingGround = true;
             }
+            else if (other.gameObject.CompareTag("Enemy"))
+            {
+                obstacleCollided = true;
+            }
         }
 
         private void OnCollisionExit2D(Collision2D other)
@@ -197,6 +206,10 @@ namespace Enemies
             if (other.gameObject.CompareTag("Ground"))
             {
                 isTouchingGround = false;
+            }
+            else if (other.gameObject.CompareTag("Enemy"))
+            {
+                obstacleCollided = false;
             }
         }
     }
