@@ -173,7 +173,8 @@ namespace Enemies
 
         private bool CheckPlayerWithinAttackRange()
         {
-            if (Vector3.Distance(transform.position, player.position) < attackDist && Quaternion.Angle(player.rotation,transform.rotation) < 45)
+            
+            if (Vector3.Distance(transform.position, player.position) < attackDist && Vector2.Angle(directionToPlayer,transform.right) < 90)
             {
                 state = EnemyState.ATTACK;
                 return true;
