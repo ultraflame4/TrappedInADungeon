@@ -120,8 +120,6 @@ namespace Enemies
                         state = EnemyState.ALERT;
                         break;
                     }
-                    RotateTowardsPlayer();
-                    rb.velocity = new Vector2(0, allowFlight ? 0 : rb.velocity.y); // Stop immediately when within range
                     break;
 
                 default:
@@ -150,7 +148,11 @@ namespace Enemies
         private void MoveTowardsPlayer()
         {
             RotateTowardsPlayer();
-            if (CheckPlayerWithinAttackRange()) return;
+            if (CheckPlayerWithinAttackRange())
+            {
+                rb.velocity = new Vector2(0, allowFlight ? 0 : rb.velocity.y); // Stop immediately when within range
+                return;
+            };
             if (obstacleCollided) return;
             if (!isTouchingGround && !allowFlight) return;
 
@@ -171,7 +173,7 @@ namespace Enemies
 
         private bool CheckPlayerWithinAttackRange()
         {
-            if (Vector3.Distance(transform.position, player.position) < attackDist)
+            if (Vector3.Distance(transform.position, player.position) < attackDist && Quaternion.Angle(player.rotation,transform.rotation) < 45)
             {
                 state = EnemyState.ATTACK;
                 return true;
