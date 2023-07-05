@@ -4459,9 +4459,9 @@ MonoBehaviour:
   rb: {fileID: 6536823746855615567}
   anim: {fileID: 259964735958516593}
   currentDirection: {x: 0, y: 0, z: 0}
-  acceleration: 0.5
   moveSpeed: 300
-  dashSpeed: 5000
+  dashSpeed: 1300
+  dashPeriod: 100
   jumpForce: 400
   jumpTimes: 2
 --- !u!1001 &4945961581009565677

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,11 +12,11 @@ namespace Player
         public Animator anim;
 
         [ReadOnly]
-        public Vector3 currentDirection;
-        [Range(0,1)]
-        public float acceleration = 0.5f;
+        public Vector3 currentDirection=Vector3.right;
         public float moveSpeed = 10f;
         public float dashSpeed = 100f;
+        [Tooltip("The period of time the player will dash for in ms")]
+        public float dashPeriod = 1f;
 
         public float jumpForce = 100f;
         public int jumpTimes = 1;
@@ -24,6 +25,7 @@ namespace Player
         private float inputFactor;
         private bool toJump;
         private bool toDash;
+        private bool isDashing;
         private bool isInAir;
 
         private bool alreadyJumping=false;
@@ -39,6 +41,20 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+            UpdatePlayerDirection();
+
+            // This line basically checks if it is ok to jump
+            // include toJump in its own condition to prevent Input.GetButtonDown from setting toJump to false
+            // We only set toJump to false if we have did the physics in the FixedUpdate
+            toJump = GameManager.Controls.Player.Jump.triggered || toJump;
+            toDash = GameManager.Controls.Player.Dash.triggered || toDash;
+            
+            UpdateAnimationsParameters();
+            UpdateSpriteDirection();
+        }
+
+        void UpdatePlayerDirection()
+        {
             float horizontal = GameManager.Controls.Player.Movement.ReadValue<float>();
             inputFactor = 0f;
             if (horizontal != 0) // Only change current direction when there is input
@@ -46,16 +62,6 @@ namespace Player
                 currentDirection = new Vector3(horizontal, 0, 0);
                 inputFactor = 1;
             }
-
-            // This line basically checks if it is ok to jump
-            // include toJump in its own condition to prevent Input.GetButtonDown from setting toJump to false
-            // We only set toJump to false if we have did the physics in the FixedUpdate
-            toJump = GameManager.Controls.Player.Jump.triggered || toJump;
-            // Debug.Log($"{Input.GetAxis("Vertical") > 0} | toJump {toJump}");
-            
-            toDash = GameManager.Controls.Player.Dash.triggered || toDash;
-            UpdateAnimationsParameters();
-            UpdateSpriteDirection();
         }
 
         void UpdateAnimationsParameters()
@@ -95,14 +101,17 @@ namespace Player
                 // Normalising it will change the direction to length one, aka it will consistent and not be literally 0.00...001
                 // Hence making this dashing thing work
                 move.x = currentDirection.normalized.x * dashSpeed * Time.deltaTime;
-                toDash = false;
+                if (!isDashing)
+                { // Don't start the coroutine again if already dashing
+                    StartCoroutine(EndDash());
+                }
+                isDashing = true;
             }
             
             // !alreadyJumping -> Dont jump again if alreadyJumping ( when the jump key is pressed but not released yet)
             if (toJump && jumpsLeft > 0 && !alreadyJumping)
             {
                 move.y = jumpForce * Time.deltaTime;
-   
                 isInAir = true;
                 jumpsLeft--;
                 alreadyJumping = true;
@@ -120,10 +129,14 @@ namespace Player
             rb.velocity = move;
         }
 
-        public void JumpUpdate()
+        IEnumerator EndDash()
         {
-            
+            yield return new WaitForSeconds(dashPeriod/1000);
+            Debug.Log("Test");
+            toDash = false;
+            isDashing=false;
         }
+        
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.CompareTag("Ground"))
