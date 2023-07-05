@@ -11,10 +11,10 @@ namespace Player
         public Rigidbody2D rb;
         public Animator anim;
 
-        [ReadOnly]
-        public Vector3 currentDirection=Vector3.right;
+        [ReadOnly] public Vector3 currentDirection = Vector3.right;
         public float moveSpeed = 10f;
         public float dashSpeed = 100f;
+
         [Tooltip("The period of time the player will dash for in ms")]
         public float dashPeriod = 1f;
 
@@ -28,7 +28,7 @@ namespace Player
         private bool isDashing;
         private bool isInAir;
 
-        private bool alreadyJumping=false;
+        private bool alreadyJumping = false;
 
         private static readonly int IsWalking = Animator.StringToHash("IsWalking");
         private static readonly int IsJumping = Animator.StringToHash("IsJumping");
@@ -48,7 +48,7 @@ namespace Player
             // We only set toJump to false if we have did the physics in the FixedUpdate
             toJump = GameManager.Controls.Player.Jump.triggered || toJump;
             toDash = GameManager.Controls.Player.Dash.triggered || toDash;
-            
+
             UpdateAnimationsParameters();
             UpdateSpriteDirection();
         }
@@ -57,16 +57,16 @@ namespace Player
         {
             float horizontal = GameManager.Controls.Player.Movement.ReadValue<float>();
             inputFactor = 0f;
-            if (horizontal != 0) // Only change current direction when there is input
-            {
-                currentDirection = new Vector3(horizontal, 0, 0);
-                inputFactor = 1;
-            }
+            // Only change current direction when there is input
+            if (horizontal != 0) return;
+            if (isDashing) return;
+            currentDirection = new Vector3(horizontal, 0, 0);
+            inputFactor = 1;
         }
 
         void UpdateAnimationsParameters()
         {
-            anim.SetBool(IsWalking, inputFactor!=0);
+            anim.SetBool(IsWalking, inputFactor != 0);
             anim.SetBool(IsJumping, isInAir || toDash);
         }
 
@@ -78,11 +78,11 @@ namespace Player
             Quaternion localRotation = transform.localRotation;
             if (currentDirection.x > 0)
             {
-                localRotation.eulerAngles = Vector3.up*0;
+                localRotation.eulerAngles = Vector3.up * 0;
             }
             else if (currentDirection.x < 0) // Cannot use else here because it then keep flipping to the left
             {
-                localRotation.eulerAngles = Vector3.up*180;
+                localRotation.eulerAngles = Vector3.up * 180;
             }
 
             transform.localRotation = localRotation;
@@ -102,12 +102,14 @@ namespace Player
                 // Hence making this dashing thing work
                 move.x = currentDirection.normalized.x * dashSpeed * Time.deltaTime;
                 if (!isDashing)
-                { // Don't start the coroutine again if already dashing
+                {
+                    // Don't start the coroutine again if already dashing
                     StartCoroutine(EndDash());
                 }
+
                 isDashing = true;
             }
-            
+
             // !alreadyJumping -> Dont jump again if alreadyJumping ( when the jump key is pressed but not released yet)
             if (toJump && jumpsLeft > 0 && !alreadyJumping)
             {
@@ -131,12 +133,12 @@ namespace Player
 
         IEnumerator EndDash()
         {
-            yield return new WaitForSeconds(dashPeriod/1000);
+            yield return new WaitForSeconds(dashPeriod / 1000);
             Debug.Log("Test");
             toDash = false;
-            isDashing=false;
+            isDashing = false;
         }
-        
+
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.CompareTag("Ground"))
