@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ecae3e1f09444e8ab4a0f5a777a785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 30
+  BaseHealth: 100
   BaseStamina: 0
   BaseMana: 0
   BaseStrength: 0

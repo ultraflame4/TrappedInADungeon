@@ -41,8 +41,7 @@ namespace Enemies
         private Vector3 directionToPlayerSnapped;
 
         private bool isTouchingGround = false;
-
-        // todo implement state machine ai stuff
+        
         Vector3 raycastOrigin => transform.position + Vector3.up * eyeSightOffset;
 
         /// <summary>
