@@ -58,7 +58,7 @@ namespace Player
             float horizontal = GameManager.Controls.Player.Movement.ReadValue<float>();
             inputFactor = 0f;
             // Only change current direction when there is input
-            if (horizontal != 0) return;
+            if (horizontal == 0) return;
             if (isDashing) return;
             currentDirection = new Vector3(horizontal, 0, 0);
             inputFactor = 1;
