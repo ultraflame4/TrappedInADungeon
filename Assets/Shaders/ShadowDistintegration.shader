@@ -26,8 +26,6 @@ Shader "Unlit/ShadowDistintegration"
          CGPROGRAM
          #pragma vertex vert
          #pragma fragment frag
-         // make fog work
-         #pragma multi_compile_fog
 
          #include "UnityCG.cginc"
 
@@ -63,7 +61,6 @@ Shader "Unlit/ShadowDistintegration"
             // sample the noise & sprite texture
             fixed4 val = tex2D(_Noise, i.uv);
             fixed4 col = tex2D(_MainTex, i.uv).a * _Color;
-            UNITY_APPLY_FOG(i.fogCoord, col);
             if (val.r < _Threshold) // If the noise is below the threshold, make the pixel transparent
             {
                return fixed4(1,0,0,0);
