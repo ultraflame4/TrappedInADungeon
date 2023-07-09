@@ -23,7 +23,8 @@ namespace Entities
         public float CurrentStamina; // Automatically set to _Stamina on start
         public float CurrentMana; // Automatically set to _Mana on start
 
-        public IStatusEffect[] StatusEffects; // Current status effects on entity
+        public IStatusEffect[] StatusEffects; // Current status effects on entity todo implement status effects
+        
         
         public float Health => BaseHealth; //todo figure out scaling
         public float Stamina => BaseStamina; //todo figure out scaling

@@ -7,7 +7,7 @@ namespace Item
         public ItemScriptableObject item;
         public Sprite sprite => item.itemSprite;
         public GameObject prefab => item.itemPrefab;
-        
+        // todo implement stats modifiers.
         public ItemInstance(ItemScriptableObject item)
         {
             this.item = item;
