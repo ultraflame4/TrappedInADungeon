@@ -2,26 +2,9 @@
 
 namespace Item
 {
-    public class WeaponItem : IItemInstance
+    public class WeaponItem : ItemInstance
     {
-        public ItemScriptableObject weaponItem;
-        public Sprite sprite => weaponItem.itemSprite;
-        public GameObject prefab => weaponItem.itemPrefab;
-        public WeaponItem(ItemScriptableObject weaponItem)
-        {
-            this.weaponItem = weaponItem;
-        }
-        
-        public string GetDisplayName()
-        {
-            return weaponItem.item_name;
-        }
-
-        public string GetDisplayDescription()
-        {
-            return weaponItem.item_description;
-        }
-
+        public WeaponItem(ItemScriptableObject weaponItem) : base(weaponItem) { }
         /// <summary>
         /// Calculates & returns the total attack damage of the weapon
         /// </summary>
@@ -30,5 +13,7 @@ namespace Item
         {
             return weaponItem.base_attack; //todo later on: add in a other factors later such as weapon modifiers
         }
+
+
     }
 }
