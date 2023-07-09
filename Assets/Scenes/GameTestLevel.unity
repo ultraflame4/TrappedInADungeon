@@ -4652,7 +4652,7 @@ MonoBehaviour:
   - {fileID: 891731739}
   - {fileID: 0}
   - {fileID: 0}
-  debugWeapon: {fileID: 11400000, guid: c80a209f2ae52b74caeab99e05f96255, type: 2}
+  debugWeapon: {fileID: 11400000, guid: a577bf1a8fa26d7458b090d358de2e87, type: 2}
 --- !u!1 &6355870726974093836
 GameObject:
   m_ObjectHideFlags: 0
