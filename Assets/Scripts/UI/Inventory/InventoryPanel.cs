@@ -1,5 +1,7 @@
-﻿using Item;
+﻿using System.Linq;
+using Item;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utils;
 
 namespace UI.Inventory
@@ -7,7 +9,8 @@ namespace UI.Inventory
     public class InventoryPanel : MonoBehaviour
     {
         public Transform WeaponListContent;
-        public GameObject WeaponListItemPrefab;
+        public Transform SkillListContent;
+        [FormerlySerializedAs("WeaponListItemPrefab")] public GameObject ListItemPrefab;
         public PlayerInventory playerInventory;
         private void Awake()
         {
@@ -19,7 +22,16 @@ namespace UI.Inventory
             WeaponListContent.DestroyChildren();
             foreach (IItemInstance instance in playerInventory.GetAllItemOfType<WeaponItem>())
             {
-                GameObject item = Instantiate(WeaponListItemPrefab, WeaponListContent);
+                GameObject item = Instantiate(ListItemPrefab, WeaponListContent);
+                item.GetComponent<InventoryListItem>().SetItem(instance);
+            }
+        }
+        void UpdateSkillList()
+        {
+            SkillListContent.DestroyChildren();
+            foreach (IItemInstance instance in playerInventory.GetAllItemOfType<SkillItem>())
+            {
+                GameObject item = Instantiate(ListItemPrefab, SkillListContent);
                 item.GetComponent<InventoryListItem>().SetItem(instance);
             }
         }
@@ -27,6 +39,7 @@ namespace UI.Inventory
         void UpdateList()
         {
             UpdateWeaponList();
+            UpdateSkillList();
         }
         
         void Update()

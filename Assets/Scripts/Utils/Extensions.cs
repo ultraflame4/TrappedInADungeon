@@ -35,7 +35,6 @@ namespace Utils
         {
             return string.Join(separator, strings);
         }
-        
         public static bool IsNegative(this float value)
         {
             return value < 0;

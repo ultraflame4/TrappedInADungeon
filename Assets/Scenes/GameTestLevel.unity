@@ -3819,7 +3819,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponListContent: {fileID: 1167247313}
-  WeaponListItemPrefab: {fileID: 3241950385909181290, guid: 20ca5ec9134df824890dfff98fe20bb7, type: 3}
+  SkillListContent: {fileID: 1216385104}
+  ListItemPrefab: {fileID: 3241950385909181290, guid: 20ca5ec9134df824890dfff98fe20bb7, type: 3}
   playerInventory: {fileID: 6080920965029759795}
 --- !u!1001 &1990248565
 PrefabInstance:
@@ -4653,6 +4654,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   debugWeapon: {fileID: 11400000, guid: a577bf1a8fa26d7458b090d358de2e87, type: 2}
+  debugSkill: {fileID: 11400000, guid: adebc27f40d9d5748bf5545d2d0cb9de, type: 2}
 --- !u!1 &6355870726974093836
 GameObject:
   m_ObjectHideFlags: 0

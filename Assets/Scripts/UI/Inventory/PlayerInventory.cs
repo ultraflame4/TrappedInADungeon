@@ -18,11 +18,13 @@ namespace UI.Inventory
         /// </summary>
         public ItemScriptableObject debugWeapon;
 
+        public ItemScriptableObject debugSkill;
+
         /// <summary>
         /// This event is called whenever an item is added or removed from the inventory
         /// </summary>
         public event Action inventoryUpdate;
-
+        public List<IItemInstance> AllItems => items.ToList();
 
         private void Awake()
         {
@@ -97,6 +99,15 @@ namespace UI.Inventory
         public void GiveDebugWeapon()
         {
             AddItem(new WeaponItem(debugWeapon));
+        }
+        /// <summary>
+        /// Gives the player a fireball
+        /// Mainly for debugging purposes
+        /// </summary>
+        [Button]
+        public void GiveDebugSkill()
+        {
+            AddItem(new SkillItem(debugSkill));
         }
     }
 }

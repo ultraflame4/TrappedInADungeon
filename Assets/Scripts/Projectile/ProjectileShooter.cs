@@ -1,8 +1,7 @@
-﻿using System;
-using Item;
+﻿using Item;
 using UnityEngine;
 
-namespace Skills
+namespace Projectile
 {
     public class ProjectileShooter : MonoBehaviour
     {
@@ -14,8 +13,8 @@ namespace Skills
         {
             Gateway.OnItemUsed += () =>
             {
-                var projectile = Instantiate(ProjectilePrefab, Gateway.Player.position, Gateway.Player.rotation).GetComponent<Projectile>();
-                projectile.itemInstance = Gateway.slot.Item.itemInstance;
+                var projectile = Instantiate(ProjectilePrefab, Gateway.Player.position, Gateway.Player.rotation).GetComponent<global::Projectile.Projectile>();
+                projectile.projectileStats = Gateway.slot.Item.itemInstance;
             };
         }
 
