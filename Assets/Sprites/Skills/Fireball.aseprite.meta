@@ -1,0 +1,624 @@
+fileFormatVersion: 2
+guid: ce7a090d790ee6942acb9f6993bcec64
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Animation
+    second: {fileID: 7400000, guid: fe0ef7f8a84149743987220c3344de35, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Boom
+    second: {fileID: 7400000, guid: d9f506c69ed6d4f449704b6feff91d38, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Fly
+    second: {fileID: 7400000, guid: ee44927c8a6781b4097e27612034ae26, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Grow
+    second: {fileID: 7400000, guid: 39cf68211aaf9c34392a5e761d5666d1, type: 2}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 32
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638245226758924950
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Fireball_Frame_0
+    originalName: 
+    pivot: {x: 0.50000006, y: 0.53846157}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 193
+      width: 14
+      height: 13
+    spriteID: 4dbe160a345d2ba49b3253af1c497218
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 193}
+  - name: Fireball_Frame_1
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 58
+      width: 10
+      height: 10
+    spriteID: 4d8153d76087c8c47b615ecede4762b5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 58}
+  - name: Fireball_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 158
+      width: 12
+      height: 10
+    spriteID: 64bb197838b809d4692e03c69cba6372
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 158}
+  - name: Fireball_Frame_3
+    originalName: 
+    pivot: {x: 0.46153846, y: 0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 232
+      width: 13
+      height: 10
+    spriteID: 281d7d4a1fa62614ba9de503ad12f31f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 232}
+  - name: Fireball_Frame_4
+    originalName: 
+    pivot: {x: 0.50000006, y: 0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 214
+      width: 14
+      height: 10
+    spriteID: d354289ba9cc1a24bb1187882c929910
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 214}
+  - name: Fireball_Frame_5
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 26
+      y: 193
+      width: 16
+      height: 10
+    spriteID: 46776237d717a1d4c99cad83644bc2b2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 26, y: 193}
+  - name: Fireball_Frame_6
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 26
+      y: 211
+      width: 16
+      height: 10
+    spriteID: f81d8f80610b0674dbe044f2c74284e4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 26, y: 211}
+  - name: Fireball_Frame_7
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 26
+      y: 229
+      width: 16
+      height: 10
+    spriteID: 50a7ff8f7e331e644850b0c2041dd1e6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 26, y: 229}
+  - name: Fireball_Frame_8
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 4
+      width: 16
+      height: 10
+    spriteID: 74ea20d8b2e8785428df2db5a1b37b1f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 4}
+  - name: Fireball_Frame_9
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 22
+      width: 16
+      height: 10
+    spriteID: 8ec40f6f88cccef4ab8fbeddc8e0b6ca
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 22}
+  - name: Fireball_Frame_10
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 40
+      width: 16
+      height: 10
+    spriteID: d38d8e297603e57428679206283a090e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 40}
+  - name: Fireball_Frame_11
+    originalName: 
+    pivot: {x: 0.50000006, y: 0.5555556}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 158
+      width: 28
+      height: 27
+    spriteID: e6e8d9b723fae4a41b1eff4f1ad4d03e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 158}
+  - name: Fireball_Frame_12
+    originalName: 
+    pivot: {x: 0.5, y: 0.48888892}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 48
+      height: 45
+    spriteID: 2b22f3aa78494014fa3f1ccf3a7d2296
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Fireball_Frame_13
+    originalName: 
+    pivot: {x: 0.5, y: 0.511628}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 57
+      width: 48
+      height: 43
+    spriteID: 21d115833c84ec34aae4279c6f6f6d4d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 57}
+  - name: Fireball_Frame_14
+    originalName: 
+    pivot: {x: 0.4651163, y: 0.47619048}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 108
+      width: 43
+      height: 42
+    spriteID: b10c4e7d8b05be046b87b0910e414835
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 108}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -521780937
+    name: Fireball
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Fireball_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 17
+        y: 17
+        width: 14
+        height: 13
+      spriteId: 4dbe160a345d2ba49b3253af1c497218
+    - name: Fireball_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 19
+        y: 19
+        width: 10
+        height: 10
+      spriteId: 4d8153d76087c8c47b615ecede4762b5
+    - name: Fireball_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 18
+        y: 19
+        width: 12
+        height: 10
+      spriteId: 64bb197838b809d4692e03c69cba6372
+    - name: Fireball_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 18
+        y: 19
+        width: 13
+        height: 10
+      spriteId: 281d7d4a1fa62614ba9de503ad12f31f
+    - name: Fireball_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 17
+        y: 19
+        width: 14
+        height: 10
+      spriteId: d354289ba9cc1a24bb1187882c929910
+    - name: Fireball_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 16
+        y: 19
+        width: 16
+        height: 10
+      spriteId: 46776237d717a1d4c99cad83644bc2b2
+    - name: Fireball_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 16
+        y: 19
+        width: 16
+        height: 10
+      spriteId: f81d8f80610b0674dbe044f2c74284e4
+    - name: Fireball_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 16
+        y: 19
+        width: 16
+        height: 10
+      spriteId: 50a7ff8f7e331e644850b0c2041dd1e6
+    - name: Fireball_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 16
+        y: 19
+        width: 16
+        height: 10
+      spriteId: 74ea20d8b2e8785428df2db5a1b37b1f
+    - name: Fireball_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 16
+        y: 19
+        width: 16
+        height: 10
+      spriteId: 8ec40f6f88cccef4ab8fbeddc8e0b6ca
+    - name: Fireball_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 16
+        y: 19
+        width: 16
+        height: 10
+      spriteId: d38d8e297603e57428679206283a090e
+    - name: Fireball_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 10
+        y: 9
+        width: 28
+        height: 27
+      spriteId: e6e8d9b723fae4a41b1eff4f1ad4d03e
+    - name: Fireball_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 0
+        y: 2
+        width: 48
+        height: 45
+      spriteId: 2b22f3aa78494014fa3f1ccf3a7d2296
+    - name: Fireball_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 0
+        y: 2
+        width: 48
+        height: 43
+      spriteId: 21d115833c84ec34aae4279c6f6f6d4d
+    - name: Fireball_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 4
+        y: 4
+        width: 43
+        height: 42
+      spriteId: b10c4e7d8b05be046b87b0910e414835
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Windows Store Apps
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 48, y: 48}

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1cf7b30ece5f9545b044bf270826dbb, type: 3}
+  m_Name: fireball
+  m_EditorClassIdentifier: 
+  item_name: Fireball
+  item_description: Shoots a fireball
+  itemSprite: {fileID: -3003964101018066756, guid: ce7a090d790ee6942acb9f6993bcec64, type: 3}
+  itemPrefab: {fileID: 3309170777301791222, guid: c5903b509ae55a149a6e79aa118378cc, type: 3}
+  base_attack: 100
+  base_defense: 0
+  base_speed: 500
+  base_health: 0
+  base_stamina: 0
+  base_mana: 0
+  mana_cost: 0
