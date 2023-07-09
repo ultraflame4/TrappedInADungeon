@@ -2,13 +2,27 @@
 
 namespace Item
 {
-    public abstract class ItemScriptableObject : ScriptableObject
+    [CreateAssetMenu(fileName = "game_item",menuName = "GameContent/Item")]
+    public sealed class ItemScriptableObject : ScriptableObject
     {
+        [Tooltip("Name of the item shown in inventory")]
         public string item_name;
-        [Multiline(5)]
+        [Tooltip("Description of item shown in inventory"),Multiline(5)]
         public string item_description;
+        [Tooltip("Sprite to display in the inventory")]
         public Sprite itemSprite;
         [Tooltip("The prefab to spawn when the item is equipped in the hotbar")]
         public GameObject itemPrefab;
+        [Tooltip("The amount of damage this item deals when used.")]
+        public float base_attack;
+        [Tooltip("The amount of defense this item provides when used.")]
+        public float base_defense;
+        [Tooltip("The amount of speed this item provides when used.")]
+        public float base_speed;
+        [Tooltip("The amount of health this item provides when used.")]
+        public float base_health;
+        [Tooltip("The amount of stamina this item provides when used.")]
+        public float base_stamina;
+        
     }
 }

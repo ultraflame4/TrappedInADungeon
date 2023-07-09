@@ -16,7 +16,7 @@ namespace UI.Inventory
         /// <summary>
         /// Just a debug weapon to give to the user (when GiveDebugWeapon is called)
         /// </summary>
-        public WeaponItemType debugWeapon;
+        public ItemScriptableObject debugWeapon;
 
         /// <summary>
         /// This event is called whenever an item is added or removed from the inventory

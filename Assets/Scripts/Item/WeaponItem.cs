@@ -4,22 +4,22 @@ namespace Item
 {
     public class WeaponItem : IItemInstance
     {
-        public WeaponItemType weaponType;
-        public Sprite sprite => weaponType.itemSprite;
-        public GameObject prefab => weaponType.itemPrefab;
-        public WeaponItem(WeaponItemType weaponType)
+        public ItemScriptableObject weaponItem;
+        public Sprite sprite => weaponItem.itemSprite;
+        public GameObject prefab => weaponItem.itemPrefab;
+        public WeaponItem(ItemScriptableObject weaponItem)
         {
-            this.weaponType = weaponType;
+            this.weaponItem = weaponItem;
         }
         
         public string GetDisplayName()
         {
-            return weaponType.item_name;
+            return weaponItem.item_name;
         }
 
         public string GetDisplayDescription()
         {
-            return weaponType.item_description;
+            return weaponItem.item_description;
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Item
         /// <returns></returns>
         public float CalculateAttackDamage()
         {
-            return weaponType.base_attack; //todo later on: add in a other factors later such as weapon modifiers
+            return weaponItem.base_attack; //todo later on: add in a other factors later such as weapon modifiers
         }
     }
 }
