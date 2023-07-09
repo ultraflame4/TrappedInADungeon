@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Entities
 {
@@ -9,12 +10,12 @@ namespace Entities
     /// Note that the values stored by the variables/attributes with _ prefixed only store the base values, it does not include effects from equipment, buffs, etc.
     /// To get the actual values, use the properties or Get methods. 
     /// </summary>
-    public class EntityBody : MonoBehaviour
+    public class EntityBody : MonoBehaviour, IEntityStats
     {
         public float BaseHealth; // Health of entity
         public int BaseStamina; // Used for dashing
         public int BaseMana; // Used for casting spells
-        public int BaseStrength; // Increases physical damage
+        [FormerlySerializedAs("BaseStrength")] public int baseAttack; // Increases physical damage
         public int BaseSpeed; // Movement speed
         public int BaseDefense; // Reduces damage taken
         
@@ -24,20 +25,20 @@ namespace Entities
 
         public IStatusEffect[] StatusEffects; // Current status effects on entity
         
-        public float MaxHealth => BaseHealth; //todo figure out scaling
-        public float MaxStamina => BaseStamina; //todo figure out scaling
-        public float MaxMana => BaseMana; //todo figure out scaling
-        public float Strength => BaseStrength; //todo figure out scaling
+        public float Health => BaseHealth; //todo figure out scaling
+        public float Stamina => BaseStamina; //todo figure out scaling
+        public float Mana => BaseMana; //todo figure out scaling
+        public float Attack => baseAttack; //todo figure out scaling
         public float Speed => BaseSpeed; //todo figure out scaling
         public float Defense => BaseDefense; //todo figure out scaling
-        
+
         public event Action OnDeathEvent; // Event that is invoked when entity dies
         public event Action OnDamagedEvent; // Event that is invoked when entity takes damage
         void Start()
         {
-            CurrentHealth = MaxHealth;
-            CurrentStamina = MaxStamina;
-            CurrentMana = MaxMana;
+            CurrentHealth = Health;
+            CurrentStamina = Stamina;
+            CurrentMana = Mana;
         }
         public void Damage(float amt)
         {
@@ -57,7 +58,7 @@ namespace Entities
         /// <returns></returns>
         public float CalculateAttackDamage(float baseDamage)
         {
-            return baseDamage+Strength;
+            return baseDamage+Attack;
         }
     }
 }

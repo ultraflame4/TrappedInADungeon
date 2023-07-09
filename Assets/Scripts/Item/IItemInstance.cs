@@ -1,10 +1,11 @@
 ﻿
+using Entities;
 using UnityEngine;
 
 namespace Item
 {
     
-    public interface IItemInstance
+    public interface IItemInstance : IEntityStats
     {
         // public ItemScriptableObject itemType { get; }
         /// <summary>
@@ -22,5 +23,6 @@ namespace Item
         public string GetDisplayDescription();
         public Sprite sprite { get; }
         public GameObject prefab { get; }
+        
     }
 }

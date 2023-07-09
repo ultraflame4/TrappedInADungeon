@@ -22,5 +22,12 @@ namespace Item
         {
             return weaponItem.item_description;
         }
+
+        public float Attack => weaponItem.base_attack;
+        public float Speed => weaponItem.base_speed;
+        public float Defense => weaponItem.base_defense;
+        public float Health => weaponItem.base_health;
+        public float Stamina => weaponItem.base_stamina;
+        public float Mana => weaponItem.base_mana;
     }
 }

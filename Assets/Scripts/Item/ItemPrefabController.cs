@@ -1,6 +1,7 @@
 ﻿using System;
 using UI.Inventory;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Item
 {
@@ -18,8 +19,14 @@ namespace Item
         /// </summary>
         public event Action OnItemReleased;
 
+        private void Awake()
+        {
+            Player = GameObject.FindWithTag("Player").transform;
+        }
+
         public InventorySlot slot;
-        
+        [FormerlySerializedAs("player")] public Transform Player;
+
         public void UseItem() => OnItemUsed?.Invoke();
         public void ReleaseItem() => OnItemReleased?.Invoke();
     }
