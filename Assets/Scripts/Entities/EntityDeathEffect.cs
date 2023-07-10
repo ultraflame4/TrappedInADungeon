@@ -16,7 +16,7 @@ namespace Entities
 
         private void Start()
         {
-            entityBody.OnDeathEvent += OnDeath;
+            entityBody.DeathEvent += OnDeath;
         }
 
         void OnDeath()

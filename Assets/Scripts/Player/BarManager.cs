@@ -8,13 +8,19 @@ namespace Player
     {
         public EntityBody playerBody;
         public BarController healthBar;
+        public BarController manaBar;
         
         private void Start()
         {
-            playerBody.OnDamagedEvent += () =>
+            playerBody.HealthChangedEvent += () =>
             {
                 healthBar.filledPercentage = playerBody.CurrentHealth / playerBody.Health;
                 healthBar.UpdateBar();
+            };
+            playerBody.ManaChangedEvent += () =>
+            {
+                manaBar.filledPercentage = playerBody.CurrentMana / playerBody.Mana;
+                manaBar.UpdateBar();
             };
         }
     }

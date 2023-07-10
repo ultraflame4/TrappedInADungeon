@@ -36,8 +36,11 @@ namespace Entities
         
         public int Level = 1; // Level of entity
 
-        public event Action OnDeathEvent; // Event that is invoked when entity dies
-        public event Action OnDamagedEvent; // Event that is invoked when entity takes damage
+        public event Action DeathEvent; // Event that is invoked when entity dies
+        public event Action DamagedEvent; // Event that is invoked when entity takes damage
+        public event Action HealthChangedEvent; // Event that is invoked when entity takes damage
+        public event Action ManaChangedEvent; // Event that is invoked when entity takes damage
+        public event Action StaminaChangedEvent; // Event that is invoked when entity takes damage
         
         void Start()
         {
@@ -48,10 +51,10 @@ namespace Entities
         public void Damage(float amt)
         {
             CurrentHealth -= amt;
-            OnDamagedEvent?.Invoke();
+            DamagedEvent?.Invoke();
             if (CurrentHealth <= 0)
             {
-                OnDeathEvent?.Invoke();
+                DeathEvent?.Invoke();
             }
         }
         // todo include methods to get the actual values that includes effects from equipment, buffs, etc.

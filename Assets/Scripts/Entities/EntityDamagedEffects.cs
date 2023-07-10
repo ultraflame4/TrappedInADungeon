@@ -14,7 +14,7 @@ namespace Entities
 
         private void Start()
         {
-            entityBody.OnDamagedEvent+= OnDamaged;
+            entityBody.DamagedEvent+= OnDamaged;
         }
 
         void OnDamaged()
