@@ -52,7 +52,7 @@ namespace Enemies
         private void Start()
         {
             player = GameObject.FindWithTag("Player").transform;
-            body.OnDamagedEvent += () =>
+            body.DamagedEvent += () =>
             {
                 rb.velocity = (Vector3.up - directionToPlayer).normalized * knockbackForce * (1 + Random.value / 4);
                 Stun(500);
