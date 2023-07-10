@@ -4810,10 +4810,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7393945369561538349}
   anim: {fileID: 4847106860037611503}
+  body: {fileID: 7223776397476921510}
   currentDirection: {x: 0, y: 0, z: 0}
   moveSpeed: 300
   dashSpeed: 1300
   dashPeriod: 100
+  dashManaCostPercent: 0.2
+  dashManaCostMin: 10
   jumpForce: 400
   jumpTimes: 2
 --- !u!114 &3747500502270974231
@@ -5264,7 +5267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseHealth: 1000
   BaseStamina: 0
-  BaseMana: 0
+  BaseMana: 100
   baseAttack: 0
   BaseSpeed: 0
   BaseDefense: 0
@@ -5423,7 +5426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 7223776397476921510}
   healthBar: {fileID: 1676633526}
-  manaBar: {fileID: 0}
+  manaBar: {fileID: 120557389}
 --- !u!81 &8672299159088187458
 AudioListener:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Entities;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,13 +11,18 @@ namespace Player
     {
         public Rigidbody2D rb;
         public Animator anim;
-
+        public EntityBody body;
+        [Header("Movement")]
         [ReadOnly] public Vector3 currentDirection = Vector3.right;
         public float moveSpeed = 10f;
+        [Header("Dash")]
         public float dashSpeed = 100f;
-
         [Tooltip("The period of time the player will dash for in ms")]
         public float dashPeriod = 1f;
+        [Tooltip("% of total mana consumed by dash")]
+        public float dashManaCostPercent = 0.2f;
+        [Tooltip("Minimum mana cost for dash")]
+        public float dashManaCostMin = 10f;
 
         public float jumpForce = 100f;
         public int jumpTimes = 1;
@@ -47,8 +53,12 @@ namespace Player
             // include toJump in its own condition to prevent Input.GetButtonDown from setting toJump to false
             // We only set toJump to false if we have did the physics in the FixedUpdate
             toJump = GameManager.Controls.Player.Jump.triggered || toJump;
-            toDash = GameManager.Controls.Player.Dash.triggered || toDash;
-
+            if (GameManager.Controls.Player.Dash.triggered)
+            {
+                toDash = true;
+                // Dash consumes 5% of mana or 10 whichever is greater
+                body.CurrentMana.value -= Mathf.Max(body.Mana*dashManaCostPercent,dashManaCostMin);
+            }
             UpdateAnimationsParameters();
             UpdateSpriteDirection();
         }
