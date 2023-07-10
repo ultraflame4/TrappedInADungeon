@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Utils;
@@ -32,12 +33,12 @@ namespace Entities
         public IStatusEffect[] StatusEffects => statusEffects.ToArray();
 
         private List<StatsModifier> StatsModifiers = new(); 
-        public float Health => BaseHealth*Level;
-        public float Stamina => BaseStamina*Level;
-        public float Mana => BaseMana*Level;
-        public float Attack => baseAttack*Level;
-        public float Speed => BaseSpeed*Level;
-        public float Defense => BaseDefense*Level;
+        public float Health => BaseHealth*Level+StatsModifiers.Sum(modifier => modifier.Health);
+        public float Stamina => BaseStamina*Level+StatsModifiers.Sum(modifier => modifier.Stamina);
+        public float Mana => BaseMana*Level+StatsModifiers.Sum(modifier => modifier.Mana);
+        public float Attack => baseAttack*Level+StatsModifiers.Sum(modifier => modifier.Attack);
+        public float Speed => BaseSpeed*Level+StatsModifiers.Sum(modifier => modifier.Speed);
+        public float Defense => BaseDefense*Level+StatsModifiers.Sum(modifier => modifier.Defense);
         
         public int Level = 1; // Level of entity
 

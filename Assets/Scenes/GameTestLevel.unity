@@ -4788,6 +4788,7 @@ MonoBehaviour:
   CurrentHealth: 0
   CurrentStamina: 0
   CurrentMana: 0
+  Level: 1
 --- !u!114 &6536823746855615569
 MonoBehaviour:
   m_ObjectHideFlags: 0
