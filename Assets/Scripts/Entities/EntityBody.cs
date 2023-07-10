@@ -21,44 +21,45 @@ namespace Entities
         [FormerlySerializedAs("BaseStrength")] public int baseAttack; // Increases physical damage
         public int BaseSpeed; // Movement speed
         public int BaseDefense; // Reduces damage taken
-        
-        public float CurrentHealth; // Automatically set to Health on start
-        public float CurrentStamina; // Automatically set to Stamina on start
-        public float CurrentMana; // Automatically set to Mana on start
 
-        private List<StatsModifier> StatsModifiers = new(); 
-        public float Health => BaseHealth*Level+StatsModifiers.Sum(modifier => modifier.Health);
-        public float Stamina => BaseStamina*Level+StatsModifiers.Sum(modifier => modifier.Stamina);
-        public float Mana => BaseMana*Level+StatsModifiers.Sum(modifier => modifier.Mana);
-        public float Attack => baseAttack*Level+StatsModifiers.Sum(modifier => modifier.Attack);
-        public float Speed => BaseSpeed*Level+StatsModifiers.Sum(modifier => modifier.Speed);
-        public float Defense => BaseDefense*Level+StatsModifiers.Sum(modifier => modifier.Defense);
-        
+        private float _currentHealth; // Automatically set to Health on start
+
+        public VolatileValue<float> CurrentHealth = new(); // Automatically set to Health on start
+        public VolatileValue<float> CurrentStamina = new(); // Automatically set to Stamina on start
+        public VolatileValue<float> CurrentMana = new(); // Automatically set to Mana on start
+
+
+        private List<StatsModifier> StatsModifiers = new();
+        public float Health => BaseHealth * Level + StatsModifiers.Sum(modifier => modifier.Health);
+        public float Stamina => BaseStamina * Level + StatsModifiers.Sum(modifier => modifier.Stamina);
+        public float Mana => BaseMana * Level + StatsModifiers.Sum(modifier => modifier.Mana);
+        public float Attack => baseAttack * Level + StatsModifiers.Sum(modifier => modifier.Attack);
+        public float Speed => BaseSpeed * Level + StatsModifiers.Sum(modifier => modifier.Speed);
+        public float Defense => BaseDefense * Level + StatsModifiers.Sum(modifier => modifier.Defense);
+
         public int Level = 1; // Level of entity
 
         public event Action DeathEvent; // Event that is invoked when entity dies
         public event Action DamagedEvent; // Event that is invoked when entity takes damage
-        public event Action HealthChangedEvent; // Event that is invoked when entity takes damage
-        public event Action ManaChangedEvent; // Event that is invoked when entity takes damage
-        public event Action StaminaChangedEvent; // Event that is invoked when entity takes damage
-        
+
         void Start()
         {
-            CurrentHealth = Health;
-            CurrentStamina = Stamina;
-            CurrentMana = Mana;
+            CurrentHealth.value = Health;
+            CurrentStamina.value = Stamina;
+            CurrentMana.value = Mana;
         }
+
         public void Damage(float amt)
         {
-            CurrentHealth -= amt;
+            CurrentHealth.value -= amt;
             DamagedEvent?.Invoke();
-            if (CurrentHealth <= 0)
+            if (CurrentHealth.value <= 0)
             {
                 DeathEvent?.Invoke();
             }
         }
         // todo include methods to get the actual values that includes effects from equipment, buffs, etc.
-        
+
         /// <summary>
         /// Calculates the damage to be dealt by an attack based on the current stats of this entity.
         /// </summary>
@@ -66,8 +67,7 @@ namespace Entities
         /// <returns></returns>
         public float CalculateAttackDamage(float baseDamage)
         {
-            return baseDamage+Attack;
+            return baseDamage + Attack;
         }
-
     }
 }

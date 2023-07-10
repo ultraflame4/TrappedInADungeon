@@ -12,14 +12,14 @@ namespace Player
         
         private void Start()
         {
-            playerBody.HealthChangedEvent += () =>
+            playerBody.CurrentHealth.Changed += () =>
             {
-                healthBar.filledPercentage = playerBody.CurrentHealth / playerBody.Health;
+                healthBar.filledPercentage = playerBody.CurrentHealth.value / playerBody.Health;
                 healthBar.UpdateBar();
             };
-            playerBody.ManaChangedEvent += () =>
+            playerBody.CurrentMana.Changed += () =>
             {
-                manaBar.filledPercentage = playerBody.CurrentMana / playerBody.Mana;
+                manaBar.filledPercentage = playerBody.CurrentMana.value / playerBody.Mana;
                 manaBar.UpdateBar();
             };
         }
