@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -23,9 +24,11 @@ namespace Entities
         public float CurrentStamina; // Automatically set to _Stamina on start
         public float CurrentMana; // Automatically set to _Mana on start
 
-        public IStatusEffect[] StatusEffects; // Current status effects on entity todo implement status effects
-        
-        
+        private List<IStatusEffect> statusEffects; // Current status effects on entity todo implement status effects
+        /// <summary>
+        /// The current status effects on this entity.
+        /// </summary>
+        public IStatusEffect[] StatusEffects => statusEffects.ToArray();
         public float Health => BaseHealth; //todo figure out scaling
         public float Stamina => BaseStamina; //todo figure out scaling
         public float Mana => BaseMana; //todo figure out scaling
@@ -60,6 +63,21 @@ namespace Entities
         public float CalculateAttackDamage(float baseDamage)
         {
             return baseDamage+Attack;
+        }
+
+        public IStatusEffect AddStatusEffect(IStatusEffect statusEffect)
+        {
+            statusEffects.Add(statusEffect);
+            statusEffect.Start(this);
+            return statusEffect;
+        }
+        
+        private void Update()
+        {
+            foreach (var statusEffect in statusEffects)
+            {
+                statusEffect.Tick(this);
+            }
         }
     }
 }

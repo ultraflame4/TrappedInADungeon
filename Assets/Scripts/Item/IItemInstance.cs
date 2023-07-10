@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Item
 {
     
-    public interface IItemInstance : IEntityStats
+    public interface IItemInstance : IEntityStats, IItemStats
     {
         // public ItemScriptableObject itemType { get; }
         /// <summary>

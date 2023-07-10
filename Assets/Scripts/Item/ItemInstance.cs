@@ -29,5 +29,6 @@ namespace Item
         public float Health => item.base_health;
         public float Stamina => item.base_stamina;
         public float Mana => item.base_mana;
+        public float ManaCost => item.mana_cost;
     }
 }
