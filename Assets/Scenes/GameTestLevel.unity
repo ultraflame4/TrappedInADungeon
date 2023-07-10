@@ -2121,8 +2121,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 264.58334, y: 0}
-  m_SizeDelta: {x: 529.1667, y: 45.834}
+  m_AnchoredPosition: {x: 343.75, y: 0}
+  m_SizeDelta: {x: 687.5, y: 45.834}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1042043430
 MonoBehaviour:
@@ -3838,8 +3838,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 273, y: -36}
-  m_SizeDelta: {x: 529.1667, y: 45.833313}
+  m_AnchoredPosition: {x: 352.17, y: -36.8}
+  m_SizeDelta: {x: 687.5, y: 45.8333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1676633525
 CanvasRenderer:
@@ -4114,10 +4114,10 @@ RectTransform:
   m_Father: {fileID: 1676633523}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 529.1667, y: 45.833336}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 343.75, y: 0.00031899}
+  m_SizeDelta: {x: 687.5, y: 45.833336}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1960986998
 MonoBehaviour:
@@ -5071,6 +5071,7 @@ GameObject:
   - component: {fileID: 2944380012812093653}
   - component: {fileID: 8672299159088187458}
   - component: {fileID: 4576310841370802834}
+  - component: {fileID: 8672299159088187459}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5433,3 +5434,23 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5461211443868745954}
   m_Enabled: 1
+--- !u!114 &8672299159088187459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5461211443868745954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 32
+  m_RefResolutionX: 320
+  m_RefResolutionY: 180
+  m_UpscaleRT: 0
+  m_PixelSnapping: 1
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
