@@ -24,15 +24,18 @@ namespace Projectile
 
         void FixedUpdate()
         {
+            if (!isHit)
+            {
+                transform.position += transform.right * (projectileStats.Speed / 100f) * Time.deltaTime;
+            }
             // Move the projectile in the direction it is facing.
-            transform.Translate(transform.right * (projectileStats.Speed / 1000f * Time.deltaTime));
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!attackPlayer && other.CompareTag("Player")) return;
             animator.SetTrigger(Explode);
-            if (isHit)
+            if (!isHit)
             {
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, damageRadius, LayerMask.GetMask(attackPlayer ? "Player" : "Enemy"));
                 foreach (var collider in colliders)

@@ -18,7 +18,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 3309170777301791222, guid: c5903b509ae55a149a6e79aa118378cc, type: 3}
   base_attack: 100
   base_defense: 0
-  base_speed: 600
+  base_speed: 100
   base_health: 0
   base_stamina: 0
   base_mana: 0

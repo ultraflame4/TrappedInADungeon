@@ -13,7 +13,7 @@ namespace Projectile
         {
             Gateway.OnItemUsed += () =>
             {
-                var projectile = Instantiate(ProjectilePrefab, Gateway.Player.position, Gateway.Player.rotation).GetComponent<global::Projectile.Projectile>();
+                var projectile = Instantiate(ProjectilePrefab, Gateway.Player.position, Gateway.Player.rotation).GetComponent<Projectile>();
                 projectile.projectileStats = Gateway.slot.Item.itemInstance;
             };
         }
