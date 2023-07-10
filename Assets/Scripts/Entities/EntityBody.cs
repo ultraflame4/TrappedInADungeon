@@ -26,12 +26,6 @@ namespace Entities
         public float CurrentStamina; // Automatically set to Stamina on start
         public float CurrentMana; // Automatically set to Mana on start
 
-        private List<IStatusEffect> statusEffects; // Current status effects on entity todo implement status effects
-        /// <summary>
-        /// The current status effects on this entity.
-        /// </summary>
-        public IStatusEffect[] StatusEffects => statusEffects.ToArray();
-
         private List<StatsModifier> StatsModifiers = new(); 
         public float Health => BaseHealth*Level+StatsModifiers.Sum(modifier => modifier.Health);
         public float Stamina => BaseStamina*Level+StatsModifiers.Sum(modifier => modifier.Stamina);
@@ -71,19 +65,5 @@ namespace Entities
             return baseDamage+Attack;
         }
 
-        public IStatusEffect AddStatusEffect(IStatusEffect statusEffect)
-        {
-            statusEffects.Add(statusEffect);
-            statusEffect.Start(this);
-            return statusEffect;
-        }
-        
-        private void Update()
-        {
-            foreach (var statusEffect in statusEffects)
-            {
-                statusEffect.Tick(this);
-            }
-        }
     }
 }
