@@ -20,21 +20,24 @@ namespace Entities
         public int BaseSpeed; // Movement speed
         public int BaseDefense; // Reduces damage taken
         
-        public float CurrentHealth; // Automatically set to _Health on start
-        public float CurrentStamina; // Automatically set to _Stamina on start
-        public float CurrentMana; // Automatically set to _Mana on start
+        public float CurrentHealth; // Automatically set to Health on start
+        public float CurrentStamina; // Automatically set to Stamina on start
+        public float CurrentMana; // Automatically set to Mana on start
 
         private List<IStatusEffect> statusEffects; // Current status effects on entity todo implement status effects
         /// <summary>
         /// The current status effects on this entity.
         /// </summary>
         public IStatusEffect[] StatusEffects => statusEffects.ToArray();
-        public float Health => BaseHealth; //todo figure out scaling
-        public float Stamina => BaseStamina; //todo figure out scaling
-        public float Mana => BaseMana; //todo figure out scaling
-        public float Attack => baseAttack; //todo figure out scaling
-        public float Speed => BaseSpeed; //todo figure out scaling
-        public float Defense => BaseDefense; //todo figure out scaling
+        
+        public float Health => BaseHealth*Level;
+        public float Stamina => BaseStamina*Level;
+        public float Mana => BaseMana*Level;
+        public float Attack => baseAttack*Level;
+        public float Speed => BaseSpeed*Level;
+        public float Defense => BaseDefense*Level;
+        
+        public int Level = 1; // Level of entity
 
         public event Action OnDeathEvent; // Event that is invoked when entity dies
         public event Action OnDamagedEvent; // Event that is invoked when entity takes damage

@@ -1,6 +1,6 @@
 ﻿namespace Entities
 {
-    public interface IStatusEffect : IStatsModifier
+    public interface IStatusEffect
     {
         /// <summary>
         /// Called When the status effect is applied
