@@ -4810,12 +4810,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7393945369561538349}
   anim: {fileID: 4847106860037611503}
-  body: {fileID: 7223776397476921510}
+  body: {fileID: 7960193540920185864}
   currentDirection: {x: 0, y: 0, z: 0}
   moveSpeed: 300
   dashSpeed: 1300
   dashPeriod: 100
-  dashManaCostPercent: 0.2
+  dashManaCostPercent: 0.1
   dashManaCostMin: 10
   jumpForce: 400
   jumpTimes: 2
@@ -4831,7 +4831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b29345fe32b4492a9c1848437226e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityBody: {fileID: 7223776397476921510}
+  entityBody: {fileID: 7960193540920185864}
   bloodParticles: {fileID: 8110258325600173695, guid: 9aba91a7d9f0a324aaa9b4ead097023b, type: 3}
 --- !u!114 &3925352218739439718
 MonoBehaviour:
@@ -5241,9 +5241,9 @@ GameObject:
   - component: {fileID: 4082155942687047529}
   - component: {fileID: 7393945369561538349}
   - component: {fileID: 4847106860037611503}
-  - component: {fileID: 3097540793361696089}
   - component: {fileID: 2420718636818332390}
-  - component: {fileID: 7223776397476921510}
+  - component: {fileID: 7960193540920185864}
+  - component: {fileID: 3097540793361696089}
   - component: {fileID: 3747500502270974231}
   - component: {fileID: 7960193540920185863}
   m_Layer: 6
@@ -5253,25 +5253,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7223776397476921510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7112775179100180397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8ecae3e1f09444e8ab4a0f5a777a785, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseHealth: 1000
-  BaseStamina: 0
-  BaseMana: 100
-  baseAttack: 0
-  BaseSpeed: 0
-  BaseDefense: 0
-  Level: 1
 --- !u!114 &7264993981760130290
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -5424,9 +5405,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9be32ddd77c4b2da1a541b3d32db59f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBody: {fileID: 7223776397476921510}
+  playerBody: {fileID: 7960193540920185864}
   healthBar: {fileID: 1676633526}
   manaBar: {fileID: 120557389}
+--- !u!114 &7960193540920185864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112775179100180397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f69a1d120c42405c983537b4c5e79599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseHealth: 500
+  baseAttack: 10
+  BaseSpeed: 10
+  BaseDefense: 10
+  Level: 1
+  BaseMana: 100
+  BaseManaRegen: 5
 --- !u!81 &8672299159088187458
 AudioListener:
   m_ObjectHideFlags: 0

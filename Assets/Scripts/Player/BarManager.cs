@@ -6,7 +6,7 @@ namespace Player
 {
     public class BarManager : MonoBehaviour
     {
-        public EntityBody playerBody;
+        public PlayerBody playerBody;
         public BarController healthBar;
         public BarController manaBar;
         

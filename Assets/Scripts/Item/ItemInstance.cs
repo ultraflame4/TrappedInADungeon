@@ -27,8 +27,8 @@ namespace Item
         public float Speed => item.base_speed;
         public float Defense => item.base_defense;
         public float Health => item.base_health;
-        public float Stamina => item.base_stamina;
         public float Mana => item.base_mana;
         public float ManaCost => item.mana_cost;
+        public float ManaRegen => 0;
     }
 }

@@ -11,7 +11,7 @@ namespace Player
     {
         public Rigidbody2D rb;
         public Animator anim;
-        public EntityBody body;
+        public PlayerBody body;
         [Header("Movement")]
         [ReadOnly] public Vector3 currentDirection = Vector3.right;
         public float moveSpeed = 10f;
@@ -53,7 +53,7 @@ namespace Player
             // include toJump in its own condition to prevent Input.GetButtonDown from setting toJump to false
             // We only set toJump to false if we have did the physics in the FixedUpdate
             toJump = GameManager.Controls.Player.Jump.triggered || toJump;
-            if (GameManager.Controls.Player.Dash.triggered)
+            if (GameManager.Controls.Player.Dash.triggered && body.CurrentMana.value > dashManaCostMin)
             {
                 toDash = true;
                 // Dash consumes 5% of mana or 10 whichever is greater
