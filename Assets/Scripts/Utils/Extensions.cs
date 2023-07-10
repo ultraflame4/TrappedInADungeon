@@ -39,5 +39,11 @@ namespace Utils
         {
             return value < 0;
         }
+        
+        public static T Add<T>(this List<T> a, T b)
+        {
+            a.Add(b);
+            return b;
+        }
     }
 }

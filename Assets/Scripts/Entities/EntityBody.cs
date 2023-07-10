@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Utils;
 
 namespace Entities
 {
@@ -29,7 +30,8 @@ namespace Entities
         /// The current status effects on this entity.
         /// </summary>
         public IStatusEffect[] StatusEffects => statusEffects.ToArray();
-        
+
+        private List<StatsModifier> StatsModifiers = new(); 
         public float Health => BaseHealth*Level;
         public float Stamina => BaseStamina*Level;
         public float Mana => BaseMana*Level;
