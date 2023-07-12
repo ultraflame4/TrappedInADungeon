@@ -60,11 +60,11 @@ namespace Player
                 body.CurrentMana.value -= dashCost;
             }
 
-            if (GameManager.Controls.Player.Dash.WasReleasedThisFrame())
+            if (GameManager.Controls.Player.Dash.WasReleasedThisFrame()) // If dash button is released, stop dashing
             {
-                toDash = false;
+                toDash = false; // Reset dash variables
                 isDashing = false;
-                StopCoroutine(dashCoroutine);
+                StopCoroutine(dashCoroutine); // Stop end dash coroutine
             }
             UpdateAnimationsParameters();
             UpdateSpriteDirection();
@@ -118,15 +118,14 @@ namespace Player
                 // Normalising it will change the direction to length one, aka it will consistent and not be literally 0.00...001
                 // Hence making this dashing thing work
                 move.x = currentDirection.normalized.x * dashSpeed * Time.deltaTime;
-                if (!isDashing)
+                if (!isDashing) // If just started dashing, start the end dash coroutine
                 {
-                    // Don't start the coroutine again if already dashing
-                    if (dashCoroutine is not null)
+                    if (dashCoroutine is not null) // If there is a dash coroutine running, stop it
                     {
                         isDashing = false;
-                        StopCoroutine(dashCoroutine);    
+                        StopCoroutine(dashCoroutine); // Stop end dash coroutine
                     }
-                    dashCoroutine=StartCoroutine(EndDash());
+                    dashCoroutine=StartCoroutine(EndDash()); // Start end dash coroutine
                 }
 
                 isDashing = true;
