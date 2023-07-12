@@ -21,8 +21,6 @@ namespace Player
         public float dashPeriod = 1f;
         [Tooltip("% of total mana consumed by dash")]
         public float dashManaCostPercent = 0.2f;
-        [Tooltip("Minimum mana cost for dash")]
-        public float dashManaCostMin = 10f;
 
         public float jumpForce = 100f;
         public int jumpTimes = 1;
@@ -33,12 +31,14 @@ namespace Player
         private bool toDash;
         private bool isDashing;
         private bool isInAir;
+        private Coroutine dashCoroutine;
 
         private bool alreadyJumping = false;
 
         private static readonly int IsWalking = Animator.StringToHash("IsWalking");
         private static readonly int IsJumping = Animator.StringToHash("IsJumping");
 
+        private float dashCost => body.Mana * dashManaCostPercent;
         private void Start()
         {
             jumpsLeft = jumpTimes;
@@ -53,11 +53,18 @@ namespace Player
             // include toJump in its own condition to prevent Input.GetButtonDown from setting toJump to false
             // We only set toJump to false if we have did the physics in the FixedUpdate
             toJump = GameManager.Controls.Player.Jump.triggered || toJump;
-            if (GameManager.Controls.Player.Dash.triggered && body.CurrentMana.value > dashManaCostMin)
+            if (GameManager.Controls.Player.Dash.triggered && body.CurrentMana.value > dashCost)
             {
                 toDash = true;
                 // Dash consumes 5% of mana or 10 whichever is greater
-                body.CurrentMana.value -= Mathf.Max(body.Mana*dashManaCostPercent,dashManaCostMin);
+                body.CurrentMana.value -= dashCost;
+            }
+
+            if (GameManager.Controls.Player.Dash.WasReleasedThisFrame())
+            {
+                toDash = false;
+                isDashing = false;
+                StopCoroutine(dashCoroutine);
             }
             UpdateAnimationsParameters();
             UpdateSpriteDirection();
@@ -114,7 +121,12 @@ namespace Player
                 if (!isDashing)
                 {
                     // Don't start the coroutine again if already dashing
-                    StartCoroutine(EndDash());
+                    if (dashCoroutine is not null)
+                    {
+                        isDashing = false;
+                        StopCoroutine(dashCoroutine);    
+                    }
+                    dashCoroutine=StartCoroutine(EndDash());
                 }
 
                 isDashing = true;

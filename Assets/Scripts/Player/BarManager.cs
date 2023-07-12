@@ -19,7 +19,6 @@ namespace Player
             };
             playerBody.CurrentMana.Changed += () =>
             {
-                Debug.Log("test");
                 manaBar.filledPercentage = playerBody.CurrentMana.value / playerBody.Mana;
                 manaBar.UpdateBar();
             };

@@ -4813,10 +4813,9 @@ MonoBehaviour:
   body: {fileID: 7960193540920185864}
   currentDirection: {x: 0, y: 0, z: 0}
   moveSpeed: 300
-  dashSpeed: 1300
-  dashPeriod: 100
+  dashSpeed: 1000
+  dashPeriod: 200
   dashManaCostPercent: 0.1
-  dashManaCostMin: 10
   jumpForce: 400
   jumpTimes: 2
 --- !u!114 &3747500502270974231
