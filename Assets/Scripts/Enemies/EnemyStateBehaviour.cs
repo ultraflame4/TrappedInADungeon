@@ -19,12 +19,12 @@ namespace Enemies
         /// <summary>
         /// Called when the state is entered
         /// </summary>
-        public void StateEnter() { }
+        public virtual void StateEnter() { }
 
         /// <summary>
         /// Called when state exitss
         /// </summary>
-        public void StateExit(){}
+        public virtual void StateExit(){}
         
     }
 }

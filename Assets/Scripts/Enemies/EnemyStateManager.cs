@@ -25,24 +25,37 @@ namespace Enemies
             TransitionState(EnemyStates.PATROL);
         }
 
+        /// <summary>
+        /// Call this to transition to a new state.
+        /// If the state is the same as the current state, nothing will happen.
+        /// </summary>
+        /// <param name="state">The state to transition to</param>
         public void TransitionState(EnemyStates state)
         {
+            if (currentState == state) return;
+
             if (currentBehaviour is not null)
             {
                 currentBehaviour.stateActive = false;
                 currentBehaviour.StateExit();
             }
+
             currentBehaviour = GetStateBehavior(state);
             currentState = state;
             if (state == EnemyStates.STUNNED)
             {
                 animator.SetTrigger("Stun");
             }
-            
-            if (currentBehaviour is null) throw new NullReferenceException($"State {state} does not exist");
+
+            if (currentBehaviour is null)
+            {
+                Debug.LogWarning($"State {state} does not exist");
+                return;
+            };
             currentBehaviour.stateActive = true;
             currentBehaviour.StateEnter();
         }
+
         public EnemyStateBehaviour GetStateBehavior(EnemyStates state)
         {
             switch (state)
@@ -58,16 +71,18 @@ namespace Enemies
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
-
-            return null;
         }
 
         private void Update()
         {
             animator.SetBool("isWalking", rb.velocity.magnitude > 0);
-            animator.SetBool("Attack", currentState == EnemyStates.ATTACK);
         }
-        
+
+        public void SetAttackAnim(bool value)
+        {
+            animator.SetBool("Attack", value);
+        }
+
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.CompareTag("Ground"))

@@ -2,7 +2,17 @@ fileFormatVersion: 2
 guid: b7c790b0141eb87408120928b5194f51
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Dive
+    second: {fileID: 7400000, guid: 953619a65f5a21241bf45fd3f9410949, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Fly
+    second: {fileID: 7400000, guid: 4adf9942812f60a45ac40bdb24bdf545, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -35,7 +45,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 32
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -75,7 +85,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -87,7 +97,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -95,7 +105,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638248615130196904
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,7 +131,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Wagracks_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: -0.84615386}
+    pivot: {x: 0.5, y: 0.3846154}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -141,7 +151,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Wagracks_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: -0.6}
+    pivot: {x: 0.5, y: 0.4666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -161,7 +171,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 73}
   - name: Wagracks_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: -0.923077}
+    pivot: {x: 0.5, y: 0.30769232}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -181,7 +191,7 @@ ScriptedImporter:
     uvTransform: {x: 30, y: 46}
   - name: Wagracks_Frame_4
     originalName: 
-    pivot: {x: 0.50000006, y: -0.923077}
+    pivot: {x: 0.50000006, y: 0.30769232}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -201,7 +211,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 25}
   - name: Wagracks_Frame_5
     originalName: 
-    pivot: {x: 0.38888893, y: -0.47368422}
+    pivot: {x: 0.38888893, y: 0.36842105}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -270,7 +280,55 @@ ScriptedImporter:
       spriteId: 7a0efbb034910d049908eb00d61196f5
     linkedCells: []
     parentIndex: -1
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Windows Store Apps
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 48, y: 32}

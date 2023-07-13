@@ -21,6 +21,15 @@ namespace Enemies
             Gizmos.DrawSphere(hitboxPos, hitboxRadius);
         }
 
+        public override void StateEnter()
+        {
+            stateManager.SetAttackAnim(true);
+        }
+        public override void StateExit()
+        {
+            stateManager.SetAttackAnim(false);
+        }
+
         public void MeleeAttack()
         {
             Collider2D collider = Physics2D.OverlapCircle(hitboxPos,hitboxRadius, LayerMask.GetMask("Player"));
