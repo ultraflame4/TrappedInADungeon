@@ -41,6 +41,7 @@ namespace Enemies
             // If player is out of range, go back to patrol
             if (Vector3.Distance(transform.position, player.position) > followRange)
             {
+                rb.velocity = Vector2.zero; // Stop moving when player out of range
                 stateManager.TransitionState(EnemyStates.PATROL); 
                 return;
             }

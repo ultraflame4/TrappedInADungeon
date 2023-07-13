@@ -34,7 +34,6 @@ namespace Enemies
             Vector3 toPlayer = player.position - transform.position;
             targetPos = player.transform.position + new Vector3(toPlayer.x > 0 ? 1 : -1, 1, 0);
             isNavigating = true;
-            Debug.Log("Dive attack state entered");
         }
 
         private void FixedUpdate()
