@@ -73,6 +73,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6951620618297413654, guid: b7c790b0141eb87408120928b5194f51, type: 3}
     - target: {fileID: 4446624405490695869, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+      propertyPath: Idle
+      value: 
+      objectReference: {fileID: 1210255643535073663}
+    - target: {fileID: 4446624405490695869, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: Attack
       value: 
       objectReference: {fileID: 75553948717123761}
@@ -116,6 +120,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.40625
       objectReference: {fileID: 0}
+    - target: {fileID: 7772803838891208523, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+      propertyPath: BaseSpeed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 8348109251440826098, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: attackDist
       value: 2
@@ -126,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8348109251440826098, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: followRange
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8348109251440826098, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: checkDirection
@@ -136,9 +144,13 @@ PrefabInstance:
     - {fileID: 4636332432275838779, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
     - {fileID: 4281439559219646697, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
     - {fileID: 5871894113917341172, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+    - {fileID: 7085540968724973339, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3713372788904983843, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1210255643535073663}
     - targetCorrespondingSourceObject: {fileID: 3713372788904983843, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       insertIndex: 7
       addedObject: {fileID: 75553948717123761}
@@ -151,6 +163,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3713372788904983843, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
   m_PrefabInstance: {fileID: 8769364281920065904}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1210255643535073663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5349017118548454483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23bb590fbe854323ab9e46718464fe15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radarRange: 4
 --- !u!114 &75553948717123761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diveWaitTime: 0.5
+  diveSpeedMult: 1.5
 --- !u!58 &2734022865442001581
 CircleCollider2D:
   m_ObjectHideFlags: 0

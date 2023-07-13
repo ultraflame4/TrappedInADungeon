@@ -3,7 +3,10 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public class EnemyIdle : EnemyStateBehaviour
+    /// <summary>
+    /// Gives enemies an "eye" that raycasts forward to detect the player.
+    /// </summary>
+    public class EnemyPatrolEye : EnemyStateBehaviour
     {
         public float eyeSightRange = 2f;
         public float eyeSightOffset = 0.5f;

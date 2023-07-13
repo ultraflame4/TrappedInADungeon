@@ -14,6 +14,8 @@ namespace Enemies
         
         [Tooltip("Time to wait in seconds before the enemy dive attacks the player")]
         public float diveWaitTime = 0.5f;
+        [Tooltip("Multiplier for the speed of the enemy when diving")]
+        public float diveSpeedMult = 2f;
         
         private Transform player;
         private Vector3 targetPos; // target position to dive from. Should always be 45 degrees above player
@@ -64,7 +66,7 @@ namespace Enemies
         bool MoveToTarget(Vector2 targetPosition)
         {
             Vector2 toTarget = (targetPosition - (Vector2)transform.position).normalized;
-            rb.velocity = toTarget * body.Speed * Time.deltaTime;
+            rb.velocity = toTarget * body.Speed * diveSpeedMult * Time.deltaTime;
             if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
             {
                 rb.velocity = Vector2.zero;
