@@ -192,8 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ceb30edcac49718a8fff9fce9b896e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diveWaitTime: 0.5
-  diveSpeedMult: 1.5
+  diveWaitTime: 0.2
+  diveSpeedMult: 1.75
   playerCheckRadius: 0.14
   playerCheckOffset: {x: 0.1, y: -0.05}
 --- !u!58 &2734022865442001581

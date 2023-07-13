@@ -30,6 +30,7 @@ namespace Enemies
         private bool isDiving = false; // whether the enemy is dive attacking the player
         
         private Vector3 playerCheckPos => transform.TransformPoint( playerCheckOffset);
+        private Coroutine diveAttackCoroutine;
         private void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -58,7 +59,7 @@ namespace Enemies
                 if (MoveToTarget(targetPos))
                 {
                     isNavigating = false;
-                    StartCoroutine(BeginDiveAttack());
+                    StartDive();
                 }
             }
             else if (isDiving)
@@ -71,11 +72,23 @@ namespace Enemies
             }
         }
 
+        private void StartDive()
+        {
+            if (diveAttackCoroutine is not null)
+            {
+                StopCoroutine(diveAttackCoroutine);
+            }
+            diveAttackCoroutine = StartCoroutine(BeginDiveAttack());
+        }
         private void EndDive()
         {
             isDiving = false;
             stateManager.TransitionState(EnemyStates.ALERT);
             stateManager.SetAttackAnim(false);
+            if (diveAttackCoroutine is not null)
+            {
+                StopCoroutine(diveAttackCoroutine);
+            }
         }
         /// <summary>
         /// Moves towards a target position and stops (and returns true) when it reaches it
