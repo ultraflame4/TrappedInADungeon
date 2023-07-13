@@ -3,13 +3,15 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public class EnemyMelee : MonoBehaviour
+    /// <summary>
+    /// Melee attack for enemies. The attacks are triggered by animation events. Call MeleeAttack() from the animation event.
+    /// </summary>
+    public class EnemyMeleeAttack : MonoBehaviour
     {
         public EntityBody entityBody;
         public Vector2 hitboxPosition;
         public float hitboxRadius;
         public float baseDamage=10;
-        
         private Vector2 hitboxPos => transform.TransformPoint(hitboxPosition);
         private void OnDrawGizmosSelected()
         {
@@ -24,7 +26,6 @@ namespace Enemies
             {
                 collider.GetComponent<EntityBody>().Damage(entityBody.CalculateAttackDamage(baseDamage));
             }
-            
         }
     }
 }
