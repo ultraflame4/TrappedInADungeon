@@ -16,7 +16,6 @@ namespace Enemies
         public float diveWaitTime = 0.5f;
         
         private Transform player;
-        private Vector3 currentPos;
         private Vector3 targetPos; // target position to dive from. Should always be 45 degrees above player
         private Vector2 diveTarget; // The target position to dive to. Aka the player's last calculated position
         private bool isNavigating = false; // whether the enemy is navigating to the target position
@@ -32,10 +31,10 @@ namespace Enemies
 
         public override void StateEnter()
         {
-            currentPos = transform.position;
-            Vector3 toPlayer = player.position - currentPos;
-            targetPos = player.transform.position + new Vector3(toPlayer.x > 0 ? 1 : 0, 1, 0);
+            Vector3 toPlayer = player.position - transform.position;
+            targetPos = player.transform.position + new Vector3(toPlayer.x > 0 ? 1 : -1, 1, 0);
             isNavigating = true;
+            Debug.Log("Dive attack state entered");
         }
 
         private void FixedUpdate()
@@ -55,6 +54,7 @@ namespace Enemies
                 {
                     isDiving = false;
                     stateManager.TransitionState(EnemyStates.ALERT);
+                    stateManager.SetAttackAnim(false);
                 }
             }
         }
@@ -77,15 +77,15 @@ namespace Enemies
         IEnumerator BeginDiveAttack()
         {
             yield return new WaitForSeconds(diveWaitTime);
-            isDiving = true;
+            follow.RotateTowardsPlayer();
             diveTarget = player.position;
+            isDiving = true;
             stateManager.SetAttackAnim(true);
         }
 
         public override void StateExit()
         {
             stateManager.SetAttackAnim(false);
-            rb.velocity = Vector2.zero;
         }
 
         private void OnTriggerEnter2D(Collider2D other) { }

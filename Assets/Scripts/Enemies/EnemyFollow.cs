@@ -29,6 +29,11 @@ namespace Enemies
 
         private void FixedUpdate()
         {
+            // Direction to player
+            directionToPlayer = (player.position - transform.position).normalized;
+            // Direction to player but snapped to the x axis. (y=0)
+            directionToPlayerSnapped = new Vector3(directionToPlayer.x, 0).normalized;
+            
             if (!stateActive) return;
             // If enemy is not grounded and can't fly, skip moving
             if (!stateManager.isGrounded && !allowFlight) return;
@@ -39,10 +44,7 @@ namespace Enemies
                 stateManager.TransitionState(EnemyStates.PATROL); 
                 return;
             }
-            // Direction to player
-            directionToPlayer = (player.position - transform.position).normalized;
-            // Direction to player but snapped to the x axis. (y=0)
-            directionToPlayerSnapped = new Vector3(directionToPlayer.x, 0).normalized;
+
             
             RotateTowardsPlayer();
             if (CheckPlayerWithinAttackRange())
@@ -77,7 +79,7 @@ namespace Enemies
             }
             return false;
         }
-        private void RotateTowardsPlayer()
+        public void RotateTowardsPlayer()
         {
             // Rotate towards player
             // snaps direction to x axis

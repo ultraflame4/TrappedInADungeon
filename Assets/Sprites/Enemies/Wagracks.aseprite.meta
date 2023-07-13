@@ -131,7 +131,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Wagracks_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: 0.3846154}
+    pivot: {x: 0.5, y: 0.4615385}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -151,15 +151,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Wagracks_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: 0.4666667}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 73
+      y: 75
       width: 18
-      height: 15
+      height: 14
     spriteID: 89db9aed4d4277343b5fac4c7ac43da6
     spriteBone: []
     spriteOutline: []
@@ -168,15 +168,15 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 73}
+    uvTransform: {x: 4, y: 75}
   - name: Wagracks_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: 0.30769232}
+    pivot: {x: 0.5, y: 0.3846154}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 30
+      x: 32
       y: 46
       width: 24
       height: 13
@@ -188,10 +188,10 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 30, y: 46}
+    uvTransform: {x: 32, y: 46}
   - name: Wagracks_Frame_4
     originalName: 
-    pivot: {x: 0.50000006, y: 0.30769232}
+    pivot: {x: 0.50000006, y: 0.3846154}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -211,15 +211,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 25}
   - name: Wagracks_Frame_5
     originalName: 
-    pivot: {x: 0.38888893, y: 0.36842105}
+    pivot: {x: 0.50000006, y: 0.42857143}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 46
-      width: 18
-      height: 19
+      width: 20
+      height: 21
     spriteID: 7a0efbb034910d049908eb00d61196f5
     spriteBone: []
     spriteOutline: []
@@ -242,7 +242,7 @@ ScriptedImporter:
       frameIndex: 1
       cellRect:
         x: 5
-        y: 11
+        y: 10
         width: 38
         height: 13
       spriteId: 0cf92cb505c54134eb2e0992c941caa2
@@ -252,13 +252,13 @@ ScriptedImporter:
         x: 15
         y: 9
         width: 18
-        height: 15
+        height: 14
       spriteId: 89db9aed4d4277343b5fac4c7ac43da6
     - name: Wagracks_Frame_3
       frameIndex: 3
       cellRect:
         x: 12
-        y: 12
+        y: 11
         width: 24
         height: 13
       spriteId: 14b4d1f45fe5a604ba42bbdf30757aa8
@@ -266,17 +266,17 @@ ScriptedImporter:
       frameIndex: 4
       cellRect:
         x: 7
-        y: 12
+        y: 11
         width: 34
         height: 13
       spriteId: 141856779dbd6b44db725563aa422974
     - name: Wagracks_Frame_5
       frameIndex: 5
       cellRect:
-        x: 17
-        y: 9
-        width: 18
-        height: 19
+        x: 14
+        y: 7
+        width: 20
+        height: 21
       spriteId: 7a0efbb034910d049908eb00d61196f5
     linkedCells: []
     parentIndex: -1
