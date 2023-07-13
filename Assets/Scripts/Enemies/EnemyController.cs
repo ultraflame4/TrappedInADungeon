@@ -125,7 +125,7 @@ namespace Enemies
             }
         }
 
-        public bool CheckPlayerVisible()
+        private bool CheckPlayerVisible()
         {
             RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, transform.right, eyeSightRange, LayerMask.GetMask("Player"));
             if (!hit.transform) return false;
@@ -137,7 +137,7 @@ namespace Enemies
             return false;
         }
 
-        public void RotateTowardsPlayer()
+        private void RotateTowardsPlayer()
         {
             // Rotate towards player
             // snaps direction to x axis
