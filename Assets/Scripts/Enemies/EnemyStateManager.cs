@@ -5,11 +5,16 @@ namespace Enemies
 {
     public class EnemyStateManager : MonoBehaviour
     {
+        public Animator animator;
+        public Rigidbody2D rb;
+
         public EnemyStateBehaviour Idle;
         public EnemyStateBehaviour Alert;
         public EnemyStateBehaviour Attack;
         public EnemyStateBehaviour Stunned;
-        private EnemyStateBehaviour currentState;
+        private EnemyStateBehaviour currentBehaviour;
+        private EnemyStates currentState2;
+
         private void Start()
         {
             Idle?.StateInit(this);
@@ -21,15 +26,21 @@ namespace Enemies
 
         public void TransitionState(EnemyStates state)
         {
-            if (currentState is not null)
+            if (currentBehaviour is not null)
             {
-                currentState.stateActive = false;
-                currentState.StateExit();
+                currentBehaviour.stateActive = false;
+                currentBehaviour.StateExit();
             }
-            currentState = GetStateBehavior(state);
-            if (currentState is null) throw new NullReferenceException($"State {state} does not exist");
-            currentState.stateActive = true;
-            currentState.StateEnter();
+            currentBehaviour = GetStateBehavior(state);
+            currentState2 = state;
+            if (state == EnemyStates.STUNNED)
+            {
+                animator.SetTrigger("Stun");
+            }
+            
+            if (currentBehaviour is null) throw new NullReferenceException($"State {state} does not exist");
+            currentBehaviour.stateActive = true;
+            currentBehaviour.StateEnter();
         }
         public EnemyStateBehaviour GetStateBehavior(EnemyStates state)
         {
@@ -52,7 +63,8 @@ namespace Enemies
 
         private void Update()
         {
-
+            animator.SetBool("isWalking", rb.velocity.magnitude > 0);
+            animator.SetBool("Attack", currentState2 == EnemyStates.ATTACK);
         }
     }
 }

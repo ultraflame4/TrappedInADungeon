@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using System;
+using Entities;
 using UnityEngine;
 
 namespace Enemies
@@ -12,6 +13,7 @@ namespace Enemies
         public Vector2 hitboxPosition;
         public float hitboxRadius;
         public float baseDamage=10;
+        public EnemyFollow follow;
         private Vector2 hitboxPos => transform.TransformPoint(hitboxPosition);
         private void OnDrawGizmosSelected()
         {
@@ -27,6 +29,14 @@ namespace Enemies
                 collider.GetComponent<EntityBody>().Damage(entityBody.CalculateAttackDamage(baseDamage));
             }
         }
-    
+
+        private void FixedUpdate()
+        {
+            if (!stateActive) return;
+            if (!follow.CheckPlayerWithinAttackRange())
+            {
+                stateManager.TransitionState(EnemyStates.ALERT);
+            }
+        }
     }
 }

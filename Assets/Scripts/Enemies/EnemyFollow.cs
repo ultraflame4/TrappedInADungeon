@@ -61,16 +61,14 @@ namespace Enemies
 
             rb.velocity = vel;
         }
-        
-        private bool CheckPlayerWithinAttackRange()
+
+        public bool CheckPlayerWithinAttackRange()
         {
             if (Vector3.Distance(transform.position, player.position) < attackDist && Vector2.Angle(directionToPlayer, transform.right) < 90)
             {
-                // todo transition to attack state
-                // state = EnemyState.ATTACK;
+                stateManager.TransitionState(EnemyStates.ATTACK);
                 return true;
             }
-
             return false;
         }
         private void RotateTowardsPlayer()

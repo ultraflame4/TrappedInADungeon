@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bec6353430b4d6aa5d08b0eb016fd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 2397109330692920770}
+  rb: {fileID: 2967751085501941301}
   Idle: {fileID: 7085540968724973339}
   Alert: {fileID: 8348109251440826098}
   Attack: {fileID: 4636332432275838779}
@@ -179,7 +181,7 @@ MonoBehaviour:
   rb: {fileID: 2967751085501941301}
   allowFlight: 0
   followRange: 3
-  attackDist: 0.1
+  attackDist: 0.58
 --- !u!114 &4636332432275838779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +198,7 @@ MonoBehaviour:
   hitboxPosition: {x: 0.4, y: -0.15}
   hitboxRadius: 0.53
   baseDamage: 10
+  follow: {fileID: 8348109251440826098}
 --- !u!114 &7476105827066563008
 MonoBehaviour:
   m_ObjectHideFlags: 0
