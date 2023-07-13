@@ -22,7 +22,7 @@ namespace Enemies
         public bool allowFlight = false;
 
         public float knockbackForce = 100f;
-        public EnemyState state;
+        public EnemyStates state;
 
         public float followRange = 5f;
         public float eyeSightRange = 2f;
@@ -73,16 +73,16 @@ namespace Enemies
         {
             spriteRenderer.color = Color.grey;
             animator.SetTrigger("Stun");
-            state = EnemyState.STUNNED;
+            state = EnemyStates.STUNNED;
             yield return new WaitForSeconds(durationMS / 1000);
-            state = EnemyState.ALERT;
+            state = EnemyStates.ALERT;
             spriteRenderer.color = Color.white;
         }
 
         private void Update()
         {
             animator.SetBool("isWalking", rb.velocity.magnitude > 0);
-            animator.SetBool("Attack", state == EnemyState.ATTACK);
+            animator.SetBool("Attack", state == EnemyStates.ATTACK);
         }
 
         private void FixedUpdate()
@@ -91,30 +91,30 @@ namespace Enemies
             directionToPlayerSnapped = new Vector3(directionToPlayer.x, 0).normalized;
             switch (state)
             {
-                case EnemyState.STUNNED:
+                case EnemyStates.STUNNED:
                     break;
-                case EnemyState.PATROL:
+                case EnemyStates.PATROL:
                     if (CheckPlayerVisible())
                     {
-                        state = EnemyState.ALERT;
+                        state = EnemyStates.ALERT;
                     }
 
                     break;
-                case EnemyState.ALERT:
+                case EnemyStates.ALERT:
                     if (isAttacking) break;
                     if (Vector3.Distance(transform.position, player.position) > followRange)
                     {
-                        state = EnemyState.PATROL;
+                        state = EnemyStates.PATROL;
                         break;
                     }
 
                     MoveTowardsPlayer();
                     break;
 
-                case EnemyState.ATTACK:
+                case EnemyStates.ATTACK:
                     if (!CheckPlayerWithinAttackRange())
                     {
-                        state = EnemyState.ALERT;
+                        state = EnemyStates.ALERT;
                         break;
                     }
 
@@ -174,7 +174,7 @@ namespace Enemies
         {
             if (Vector3.Distance(transform.position, player.position) < attackDist && Vector2.Angle(directionToPlayer, transform.right) < 90)
             {
-                state = EnemyState.ATTACK;
+                state = EnemyStates.ATTACK;
                 return true;
             }
 

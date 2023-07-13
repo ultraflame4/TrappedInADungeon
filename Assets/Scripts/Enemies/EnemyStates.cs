@@ -1,6 +1,6 @@
 ﻿namespace Enemies
 {
-    public enum EnemyState
+    public enum EnemyStates
     {
         // Stunned
         STUNNED,

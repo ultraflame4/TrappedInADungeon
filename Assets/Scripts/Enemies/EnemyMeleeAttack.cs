@@ -6,7 +6,7 @@ namespace Enemies
     /// <summary>
     /// Melee attack for enemies. The attacks are triggered by animation events. Call MeleeAttack() from the animation event.
     /// </summary>
-    public class EnemyMeleeAttack : MonoBehaviour
+    public class EnemyMeleeAttack : EnemyStateBehaviour
     {
         public EntityBody entityBody;
         public Vector2 hitboxPosition;
@@ -27,5 +27,6 @@ namespace Enemies
                 collider.GetComponent<EntityBody>().Damage(entityBody.CalculateAttackDamage(baseDamage));
             }
         }
+    
     }
 }

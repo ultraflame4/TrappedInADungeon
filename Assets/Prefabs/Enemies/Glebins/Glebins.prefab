@@ -12,13 +12,15 @@ GameObject:
   - component: {fileID: 4271550116412811328}
   - component: {fileID: 2397109330692920770}
   - component: {fileID: 7772803838891208523}
-  - component: {fileID: 5784955308027097198}
+  - component: {fileID: 4446624405490695869}
+  - component: {fileID: 7085540968724973339}
+  - component: {fileID: 8348109251440826098}
+  - component: {fileID: 4636332432275838779}
   - component: {fileID: 7476105827066563008}
   - component: {fileID: 4281439559219646697}
   - component: {fileID: 2967751085501941301}
   - component: {fileID: 5871894113917341172}
   - component: {fileID: 3542403788439501788}
-  - component: {fileID: 4636332432275838779}
   m_Layer: 7
   m_Name: Glebins
   m_TagString: Enemy
@@ -131,7 +133,7 @@ MonoBehaviour:
   BaseSpeed: 200
   BaseDefense: 0
   Level: 1
---- !u!114 &5784955308027097198
+--- !u!114 &4446624405490695869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,21 +142,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 3713372788904983843}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 205cd61ff6b74138836cdb4ca6b80abf, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bec6353430b4d6aa5d08b0eb016fd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 2967751085501941301}
+  Idle: {fileID: 7085540968724973339}
+  Alert: {fileID: 8348109251440826098}
+  Attack: {fileID: 4636332432275838779}
+  Stunned: {fileID: 0}
+--- !u!114 &7085540968724973339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713372788904983843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a484033f59f34225825ee3312e2d25b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyeSightRange: 2
+  eyeSightOffset: -0.05
+--- !u!114 &8348109251440826098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713372788904983843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ab335867c54338a8d565be68904198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   body: {fileID: 7772803838891208523}
-  player: {fileID: 0}
-  animator: {fileID: 2397109330692920770}
-  spriteRenderer: {fileID: 4271550116412811328}
+  rb: {fileID: 2967751085501941301}
   allowFlight: 0
-  knockbackForce: 4
-  state: 2
-  followRange: 6
-  eyeSightRange: 1.5
-  eyeSightOffset: 0.5
-  attackDist: 0.7
+  followRange: 3
+  attackDist: 0.1
+--- !u!114 &4636332432275838779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713372788904983843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ca0dc5f154f774bab17e5887cea1ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityBody: {fileID: 7772803838891208523}
+  hitboxPosition: {x: 0.4, y: -0.15}
+  hitboxRadius: 0.53
+  baseDamage: 10
 --- !u!114 &7476105827066563008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,19 +332,3 @@ MonoBehaviour:
   entityBody: {fileID: 7772803838891208523}
   spriteRenderer: {fileID: 4271550116412811328}
   DeadShadowPrefab: {fileID: 7715831331796477733, guid: 568f0fee3973e1d41bf8aec4c81585b6, type: 3}
---- !u!114 &4636332432275838779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3713372788904983843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2ca0dc5f154f774bab17e5887cea1ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityBody: {fileID: 0}
-  hitboxPosition: {x: 0.4, y: -0.15}
-  hitboxRadius: 0.53
-  baseDamage: 10
