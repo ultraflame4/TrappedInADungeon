@@ -14,6 +14,7 @@ namespace Enemies
         public EnemyStateBehaviour Stunned;
         private EnemyStateBehaviour currentBehaviour;
         private EnemyStates currentState2;
+        public bool isGrounded { get; private set; } = false;
 
         private void Start()
         {
@@ -65,6 +66,22 @@ namespace Enemies
         {
             animator.SetBool("isWalking", rb.velocity.magnitude > 0);
             animator.SetBool("Attack", currentState2 == EnemyStates.ATTACK);
+        }
+        
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Ground"))
+            {
+                isGrounded = true;
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Ground"))
+            {
+                isGrounded = false;
+            }
         }
     }
 }

@@ -8,8 +8,8 @@ namespace Enemies
     {
         public EntityBody body;
         public Rigidbody2D rb;
-        public bool allowFlight;
         
+        public bool allowFlight;
         [Tooltip("How far will the enemy follow the player before stopping")]
         public float followRange = 5f;
         [Tooltip("How close the enemy needs to be to attack the player")]
@@ -28,6 +28,8 @@ namespace Enemies
         private void FixedUpdate()
         {
             if (!stateActive) return;
+            // If enemy is not grounded and can't fly, skip moving
+            if (!stateManager.isGrounded && !allowFlight) return;
             
             // If player is out of range, go back to patrol
             if (Vector3.Distance(transform.position, player.position) > followRange)
