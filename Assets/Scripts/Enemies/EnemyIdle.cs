@@ -34,5 +34,19 @@ namespace Enemies
             Gizmos.color = Color.red;
             Gizmos.DrawRay(raycastOrigin, transform.right * eyeSightRange);
         }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.collider.CompareTag("Enemy"))
+            {
+                // If collided with another enemy in alert state, transition to alert state
+                var otherEnemy = other.collider.GetComponent<EnemyStateManager>();
+                if (otherEnemy is null) return;
+                if (otherEnemy.currentState == EnemyStates.ALERT)
+                {
+                    stateManager.TransitionState(EnemyStates.ALERT);
+                }
+            }
+        }
     }
 }
