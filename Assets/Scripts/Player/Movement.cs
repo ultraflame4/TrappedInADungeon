@@ -155,7 +155,6 @@ namespace Player
         IEnumerator EndDash()
         {
             yield return new WaitForSeconds(dashPeriod / 1000);
-            Debug.Log("Test");
             toDash = false;
             isDashing = false;
         }
