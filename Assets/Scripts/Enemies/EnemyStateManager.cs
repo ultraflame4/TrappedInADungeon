@@ -12,6 +12,7 @@ namespace Enemies
         public EnemyStateBehaviour Alert;
         public EnemyStateBehaviour Attack;
         public EnemyStateBehaviour Stunned;
+        [field: SerializeField]
         public EnemyStates currentState { get; private set; }
         private EnemyStateBehaviour currentBehaviour;
         public bool isGrounded { get; private set; } = false;
@@ -32,6 +33,7 @@ namespace Enemies
         /// <param name="state">The state to transition to</param>
         public void TransitionState(EnemyStates state)
         {
+            Debug.Log($"Transitioning to {state}");
             if (currentState == state) return;
 
             if (currentBehaviour is not null)

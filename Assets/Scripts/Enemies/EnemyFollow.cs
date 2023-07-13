@@ -14,6 +14,8 @@ namespace Enemies
         public float followRange = 5f;
         [Tooltip("How close the enemy needs to be to attack the player")]
         public float attackDist = 0.1f;
+        [Tooltip("Should the enemy be facing the player when attacking?")]
+        public bool checkDirection = true;
 
         private Transform player;
         private Vector3 directionToPlayer;
@@ -66,8 +68,10 @@ namespace Enemies
 
         public bool CheckPlayerWithinAttackRange()
         {
-            if (Vector3.Distance(transform.position, player.position) < attackDist && Vector2.Angle(directionToPlayer, transform.right) < 90)
+            if (Vector3.Distance(transform.position, player.position) < attackDist)
             {
+                // If the enemy should be facing the player when attacking, check if the player is within 45 degrees of the enemy's right
+                if (checkDirection && !(Vector2.Angle(directionToPlayer, transform.right) > 45)) return false;
                 stateManager.TransitionState(EnemyStates.ATTACK);
                 return true;
             }

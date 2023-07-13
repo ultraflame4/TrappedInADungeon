@@ -19,7 +19,6 @@ namespace Enemies
         private Vector3 currentPos;
         private Vector3 targetPos; // target position to dive from. Should always be 45 degrees above player
         private Vector2 diveTarget; // The target position to dive to. Aka the player's last calculated position
-        public float diveDistance;
         private bool isNavigating = false; // whether the enemy is navigating to the target position
         private bool isDiving = false; // whether the enemy is dive attacking the player
 
@@ -86,6 +85,7 @@ namespace Enemies
         public override void StateExit()
         {
             stateManager.SetAttackAnim(false);
+            rb.velocity = Vector2.zero;
         }
 
         private void OnTriggerEnter2D(Collider2D other) { }
