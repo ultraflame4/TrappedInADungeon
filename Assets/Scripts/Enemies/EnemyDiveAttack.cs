@@ -48,6 +48,11 @@ namespace Enemies
         private void FixedUpdate()
         {
             if (!stateActive) return;
+            if (!follow.CheckPlayerWithinAttackRange())
+            {
+                EndDive(); // If player is out of range, end dive (which also transitions to alert state)
+                return;
+            }
             if (isNavigating)
             {
                 if (MoveToTarget(targetPos))
