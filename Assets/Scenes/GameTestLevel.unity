@@ -4223,9 +4223,17 @@ PrefabInstance:
       propertyPath: diveDirection.y
       value: -3.77
       objectReference: {fileID: 0}
+    - target: {fileID: 2734022865442001581, guid: fcbffacc27cd3394fb2d23cad41cebe0, type: 3}
+      propertyPath: m_Radius
+      value: 0.075
+      objectReference: {fileID: 0}
     - target: {fileID: 5349017118548454483, guid: fcbffacc27cd3394fb2d23cad41cebe0, type: 3}
       propertyPath: m_Name
       value: Wagracks
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480460037479946068, guid: fcbffacc27cd3394fb2d23cad41cebe0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5698285211853211012, guid: fcbffacc27cd3394fb2d23cad41cebe0, type: 3}
       propertyPath: m_RootOrder

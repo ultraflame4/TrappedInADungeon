@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Entities;
+using Player;
 using UnityEngine;
 
 namespace Enemies
@@ -16,13 +17,19 @@ namespace Enemies
         public float diveWaitTime = 0.5f;
         [Tooltip("Multiplier for the speed of the enemy when diving")]
         public float diveSpeedMult = 2f;
+        [Header("Player Check")]
+        [Tooltip("Radius of the circle used to check if the player is within damage range")]
+        public float playerCheckRadius = 0.1f;
+        [Tooltip("Offset of the circle used to check if the player is within damage range")]
+        public Vector2 playerCheckOffset;
         
         private Transform player;
         private Vector3 targetPos; // target position to dive from. Should always be 45 degrees above player
         private Vector2 diveTarget; // The target position to dive to. Aka the player's last calculated position
         private bool isNavigating = false; // whether the enemy is navigating to the target position
         private bool isDiving = false; // whether the enemy is dive attacking the player
-
+        
+        private Vector3 playerCheckPos => transform.TransformPoint( playerCheckOffset);
         private void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -51,15 +58,20 @@ namespace Enemies
             }
             else if (isDiving)
             {
+                CheckPlayerCollided();
                 if (MoveToTarget(diveTarget))
                 {
-                    isDiving = false;
-                    stateManager.TransitionState(EnemyStates.ALERT);
-                    stateManager.SetAttackAnim(false);
+                    EndDive();
                 }
             }
         }
 
+        private void EndDive()
+        {
+            isDiving = false;
+            stateManager.TransitionState(EnemyStates.ALERT);
+            stateManager.SetAttackAnim(false);
+        }
         /// <summary>
         /// Moves towards a target position and stops (and returns true) when it reaches it
         /// </summary>
@@ -89,6 +101,21 @@ namespace Enemies
             stateManager.SetAttackAnim(false);
         }
 
-        private void OnTriggerEnter2D(Collider2D other) { }
+        private void CheckPlayerCollided()
+        {
+            Collider2D playerCollider = Physics2D.OverlapCircle(playerCheckPos, playerCheckRadius, LayerMask.GetMask("Player"));
+            if (playerCollider is not null)
+            {
+                player.GetComponent<EntityBody>().Damage(body.Attack);
+                EndDive(); // End the dive attack if the player is hit
+            }
+            
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red * 0.5f;
+            Gizmos.DrawSphere(playerCheckPos, playerCheckRadius);
+        }
     }
 }

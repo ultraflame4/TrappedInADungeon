@@ -124,6 +124,10 @@ PrefabInstance:
       propertyPath: BaseSpeed
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 7772803838891208523, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+      propertyPath: baseAttack
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8348109251440826098, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: attackDist
       value: 2
@@ -190,6 +194,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diveWaitTime: 0.5
   diveSpeedMult: 1.5
+  playerCheckRadius: 0.14
+  playerCheckOffset: {x: 0.1, y: -0.05}
 --- !u!58 &2734022865442001581
 CircleCollider2D:
   m_ObjectHideFlags: 0
