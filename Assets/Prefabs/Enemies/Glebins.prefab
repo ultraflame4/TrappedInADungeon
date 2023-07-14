@@ -151,6 +151,7 @@ MonoBehaviour:
   Alert: {fileID: 8348109251440826098}
   Attack: {fileID: 4636332432275838779}
   Stunned: {fileID: 0}
+  <currentState>k__BackingField: 0
 --- !u!114 &7085540968724973339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,8 +181,9 @@ MonoBehaviour:
   body: {fileID: 7772803838891208523}
   rb: {fileID: 2967751085501941301}
   allowFlight: 0
-  followRange: 3
+  followRange: 8
   attackDist: 0.58
+  checkDirection: 1
 --- !u!114 &4636332432275838779
 MonoBehaviour:
   m_ObjectHideFlags: 0
