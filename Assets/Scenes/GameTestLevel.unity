@@ -4721,6 +4721,10 @@ PrefabInstance:
       propertyPath: attackDist
       value: 0.73
       objectReference: {fileID: 0}
+    - target: {fileID: 8693249103983217221, guid: 735229b534043e44d845dca5d7dd26c1, type: 3}
+      propertyPath: stopDistBuffer
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

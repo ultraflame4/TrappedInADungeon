@@ -15,8 +15,10 @@ namespace Enemies
         [Tooltip("How far will the enemy follow the player before stopping")]
         public float followRange = 5f;
 
-        [FormerlySerializedAs("attackDist")] [Tooltip("Distance to the player before the enemy stops ( and presumably starts attacking )")]
+        [Tooltip("Distance to the player before the enemy stops ( and presumably starts attacking )")]
         public float stopDist = 0.1f;
+        // A buffer to make sure the player is well within the stop distance
+        const float stopDistBuffer = 0.05f;
 
         [Tooltip("Should the enemy be facing the player when attacking?")]
         public bool checkDirection = true;
@@ -61,16 +63,15 @@ namespace Enemies
 
             Vector3 vel = (allowFlight ? directionToPlayer : directionToPlayerSnapped) * body.Speed;
             // Get distance to player and subtract attack distance
-            // 0.01f is a small buffer so that the player is actually within the attack range
-            float distance = Vector3.Distance(transform.position, player.position) - stopDist;
+            float distance = Vector3.Distance(transform.position, player.position) - stopDist + stopDistBuffer;
             // Clamp distance to 0-1. distFactor makes velocity lower the closer the enemy is to the player
             float distFactor = Mathf.Clamp(Mathf.Pow(2 * distance, 2), 0, 1);
             // Scale velocity by distFactor
             // distance will become negative when player is within stopDist. However because distance gets squared, it will always be positive,
             // and we dont want the enemy to move backwards when the player is within stopDist.
             // Hence we simply do a check to see if distance is negative and make distFactor 0 if it is
-            vel *= distance > 0 ? distFactor : 0; 
-            
+            vel *= distance > 0 ? distFactor : 0;
+
             if (!allowFlight) // Preserve y velocity if enemy can't fly
             {
                 vel.y = rb.velocity.y;
@@ -92,6 +93,7 @@ namespace Enemies
             // If the enemy can't fly, and  player is within the stop distance, return true but don't transition to attack
             if (!allowFlight && Mathf.Abs(player.position.x - transform.position.x) <= stopDist)
             {
+                stateManager.TransitionState(EnemyStates.ATTACK);
                 return true;
             }
 
@@ -109,6 +111,7 @@ namespace Enemies
         {
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireSphere(transform.position, stopDist);
+            Gizmos.DrawWireSphere(transform.position, stopDist-stopDistBuffer);
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, followRange);
         }
