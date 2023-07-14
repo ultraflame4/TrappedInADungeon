@@ -1,6 +1,7 @@
 ﻿using System;
 using Entities;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Enemies
 {
@@ -12,15 +13,14 @@ namespace Enemies
         public bool allowFlight;
         [Tooltip("How far will the enemy follow the player before stopping")]
         public float followRange = 5f;
-        [Tooltip("How close the enemy needs to be to attack the player")]
-        public float attackDist = 0.1f;
+        [FormerlySerializedAs("attackDist")] [Tooltip("Distance to the player before the enemy stops ( and presumably starts attacking )")]
+        public float stopDist = 0.1f;
         [Tooltip("Should the enemy be facing the player when attacking?")]
         public bool checkDirection = true;
 
         private Transform player;
         private Vector3 directionToPlayer;
         private Vector3 directionToPlayerSnapped;
-
         private void Start()
         {
             player = GameObject.FindWithTag("Player").transform;
@@ -37,7 +37,7 @@ namespace Enemies
             if (!stateActive) return;
             // If enemy is not grounded and can't fly, skip moving
             if (!stateManager.isGrounded && !allowFlight) return;
-            
+
             // If player is out of range, go back to patrol
             if (Vector3.Distance(transform.position, player.position) > followRange)
             {
@@ -57,7 +57,7 @@ namespace Enemies
             Vector3 vel = (allowFlight ? directionToPlayer : directionToPlayerSnapped) * body.Speed;
             // Get distance to player and subtract attack distance
             // 0.01f is a small buffer so that the player is actually within the attack range
-            float distance = Vector3.Distance(transform.position, player.position) - attackDist + 0.05f;
+            float distance = Vector3.Distance(transform.position, player.position) - stopDist + 0.05f;
             // Clamp distance to 0-1. distFactor makes velocity lower the closer the enemy is to the player
             float distFactor = Mathf.Clamp(Mathf.Pow(2 * distance, 2) + 0.2f, 0, 1);
             vel *= distFactor * Time.deltaTime; // Scale velocity by distFactor & deltaTime
@@ -71,7 +71,7 @@ namespace Enemies
 
         public bool CheckPlayerWithinAttackRange()
         {
-            if (Vector3.Distance(transform.position, player.position) < attackDist)
+            if (Vector3.Distance(transform.position, player.position) < stopDist)
             {
                 // If the enemy should be facing the player when attacking, check if the player is within 45 degrees of the enemy's right
                 if (checkDirection && !(Vector2.Angle(directionToPlayer, transform.right) > 45)) return false;
@@ -90,7 +90,7 @@ namespace Enemies
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.magenta;
-            Gizmos.DrawWireSphere(transform.position, attackDist);
+            Gizmos.DrawWireSphere(transform.position, stopDist);
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, followRange);
         }

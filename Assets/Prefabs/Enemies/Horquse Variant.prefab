@@ -117,6 +117,10 @@ PrefabInstance:
       value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8348109251440826098, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+      propertyPath: stopDist
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348109251440826098, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: attackDist
       value: 0.7
       objectReference: {fileID: 0}
