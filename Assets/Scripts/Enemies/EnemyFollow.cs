@@ -26,22 +26,32 @@ namespace Enemies
         private Transform player;
         private Vector3 directionToPlayer;
         private Vector3 directionToPlayerSnapped;
-
+        
+        private bool attackAnimPlaying => stateManager.animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
         private void Start()
         {
             player = GameObject.FindWithTag("Player").transform;
         }
 
-
-        private void FixedUpdate()
+        /// <summary>
+        /// Updates the directionToPlayer and directionToPlayerSnapped variables which are also used by other states behaviors 
+        /// </summary>
+        void UpdateDirections()
         {
             // Direction to player
             directionToPlayer = (player.position - transform.position).normalized;
             // Direction to player but snapped to the x axis. (y=0)
             // Using boolean logic to determine whether to snap to 1 or -1 else when x=0, the Vector normalisation will freak out between 1 and -1
             directionToPlayerSnapped = new Vector3(directionToPlayer.x > 0 ? 1 : -1, 0);
+        }
+
+        private void FixedUpdate()
+        {
+            UpdateDirections();
 
             if (!stateActive) return;
+            if (attackAnimPlaying) return; // Don't move if attack animation is still playing
+            
             // If enemy is not grounded and can't fly, skip moving
             if (!stateManager.isGrounded && !allowFlight) return;
 
