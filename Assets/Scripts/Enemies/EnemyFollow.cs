@@ -18,7 +18,7 @@ namespace Enemies
         [Tooltip("Distance to the player before the enemy stops ( and presumably starts attacking )")]
         public float stopDist = 0.1f;
         // A buffer to make sure the player is well within the stop distance
-        const float stopDistBuffer = 0.05f;
+        const float stopDistBuffer = 0.5f;
 
         [Tooltip("Should the enemy be facing the player when attacking?")]
         public bool checkDirection = true;
@@ -50,7 +50,7 @@ namespace Enemies
             UpdateDirections();
 
             if (!stateActive) return;
-            if (attackAnimPlaying) return; // Don't move if attack animation is still playing
+
             
             // If enemy is not grounded and can't fly, skip moving
             if (!stateManager.isGrounded && !allowFlight) return;
@@ -87,6 +87,7 @@ namespace Enemies
                 vel.y = rb.velocity.y;
             }
 
+            if (attackAnimPlaying) return; // Don't move if attack animation is still playing
             rb.velocity = vel * Time.deltaTime;
         }
 
@@ -99,8 +100,6 @@ namespace Enemies
                 stateManager.TransitionState(EnemyStates.ATTACK);
                 return true;
             }
-
-            // If the enemy can't fly, and  player is within the stop distance, return true but don't transition to attack
             if (!allowFlight && Mathf.Abs(player.position.x - transform.position.x) <= stopDist)
             {
                 stateManager.TransitionState(EnemyStates.ATTACK);

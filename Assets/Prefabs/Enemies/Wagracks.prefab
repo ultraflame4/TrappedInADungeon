@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 2194234854703356080}
   - component: {fileID: 5808688839359174469}
   - component: {fileID: 5231545731985648300}
-  - component: {fileID: 2734022865442001581}
   m_Layer: 7
   m_Name: Wagracks
   m_TagString: Enemy
@@ -180,7 +179,7 @@ MonoBehaviour:
   rb: {fileID: 5808688839359174469}
   allowFlight: 1
   followRange: 8
-  attackDist: 2
+  stopDist: 3.46
   checkDirection: 0
 --- !u!114 &75553948717123761
 MonoBehaviour:
@@ -254,38 +253,3 @@ MonoBehaviour:
   entityBody: {fileID: 1327860070880329275}
   spriteRenderer: {fileID: 4824642081308309808}
   DeadShadowPrefab: {fileID: 7715831331796477733, guid: 568f0fee3973e1d41bf8aec4c81585b6, type: 3}
---- !u!58 &2734022865442001581
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5349017118548454483}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.075

@@ -82,11 +82,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4636332432275838779, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: hitboxRadius
-      value: 0.37
+      value: 0.49
       objectReference: {fileID: 0}
     - target: {fileID: 4636332432275838779, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: hitboxPosition.x
-      value: 0.45
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 5871894113917341172, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
