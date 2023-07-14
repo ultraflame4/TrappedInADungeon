@@ -32,7 +32,8 @@ namespace Enemies
             // Direction to player
             directionToPlayer = (player.position - transform.position).normalized;
             // Direction to player but snapped to the x axis. (y=0)
-            directionToPlayerSnapped = new Vector3(directionToPlayer.x, 0).normalized;
+            // Using boolean logic to determine whether to snap to 1 or -1 else when x=0, the Vector normalisation will freak out between 1 and -1
+            directionToPlayerSnapped = new Vector3(directionToPlayer.x>0?1:-1, 0);
             
             if (!stateActive) return;
             // If enemy is not grounded and can't fly, skip moving
@@ -57,9 +58,10 @@ namespace Enemies
             Vector3 vel = (allowFlight ? directionToPlayer : directionToPlayerSnapped) * body.Speed;
             // Get distance to player and subtract attack distance
             // 0.01f is a small buffer so that the player is actually within the attack range
-            float distance = Vector3.Distance(transform.position, player.position) - stopDist + 0.05f;
+            float distance = Vector3.Distance(transform.position, player.position) - stopDist;
             // Clamp distance to 0-1. distFactor makes velocity lower the closer the enemy is to the player
-            float distFactor = Mathf.Clamp(Mathf.Pow(2 * distance, 2) + 0.2f, 0, 1);
+            float distFactor = Mathf.Clamp(Mathf.Pow(2 * distance, 2), 0, 1);
+            
             vel *= distFactor * Time.deltaTime; // Scale velocity by distFactor & deltaTime
             if (!allowFlight) // Preserve y velocity if enemy can't fly
             {
@@ -71,11 +73,16 @@ namespace Enemies
 
         public bool CheckPlayerWithinAttackRange()
         {
-            if (Vector3.Distance(transform.position, player.position) < stopDist)
+            if (Vector3.Distance(transform.position, player.position) <= stopDist)
             {
                 // If the enemy should be facing the player when attacking, check if the player is within 45 degrees of the enemy's right
                 if (checkDirection && !(Vector2.Angle(directionToPlayer, transform.right) > 45)) return false;
                 stateManager.TransitionState(EnemyStates.ATTACK);
+                return true;
+            }
+            // If the enemy can't fly, and  player is within the stop distance, return true but don't transition to attack
+            if (!allowFlight && Mathf.Abs(player.position.x-transform.position.x) < stopDist)
+            {
                 return true;
             }
             return false;

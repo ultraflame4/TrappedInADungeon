@@ -4231,6 +4231,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wagracks
       objectReference: {fileID: 0}
+    - target: {fileID: 5349017118548454483, guid: fcbffacc27cd3394fb2d23cad41cebe0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5480460037479946068, guid: fcbffacc27cd3394fb2d23cad41cebe0, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -4356,6 +4360,10 @@ PrefabInstance:
     - target: {fileID: 3713372788904983843, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_Name
       value: Glebins
+      objectReference: {fileID: 0}
+    - target: {fileID: 3713372788904983843, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3938233426960143604, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_RootOrder
