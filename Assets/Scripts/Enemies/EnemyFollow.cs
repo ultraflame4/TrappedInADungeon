@@ -83,14 +83,14 @@ namespace Enemies
         {
             if (Vector3.Distance(transform.position, player.position) <= stopDist)
             {
-                // If the enemy should be facing the player when attacking, check if the player is within 45 degrees of the enemy's right
-                if (checkDirection && !(Vector2.Angle(directionToPlayer, transform.right) > 45)) return false;
+                // If the enemy should be facing the player when attacking, check if the player is within 90 degrees of the enemy's right
+                if (checkDirection && Vector2.Angle(directionToPlayer, transform.right) >= 90) return false;
                 stateManager.TransitionState(EnemyStates.ATTACK);
                 return true;
             }
 
             // If the enemy can't fly, and  player is within the stop distance, return true but don't transition to attack
-            if (!allowFlight && Mathf.Abs(player.position.x - transform.position.x) < stopDist)
+            if (!allowFlight && Mathf.Abs(player.position.x - transform.position.x) <= stopDist)
             {
                 return true;
             }
