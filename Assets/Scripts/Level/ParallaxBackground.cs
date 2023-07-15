@@ -6,6 +6,7 @@ namespace Level
 {
     public class ParallaxBackground : MonoBehaviour
     {
+        public Ground ground;
         public Sprite[] layers;
         public Color colorFrom = Color.white;
         public Color colorTo = Color.black;
@@ -16,6 +17,7 @@ namespace Level
         private Transform camera;
 
         private Vector3 startPos;
+        public float TotalWidth => layers[0].bounds.size.x * sections;
 
         // Start is called before the first frame update
 
@@ -30,6 +32,7 @@ namespace Level
         void GenerateLayers()
         {
             transform.DestroyChildren();
+            ground.SetWidth(TotalWidth);
             layerObjects = new GameObject[layers.Length];
             for (var i = 0; i < layers.Length; i++)
             {
@@ -54,6 +57,7 @@ namespace Level
             
             gameObj.transform.localPosition = Vector3.right * sprite.bounds.size.x * sectionIndex;
             var renderer = gameObj.AddComponent<SpriteRenderer>();
+            renderer.sortingLayerID = SortingLayer.NameToID("Background");
             renderer.sprite = sprite;
             renderer.color = Color.Lerp(colorFrom, colorTo, (float)layerIndex / (layers.Length - 1));
         }
