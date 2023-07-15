@@ -32,7 +32,7 @@ namespace Level
         void GenerateLayers()
         {
             transform.DestroyChildren();
-            ground.SetWidth(TotalWidth);
+            ground.UpdateWidth(TotalWidth,sections);
             layerObjects = new GameObject[layers.Length];
             for (var i = 0; i < layers.Length; i++)
             {
