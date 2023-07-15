@@ -54,8 +54,8 @@ namespace Level
             var sprite = layers[layerIndex];
             GameObject gameObj = new($"Layer {layerIndex}");
             gameObj.transform.parent = parent;
-            
-            gameObj.transform.localPosition = Vector3.right * sprite.bounds.size.x * sectionIndex;
+            // -0.01f to prevent tiny gap between sections
+            gameObj.transform.localPosition = Vector3.right * (sprite.bounds.size.x-0.01f) * sectionIndex;
             var renderer = gameObj.AddComponent<SpriteRenderer>();
             renderer.sortingLayerID = SortingLayer.NameToID("Background");
             renderer.sprite = sprite;
