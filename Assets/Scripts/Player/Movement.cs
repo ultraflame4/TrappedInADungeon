@@ -42,6 +42,7 @@ namespace Player
         private void Start()
         {
             jumpsLeft = jumpTimes;
+            currentDirection=Vector3.right;
         }
 
         // Update is called once per frame
