@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 47b3fada6f5e61944ba0d8bef14e32c1
+guid: ac5329b958aa663409839432ee9b776a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 16
+    spritePixelsToUnits: 100
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638250389185606698
+  platformSettingsDirtyTick: 0
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -130,7 +130,7 @@ ScriptedImporter:
       y: 4
       width: 800
       height: 300
-    spriteID: a68fa9658bc7a2d4eb37e4f889c8962e
+    spriteID: 8720caeedfa5dd149a1765f5fe2f05af
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -150,7 +150,7 @@ ScriptedImporter:
       y: 312
       width: 800
       height: 300
-    spriteID: 22417367fdcf5aa4d978bdc2036321dc
+    spriteID: 30e520ed64b402548ba6e9d0d21d9c84
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -170,7 +170,7 @@ ScriptedImporter:
       y: 620
       width: 800
       height: 300
-    spriteID: 4326bf6726d582943afd2edf3e185617
+    spriteID: b0cba13c19d5a8d4ea119af39e89c57e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -190,7 +190,7 @@ ScriptedImporter:
       y: 928
       width: 800
       height: 300
-    spriteID: bbd2420f55dbc984eb7cb56f83025432
+    spriteID: 5da31b626d732f841ba5a5c01f4e1126
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -215,7 +215,7 @@ ScriptedImporter:
         y: 0
         width: 800
         height: 300
-      spriteId: a68fa9658bc7a2d4eb37e4f889c8962e
+      spriteId: 8720caeedfa5dd149a1765f5fe2f05af
     - name: CaveBackgroundLaeyrs_Frame_1
       frameIndex: 1
       cellRect:
@@ -223,7 +223,7 @@ ScriptedImporter:
         y: 0
         width: 800
         height: 300
-      spriteId: 22417367fdcf5aa4d978bdc2036321dc
+      spriteId: 30e520ed64b402548ba6e9d0d21d9c84
     - name: CaveBackgroundLaeyrs_Frame_2
       frameIndex: 2
       cellRect:
@@ -231,7 +231,7 @@ ScriptedImporter:
         y: 0
         width: 800
         height: 300
-      spriteId: 4326bf6726d582943afd2edf3e185617
+      spriteId: b0cba13c19d5a8d4ea119af39e89c57e
     - name: CaveBackgroundLaeyrs_Frame_3
       frameIndex: 3
       cellRect:
@@ -239,58 +239,10 @@ ScriptedImporter:
         y: 0
         width: 800
         height: 300
-      spriteId: bbd2420f55dbc984eb7cb56f83025432
+      spriteId: 5da31b626d732f841ba5a5c01f4e1126
     linkedCells: []
     parentIndex: -1
-  platformSettings:
-  - name: DefaultTexturePlatform
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Standalone
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Server
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Windows Store Apps
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
+  platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 800, y: 300}
