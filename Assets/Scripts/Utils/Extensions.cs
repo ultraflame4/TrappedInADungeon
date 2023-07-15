@@ -11,6 +11,9 @@ namespace Utils
     {
         public static void DestroyChildren(this Transform transform)
         {
+            // Store the children in a list first as there are some problems with looping through the children in the transform directly
+            // which casues some children to not be destroyed
+            // probably has something to do with the fact that the collection is modified while looping through it
             List<Transform> children = transform.Cast<Transform>().ToList();
             foreach (var child in children)
             {
