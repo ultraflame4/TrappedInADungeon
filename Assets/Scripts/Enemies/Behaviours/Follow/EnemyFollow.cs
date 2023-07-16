@@ -7,30 +7,36 @@ namespace Enemies
 {
     public class EnemyFollow : EnemyStateBehaviour
     {
-        public EntityBody body;
-        public Rigidbody2D rb;
-
+        // references
+        private EntityBody body;
+        private Rigidbody2D rb;
+        private Transform player;
+        
+        [Tooltip("Should the enemy be allowed to fly?")]
         public bool allowFlight;
-
         [Tooltip("How far will the enemy follow the player before stopping")]
         public float followRange = 5f;
 
         [Tooltip("Distance to the player before the enemy stops ( and presumably starts attacking )")]
         public float stopDist = 0.1f;
-        // A buffer to make sure the player is well within the stop distance
+        /// <summary>
+        ///  A buffer to make sure the player is well within the stop distance
+        /// </summary>
         const float stopDistBuffer = 0.5f;
-
         [Tooltip("Should the enemy be facing the player when attacking?")]
         public bool checkDirection = true;
 
-        private Transform player;
         private Vector3 directionToPlayer;
         private Vector3 directionToPlayerSnapped;
-        
+        /// <summary>
+        /// Whether the attack animation is playing
+        /// </summary>
         private bool attackAnimPlaying => stateManager.animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
         private void Start()
         {
             player = GameObject.FindWithTag("Player").transform;
+            body = GetComponent<EntityBody>();
+            rb = GetComponent<Rigidbody2D>();
         }
 
         /// <summary>
@@ -50,7 +56,6 @@ namespace Enemies
             UpdateDirections();
 
             if (!stateActive) return;
-
             
             // If enemy is not grounded and can't fly, skip moving
             if (!stateManager.isGrounded && !allowFlight) return;
@@ -62,7 +67,6 @@ namespace Enemies
                 stateManager.TransitionState(EnemyStates.PATROL);
                 return;
             }
-
 
             RotateTowardsPlayer();
             if (CheckPlayerWithinAttackRange())
