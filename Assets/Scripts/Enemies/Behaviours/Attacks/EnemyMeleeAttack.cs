@@ -7,14 +7,28 @@ namespace Enemies
     /// <summary>
     /// Melee attack for enemies. The attacks are triggered by animation events. Call MeleeAttack() from the animation event.
     /// </summary>
+    [RequireComponent(typeof(EntityBody), typeof(EnemyFollow))]
     public class EnemyMeleeAttack : EnemyStateBehaviour
     {
-        public EntityBody entityBody;
+        private EntityBody entityBody;
+        private EnemyFollow follow;
+        [Tooltip("Position of the hitbox relative to the enemy")]
         public Vector2 hitboxPosition;
+        [Tooltip("Radius of the hitbox")]
         public float hitboxRadius;
+        [Tooltip("Damage dealt by the attack")]
         public float baseDamage=10;
-        public EnemyFollow follow;
+        /// <summary>
+        /// Position of hitbox in world space
+        /// </summary>
         private Vector2 hitboxPos => transform.TransformPoint(hitboxPosition);
+
+        private void Start()
+        {
+            entityBody = GetComponent<EntityBody>();
+            follow = GetComponent<EnemyFollow>();
+        }
+
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red * 0.5f;

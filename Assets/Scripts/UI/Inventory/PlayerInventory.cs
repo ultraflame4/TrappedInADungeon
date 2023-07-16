@@ -11,19 +11,15 @@ namespace UI.Inventory
     {
         private List<IItemInstance> items = new ();
         public GameObject inventorySlotsParent;
-        
+        [Tooltip("The inventory slots in the ui. Automatically found by the script")]
         public InventorySlot[] itemSlots;
-        /// <summary>
-        /// Just a debug weapon to give to the user (when GiveDebugWeapon is called)
-        /// </summary>
+        [Tooltip("Just a debug weapon to give to the user (when GiveDebugWeapon is called)")]
         public ItemScriptableObject debugWeapon;
-
+        [Tooltip("Skill to give to the player (when GiveDebugSkill is called)")]
         public ItemScriptableObject debugSkill;
-
-        /// <summary>
-        /// This event is called whenever an item is added or removed from the inventory
-        /// </summary>
+        [Tooltip("This event is invoked whenever an item is added or removed from the inventory")]
         public event Action InventoryUpdate;
+        [Tooltip("All items in the inventory")]
         public List<IItemInstance> AllItems => items.ToList();
 
         private void Awake()
