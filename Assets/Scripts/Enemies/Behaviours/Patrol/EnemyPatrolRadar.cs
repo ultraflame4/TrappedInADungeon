@@ -9,8 +9,8 @@ namespace Enemies
     /// </summary>
     public class EnemyPatrolRadar : EnemyStateBehaviour
     {
+        [Tooltip("Range to detect player")]
         public float radarRange = 2f;
-        
         private void FixedUpdate()
         {
             if (!stateActive) return;

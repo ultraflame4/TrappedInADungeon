@@ -5,9 +5,8 @@ namespace Enemies
     public class EnemySpawner : MonoBehaviour
     {
         public float spawnRect = 5f;
-
+        [Tooltip("Enemies to spawn")]
         public GameObject[] enemyPrefabs;
-        // Start is called before the first frame update
         
         void Start()
         {

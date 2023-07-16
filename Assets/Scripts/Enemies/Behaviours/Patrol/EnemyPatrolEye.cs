@@ -8,10 +8,14 @@ namespace Enemies
     /// </summary>
     public class EnemyPatrolEye : EnemyStateBehaviour
     {
+        [Tooltip("Range of the eye sight / raycast")]
         public float eyeSightRange = 2f;
+        [Tooltip("Y offset of the eye / raycast ")]
         public float eyeSightOffset = 0.5f;
+        /// <summary>
+        /// Origin of the raycast in world space.
+        /// </summary>
         Vector3 raycastOrigin => transform.position + Vector3.up * eyeSightOffset;
-        
         
         private bool CheckPlayerVisible()
         {

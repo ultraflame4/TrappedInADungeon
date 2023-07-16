@@ -4,14 +4,17 @@ using UnityEngine;
 
 namespace Entities
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class DeathShadow : MonoBehaviour
     {
+        [Tooltip("Duration of the fade in milliseconds")]
         public float durationMS = 1000f;
-        public SpriteRenderer spriteRenderer;
+        private SpriteRenderer spriteRenderer;
         private static readonly int Threshold = Shader.PropertyToID("_Threshold");
 
         private void Start()
         {
+            spriteRenderer = GetComponent<SpriteRenderer>();
             StartCoroutine(StartFade());
         }
         
