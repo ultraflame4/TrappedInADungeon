@@ -23,7 +23,7 @@ namespace UI.Inventory
         /// <summary>
         /// This event is called whenever an item is added or removed from the inventory
         /// </summary>
-        public event Action inventoryUpdate;
+        public event Action InventoryUpdate;
         public List<IItemInstance> AllItems => items.ToList();
 
         private void Awake()
@@ -43,7 +43,7 @@ namespace UI.Inventory
         public void AddItem<T>(T item) where T : IItemInstance
         {
             items.Add(item);
-            inventoryUpdate?.Invoke();
+            InventoryUpdate?.Invoke();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace UI.Inventory
         public void RemoveItem<T>(T item) where T : IItemInstance
         {
             items.Remove(item);
-            inventoryUpdate?.Invoke();
+            InventoryUpdate?.Invoke();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace UI.Inventory
         {
             var obj = items[index];
             items.RemoveAt(index);
-            inventoryUpdate?.Invoke();
+            InventoryUpdate?.Invoke();
             return obj;
         }
 
@@ -88,7 +88,7 @@ namespace UI.Inventory
         public void Clear()
         {
             items.Clear();
-            inventoryUpdate?.Invoke();
+            InventoryUpdate?.Invoke();
         }
 
         /// <summary>

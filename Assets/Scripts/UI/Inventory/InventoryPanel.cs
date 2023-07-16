@@ -14,7 +14,7 @@ namespace UI.Inventory
         public PlayerInventory playerInventory;
         private void Awake()
         {
-            playerInventory.inventoryUpdate += UpdateList;
+            playerInventory.InventoryUpdate += UpdateList;
         }
 
         void UpdateWeaponList()
