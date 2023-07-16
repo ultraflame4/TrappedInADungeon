@@ -19,13 +19,14 @@ namespace Item
         /// </summary>
         public event Action OnItemReleased;
 
+        public InventorySlot slot;
+
+        public Transform Player { get; private set; }
+
         private void Awake()
         {
             Player = GameObject.FindWithTag("Player").transform;
         }
-
-        public InventorySlot slot;
-        [FormerlySerializedAs("player")] public Transform Player;
 
         public void UseItem() => OnItemUsed?.Invoke();
         public void ReleaseItem() => OnItemReleased?.Invoke();

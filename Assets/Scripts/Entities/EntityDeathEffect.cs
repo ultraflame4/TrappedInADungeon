@@ -10,12 +10,14 @@ namespace Entities
     [RequireComponent(typeof(EntityBody), typeof(SpriteRenderer))]
     public class EntityDeathEffect : MonoBehaviour
     {
-        public EntityBody entityBody;
-        public SpriteRenderer spriteRenderer;
         public GameObject DeadShadowPrefab;
+        private EntityBody entityBody;
+        private SpriteRenderer spriteRenderer;
 
         private void Start()
         {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            entityBody = GetComponent<EntityBody>();
             entityBody.DeathEvent += OnDeath;
         }
 

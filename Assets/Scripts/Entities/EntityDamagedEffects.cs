@@ -9,11 +9,12 @@ namespace Entities
     [RequireComponent(typeof(EntityBody))]
     public class EntityDamagedEffects : MonoBehaviour
     {
-        public EntityBody entityBody;
         public GameObject bloodParticles;
+        private EntityBody entityBody;
 
         private void Start()
         {
+            entityBody = GetComponent<EntityBody>();
             entityBody.DamagedEvent+= OnDamaged;
         }
 

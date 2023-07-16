@@ -16,8 +16,10 @@ namespace Entities
     public class EntityBody : MonoBehaviour, IEntityStats
     {
         public float BaseHealth; // Health of entity
-        
-        [FormerlySerializedAs("BaseStrength")] public int baseAttack; // Increases physical damage
+
+        [FormerlySerializedAs("BaseStrength")]
+        public int baseAttack; // Increases physical damage
+
         public int BaseSpeed; // Movement speed
         public int BaseDefense; // Reduces damage taken
 
@@ -50,7 +52,6 @@ namespace Entities
                 DeathEvent?.Invoke();
             }
         }
-        // todo include methods to get the actual values that includes effects from equipment, buffs, etc.
 
         /// <summary>
         /// Calculates the damage to be dealt by an attack based on the current stats of this entity.
@@ -61,7 +62,5 @@ namespace Entities
         {
             return baseDamage + Attack;
         }
-        
-        
     }
 }
