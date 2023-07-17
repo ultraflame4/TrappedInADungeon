@@ -37,7 +37,7 @@ namespace Level
         public void GenerateLevel()
         {
             GetRequiredComponents();
-            background.sections = Mathf.CeilToInt(levelSize / background.SectionWidth);
+            background.sections = Mathf.CeilToInt(levelSize / background.SectionWidth) + 1;
             background.xOffset = -(background.TotalWidth-background.SectionWidth) / 2;
             background.GenerateLayers();
             ground.UpdateWidth(levelSize);
