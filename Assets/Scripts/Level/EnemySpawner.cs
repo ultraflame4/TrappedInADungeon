@@ -1,12 +1,14 @@
 using UnityEngine;
 
-namespace Enemies
+namespace Level
 {
     public class EnemySpawner : MonoBehaviour
     {
         public float spawnRect = 5f;
         [Tooltip("Enemies to spawn")]
         public GameObject[] enemyPrefabs;
+
+        public int allocatedDifficultyPoints;
         
         void Start()
         {

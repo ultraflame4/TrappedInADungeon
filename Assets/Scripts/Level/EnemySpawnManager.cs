@@ -1,13 +1,11 @@
-﻿using System;
-using EasyButtons;
-using Level;
-using Unity.Collections;
+﻿using EasyButtons;
+using Enemies;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Utils;
 using Random = UnityEngine.Random;
 
-namespace Enemies
+namespace Level
 {
     [RequireComponent(typeof(LevelManager))]
     public class EnemySpawnManager : MonoBehaviour
@@ -18,8 +16,8 @@ namespace Enemies
         public float spawnSectionSize = 10f;
         [FormerlySerializedAs("yOffSet")]
         public float yOffset = 2f;
-
-        public float difficultyLevel = 1f;
+        public SpawnableEnemy[] enemyPool;
+        public int difficultyPoints = 200;
 
         /// <summary>
         /// Number of spawn sections in the level.
@@ -60,7 +58,8 @@ namespace Enemies
                 var sectionObj = new GameObject("SpawnSection");
                 sectionObj.transform.SetParent(container.transform);
                 sectionObj.transform.position = section + randomPosition + Vector2.up * yOffset;
-                sectionObj.AddComponent<EnemySpawner>();
+                var spawner = sectionObj.AddComponent<EnemySpawner>();
+                spawner.allocatedDifficultyPoints = difficultyPoints / SectionsCount;
             }
         }
 
