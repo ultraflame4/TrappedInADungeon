@@ -1,7 +1,6 @@
 ﻿using System;
 using EasyButtons;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Level
 {
@@ -9,8 +8,11 @@ namespace Level
     {
         public Ground ground;
         private ParallaxBackground background;
-        
-        public float levelSize = 10f;
+
+        [field: SerializeField]
+        public float levelSize { get; private set; } = 10f;
+        public Vector2 LevelLeft => new Vector2(-levelSize/2, 0);
+
         private const float levelHeight = 30f;
         
 
