@@ -16,6 +16,7 @@ namespace Enemies
 
         [Tooltip("Enemy spawning is divided into sections. This determines how big each section is."), Min(0.1f)]
         public float spawnSectionSize = 10f;
+        public float yOffSet = 2f;
 
         public float difficultyLevel = 1f;
 
@@ -57,7 +58,7 @@ namespace Enemies
                 Vector2 randomPosition = Vector2.right * (spawnSectionSize / 4 * Random.Range(-1, 1));
                 var sectionObj = new GameObject("SpawnSection");
                 sectionObj.transform.SetParent(container.transform);
-                sectionObj.transform.position = section + randomPosition;
+                sectionObj.transform.position = section + randomPosition + Vector2.up * yOffSet;
                 sectionObj.AddComponent<EnemySpawner>();
             }
         }
@@ -68,7 +69,7 @@ namespace Enemies
 
             foreach (Vector2 section in GetSpawnSectionPositions())
             {
-                Gizmos.DrawWireCube(section, new Vector3(spawnSectionSize, 1, 1));
+                Gizmos.DrawWireCube(section+Vector2.up*yOffSet, new Vector3(spawnSectionSize, 1, 1));
             }
         }
     }
