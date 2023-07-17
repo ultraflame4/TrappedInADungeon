@@ -15,4 +15,4 @@ MonoBehaviour:
   enemyPrefab: {fileID: 3713372788904983843, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
   spawnWeight: 100
   difficultyPoints: 1
-  minPlayerLevel: 1
+  minPlayerLevel: 0

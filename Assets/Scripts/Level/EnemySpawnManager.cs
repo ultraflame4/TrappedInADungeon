@@ -1,5 +1,8 @@
-﻿using EasyButtons;
+﻿using System.Collections.Generic;
+using System.Linq;
+using EasyButtons;
 using Enemies;
+using Player;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Utils;
@@ -11,7 +14,7 @@ namespace Level
     public class EnemySpawnManager : MonoBehaviour
     {
         public LevelManager levelManager;
-
+        public PlayerBody player;
         [Tooltip("Enemy spawning is divided into sections. This determines how big each section is."), Min(0.1f)]
         public float spawnSectionSize = 10f;
         [FormerlySerializedAs("yOffSet")]
@@ -40,6 +43,65 @@ namespace Level
             }
 
             return spawnSections;
+        }
+
+        public GameObject[] ChooseEnemiesFromPool(int allocatedPoints)
+        {
+            List<GameObject> enemyPrefabs = new ();
+            
+            int pointsRemaining = allocatedPoints;
+            var sortedEnemyPool = enemyPool.OrderBy(x => x.spawnWeight).ToList();
+            while (pointsRemaining > 0)
+            {
+                SpawnableEnemy chosen = GetRandomEnemy(pointsRemaining,sortedEnemyPool);
+                pointsRemaining-= chosen.difficultyPoints;
+                enemyPrefabs.Add(chosen.enemyPrefab);
+            }
+            return enemyPrefabs.ToArray();
+        }
+
+        /// <summary>
+        /// Gets a random enemy from the pool, taking into account the player's level, points available & spawn chances weights.
+        /// </summary>
+        /// <param name="pointsAvailable">Difficulty points available</param>
+        /// <param name="sortedEnemyPool">The sorted enemy pool</param>
+        /// <returns></returns>
+        private SpawnableEnemy GetRandomEnemy(int pointsAvailable, List<SpawnableEnemy> sortedEnemyPool)
+        {
+            SpawnableEnemy[] filteredEnemyPool = sortedEnemyPool
+                    .Where(x => x.difficultyPoints <= pointsAvailable && x.minPlayerLevel <= player.Level)
+                    .ToArray(); // Filter out invalid enemies
+                
+            int weightSum = filteredEnemyPool.Sum(x => x.spawnWeight); // Sum of spawnWeights
+
+            /*
+             * The spawnWeight of each enemy is used to determine the probability of it spawning.
+             * If 2 enemies have spawnWeights of 1 and 2, then the first enemy has a 1/3 chance of spawning, and the second has a 2/3 chance.
+             *
+             * To calculate this we essentially draw a graph
+             * |--1--|----2----| - model
+             * The model above represents the chances of the 2 enemies spawning.
+             * We can then add positions
+             * |--1--|----2----| - model
+             * 0     1         3
+             * The bigger the weight, the wider the section, and hence the position where the section ends is also bigger.
+             * We can then generate random position from 0 to the sum of all weights - which is the end position of the model.
+             * And if the random position is < end position of 1 section, we know that the position is in that section and hence choose that section as outcome.
+             * We can do this because the weight of each enemy (and hence size of each section) is sorted in ascending order.
+             */
+            
+            int positionCounter = 0;
+            Dictionary<int, SpawnableEnemy> positions = new();
+            for (var i = 0; i < filteredEnemyPool.Length; i++)
+            {
+                var enemy = filteredEnemyPool[i];
+                positions.Add(positionCounter, enemy);
+                positionCounter+=enemy.spawnWeight;
+            }
+            
+            int randomPosition = Random.Range(0, weightSum);
+
+            return positions.First(x => randomPosition > x.Key).Value;
         }
 
         [Button]
