@@ -15,10 +15,13 @@ namespace Level
     {
         public LevelManager levelManager;
         public PlayerBody player;
+
         [Tooltip("Enemy spawning is divided into sections. This determines how big each section is."), Min(0.1f)]
         public float spawnSectionSize = 10f;
+
         [FormerlySerializedAs("yOffSet")]
         public float yOffset = 2f;
+
         public SpawnableEnemy[] enemyPool;
         public int difficultyPoints = 200;
 
@@ -47,16 +50,19 @@ namespace Level
 
         public GameObject[] ChooseEnemiesFromPool(int allocatedPoints)
         {
-            List<GameObject> enemyPrefabs = new ();
-            
+            List<GameObject> enemyPrefabs = new();
+
             int pointsRemaining = allocatedPoints;
             var sortedEnemyPool = enemyPool.OrderBy(x => x.spawnWeight).ToList();
             while (pointsRemaining > 0)
             {
-                SpawnableEnemy chosen = GetRandomEnemy(pointsRemaining,sortedEnemyPool);
-                pointsRemaining-= chosen.difficultyPoints;
+                SpawnableEnemy chosen = GetRandomEnemy(pointsRemaining, sortedEnemyPool);
+                if (chosen is null) break;
+
+                pointsRemaining -= chosen.difficultyPoints;
                 enemyPrefabs.Add(chosen.enemyPrefab);
             }
+
             return enemyPrefabs.ToArray();
         }
 
@@ -65,15 +71,15 @@ namespace Level
         /// </summary>
         /// <param name="pointsAvailable">Difficulty points available</param>
         /// <param name="sortedEnemyPool">The sorted enemy pool</param>
-        /// <returns></returns>
+        /// <returns>Returns the chosen enemy or null if no enemies can be spawned</returns>
         private SpawnableEnemy GetRandomEnemy(int pointsAvailable, List<SpawnableEnemy> sortedEnemyPool)
         {
             SpawnableEnemy[] filteredEnemyPool = sortedEnemyPool
                     .Where(x => x.difficultyPoints <= pointsAvailable && x.minPlayerLevel <= player.Level)
                     .ToArray(); // Filter out invalid enemies
-                
-            int weightSum = filteredEnemyPool.Sum(x => x.spawnWeight); // Sum of spawnWeights
 
+            if (filteredEnemyPool.Length == 0) return null;
+            
             /*
              * The spawnWeight of each enemy is used to determine the probability of it spawning.
              * If 2 enemies have spawnWeights of 1 and 2, then the first enemy has a 1/3 chance of spawning, and the second has a 2/3 chance.
@@ -89,19 +95,18 @@ namespace Level
              * And if the random position is < end position of 1 section, we know that the position is in that section and hence choose that section as outcome.
              * We can do this because the weight of each enemy (and hence size of each section) is sorted in ascending order.
              */
-            
+            int weightSum = filteredEnemyPool.Sum(x => x.spawnWeight); // Sum of spawnWeights
             int positionCounter = 0;
             Dictionary<int, SpawnableEnemy> positions = new();
             for (var i = 0; i < filteredEnemyPool.Length; i++)
             {
                 var enemy = filteredEnemyPool[i];
+                positionCounter += enemy.spawnWeight;
                 positions.Add(positionCounter, enemy);
-                positionCounter+=enemy.spawnWeight;
             }
-            
-            int randomPosition = Random.Range(0, weightSum);
 
-            return positions.First(x => randomPosition > x.Key).Value;
+            int randomPosition = Random.Range(0, weightSum);
+            return positions.First(x => randomPosition < x.Key).Value;
         }
 
         [Button]
@@ -113,6 +118,7 @@ namespace Level
                 container = new GameObject("SpawnSections");
                 container.transform.SetParent(transform);
             }
+
             container.DestroyChildren();
             foreach (Vector2 section in GetSpawnSectionPositions())
             {
@@ -121,7 +127,7 @@ namespace Level
                 sectionObj.transform.SetParent(container.transform);
                 sectionObj.transform.position = section + randomPosition + Vector2.up * yOffset;
                 var spawner = sectionObj.AddComponent<EnemySpawner>();
-                spawner.allocatedDifficultyPoints = difficultyPoints / SectionsCount;
+                spawner.enemyPrefabs = ChooseEnemiesFromPool(difficultyPoints / SectionsCount);
             }
         }
 
@@ -131,7 +137,7 @@ namespace Level
 
             foreach (Vector2 section in GetSpawnSectionPositions())
             {
-                Gizmos.DrawWireCube(section+Vector2.up*yOffset, new Vector3(spawnSectionSize, 1, 1));
+                Gizmos.DrawWireCube(section + Vector2.up * yOffset, new Vector3(spawnSectionSize, 1, 1));
             }
         }
     }

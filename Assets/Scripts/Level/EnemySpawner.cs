@@ -8,8 +8,6 @@ namespace Level
         [Tooltip("Enemies to spawn")]
         public GameObject[] enemyPrefabs;
 
-        public int allocatedDifficultyPoints;
-        
         void Start()
         {
             Spawn();
