@@ -12,7 +12,7 @@ namespace Level
         public int spawnWeight = 1;
         [Tooltip("How many points this enemy is worth in terms of difficulty.")]
         public int difficultyPoints = 1;
-        [Tooltip("Minimum player level required to spawn this enemy.")]
+        [Tooltip("Minimum player level required to spawn this enemy."), Min(0)]
         public int minPlayerLevel = 0;
         
     }
