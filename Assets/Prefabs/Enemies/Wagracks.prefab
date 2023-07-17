@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 2194234854703356080}
   - component: {fileID: 5808688839359174469}
   - component: {fileID: 5231545731985648300}
+  - component: {fileID: 5747528118239820976}
   m_Layer: 7
   m_Name: Wagracks
   m_TagString: Enemy
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 446703723
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 6951620618297413654, guid: b7c790b0141eb87408120928b5194f51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -175,8 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ab335867c54338a8d565be68904198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 1327860070880329275}
-  rb: {fileID: 5808688839359174469}
   allowFlight: 1
   followRange: 8
   stopDist: 3.46
@@ -209,7 +208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b29345fe32b4492a9c1848437226e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityBody: {fileID: 1327860070880329275}
   bloodParticles: {fileID: 527914753178123709, guid: b4a6ede691e80394a8569ff556cbb00a, type: 3}
 --- !u!50 &5808688839359174469
 Rigidbody2D:
@@ -250,6 +248,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ba1bc219ef4c16bd5d4e0148875f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityBody: {fileID: 1327860070880329275}
-  spriteRenderer: {fileID: 4824642081308309808}
   DeadShadowPrefab: {fileID: 7715831331796477733, guid: 568f0fee3973e1d41bf8aec4c81585b6, type: 3}
+--- !u!61 &5747528118239820976
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5349017118548454483}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.015625}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.4615385}
+    oldSize: {x: 1.1875, y: 0.40625}
+    newSize: {x: 0.53125, y: 0.78125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1875, y: 0.40625}
+  m_EdgeRadius: 0
