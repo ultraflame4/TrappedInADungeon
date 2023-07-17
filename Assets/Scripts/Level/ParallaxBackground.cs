@@ -47,7 +47,7 @@ namespace Level
         {
             startPos = transform.position;
             cam = GameObject.FindWithTag("MainCamera").transform;
-            GenerateLayers();
+            // GenerateLayers();
         }
 
         [Button("Generate Layers")]
