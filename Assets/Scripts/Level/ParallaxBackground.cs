@@ -6,8 +6,6 @@ namespace Level
 {
     public class ParallaxBackground : MonoBehaviour
     {
-        [Tooltip("reference to the ground")]
-        public Ground ground;
         [Tooltip("Layers of the background. The first layer is the furthest away.")]
         public Sprite[] layers;
         [Tooltip("The start color to tint to layers.")]
@@ -20,6 +18,8 @@ namespace Level
         public int sections = 3;
         [Tooltip("How much to offset the background in the y axis.")]
         public float yOffset;
+        [Tooltip("How much to offset the background in the x axis.")]
+        public float xOffset=0;
         /// <summary>
         /// The game objects that contain the layers.
         /// </summary>
@@ -32,7 +32,14 @@ namespace Level
         /// The initial position of the background.
         /// </summary>
         private Vector3 startPos;
-        public float TotalWidth => layers[0].bounds.size.x * sections;
+        /// <summary>
+        /// Width of a single section.
+        /// </summary>
+        public float SectionWidth => layers[0].bounds.size.x;
+        /// <summary>
+        /// Width of the entire background. Sections * SectionWidth
+        /// </summary>
+        public float TotalWidth => SectionWidth * sections;
 
         // Start is called before the first frame update
 
@@ -44,17 +51,16 @@ namespace Level
         }
 
         [Button("Generate Layers")]
-        void GenerateLayers()
+        public void GenerateLayers()
         {
             transform.DestroyChildren(); // Destroy all children
-            ground.UpdateWidth(TotalWidth,sections); // Update the ground width
             layerObjects = new GameObject[layers.Length]; // Create a new array to store the layer objects
             for (var i = 0; i < layers.Length; i++)
             {
                 GameObject layerObj = new($"Layer Container {i}"); // Create a new game object to store the layer sections
                 layerObjects[i] = layerObj;
                 layerObj.transform.parent = transform; // Set the parent to this object
-                layerObj.transform.localPosition = new Vector3(0,yOffset,-i); // Set the position of the layer
+                layerObj.transform.localPosition = new Vector3(xOffset,yOffset,-i); // Set the position of the layer
                 for (int j = 0; j < sections; j++) // Generate the sections
                 {
                     GenerateSection(layerObj.transform,i,j); 
