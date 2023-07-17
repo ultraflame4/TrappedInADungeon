@@ -5,26 +5,30 @@ using UnityEngine;
 
 namespace Weapon
 {
+    [RequireComponent(typeof(ItemPrefabController)), RequireComponent(typeof(Animator))]
     public class WeaponController : MonoBehaviour
     {
-        public Animator animator;
+        private Animator animator;
+        private ItemPrefabController gateway;
+
         public WeaponFollowConfig followConfig;
-        public ItemPrefabController gateway;
-        public float attack_offset=0.5f;
+
+        [Tooltip("x offset from player when attacking")]
+        public float attack_offset = 0.5f;
+
+        [Tooltip("Rotation of the weapon when idle")]
         public float RotationWhenIdle = 90f;
-        public int AttacksCount = 3; // Number of attacks for this weapon
-        /// <summary>
-        /// The amount of time to wait for.
-        /// The next attack in while in this period will be considered a consecutive attack (resulting in combo)
-        /// In Seconds
-        /// </summary>
+
+        [Tooltip("Number of attack types for this weapon")]
+        public int AttacksCount = 3;
+
+        [Tooltip("The next attack in within this period will be considered a consecutive attack (resulting in combo) in seconds")]
         public float ComboWaitPeriod_Secs = 0.5f;
 
-        /// <summary>
-        /// Number of combos
-        /// </summary>
-        [ReadOnly(true)] public int ComboCounter = 0;
+        [field: SerializeField, Tooltip("Current combo counter"), ReadOnly(true)]
+        public int ComboCounter { get; private set; } = 0;
 
+        [HideInInspector]
         public Transform player;
 
         private float lastAttackTime = 0f;
@@ -32,9 +36,12 @@ namespace Weapon
         private static readonly int AttackIndex = Animator.StringToHash("AttackIndex");
 
         public WeaponItem weaponItem => gateway?.slot.Item.itemInstance as WeaponItem;
+
         // Start is called before the first frame update
         void Start()
         {
+            gateway = GetComponent<ItemPrefabController>();
+            animator = GetComponent<Animator>();
             if (AttacksCount == 0)
             {
                 Debug.LogError("No Available Attacks!");
@@ -43,25 +50,25 @@ namespace Weapon
             if (gateway)
             {
                 gateway.OnItemUsed += Attack;
-                gateway.OnItemReleased += AttackRelease;   
+                gateway.OnItemReleased += AttackRelease;
             }
+
             player = GameObject.FindWithTag("Player").transform;
         }
 
-        
+
         void FixedUpdate()
         {
-            
             if (IsAttacking) // Using if else statement to avoid many tenery operators (?:) checking for IsAttacking
             {
                 float offset = -attack_offset;
-                transform.position = Vector3.Lerp(transform.position,player.transform.position - player.transform.right * offset, followConfig.attackTravelSpeed);
+                transform.position = Vector3.Lerp(transform.position, player.transform.position - player.transform.right * offset, followConfig.attackTravelSpeed);
                 transform.rotation = player.transform.rotation;
             }
             else
             {
-                float offset =  followConfig.followOffset+gateway.slot.slotIndex*followConfig.indexOffset;
-                transform.position = Vector3.Lerp(transform.position,player.transform.position - player.transform.right * offset, followConfig.travelSpeed);
+                float offset = followConfig.followOffset + gateway.slot.slotIndex * followConfig.indexOffset;
+                transform.position = Vector3.Lerp(transform.position, player.transform.position - player.transform.right * offset, followConfig.travelSpeed);
                 transform.rotation = Quaternion.Euler(0, 0, RotationWhenIdle);
             }
         }
@@ -91,7 +98,7 @@ namespace Weapon
         /// </summary>
         private void SwapAttackClip()
         {
-            int clipIndex = ComboCounter % (AttacksCount-1);
+            int clipIndex = ComboCounter % (AttacksCount - 1);
             animator.SetInteger(AttackIndex, clipIndex);
             // overrideController["BaseWeaponAttack"] = attackClips[clipIndex];
         }
@@ -107,10 +114,10 @@ namespace Weapon
             {
                 return;
             }
+
             SwapAttackClip();
             animator.SetTrigger(AttackTrigger);
             ExecuteComboCheck();
-            
         }
 
         public bool IsAttacking => !animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle");
@@ -119,12 +126,6 @@ namespace Weapon
         /// When the player releases the attack button, this function is called. cCn be used to cancel attacks
         /// </summary>
         [Button]
-        public void AttackRelease()
-        {
-            
-        }
-        
-        
-        
+        public void AttackRelease() { }
     }
 }

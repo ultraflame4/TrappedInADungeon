@@ -19,6 +19,10 @@ namespace Item
         /// </summary>
         public event Action OnItemReleased;
 
+        /// <summary>
+        /// The inventory slot that this item is in.
+        /// </summary>
+        [HideInInspector]
         public InventorySlot slot;
 
         public Transform Player { get; private set; }
