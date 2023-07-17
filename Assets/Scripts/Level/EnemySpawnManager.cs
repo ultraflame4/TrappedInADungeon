@@ -19,8 +19,9 @@ namespace Level
         [Tooltip("Enemy spawning is divided into sections. This determines how big each section is."), Min(0.1f)]
         public float spawnSectionSize = 10f;
 
-        [FormerlySerializedAs("yOffSet")]
-        public float yOffset = 2f;
+        [FormerlySerializedAs("yOffset")]
+        public float _yOffset = 2f;
+        private float yOffset => _yOffset + levelManager.groundLevel;
 
         public SpawnableEnemy[] enemyPool;
         public int difficultyPoints = 200;
