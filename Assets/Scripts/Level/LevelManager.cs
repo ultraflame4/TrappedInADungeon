@@ -16,9 +16,11 @@ namespace Level
 
         [field: SerializeField]
         public float levelSize { get; private set; } = 10f;
-        
+
         [field: SerializeField]
-        public float levelHeight { get; private set; }  = 30f;
+        public float levelHeight { get; private set; } = 30f;
+        [field: SerializeField]
+        public float groundLevel  {get; private set; }  = 1f;
         public Vector2 LevelLeft => new Vector2(-levelSize/2, 0);
         
         private void Start()
@@ -75,8 +77,8 @@ namespace Level
             edge.points = new[] {
                     new Vector2(LevelLeft.x, levelHeight),
                     new Vector2(LevelLeft.x + levelSize, levelHeight),
-                    new Vector2(LevelLeft.x + levelSize, 0),
-                    new Vector2(LevelLeft.x, 0),
+                    new Vector2(LevelLeft.x + levelSize, groundLevel),
+                    new Vector2(LevelLeft.x, groundLevel),
                     new Vector2(LevelLeft.x, levelHeight)
             };
             StartCoroutine(UpdateConfinerCoroutine());
@@ -91,8 +93,10 @@ namespace Level
         
         private void OnDrawGizmos()
         {
+            Gizmos.color = Color.yellow+Color.red;
+            Gizmos.DrawWireCube(transform.position+ new Vector3(0, groundLevel), new Vector3(levelSize, 0));
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireCube(transform.position+ new Vector3(0, levelHeight/2), new Vector3(levelSize, levelHeight, 1));
+            Gizmos.DrawWireCube(transform.position+ new Vector3(0, levelHeight/2), new Vector3(levelSize, levelHeight));
             
         }
     }
