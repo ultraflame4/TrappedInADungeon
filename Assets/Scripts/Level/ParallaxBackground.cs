@@ -94,7 +94,7 @@ namespace Level
                 var layer = layerObjects[i];
                 float layerPercent = (float)i / (layerObjects.Length - 1);
                 Vector3 layerPos = layer.transform.position;
-                layerPos.x = startPos.x + travelX * layerPercent * parallaxFactor;
+                layerPos.x = xOffset + startPos.x + travelX * layerPercent * parallaxFactor;
                 layer.transform.position = layerPos;
             }
         }
