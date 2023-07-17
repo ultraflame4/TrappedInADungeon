@@ -16,11 +16,11 @@ namespace Level
 
         [field: SerializeField]
         public float levelSize { get; private set; } = 10f;
-        public Vector2 LevelLeft => new Vector2(-levelSize/2, 0);
-
-        private const float levelHeight = 30f;
         
-
+        [field: SerializeField]
+        public float levelHeight { get; private set; }  = 30f;
+        public Vector2 LevelLeft => new Vector2(-levelSize/2, 0);
+        
         private void Start()
         {
             GenerateLevel();
@@ -51,22 +51,33 @@ namespace Level
             GenerateColliderBounding();
         }
         /// <summary>
-        /// Generates the bounding for the camera confiner (which uses a polygon collider 2D as bounding)
+        /// Generates the bounding for the camera confiner (which uses a polygon collider 2D as bounding).
+        /// Also generates the edge colliders to block player.
         /// </summary>
         void GenerateColliderBounding()
         {
-            PolygonCollider2D collider = GetComponent<PolygonCollider2D>();
-            if (collider is null)
+            PolygonCollider2D poly = GetComponent<PolygonCollider2D>();
+            EdgeCollider2D edge = GetComponent<EdgeCollider2D>();
+            if (poly is null)
             {
-                collider = gameObject.AddComponent<PolygonCollider2D>();
+                poly = gameObject.AddComponent<PolygonCollider2D>();
+                edge = gameObject.AddComponent<EdgeCollider2D>();
             }
 
-            collider.enabled = false;
-            collider.points = new[] {
-                    new Vector2(LevelLeft.x, 20),
-                    new Vector2(LevelLeft.x + levelSize, 20),
-                    new Vector2(LevelLeft.x + levelSize, -20),
-                    new Vector2(LevelLeft.x, -20),
+            poly.enabled = false;
+            edge.enabled = true;
+            poly.points =  new[] {
+                    new Vector2(LevelLeft.x, levelHeight),
+                    new Vector2(LevelLeft.x + levelSize, levelHeight),
+                    new Vector2(LevelLeft.x + levelSize, 0),
+                    new Vector2(LevelLeft.x, 0),
+            };
+            edge.points = new[] {
+                    new Vector2(LevelLeft.x, levelHeight),
+                    new Vector2(LevelLeft.x + levelSize, levelHeight),
+                    new Vector2(LevelLeft.x + levelSize, 0),
+                    new Vector2(LevelLeft.x, 0),
+                    new Vector2(LevelLeft.x, levelHeight)
             };
             StartCoroutine(UpdateConfinerCoroutine());
         }
@@ -81,7 +92,7 @@ namespace Level
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireCube(transform.position, new Vector3(levelSize, levelHeight, 1));
+            Gizmos.DrawWireCube(transform.position+ new Vector3(0, levelHeight/2), new Vector3(levelSize, levelHeight, 1));
             
         }
     }
