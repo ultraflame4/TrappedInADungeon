@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f716874c6943629a5d16cd72c002d6, type: 3}
+  m_Name: Glebins
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 3713372788904983843, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+  spawnWeight: 100
+  difficultyPoints: 1
+  minPlayerLevel: 1
