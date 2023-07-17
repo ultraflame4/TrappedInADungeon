@@ -27,7 +27,7 @@ namespace Level
         /// <summary>
         /// The camera transform.
         /// </summary>
-        private Transform camera;
+        private Transform cam;
         /// <summary>
         /// The initial position of the background.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Level
         void Start()
         {
             startPos = transform.position;
-            camera = GameObject.FindWithTag("MainCamera").transform;
+            cam = GameObject.FindWithTag("MainCamera").transform;
             GenerateLayers();
         }
 
@@ -70,19 +70,19 @@ namespace Level
             gameObj.transform.parent = parent; // Set the parent to the layer object
             // -0.01f to prevent tiny gap between sections
             gameObj.transform.localPosition = Vector3.right * (sprite.bounds.size.x-0.01f) * sectionIndex; // Set the position of this section
-            var renderer = gameObj.AddComponent<SpriteRenderer>(); // Add a sprite renderer to render the sprite
+            var spriteRenderer = gameObj.AddComponent<SpriteRenderer>(); // Add a sprite renderer to render the sprite
             // Sprite renderer settings
-            renderer.sortingLayerID = SortingLayer.NameToID("Background");
-            renderer.sprite = sprite;
+            spriteRenderer.sortingLayerID = SortingLayer.NameToID("Background");
+            spriteRenderer.sprite = sprite;
             // Tint the sprite
-            renderer.color = Color.Lerp(colorFrom, colorTo, (float)layerIndex / (layers.Length - 1));
+            spriteRenderer.color = Color.Lerp(colorFrom, colorTo, (float)layerIndex / (layers.Length - 1));
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (camera == null) return;
-            float travelX = (camera.position - startPos).x;
+            if (cam == null) return;
+            float travelX = (cam.position - startPos).x;
             for (var i = 0; i < layerObjects.Length; i++)
             {
                 var layer = layerObjects[i];
