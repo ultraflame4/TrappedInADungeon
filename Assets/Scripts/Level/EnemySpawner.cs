@@ -15,6 +15,7 @@ namespace Level
         
         void Spawn()
         {
+            if (!GameManager.Instance.SpawnEnemies) return;
             for (var i = 0; i < enemyPrefabs.Length; i++)
             {
                 float x = i * (spawnRect / enemyPrefabs.Length) - spawnRect / 2f;

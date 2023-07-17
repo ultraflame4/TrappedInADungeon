@@ -2311,6 +2311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUi: {fileID: 694538792}
+  SpawnEnemies: 0
 --- !u!1001 &1039374597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5739,7 +5740,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7815866461158401144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000035762787, y: 3.7960005, z: -10}
+  m_LocalPosition: {x: -0.00000047683716, y: 3.7960005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5824,7 +5825,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5461211443868745954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000035762787, y: 3.7960005, z: -10}
+  m_LocalPosition: {x: -0.00000047683716, y: 3.7960005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5897,10 +5898,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: -0.3759124
-    y: -0.3181818
-    width: 1.7518249
-    height: 1.6363636
+    x: 0
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -6429,6 +6430,6 @@ MonoBehaviour:
   m_RefResolutionY: 1080
   m_UpscaleRT: 0
   m_PixelSnapping: 1
-  m_CropFrameX: 1
+  m_CropFrameX: 0
   m_CropFrameY: 1
   m_StretchFill: 0

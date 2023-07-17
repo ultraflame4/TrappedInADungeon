@@ -5,8 +5,10 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public GameObject inventoryUi;
+    public bool SpawnEnemies = true;
     private static GameManager instance;
     public GameControls inputs;
+    
 
     void Awake()
     {
