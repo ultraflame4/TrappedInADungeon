@@ -80,17 +80,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7716529873135479074}
   m_SourcePrefab: {fileID: 100100000, guid: 38b213998a5327145aa13e4e08b9322c, type: 3}
---- !u!114 &3197652628791988855 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 100118518449055753, guid: 38b213998a5327145aa13e4e08b9322c, type: 3}
-  m_PrefabInstance: {fileID: 3243692740829362814}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4776626329389160853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c8630249e9b45f58c5b6cf8db1d17ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4776626329389160853 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8019245221019739115, guid: 38b213998a5327145aa13e4e08b9322c, type: 3}
@@ -134,8 +123,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 987443673
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 610319333, guid: 59277d85efc71644e89e13e1e99f85a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -181,14 +170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e560f3956d23694c9d151717985007e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 9134054010231046217}
   followConfig: {fileID: 11400000, guid: 1712d02726dfd014b8188ff3fafa3ef5, type: 2}
-  gateway: {fileID: 3197652628791988855}
   attack_offset: 0.5
   RotationWhenIdle: 225
   AttacksCount: 3
   ComboWaitPeriod_Secs: 0.75
-  ComboCounter: 0
+  <ComboCounter>k__BackingField: 0
   player: {fileID: 0}
 --- !u!114 &1179466193462558043
 MonoBehaviour:
