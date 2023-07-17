@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Cinemachine;
 using EasyButtons;
 using UnityEngine;
@@ -49,7 +50,9 @@ namespace Level
             enemySpawnManager.GenerateSpawnSections();
             GenerateColliderBounding();
         }
-
+        /// <summary>
+        /// Generates the bounding for the camera confiner (which uses a polygon collider 2D as bounding)
+        /// </summary>
         void GenerateColliderBounding()
         {
             PolygonCollider2D collider = GetComponent<PolygonCollider2D>();
@@ -65,6 +68,13 @@ namespace Level
                     new Vector2(LevelLeft.x + levelSize, -20),
                     new Vector2(LevelLeft.x, -20),
             };
+            StartCoroutine(UpdateConfinerCoroutine());
+        }
+
+        IEnumerator UpdateConfinerCoroutine()
+        {
+            // Wait a while for things to update before updating the camera confine (by invalidating its cache)
+            yield return new WaitForSeconds(0.1f);
             cameraConfiner.InvalidateCache();
         }
         
