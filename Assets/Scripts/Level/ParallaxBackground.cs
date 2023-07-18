@@ -1,5 +1,6 @@
 using EasyButtons;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utils;
 
 namespace Level
@@ -8,6 +9,10 @@ namespace Level
     {
         [Tooltip("Layers of the background. The first layer is the furthest away.")]
         public Sprite[] layers;
+        [FormerlySerializedAs("ground"),Tooltip("The sprite to use for the ground layer.")]
+        public Sprite groundSprite;
+        [Tooltip("Y offset of the ground layer.")]
+        public float groundYOffset;
         [Tooltip("The start color to tint to layers.")]
         public Color colorFrom = Color.white;
         [Tooltip("The end color to tint to layers.")]
@@ -63,16 +68,24 @@ namespace Level
                 layerObj.transform.localPosition = new Vector3(xOffset,yOffset,-i); // Set the position of the layer
                 for (int j = 0; j < sections; j++) // Generate the sections
                 {
-                    GenerateSection(layerObj.transform,i,j); 
+                    GenerateSection(layerObj.transform,layers[i],$"Layer {i}",(float)i / (layers.Length),j); 
                 }
                 
             }
+
+            GameObject groundLayerObj = new($"Ground Layer Container"); // Create a new game object to store the layer sections
+            groundLayerObj.transform.parent = transform; // Set the parent to this object
+            groundLayerObj.transform.localPosition = new Vector3(xOffset,groundYOffset,-layers.Length); // Set the position of the layer
+            for (int i = 0; i < sections; i++) // Generate the sections
+            {
+                GenerateSection(groundLayerObj.transform,groundSprite,$"Ground Section {i}",1,i); 
+            }
+     
         }
 
-        void GenerateSection(Transform parent, int layerIndex, int sectionIndex)
+        void GenerateSection(Transform parent, Sprite sprite,string sectionName, float colorMix, int sectionIndex)
         {
-            var sprite = layers[layerIndex]; // Get the sprite for this layer
-            GameObject gameObj = new($"Layer {layerIndex}"); // Create a new game object to render the sprite
+            GameObject gameObj = new(sectionName); // Create a new game object to render the sprite
             gameObj.transform.parent = parent; // Set the parent to the layer object
             // -0.01f to prevent tiny gap between sections
             gameObj.transform.localPosition = Vector3.right * (sprite.bounds.size.x-0.01f) * sectionIndex; // Set the position of this section
@@ -81,7 +94,7 @@ namespace Level
             spriteRenderer.sortingLayerID = SortingLayer.NameToID("Background");
             spriteRenderer.sprite = sprite;
             // Tint the sprite
-            spriteRenderer.color = Color.Lerp(colorFrom, colorTo, (float)layerIndex / (layers.Length - 1));
+            spriteRenderer.color = Color.Lerp(colorFrom, colorTo, colorMix);
         }
 
         // Update is called once per frame

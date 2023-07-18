@@ -10,7 +10,6 @@ namespace Level
     public class LevelManager : MonoBehaviour
     {
         public CinemachineConfiner2D cameraConfiner;
-        private Ground ground;
         private ParallaxBackground background;
         private EnemySpawnManager enemySpawnManager;
         private Transform player;
@@ -21,10 +20,13 @@ namespace Level
         [field: SerializeField]
         public float levelHeight { get; private set; } = 30f;
 
-        [field: SerializeField]
+        [field: SerializeField,Tooltip("The y position of the ground in relative to this object")]
         public float groundLevel { get; private set; } = 1f;
 
-        public Vector2 LevelLeft => new Vector2(-levelSize / 2, 0);
+        public Vector2 LocalLevelLeft => new Vector2(-levelSize / 2, 0);
+        public Vector2 LocalLevelRight => new Vector2(levelSize / 2, 0);
+        public Vector2 WorldLevelLeft => (Vector2)transform.position+LocalLevelLeft;
+        public Vector2 WorldLevelRight => (Vector2)transform.position+LocalLevelRight;
 
         private void Start()
         {
@@ -39,10 +41,8 @@ namespace Level
         void GetRequiredComponents()
         {
             background = GetComponentInChildren<ParallaxBackground>();
-            ground = GetComponentInChildren<Ground>();
             enemySpawnManager = GetComponent<EnemySpawnManager>();
             if (background is null) throw new NullReferenceException("Could not find ParallaxBackground component in children of LevelManager");
-            if (ground is null) throw new NullReferenceException("Could not find Ground component in children of LevelManager");
         }
 
         [Button]
@@ -52,12 +52,11 @@ namespace Level
             background.sections = Mathf.CeilToInt(levelSize / background.SectionWidth) + 1;
             background.xOffset = -(background.TotalWidth - background.SectionWidth) / 2;
             background.GenerateLayers();
-            ground.UpdateWidth(levelSize);
             enemySpawnManager.GenerateSpawnSections();
             GenerateColliderBounding();
-            if (player is not null) // Transport player to start of level. todo change this later to level start
+            if (player != null) // Transport player to start of level. todo change this later to level start
             {
-                player.transform.position = LevelLeft + Vector2.right + Vector2.up*groundLevel + Vector2.up;
+                player.transform.position = LocalLevelLeft + Vector2.right + Vector2.up*groundLevel + Vector2.up;
             }
         }
 
@@ -78,17 +77,17 @@ namespace Level
             poly.enabled = false;
             edge.enabled = true;
             poly.points = new[] {
-                    new Vector2(LevelLeft.x, levelHeight),
-                    new Vector2(LevelLeft.x + levelSize, levelHeight),
-                    new Vector2(LevelLeft.x + levelSize, 0),
-                    new Vector2(LevelLeft.x, 0),
+                    new Vector2(LocalLevelLeft.x, levelHeight),
+                    new Vector2(LocalLevelLeft.x + levelSize, levelHeight),
+                    new Vector2(LocalLevelLeft.x + levelSize, 0),
+                    new Vector2(LocalLevelLeft.x, 0),
             };
             edge.points = new[] {
-                    new Vector2(LevelLeft.x, levelHeight),
-                    new Vector2(LevelLeft.x + levelSize, levelHeight),
-                    new Vector2(LevelLeft.x + levelSize, groundLevel),
-                    new Vector2(LevelLeft.x, groundLevel),
-                    new Vector2(LevelLeft.x, levelHeight)
+                    new Vector2(LocalLevelLeft.x, levelHeight),
+                    new Vector2(LocalLevelLeft.x + levelSize, levelHeight),
+                    new Vector2(LocalLevelLeft.x + levelSize, groundLevel),
+                    new Vector2(LocalLevelLeft.x, groundLevel),
+                    new Vector2(LocalLevelLeft.x, levelHeight)
             };
             StartCoroutine(UpdateConfinerCoroutine());
         }

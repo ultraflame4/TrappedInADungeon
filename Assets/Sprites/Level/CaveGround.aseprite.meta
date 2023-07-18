@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638253082945987438
+  platformSettingsDirtyTick: 638253135845965985
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -126,11 +126,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
+      x: 312
       y: 4
       width: 180
-      height: 80
-    spriteID: 39d9a53a6f55b6e44a1c82e453360855
+      height: 73
+    spriteID: aae4e58a07d21964fb81dfa4a353b32d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -138,7 +138,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 312, y: 4}
   - name: CaveGround_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0}
@@ -147,10 +147,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 92
-      width: 180
-      height: 80
-    spriteID: 50d9fc0efde60a540b20807a57c5b6d0
+      y: 4
+      width: 300
+      height: 82
+    spriteID: 63ee27e1b2d4c9246a04068d2031f2a1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -158,7 +158,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 92}
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -171,19 +171,19 @@ ScriptedImporter:
     - name: CaveGround_Frame_0
       frameIndex: 0
       cellRect:
-        x: 0
+        x: 60
         y: 0
         width: 180
-        height: 80
-      spriteId: 39d9a53a6f55b6e44a1c82e453360855
+        height: 73
+      spriteId: aae4e58a07d21964fb81dfa4a353b32d
     - name: CaveGround_Frame_1
       frameIndex: 1
       cellRect:
         x: 0
         y: 0
-        width: 180
-        height: 80
-      spriteId: 50d9fc0efde60a540b20807a57c5b6d0
+        width: 300
+        height: 82
+      spriteId: 63ee27e1b2d4c9246a04068d2031f2a1
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -237,4 +237,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 180, y: 128}
+  canvasSize: {x: 300, y: 128}
