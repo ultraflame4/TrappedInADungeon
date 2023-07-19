@@ -1494,7 +1494,7 @@ MonoBehaviour:
   groundYOffset: -2.44
   colorFrom: {r: 0.040482353, g: 0.040482353, b: 0.12156863, a: 1}
   colorTo: {r: 0.12487501, g: 0.11812501, b: 0.135, a: 1}
-  parallaxFactor: -0.2
+  parallaxFactor: -0.1
   sections: 4
   yOffset: 8
   xOffset: -75

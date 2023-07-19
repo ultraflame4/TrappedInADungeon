@@ -1,3 +1,4 @@
+using System;
 using EasyButtons;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -76,7 +77,7 @@ namespace Level
             GameObject groundLayerObj = new($"Ground Layer Container"); // Create a new game object to store the layer sections
             groundLayerObj.transform.parent = transform; // Set the parent to this object
             groundLayerObj.transform.localPosition = new Vector3(xOffset,groundYOffset,-layers.Length); // Set the position of the layer
-            for (int i = 0; i < sections; i++) // Generate the sections
+            for (int i = 0; i < Mathf.CeilToInt(TotalWidth / groundSprite.bounds.size.x); i++) // Generate the sections
             {
                 GenerateSection(groundLayerObj.transform,groundSprite,$"Ground Section {i}",1,i); 
             }
