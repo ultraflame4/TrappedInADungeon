@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3640288141377311492}
   m_Layer: 0
   m_Name: PortalDoor
-  m_TagString: Untagged
+  m_TagString: LevelStructure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

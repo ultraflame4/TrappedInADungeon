@@ -3,6 +3,7 @@ using System.Collections;
 using Cinemachine;
 using EasyButtons;
 using UnityEngine;
+using Utils;
 
 namespace Level
 {
@@ -74,12 +75,13 @@ namespace Level
 
         void PlaceLevelPortals(GameObject prefab)
         {
+            Transform container = transform.FindOrCreateChild("LevelPortalsCtn",emptyContent:true).transform;
             float placementOffset = 2;
             Vector2 yOffset =
                     Vector2.up * (groundLevel+transform.position.y +
                     prefab.GetComponent<SpriteRenderer>().sprite.bounds.size.y/2);
-            Instantiate(prefab, LocalLevelLeft + Vector2.right * placementOffset + yOffset,Quaternion.identity,transform);
-            Instantiate(prefab, LocalLevelRight + Vector2.left * placementOffset+ yOffset,Quaternion.identity,transform);
+            Instantiate(prefab, LocalLevelLeft + Vector2.right * placementOffset + yOffset,Quaternion.identity,container);
+            Instantiate(prefab, LocalLevelRight + Vector2.left * placementOffset+ yOffset,Quaternion.identity,container);
         }
 
         /// <summary>
