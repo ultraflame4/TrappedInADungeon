@@ -35,7 +35,6 @@ namespace Level
             if (!other.gameObject.CompareTag("Player")) return;
             interactableZoneActive = true;
             InteractableChange?.Invoke(true);
-            Debug.Log($" interactText null? {interactText == null}. Manager null? {interactText?.manager == null}");
             interactText.PushText(popupText,(Vector2)transform.position+offset);
         }
         private void OnTriggerExit2D(Collider2D other)

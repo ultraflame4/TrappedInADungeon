@@ -39,13 +39,14 @@ namespace UI.InteractText
         /// </summary>
         /// <param name="description">The interaction text / description</param>
         /// <param name="worldPosition">The position to display the text (in world space)</param>
+        /// <param name="handler">The handler</param>
         public void PushInteractText(string description, Vector2 worldPosition, InteractTextHandler handler)
         {
+            current = handler;
             string fullText = $"Press <color=\"yellow\">E</color> to {description}";
             text.text = fullText;
             Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, worldPosition);
-            text.rectTransform.anchoredPosition = screenPoint - text.canvas.GetComponent<RectTransform>().sizeDelta / 2f;
-            return;
+            text.rectTransform.anchoredPosition = screenPoint;
         }
 
         public void RemoveInteractText(InteractTextHandler handler)
