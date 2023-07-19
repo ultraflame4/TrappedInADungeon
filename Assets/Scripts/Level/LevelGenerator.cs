@@ -12,6 +12,7 @@ namespace Level
     [RequireComponent(typeof(EnemySpawnManager))]
     public class LevelGenerator : MonoBehaviour
     {
+        [Tooltip("The Confiner component of the cinemachine virtual camera to restrict camera movement")]
         public CinemachineConfiner2D cameraConfiner;
         [Tooltip("The player interactable game object place at the start and end of the level to transport the player between areas")]
         public GameObject levelPortalPrefab;
