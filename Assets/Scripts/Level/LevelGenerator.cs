@@ -6,8 +6,11 @@ using UnityEngine;
 
 namespace Level
 {
+    /// <summary>
+    /// Responsible for the level generation and putting game objects where they need to be.
+    /// </summary>
     [RequireComponent(typeof(EnemySpawnManager))]
-    public class LevelManager : MonoBehaviour
+    public class LevelGenerator : MonoBehaviour
     {
         public CinemachineConfiner2D cameraConfiner;
         private ParallaxBackground background;
@@ -99,7 +102,7 @@ namespace Level
             cameraConfiner.InvalidateCache();
         }
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow + Color.red;
             Gizmos.DrawWireCube(transform.position + new Vector3(0, groundLevel), new Vector3(levelSize, 0));

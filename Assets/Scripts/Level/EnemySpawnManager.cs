@@ -10,10 +10,10 @@ using Random = UnityEngine.Random;
 
 namespace Level
 {
-    [RequireComponent(typeof(LevelManager))]
+    [RequireComponent(typeof(LevelGenerator))]
     public class EnemySpawnManager : MonoBehaviour
     {
-        public LevelManager levelManager;
+        public LevelGenerator levelGenerator;
         public PlayerBody player;
 
         [Tooltip("Enemy spawning is divided into sections. This determines how big each section is."), Min(0.1f)]
@@ -21,7 +21,7 @@ namespace Level
 
         [FormerlySerializedAs("yOffset")]
         public float _yOffset = 2f;
-        private float yOffset => _yOffset + levelManager.groundLevel;
+        private float yOffset => _yOffset + levelGenerator.groundLevel;
 
         public SpawnableEnemy[] enemyPool;
         public int difficultyPoints = 200;
@@ -29,7 +29,7 @@ namespace Level
         /// <summary>
         /// Number of spawn sections in the level.
         /// </summary>
-        public int SectionsCount => Mathf.FloorToInt(levelManager.levelSize / spawnSectionSize);
+        public int SectionsCount => Mathf.FloorToInt(levelGenerator.levelSize / spawnSectionSize);
 
         private void Start()
         {
@@ -38,8 +38,8 @@ namespace Level
 
         private Vector2[] GetSpawnSectionPositions()
         {
-            Vector2 spawnSectionOffset = Vector2.left * (levelManager.levelSize / 2 - spawnSectionSize / 2);
-            Vector2 gap = (levelManager.levelSize - SectionsCount * spawnSectionSize) / (SectionsCount + 1) * Vector2.left;
+            Vector2 spawnSectionOffset = Vector2.left * (levelGenerator.levelSize / 2 - spawnSectionSize / 2);
+            Vector2 gap = (levelGenerator.levelSize - SectionsCount * spawnSectionSize) / (SectionsCount + 1) * Vector2.left;
             var spawnSections = new Vector2[SectionsCount];
             for (int i = 0; i < SectionsCount; i++)
             {
@@ -132,7 +132,7 @@ namespace Level
             }
         }
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
 

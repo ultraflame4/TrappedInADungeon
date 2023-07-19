@@ -23,7 +23,7 @@ namespace Level
             }
         }
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red * 0.5f;
             Gizmos.DrawCube(transform.position, new Vector3(spawnRect, 1));
