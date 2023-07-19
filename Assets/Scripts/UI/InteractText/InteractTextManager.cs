@@ -44,6 +44,7 @@ namespace UI.InteractText
         public void PushInteractText(string description, Vector2 worldPosition, InteractTextHandler handler)
         {
             current = handler;
+            // todo change E to the actual input action key (auto switch depending on controller)
             string fullText = $"Press <color=\"yellow\">E</color> to {description}";
             text.text = fullText;
             Rect canvasRect = text.canvas.GetComponent<RectTransform>().rect;
