@@ -6,18 +6,19 @@ public class GameManager : MonoBehaviour
 {
     public GameObject inventoryUi;
     public bool SpawnEnemies = true;
-    private static GameManager instance;
     public GameControls inputs;
-    
+
+    public static GameManager Instance { get; private set; }
+    public static GameControls Controls => Instance.inputs;
 
     void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Debug.LogError("Warning: multiple instances of GameManager found! The static instance will be changed to this one!!!! This is probably not what you want!");
         }
 
-        instance = this;
+        Instance = this;
     }
 
     private void OnEnable()
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
         {
             inputs = new GameControls();
         }
+
         inputs.Enable();
     }
 
@@ -35,14 +37,11 @@ public class GameManager : MonoBehaviour
     }
 
     //todo add ui support for gamepad mouse 
-    public static GameManager Instance => instance;
-    
-    public static GameControls Controls => instance.inputs;
+
 
     private void Start()
     {
         inventoryUi.SetActive(false);
         Controls.Menus.InventoryToggle.performed += (ctx) => inventoryUi.SetActive(!inventoryUi.activeSelf);
     }
-    
 }
