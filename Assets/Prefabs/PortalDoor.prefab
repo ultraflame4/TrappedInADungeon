@@ -4901,7 +4901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupText: No text set for this interaction!
-  offset: {x: 0, y: 0}
+  offset: {x: 0, y: 1.78}
 --- !u!114 &4428200700058851809
 MonoBehaviour:
   m_ObjectHideFlags: 0
