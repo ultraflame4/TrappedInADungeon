@@ -13,6 +13,8 @@ namespace Level
     public class LevelGenerator : MonoBehaviour
     {
         public CinemachineConfiner2D cameraConfiner;
+        [Tooltip("The player interactable game object place at the start and end of the level to transport the player between areas")]
+        public GameObject levelPortalPrefab;
         private ParallaxBackground background;
         private EnemySpawnManager enemySpawnManager;
         private Transform player;
@@ -52,15 +54,31 @@ namespace Level
         public void GenerateLevel()
         {
             GetRequiredComponents();
-            background.sections = Mathf.CeilToInt(levelSize / background.SectionWidth) + 1;
-            background.xOffset = -(background.TotalWidth - background.SectionWidth) / 2;
-            background.GenerateLayers();
+            background.Generate(levelSize);
             enemySpawnManager.GenerateSpawnSections();
             GenerateColliderBounding();
             if (player != null) // Transport player to start of level. todo change this later to level start
             {
                 player.transform.position = LocalLevelLeft + Vector2.right + Vector2.up*groundLevel + Vector2.up;
             }
+
+            if (levelPortalPrefab == null)
+            {
+                Debug.LogError("The level portal prefab is not assigned!");
+                return;
+            }
+
+            PlaceLevelPortals(levelPortalPrefab);
+        }
+
+        void PlaceLevelPortals(GameObject prefab)
+        {
+            float placementOffset = 2;
+            Vector2 yOffset =
+                    Vector2.up * (groundLevel+transform.position.y +
+                    prefab.GetComponent<SpriteRenderer>().sprite.bounds.size.y/2);
+            Instantiate(prefab, LocalLevelLeft + Vector2.right * placementOffset + yOffset,Quaternion.identity,transform);
+            Instantiate(prefab, LocalLevelRight + Vector2.left * placementOffset+ yOffset,Quaternion.identity,transform);
         }
 
         /// <summary>

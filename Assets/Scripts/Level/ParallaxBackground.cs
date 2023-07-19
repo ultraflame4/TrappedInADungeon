@@ -56,6 +56,17 @@ namespace Level
             // GenerateLayers();
         }
 
+        /// <summary>
+        /// Generates the parallax background
+        /// </summary>
+        /// <param name="backgroundWidth">The minimum width of the background</param>
+        public void Generate(float backgroundWidth)
+        {
+            sections = Mathf.CeilToInt(backgroundWidth / SectionWidth) + 1;
+            xOffset = -(TotalWidth - SectionWidth) / 2;
+            GenerateLayers();
+        }
+        
         [Button("Generate Layers")]
         public void GenerateLayers()
         {
@@ -73,7 +84,11 @@ namespace Level
                 }
                 
             }
+            GenerateGroundLayer();
+        }
 
+        void GenerateGroundLayer()
+        {
             GameObject groundLayerObj = new($"Ground Layer Container"); // Create a new game object to store the layer sections
             groundLayerObj.transform.parent = transform; // Set the parent to this object
             groundLayerObj.transform.localPosition = new Vector3(xOffset,groundYOffset,-layers.Length); // Set the position of the layer
@@ -81,7 +96,6 @@ namespace Level
             {
                 GenerateSection(groundLayerObj.transform,groundSprite,$"Ground Section {i}",1,i); 
             }
-     
         }
 
         void GenerateSection(Transform parent, Sprite sprite,string sectionName, float colorMix, int sectionIndex)
