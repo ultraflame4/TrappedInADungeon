@@ -61,8 +61,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6274182410117292044, guid: b4a6ede691e80394a8569ff556cbb00a, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274182410117292044, guid: b4a6ede691e80394a8569ff556cbb00a, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274182410117292044, guid: b4a6ede691e80394a8569ff556cbb00a, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6274182410117292044, guid: b4a6ede691e80394a8569ff556cbb00a, type: 3}
       propertyPath: ShapeModule.randomDirectionAmount
@@ -70,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6274182410117292044, guid: b4a6ede691e80394a8569ff556cbb00a, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6274182410117292044, guid: b4a6ede691e80394a8569ff556cbb00a, type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
