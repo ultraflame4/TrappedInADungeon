@@ -21,15 +21,24 @@ namespace Level
 
         [FormerlySerializedAs("yOffset")]
         public float _yOffset = 2f;
+
+        [Tooltip("Special zone at the ends of the level where enemies will not spawn")]
+        public float endsOffset = 20f;
+
         private float yOffset => _yOffset + levelGenerator.groundLevel;
 
         public SpawnableEnemy[] enemyPool;
         public int difficultyPoints = 200;
 
         /// <summary>
+        /// The size of the area where enemies are allowed to spawn, aka levelSize - endsOffset * 2
+        /// </summary>
+        private float SpawnableAreaSize => levelGenerator.levelSize - endsOffset * 2;
+
+        /// <summary>
         /// Number of spawn sections in the level.
         /// </summary>
-        public int SectionsCount => Mathf.FloorToInt(levelGenerator.levelSize / spawnSectionSize);
+        public int SectionsCount => Mathf.FloorToInt(SpawnableAreaSize / spawnSectionSize);
 
         private void Start()
         {
@@ -39,11 +48,12 @@ namespace Level
         private Vector2[] GetSpawnSectionPositions()
         {
             Vector2 spawnSectionOffset = Vector2.left * (levelGenerator.levelSize / 2 - spawnSectionSize / 2);
-            Vector2 gap = (levelGenerator.levelSize - SectionsCount * spawnSectionSize) / (SectionsCount + 1) * Vector2.left;
+            Vector2 gap = (SpawnableAreaSize - SectionsCount * spawnSectionSize) / (SectionsCount + 1) * Vector2.left;
             var spawnSections = new Vector2[SectionsCount];
+            Vector2 spawnableOffset = Vector2.right * endsOffset;
             for (int i = 0; i < SectionsCount; i++)
             {
-                spawnSections[i] = (Vector2)transform.position + new Vector2(i * spawnSectionSize, 0) + spawnSectionOffset - gap * (i + 1);
+                spawnSections[i] = (Vector2)transform.position + spawnableOffset + new Vector2(i * spawnSectionSize, 0) + spawnSectionOffset - gap * (i + 1);
             }
 
             return spawnSections;
@@ -80,7 +90,7 @@ namespace Level
                     .ToArray(); // Filter out invalid enemies
 
             if (filteredEnemyPool.Length == 0) return null;
-            
+
             /*
              * The spawnWeight of each enemy is used to determine the probability of it spawning.
              * If 2 enemies have spawnWeights of 1 and 2, then the first enemy has a 1/3 chance of spawning, and the second has a 2/3 chance.
