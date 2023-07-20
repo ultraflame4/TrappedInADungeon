@@ -73,6 +73,8 @@ namespace Level
             }
 
             PlaceLevelPortals(levelPortalPrefab);
+            // spawn player at start portal
+            player.transform.position = startPortal.transform.position;
         }
 
         void PlaceLevelPortals(GameObject prefab)
