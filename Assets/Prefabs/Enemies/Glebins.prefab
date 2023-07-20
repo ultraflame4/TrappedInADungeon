@@ -17,10 +17,11 @@ GameObject:
   - component: {fileID: 8348109251440826098}
   - component: {fileID: 4636332432275838779}
   - component: {fileID: 7476105827066563008}
+  - component: {fileID: 3542403788439501788}
+  - component: {fileID: 8188238271096804955}
   - component: {fileID: 4281439559219646697}
   - component: {fileID: 2967751085501941301}
   - component: {fileID: 5871894113917341172}
-  - component: {fileID: 3542403788439501788}
   m_Layer: 7
   m_Name: Glebins
   m_TagString: Enemy
@@ -178,11 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ab335867c54338a8d565be68904198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 7772803838891208523}
-  rb: {fileID: 2967751085501941301}
   allowFlight: 0
   followRange: 8
-  attackDist: 0.58
+  stopDist: 0.1
   checkDirection: 1
 --- !u!114 &4636332432275838779
 MonoBehaviour:
@@ -196,11 +195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ca0dc5f154f774bab17e5887cea1ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityBody: {fileID: 7772803838891208523}
   hitboxPosition: {x: 0.4, y: -0.15}
   hitboxRadius: 0.53
   baseDamage: 10
-  follow: {fileID: 8348109251440826098}
 --- !u!114 &7476105827066563008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,8 +210,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b29345fe32b4492a9c1848437226e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityBody: {fileID: 7772803838891208523}
   bloodParticles: {fileID: 527914753178123709, guid: b4a6ede691e80394a8569ff556cbb00a, type: 3}
+--- !u!114 &3542403788439501788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713372788904983843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ba1bc219ef4c16bd5d4e0148875f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeadShadowPrefab: {fileID: 7715831331796477733, guid: 568f0fee3973e1d41bf8aec4c81585b6, type: 3}
+--- !u!114 &8188238271096804955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713372788904983843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb843194546e435cb8ef1a7acf135fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expBallPrefab: {fileID: 5029425239786961008, guid: cdcd62e37ebe53c4ab11e41bf2a52781, type: 3}
+  config: {fileID: 11400000, guid: e9cb5d6f0922d4f48b226030be8ba9d0, type: 2}
 --- !u!70 &4281439559219646697
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -322,18 +345,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.58325243, y: 0.85925364}
   m_EdgeRadius: 0
---- !u!114 &3542403788439501788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3713372788904983843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4ba1bc219ef4c16bd5d4e0148875f67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityBody: {fileID: 7772803838891208523}
-  spriteRenderer: {fileID: 4271550116412811328}
-  DeadShadowPrefab: {fileID: 7715831331796477733, guid: 568f0fee3973e1d41bf8aec4c81585b6, type: 3}

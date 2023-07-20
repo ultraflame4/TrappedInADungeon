@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 5808688839359174469}
   - component: {fileID: 5231545731985648300}
   - component: {fileID: 5747528118239820976}
+  - component: {fileID: 4628747308874227420}
   m_Layer: 7
   m_Name: Wagracks
   m_TagString: Enemy
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 446703723
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 6951620618297413654, guid: b7c790b0141eb87408120928b5194f51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -294,3 +295,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1875, y: 0.40625}
   m_EdgeRadius: 0
+--- !u!114 &4628747308874227420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5349017118548454483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb843194546e435cb8ef1a7acf135fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expBallPrefab: {fileID: 5029425239786961008, guid: cdcd62e37ebe53c4ab11e41bf2a52781, type: 3}
+  config: {fileID: 11400000, guid: dfda6ce909c28d443b43c4a36a5f6ccc, type: 2}

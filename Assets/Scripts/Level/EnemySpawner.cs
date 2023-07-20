@@ -1,7 +1,9 @@
+using Enemies;
 using UnityEngine;
 
 namespace Level
 {
+    //todo rework enemy spawning system
     public class EnemySpawner : MonoBehaviour
     {
         public float spawnRect = 5f;
@@ -19,7 +21,7 @@ namespace Level
             for (var i = 0; i < enemyPrefabs.Length; i++)
             {
                 float x = i * (spawnRect / enemyPrefabs.Length) - spawnRect / 2f;
-                Instantiate(enemyPrefabs[i], new Vector3(transform.position.x+x, transform.position.y), Quaternion.identity);
+                var obj = Instantiate(enemyPrefabs[i], new Vector3(transform.position.x+x, transform.position.y), Quaternion.identity);
             }
         }
 
