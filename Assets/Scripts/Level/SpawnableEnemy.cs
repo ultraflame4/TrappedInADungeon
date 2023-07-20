@@ -14,6 +14,5 @@ namespace Level
         public int difficultyPoints = 1;
         [Tooltip("Minimum player level required to spawn this enemy."), Min(0)]
         public int minPlayerLevel = 0;
-        
     }
 }

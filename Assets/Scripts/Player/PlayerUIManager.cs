@@ -1,15 +1,16 @@
 ﻿using Entities;
+using TMPro;
 using UI;
 using UnityEngine;
 
 namespace Player
 {
-    public class BarManager : MonoBehaviour
+    public class PlayerUIManager : MonoBehaviour
     {
         public PlayerBody playerBody;
         public BarController healthBar;
         public BarController manaBar;
-        
+        public TextMeshProUGUI levelText;
         private void Start()
         {
             playerBody.CurrentHealth.Changed += () =>
@@ -21,6 +22,10 @@ namespace Player
             {
                 manaBar.filledPercentage = playerBody.CurrentMana.value / playerBody.Mana;
                 manaBar.UpdateBar();
+            };
+            playerBody.PlayerLevelChanged += (newLevel) =>
+            {
+                levelText.text = $"{newLevel}";
             };
         }
     }
