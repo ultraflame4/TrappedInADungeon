@@ -1,6 +1,8 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,25 +13,24 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public static GameControls Controls => Instance.inputs;
 
+    
     void Awake()
     {
-        if (Instance != null)
-        {
-            Debug.LogError("Warning: multiple instances of GameManager found! The static instance will be changed to this one!!!! This is probably not what you want!");
-        }
-
-        Instance = this;
-    }
-
-    private void OnEnable()
-    {
+        
         if (inputs == null)
         {
             inputs = new GameControls();
         }
-
         inputs.Enable();
+        
+        if (Instance != null)
+        {
+            Debug.LogError("Warning: multiple instances of GameManager found! The static instance will be changed to this one!!!! This is probably not what you want!");
+        }
+        Instance = this;
+
     }
+    
 
     private void OnDisable()
     {

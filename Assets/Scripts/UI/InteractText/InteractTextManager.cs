@@ -1,5 +1,8 @@
-﻿using TMPro;
+﻿using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 using Utils;
 
 namespace UI.InteractText
@@ -11,7 +14,6 @@ namespace UI.InteractText
         public string currentText { get; private set; }
         private InteractTextHandler current;
         public static InteractTextManager Instance { get; private set; }
-
         void Awake()
         {
             if (Instance != null)
@@ -26,6 +28,7 @@ namespace UI.InteractText
         {
             text = GetComponent<TextMeshProUGUI>();
         }
+
 
         /// <summary>
         /// Displays a "Press [E] to insert description or something
@@ -44,19 +47,18 @@ namespace UI.InteractText
         public void PushInteractText(string description, Vector2 worldPosition, InteractTextHandler handler)
         {
             current = handler;
-            // todo change E to the actual input action key (auto switch depending on controller)
-            string fullText = $"Press <color=\"yellow\">E</color> to {description}";
+            string currentBindingName = GameManager.Controls.Player.Interact.GetBindingDisplayString();
+            string fullText = $"Press <color=\"yellow\">[{currentBindingName}]</color> to {description}";
             text.text = fullText;
             Rect canvasRect = text.canvas.GetComponent<RectTransform>().rect;
             Vector2 canvasSizeHalf = new Vector2(canvasRect.width, canvasRect.height) / 2;
             Vector2 textSizeHalf = new Vector2(text.preferredWidth, text.preferredHeight) / 2;
             Vector2 minPosition = textSizeHalf - canvasSizeHalf;
-            
-            Vector2 maxPosition =textSizeHalf + canvasSizeHalf;
+            Vector2 maxPosition = textSizeHalf + canvasSizeHalf;
             Vector2 textPos = text.canvas.WorldToCanvasPoint(worldPosition);
-            text.rectTransform.anchoredPosition = Vector2.Max(Vector2.Min(textPos,maxPosition),minPosition);
-            Debug.Log($"Minimum: {minPosition}, Maximum: {maxPosition}, textPos: {textPos}");
+            text.rectTransform.anchoredPosition = Vector2.Max(Vector2.Min(textPos, maxPosition), minPosition);
         }
+        
 
         public void RemoveInteractText(InteractTextHandler handler)
         {
