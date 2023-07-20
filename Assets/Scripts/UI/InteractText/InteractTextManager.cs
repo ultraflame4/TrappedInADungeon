@@ -53,8 +53,9 @@ namespace UI.InteractText
             Rect canvasRect = text.canvas.GetComponent<RectTransform>().rect;
             Vector2 canvasSizeHalf = new Vector2(canvasRect.width, canvasRect.height) / 2;
             Vector2 textSizeHalf = new Vector2(text.preferredWidth, text.preferredHeight) / 2;
-            Vector2 minPosition = textSizeHalf - canvasSizeHalf;
-            Vector2 maxPosition = textSizeHalf + canvasSizeHalf;
+            // The min and max position so that the text does not appear off the screen
+            Vector2 minPosition = textSizeHalf - canvasSizeHalf + Vector2.right*10; // Vector2.right * 10 to add some padding to the edge of the screen
+            Vector2 maxPosition = textSizeHalf + canvasSizeHalf + Vector2.left*10; // Vector2.left * 10 to add some padding to the edge of the screen
             Vector2 textPos = text.canvas.WorldToCanvasPoint(worldPosition);
             text.rectTransform.anchoredPosition = Vector2.Max(Vector2.Min(textPos, maxPosition), minPosition);
         }
