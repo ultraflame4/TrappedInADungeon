@@ -20,6 +20,8 @@ namespace Level
         private ParallaxBackground background;
         private EnemySpawnManager enemySpawnManager;
         private Transform player;
+        private PortalInteraction startPortal;
+        private PortalInteraction endPortal;
 
         [field: SerializeField]
         public float levelSize { get; private set; } = 10f;
@@ -76,12 +78,12 @@ namespace Level
         void PlaceLevelPortals(GameObject prefab)
         {
             Transform container = transform.FindOrCreateChild("LevelPortalsCtn",emptyContent:true).transform;
-            float placementOffset = 2;
+            float placementOffset = 5;
             Vector2 yOffset =
                     Vector2.up * (groundLevel+transform.position.y +
                     prefab.GetComponent<SpriteRenderer>().sprite.bounds.size.y/2);
-            Instantiate(prefab, LocalLevelLeft + Vector2.right * placementOffset + yOffset,Quaternion.identity,container);
-            Instantiate(prefab, LocalLevelRight + Vector2.left * placementOffset+ yOffset,Quaternion.identity,container);
+            startPortal = Instantiate(prefab, LocalLevelLeft + Vector2.right * placementOffset + yOffset,Quaternion.identity,container).GetComponent<PortalInteraction>();
+            endPortal = Instantiate(prefab, LocalLevelRight + Vector2.left * placementOffset+ yOffset,Quaternion.identity,container).GetComponent<PortalInteraction>();
         }
 
         /// <summary>

@@ -2,6 +2,7 @@
 using UI;
 using UI.InteractText;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Level
 {
@@ -18,7 +19,11 @@ namespace Level
         /// Invoked when player enters or leave the interactable zone;
         /// value is true when player enters the interactable zone, false when  player exits.
         /// </summary>
-        public event Action<bool> InteractableChange; 
+        public event Action<bool> InteractableChange;
+        /// <summary>
+        /// Invoked when the player has interacted with this object.
+        /// </summary>
+        public event Action InteractedWith; 
         public bool interactableZoneActive { get; private set; }
 
         private CircleCollider2D circleCollider2D;
@@ -28,8 +33,16 @@ namespace Level
         {
             circleCollider2D = GetComponent<CircleCollider2D>();
             interactText = InteractTextManager.Instance.Create();
+            GameManager.Controls.Player.Interact.performed += OnInteractInput;
         }
 
+        private void OnInteractInput(InputAction.CallbackContext callbackContext)
+        {
+            if (interactableZoneActive)
+            {
+                InteractedWith?.Invoke();
+            }
+        }
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.gameObject.CompareTag("Player")) return;

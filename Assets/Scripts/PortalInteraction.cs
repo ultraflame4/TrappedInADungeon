@@ -6,9 +6,9 @@ public class PortalInteraction : MonoBehaviour
 {
     public float activeRadialMulti = 1f;
     public float activeEmissionRate = 15f;
+    public InteractableObject interactableObject { get; private set; }
     private float initialRadialMulti;
     private float initialEmissionRate;
-    private InteractableObject interactableObject;
     private ParticleSystem particleSys;
 
     private void Start()

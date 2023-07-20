@@ -7648,7 +7648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUi: {fileID: 694538792}
-  SpawnEnemies: 0
+  SpawnEnemies: 1
 --- !u!1001 &1039374597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16752,7 +16752,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5461211443868745954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.229984, y: 4.85001, z: -10}
+  m_LocalPosition: {x: -51.229992, y: 4.85001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
