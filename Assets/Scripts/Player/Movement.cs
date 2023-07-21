@@ -65,7 +65,10 @@ namespace Player
             {
                 toDash = false; // Reset dash variables
                 isDashing = false;
-                StopCoroutine(dashCoroutine); // Stop end dash coroutine
+                if (dashCoroutine != null)
+                {
+                    StopCoroutine(dashCoroutine); // Stop end dash coroutine
+                }
             }
             UpdateAnimationsParameters();
             UpdateSpriteDirection();
