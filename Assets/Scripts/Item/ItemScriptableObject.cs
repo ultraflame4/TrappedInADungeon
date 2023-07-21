@@ -12,8 +12,6 @@ namespace Item
         public string item_description;
         [Tooltip("Sprite to display in the inventory")]
         public Sprite itemSprite;
-        [Tooltip("The item type")]
-        public ItemTypes itemType;
         [Tooltip("Depends on item type." +
                  "\nWeapon - Weapon Prefab to spawn & use." +
                  "\nProjectile - Projectile prefab to spawn & shoot." +
