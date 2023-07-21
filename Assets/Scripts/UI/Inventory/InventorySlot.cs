@@ -38,10 +38,10 @@ namespace UI.Inventory
 
         [ReadOnly(true)] public InputAction inputAction;
         [ReadOnly(true)] public int slotIndex;
-        private InventoryItemInstance currentItem = null;
+        private InvSlotItemInstance currentItem = null;
         private ItemPrefabController itemGateway = null;
         private PlayerInventory playerInventory;
-        public InventoryItemInstance Item => currentItem;
+        public InvSlotItemInstance Item => currentItem;
 
         private void Start()
         {
@@ -90,7 +90,7 @@ namespace UI.Inventory
         /// </summary>
         /// <param name="item"></param>
         /// <returns>Returns true if successful, vice versa</returns>
-        public bool SetItem(InventoryItemInstance item)
+        public bool SetItem(InvSlotItemInstance item)
         {
             if (item == null)
             {
@@ -110,7 +110,7 @@ namespace UI.Inventory
             return true;
         }
 
-        private void _SetItem(InventoryItemInstance item)
+        private void _SetItem(InvSlotItemInstance item)
         {
             if (currentItem == item) return; // If item instance is the same in this slot, do nothing
             if (item is null) // If clearing this slot
@@ -170,7 +170,7 @@ namespace UI.Inventory
         public void OnDrop(PointerEventData eventData)
         {
             var draggedData = CursorController.GetInstance().GetDraggedData();
-            if (draggedData is InventoryItemInstance item)
+            if (draggedData is InvSlotItemInstance item)
             {
                 SetItem(item);
             }

@@ -6,11 +6,11 @@ namespace UI.Inventory
     /// Represents an instance of an item that is in the inventory.
     /// 
     /// </summary>
-    public class InventoryItemInstance
+    public class InvSlotItemInstance
     {
         public ItemInstance itemInstance;
         public InventorySlot assignedSlot = null;
-        public InventoryItemInstance(ItemInstance itemInstance)
+        public InvSlotItemInstance(ItemInstance itemInstance)
         {
             this.itemInstance = itemInstance;
         }

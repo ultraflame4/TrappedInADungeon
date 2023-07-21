@@ -11,7 +11,7 @@ namespace UI.Inventory
         public Image itemImage;
         public TextMeshProUGUI title;
         public TextMeshProUGUI description;
-        private InventoryItemInstance itemInstance;
+        private InvSlotItemInstance itemInstance;
 
         /// <summary>
         /// Sets the item instance this list item is showing
@@ -22,7 +22,7 @@ namespace UI.Inventory
             itemImage.sprite = item.sprite;
             title.text = $"{item.GetDisplayName()} x {item.Count}";
             description.text = item.GetDisplayDescription();
-            itemInstance = new InventoryItemInstance(item);
+            itemInstance = new InvSlotItemInstance(item);
         }
 
         public void OnDrag(PointerEventData eventData) { }
