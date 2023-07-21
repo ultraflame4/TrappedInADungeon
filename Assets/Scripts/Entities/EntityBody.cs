@@ -22,8 +22,7 @@ namespace Entities
 
         public int BaseSpeed; // Movement speed
         public int BaseDefense; // Reduces damage taken
-
-        private float _currentHealth; // Automatically set to Health on start
+        
 
         public VolatileValue<float> CurrentHealth = new(); // Automatically set to Health on start
 
@@ -38,9 +37,10 @@ namespace Entities
         public event Action DeathEvent; // Event that is invoked when entity dies
         public event Action DamagedEvent; // Event that is invoked when entity takes damage
 
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             CurrentHealth.value = Health;
+            CurrentHealth.validator = (value, newValue) => Mathf.Min(Health, newValue);
         }
 
         public void Damage(float amt)

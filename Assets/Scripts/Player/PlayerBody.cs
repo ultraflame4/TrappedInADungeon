@@ -22,10 +22,11 @@ namespace Player
         public float NextLevelExp => Mathf.Pow(Level*0.65f,2);
         public event Action<int> PlayerLevelChanged;
 
-        protected override void Start()
+        protected override void Awake()
         {
-            base.Start();
+            base.Awake();
             CurrentMana.value = Mana;
+            CurrentMana.validator = (value, newValue) => Mathf.Min(Mana, newValue);
         }
 
         private void Update()
