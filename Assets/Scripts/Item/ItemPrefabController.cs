@@ -1,6 +1,7 @@
 ﻿using System;
 using Entities;
 using Player;
+using UI;
 using UI.Inventory;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -38,6 +39,11 @@ namespace Item
 
         public void UseItem()
         {
+            if (PlayerBody.CurrentMana.value < slot.Item.itemInstance.ManaCost)
+            {
+                NotificationManager.Instance.PushNotification("Not enough mana!", addData:$" ({slot.Item.itemInstance.ManaCost}/{PlayerBody.CurrentMana.value})");
+                return;
+            }
             PlayerBody.CurrentMana.value -= slot.Item.itemInstance.ManaCost;
             OnItemUsed?.Invoke();
         }
