@@ -13,6 +13,7 @@ namespace UI
         public string addData;
         public double timeSentMS;
         public float durationMS;
+        public double expireTimeMS => timeSentMS+durationMS;
     }
 
     /// <summary>
@@ -67,7 +68,7 @@ namespace UI
         void RemoveExpiredNotifications()
         {
             int before = notifications.Count();
-            notifications.RemoveAll(x => (x.timeSentMS + x.durationMS) < Time.timeAsDouble*1000);
+            notifications.RemoveAll(x => x.expireTimeMS < Time.timeAsDouble*1000);
             int after = notifications.Count();
             if (before != after)
             {
@@ -80,10 +81,15 @@ namespace UI
             // Group similar messages together so we can avoid printing them out multiple times
             var stackedMessages = notifications.GroupBy(
                 a => a.message,
-                b => b.addData,
-                (msg, addDatas) => $"{msg} {addDatas.First()} x {addDatas.Count()}"
-            );
-
+                b => b,
+                (msg, addDatas) => new {
+                        Text = msg,
+                        // Only use the most recent the add data in the group (which should have the biggest expireTimeMS) 
+                        AddText = addDatas.Aggregate((biggest, next) => next.expireTimeMS > biggest.expireTimeMS ? next : biggest).addData,
+                        Count = addDatas.Count()
+                }
+            ).Select(x => $"{x.Text} {x.AddText} x {x.Count}");
+            
             // Combine all messages into a single one
             var combinedText = stackedMessages.JoinString("\n");
             text.text = combinedText;
