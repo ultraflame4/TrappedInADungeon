@@ -35,7 +35,7 @@ namespace Weapon
         private static readonly int AttackTrigger = Animator.StringToHash("Attack");
         private static readonly int AttackIndex = Animator.StringToHash("AttackIndex");
 
-        public WeaponItem weaponItem => gateway?.slot.Item.itemInstance as WeaponItem;
+        public ItemInstance weaponItem => gateway?.slot.Item.itemInstance;
 
         // Start is called before the first frame update
         void Start()
