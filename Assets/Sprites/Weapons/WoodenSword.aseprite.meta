@@ -2,7 +2,22 @@ fileFormatVersion: 2
 guid: bebcaef0c16439541b4e0753adbc1439
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Attack1
+    second: {fileID: 7400000, guid: 0237d2fee1a8ef04dbeee62b9806d925, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Attack2
+    second: {fileID: 7400000, guid: 617757da5adb5514995b52a4497cbd4a, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Idle
+    second: {fileID: 7400000, guid: 2b076dc6c01d0cb4a9e17edafb517c03, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -35,7 +50,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 16
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -75,7 +90,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -87,7 +102,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -95,7 +110,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638255713300906882
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,7 +136,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: WoodenSword_Frame_0
     originalName: 
-    pivot: {x: 0.49999997, y: -1}
+    pivot: {x: 0.49999997, y: 0.49999997}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -141,15 +156,15 @@ ScriptedImporter:
     uvTransform: {x: 45, y: 51}
   - name: WoodenSword_Frame_1
     originalName: 
-    pivot: {x: 0.6923077, y: -0.7826087}
+    pivot: {x: 0.49999997, y: 0.49999997}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 100
-      width: 13
-      height: 23
+      x: 45
+      y: 75
+      width: 16
+      height: 16
     spriteID: 9e27bfb99b0f04647912cc89b9ae161c
     spriteBone: []
     spriteOutline: []
@@ -158,18 +173,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 100}
+    uvTransform: {x: 45, y: 75}
   - name: WoodenSword_Frame_2
     originalName: 
-    pivot: {x: 0.27272728, y: -0.3}
+    pivot: {x: 0.6923077, y: 0.26086956}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 33
-      height: 30
+      y: 100
+      width: 13
+      height: 23
     spriteID: 0653123898685704b8aad5a441bd6834
     spriteBone: []
     spriteOutline: []
@@ -178,18 +193,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 4, y: 100}
   - name: WoodenSword_Frame_3
     originalName: 
-    pivot: {x: 0.3076923, y: -0.13636364}
+    pivot: {x: 0.27272728, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 70
-      width: 26
-      height: 22
+      y: 4
+      width: 33
+      height: 30
     spriteID: fb843a31380bd6b4c8a6e7b67b9bf961
     spriteBone: []
     spriteOutline: []
@@ -198,18 +213,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 70}
+    uvTransform: {x: 4, y: 4}
   - name: WoodenSword_Frame_4
     originalName: 
-    pivot: {x: 0.75, y: -0.1875}
+    pivot: {x: 0.3076923, y: 0.9545455}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 69
-      y: 51
-      width: 4
-      height: 16
+      x: 4
+      y: 70
+      width: 26
+      height: 22
     spriteID: 194e308d38074e04b8f2413799482731
     spriteBone: []
     spriteOutline: []
@@ -218,18 +233,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 69, y: 51}
+    uvTransform: {x: 4, y: 70}
   - name: WoodenSword_Frame_5
     originalName: 
-    pivot: {x: 0.7826087, y: -0.3846154}
+    pivot: {x: 0.75, y: 1.3125}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 45
-      y: 30
-      width: 23
-      height: 13
+      x: 69
+      y: 51
+      width: 4
+      height: 16
     spriteID: ccb9273cffcb0e7428496f0df5afa6bd
     spriteBone: []
     spriteOutline: []
@@ -238,18 +253,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 45, y: 30}
+    uvTransform: {x: 69, y: 51}
   - name: WoodenSword_Frame_6
     originalName: 
-    pivot: {x: 0.5294118, y: -0.44444448}
+    pivot: {x: 0.7826087, y: 1.4615386}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 45
-      y: 4
-      width: 34
-      height: 18
+      y: 30
+      width: 23
+      height: 13
     spriteID: e26c803866314b146b682571721ca8ae
     spriteBone: []
     spriteOutline: []
@@ -258,18 +273,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 45, y: 4}
+    uvTransform: {x: 45, y: 30}
   - name: WoodenSword_Frame_7
     originalName: 
-    pivot: {x: 0.20689656, y: -0.3}
+    pivot: {x: 0.5294118, y: 0.88888884}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 42
-      width: 29
-      height: 20
+      x: 45
+      y: 4
+      width: 34
+      height: 18
     spriteID: 4f54f09d693011b4fa9bb08ed4f73e8c
     spriteBone: []
     spriteOutline: []
@@ -278,18 +293,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 42}
+    uvTransform: {x: 45, y: 4}
   - name: WoodenSword_Frame_8
     originalName: 
-    pivot: {x: 0.6, y: -0.5}
+    pivot: {x: 0.20689656, y: 0.90000004}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 45
-      y: 75
-      width: 20
-      height: 12
+      x: 4
+      y: 42
+      width: 29
+      height: 20
     spriteID: 4eb2d2860c1a54240985f4fa6ab96ede
     spriteBone: []
     spriteOutline: []
@@ -298,7 +313,27 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 45, y: 75}
+    uvTransform: {x: 4, y: 42}
+  - name: WoodenSword_Frame_9
+    originalName: 
+    pivot: {x: 0.6, y: 1.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 45
+      y: 99
+      width: 20
+      height: 12
+    spriteID: f3d7c57c9928df346b291057ebe368ea
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 45, y: 99}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -319,70 +354,126 @@ ScriptedImporter:
     - name: WoodenSword_Frame_1
       frameIndex: 1
       cellRect:
-        x: 15
-        y: 18
-        width: 13
-        height: 23
+        x: 16
+        y: 16
+        width: 16
+        height: 16
       spriteId: 9e27bfb99b0f04647912cc89b9ae161c
     - name: WoodenSword_Frame_2
       frameIndex: 2
       cellRect:
         x: 15
-        y: 9
-        width: 33
-        height: 30
+        y: 18
+        width: 13
+        height: 23
       spriteId: 0653123898685704b8aad5a441bd6834
     - name: WoodenSword_Frame_3
       frameIndex: 3
+      cellRect:
+        x: 15
+        y: 9
+        width: 33
+        height: 30
+      spriteId: fb843a31380bd6b4c8a6e7b67b9bf961
+    - name: WoodenSword_Frame_4
+      frameIndex: 4
       cellRect:
         x: 16
         y: 3
         width: 26
         height: 22
-      spriteId: fb843a31380bd6b4c8a6e7b67b9bf961
-    - name: WoodenSword_Frame_4
-      frameIndex: 4
+      spriteId: 194e308d38074e04b8f2413799482731
+    - name: WoodenSword_Frame_5
+      frameIndex: 5
       cellRect:
         x: 21
         y: 3
         width: 4
         height: 16
-      spriteId: 194e308d38074e04b8f2413799482731
-    - name: WoodenSword_Frame_5
-      frameIndex: 5
-      cellRect:
-        x: 6
-        y: 5
-        width: 23
-        height: 13
       spriteId: ccb9273cffcb0e7428496f0df5afa6bd
     - name: WoodenSword_Frame_6
       frameIndex: 6
       cellRect:
         x: 6
-        y: 8
-        width: 34
-        height: 18
+        y: 5
+        width: 23
+        height: 13
       spriteId: e26c803866314b146b682571721ca8ae
     - name: WoodenSword_Frame_7
       frameIndex: 7
+      cellRect:
+        x: 6
+        y: 8
+        width: 34
+        height: 18
+      spriteId: 4f54f09d693011b4fa9bb08ed4f73e8c
+    - name: WoodenSword_Frame_8
+      frameIndex: 8
       cellRect:
         x: 18
         y: 6
         width: 29
         height: 20
-      spriteId: 4f54f09d693011b4fa9bb08ed4f73e8c
-    - name: WoodenSword_Frame_8
-      frameIndex: 8
+      spriteId: 4eb2d2860c1a54240985f4fa6ab96ede
+    - name: WoodenSword_Frame_9
+      frameIndex: 9
       cellRect:
         x: 12
         y: 6
         width: 20
         height: 12
-      spriteId: 4eb2d2860c1a54240985f4fa6ab96ede
+      spriteId: f3d7c57c9928df346b291057ebe368ea
     linkedCells: []
     parentIndex: -1
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Windows Store Apps
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 48, y: 48}
