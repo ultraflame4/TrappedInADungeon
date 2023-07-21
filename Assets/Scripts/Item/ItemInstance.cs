@@ -4,7 +4,7 @@ namespace Item
 {
     public class ItemInstance : IItemInstance
     {
-        public ItemScriptableObject item;
+        public ItemScriptableObject item { get; private set; }
         public Sprite sprite => item.itemSprite;
         public GameObject prefab => item.itemPrefab;
         // todo implement stats modifiers.

@@ -1,4 +1,6 @@
 ﻿using System;
+using Entities;
+using Player;
 using UI.Inventory;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -26,10 +28,12 @@ namespace Item
         public InventorySlot slot;
 
         public Transform Player { get; private set; }
+        public PlayerBody PlayerBody { get; private set; }
 
         private void Awake()
         {
             Player = GameObject.FindWithTag("Player").transform;
+            PlayerBody = Player.GetComponent<PlayerBody>();
         }
 
         public void UseItem() => OnItemUsed?.Invoke();

@@ -7,7 +7,7 @@ namespace Item
     
     public interface IItemInstance : IEntityStats, IItemStats
     {
-        // public ItemScriptableObject itemType { get; }
+        public ItemScriptableObject item { get; }
         /// <summary>
         /// Returns the name to be shown in the inventory list.
         /// Can contain text mesh pro rich text
