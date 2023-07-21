@@ -17,9 +17,9 @@ MonoBehaviour:
   itemSprite: {fileID: -3003964101018066756, guid: ce7a090d790ee6942acb9f6993bcec64, type: 3}
   itemType: 1
   itemPrefab: {fileID: 3309170777301791222, guid: c5903b509ae55a149a6e79aa118378cc, type: 3}
-  attack: 0
+  attack: 50
   defense: 0
-  speed: 0
+  speed: 500
   health: 0
   mana: 0
-  manaCost: 0
+  manaCost: 30
