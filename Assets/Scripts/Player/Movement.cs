@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using Entities;
+using UI;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Utils;
 
 namespace Player
 {
@@ -54,11 +56,18 @@ namespace Player
             // include toJump in its own condition to prevent Input.GetButtonDown from setting toJump to false
             // We only set toJump to false if we have did the physics in the FixedUpdate
             toJump = GameManager.Controls.Player.Jump.triggered || toJump;
-            if (GameManager.Controls.Player.Dash.triggered && body.CurrentMana.value > dashCost)
+            if (GameManager.Controls.Player.Dash.triggered )
             {
-                toDash = true;
-                // Dash consumes 5% of mana or 10 whichever is greater
-                body.CurrentMana.value -= dashCost;
+                if (body.CurrentMana.value > dashCost)
+                {
+                    toDash = true;
+                    // Dash consumes 5% of mana or 10 whichever is greater
+                    body.CurrentMana.value -= dashCost;
+                }
+                else
+                {
+                    NotificationManager.Instance.PushNotification("Not enough mana to dash!",addData:$"<color=\"yellow\">({body.CurrentMana.value.ToPrecision(2)}/{dashCost})</color>");
+                }
             }
 
             if (GameManager.Controls.Player.Dash.WasReleasedThisFrame()) // If dash button is released, stop dashing

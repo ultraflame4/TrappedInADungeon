@@ -59,6 +59,7 @@ namespace UI
             });
             hasNotificationUpdate = true;
         }
+        
 
         /// <summary>
         /// Removes expired notifications

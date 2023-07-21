@@ -43,7 +43,7 @@ namespace Item
             if (PlayerBody.CurrentMana.value < slot.Item.itemInstance.ManaCost)
             {
                 NotificationManager.Instance.PushNotification("Not enough <color=\"blue\">mana</color>!",
-                    addData:$" ({slot.Item.itemInstance.ManaCost}/{PlayerBody.CurrentMana.value.ToPrecision(2)})");
+                    addData:$"<color=\"yellow\">({PlayerBody.CurrentMana.value.ToPrecision(2)}/{slot.Item.itemInstance.ManaCost})</color>");
                 return;
             }
             PlayerBody.CurrentMana.value -= slot.Item.itemInstance.ManaCost;
