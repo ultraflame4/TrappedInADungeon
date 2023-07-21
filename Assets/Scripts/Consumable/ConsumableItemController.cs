@@ -9,6 +9,7 @@ namespace Consumable
 
         protected override void OnItemUse()
         {
+            //todo, bug where sometimes the heart reduces player health instead of increasing.
             playerBody.CurrentHealth.value += itemInstance.item.health;
             playerBody.CurrentMana.value += itemInstance.item.mana;
             gateway.PlayerInventory.AdjustItemCount(itemInstance,itemInstance.Count-1);
