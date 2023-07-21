@@ -34,7 +34,6 @@ RectTransform:
   m_Children:
   - {fileID: 3596730960532860722}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -93,8 +92,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemImage: {fileID: 5813458276659606744}
   spriteButton: {fileID: 6176721506154770443}
-  buttonName: 
+  inputRef: {fileID: 0}
   isWeaponSlot: 0
+  inputAction:
+    m_Name: Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: be26f2f3-9dd1-459e-82a7-48e0611819e2
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  slotIndex: 0
 --- !u!114 &6176721506154770443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,12 +152,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4768858447970567795}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.00000029802}
-  m_SizeDelta: {x: 48, y: 48}
+  m_AnchoredPosition: {x: -0.00000023842, y: -0.00000095367}
+  m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &792187159273109604
 CanvasRenderer:
