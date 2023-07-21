@@ -36,7 +36,11 @@ namespace Item
             PlayerBody = Player.GetComponent<PlayerBody>();
         }
 
-        public void UseItem() => OnItemUsed?.Invoke();
+        public void UseItem()
+        {
+            PlayerBody.CurrentMana.value -= slot.Item.itemInstance.ManaCost;
+            OnItemUsed?.Invoke();
+        }
         public void ReleaseItem() => OnItemReleased?.Invoke();
     }
 }
