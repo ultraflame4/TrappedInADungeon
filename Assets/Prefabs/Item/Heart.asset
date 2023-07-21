@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1cf7b30ece5f9545b044bf270826dbb, type: 3}
-  m_Name: game_item
+  m_Name: Heart
   m_EditorClassIdentifier: 
   item_name: Heart
   item_description: Restores 50 health
   itemSprite: {fileID: -8576087219753186510, guid: 41d4879fc132456499ddd7772c270c8d, type: 3}
+  itemType: 0
   itemPrefab: {fileID: 0}
   attack: 0
   defense: 0

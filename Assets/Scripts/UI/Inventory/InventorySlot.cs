@@ -110,16 +110,19 @@ namespace UI.Inventory
             }
             else
             {
-                var obj = Instantiate(item.itemInstance.prefab);
-                itemGateway = obj.GetComponent<ItemPrefabController>();
-                if (itemGateway is null)
+                // Instantiate the item prefab
+                if (item.itemInstance.prefab != null)
                 {
-                    Debug.Log($"Prefab  {currentItem.itemInstance.prefab} does not have ItemPrefabHotbarGateway component!");
-                    Destroy(obj);
-                    return; // Cannot instantiate item prefab, do nothing
+                    var obj = Instantiate(item.itemInstance.prefab);
+                    itemGateway = obj.GetComponent<ItemPrefabController>();
+                    if (itemGateway is null)
+                    {
+                        Debug.Log($"Prefab  {currentItem.itemInstance.prefab} does not have ItemPrefabController component!");
+                        Destroy(obj);
+                        return; // Cannot instantiate item prefab, do nothing
+                    }
+                    itemGateway.slot = this;
                 }
-
-                itemGateway.slot = this;
 
                 item.assignedSlot?.SetItem(null); // If new item is already in a slot, clear that slot first
                 item.assignedSlot = this; // Set reference (for new item) before setting this slot

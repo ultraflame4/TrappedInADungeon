@@ -12,7 +12,13 @@ namespace Item
         public string item_description;
         [Tooltip("Sprite to display in the inventory")]
         public Sprite itemSprite;
-        [Tooltip("The prefab to spawn when the item is equipped in the hotbar")]
+        [Tooltip("The item type")]
+        public ItemTypes itemType;
+        [Tooltip("Depends on item type." +
+                 "\nWeapon - Weapon Prefab to spawn & use." +
+                 "\nProjectile - Projectile prefab to spawn & shoot." +
+                 "\nConsumable - Nothing" +
+                 "\nCustom - prefab to spawn when item is in hotbar")]
         public GameObject itemPrefab;
         [Tooltip("The amount of damage this item deals when used.")]
         public float attack;

@@ -3,18 +3,19 @@ using UnityEngine;
 
 namespace Projectile
 {
+    [RequireComponent(typeof(ItemPrefabController))]
     public class ProjectileShooter : MonoBehaviour
     {
-        
-        public ItemPrefabController Gateway;
+        private ItemPrefabController gateway;
         public GameObject ProjectilePrefab;
 
         private void Start()
         {
-            Gateway.OnItemUsed += () =>
+            gateway = GetComponent<ItemPrefabController>();
+            gateway.OnItemUsed += () =>
             {
-                var projectile = Instantiate(ProjectilePrefab, Gateway.Player.position, Gateway.Player.rotation).GetComponent<Projectile>();
-                projectile.projectileStats = Gateway.slot.Item.itemInstance;
+                var projectile = Instantiate(ProjectilePrefab, gateway.Player.position, gateway.Player.rotation).GetComponent<Projectile>();
+                projectile.projectileStats = gateway.slot.Item.itemInstance;
             };
         }
 

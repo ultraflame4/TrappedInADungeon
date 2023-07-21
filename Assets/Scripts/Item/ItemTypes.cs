@@ -3,7 +3,8 @@
     public enum ItemTypes
     {
         Weapon,
-        Skill,
+        Projectile,
         Consumable,
+        Custom
     }
 }
