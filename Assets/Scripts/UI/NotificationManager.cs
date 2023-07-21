@@ -49,7 +49,7 @@ namespace UI
         /// <param name="addData">Additional text data to append to the end of the message.
         /// By using this instead of putting it in the message parameter, it allows similar messages (with different data) to stack (Eg: "Not Enough Mana (10 more) x 3")
         /// </param>
-        public void PushNotification(string text, float durationMS = 1000f, string addData = "")
+        public void PushNotification(string text, float durationMS = 3000f, string addData = "")
         {
             notifications.Add(new NotificationItem {
                     message = text,
