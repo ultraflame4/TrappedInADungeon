@@ -40,13 +40,24 @@ namespace UI.Inventory
         [ReadOnly(true)] public int slotIndex;
         private InventoryItemInstance currentItem = null;
         private ItemPrefabController itemGateway = null;
-
+        private PlayerInventory playerInventory;
         public InventoryItemInstance Item => currentItem;
 
         private void Start()
         {
             // We need to find the input action from the instance of GameControls
+            playerInventory = GameObject.FindWithTag("Player").GetComponent<PlayerInventory>();
             inputAction = GameManager.Controls.FindAction(inputRef.action.id.ToString(), true);
+            playerInventory.InventoryUpdate += OnInventoryUpdate;
+        }
+
+        void OnInventoryUpdate()
+        {
+            // If the item instance has been removed from the inventory, set this slot to empty.
+            if (!playerInventory.Contains(currentItem?.itemInstance))
+            {
+                SetItem(null);
+            }
         }
 
         void Update()

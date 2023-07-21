@@ -93,10 +93,24 @@ namespace UI.Inventory
         /// <param name="newCount"></param>
         public void AdjustItemCount(ItemInstance itemInstance,int newCount)
         {
+            
             itemInstance._SetCount(newCount);
+            if (itemInstance.Count <= 0) // if count is 0, remove from inventory
+            {
+                items.Remove(itemInstance);
+            }
             InventoryUpdate?.Invoke();
         }
 
+        /// <summary>
+        /// Checks if the inventory contains the specified itemInstance
+        /// </summary>
+        /// <returns></returns>
+        public bool Contains(ItemInstance itemInstance)
+        {
+            return items.Contains(itemInstance);
+        }
+        
         /// <summary>
         /// Clears the player inventory
         /// Mainly for debugging purposes
