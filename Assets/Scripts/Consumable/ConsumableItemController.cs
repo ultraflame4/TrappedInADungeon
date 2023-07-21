@@ -11,7 +11,7 @@ namespace Consumable
         {
             playerBody.CurrentHealth.value += itemInstance.item.health;
             playerBody.CurrentMana.value += itemInstance.item.mana;
-            
+            gateway.PlayerInventory.AdjustItemCount(itemInstance,itemInstance.Count-1);
         }
     }
 }

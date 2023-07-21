@@ -32,12 +32,22 @@ namespace UI.Inventory
         }
 
         /// <summary>
-        /// Adds an item instance to the inventory
+        /// Adds an item instance to the inventory. Note that this will also automatically try to combine the itemInstance to a similar itemInstance.
         /// </summary>
         /// <param name="item"></param>
         /// <typeparam name="T"></typeparam>
         public void AddItem<T>(T item) where T : ItemInstance
         {
+            // Search through all items
+            foreach (ItemInstance itemInstance in AllItems)
+            {
+                if (itemInstance.Combine(item)) 
+                {
+                    // If current item combines successfully, invoke event & return
+                    InventoryUpdate?.Invoke();
+                    return;
+                }
+            }
             items.Add(item);
             InventoryUpdate?.Invoke();
         }
@@ -74,6 +84,17 @@ namespace UI.Inventory
         public ItemInstance[] GetAllItemOfType(ItemType itemType)
         {
             return items.Where(x => x.item.itemType==itemType).ToArray();
+        }
+
+        /// <summary>
+        /// Adjusts number of items in the specified itemInstance & invokes inventory update event
+        /// </summary>
+        /// <param name="itemInstance"></param>
+        /// <param name="newCount"></param>
+        public void AdjustItemCount(ItemInstance itemInstance,int newCount)
+        {
+            itemInstance._SetCount(newCount);
+            InventoryUpdate?.Invoke();
         }
 
         /// <summary>

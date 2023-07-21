@@ -31,11 +31,13 @@ namespace Item
 
         public Transform Player { get; private set; }
         public PlayerBody PlayerBody { get; private set; }
+        public PlayerInventory PlayerInventory { get; private set; }
 
         private void Awake()
         {
             Player = GameObject.FindWithTag("Player").transform;
             PlayerBody = Player.GetComponent<PlayerBody>();
+            PlayerInventory = Player.GetComponent<PlayerInventory>();
         }
 
         public void UseItem()
@@ -47,6 +49,7 @@ namespace Item
                 return;
             }
             PlayerBody.CurrentMana.value -= slot.Item.itemInstance.ManaCost;
+            
             OnItemUsed?.Invoke();
         }
         public void ReleaseItem() => OnItemReleased?.Invoke();

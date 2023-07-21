@@ -20,7 +20,7 @@ namespace UI.Inventory
         public void SetItem(ItemInstance item)
         {
             itemImage.sprite = item.sprite;
-            title.text = item.GetDisplayName();
+            title.text = $"{item.GetDisplayName()} x {item.Count}";
             description.text = item.GetDisplayDescription();
             itemInstance = new InventoryItemInstance(item);
         }
