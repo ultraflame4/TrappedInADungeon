@@ -5,6 +5,7 @@ using UI;
 using UI.Inventory;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Utils;
 
 namespace Item
 {
@@ -41,7 +42,8 @@ namespace Item
         {
             if (PlayerBody.CurrentMana.value < slot.Item.itemInstance.ManaCost)
             {
-                NotificationManager.Instance.PushNotification("Not enough mana!", addData:$" ({slot.Item.itemInstance.ManaCost}/{PlayerBody.CurrentMana.value})");
+                NotificationManager.Instance.PushNotification("Not enough <color=\"blue\">mana</color>!",
+                    addData:$" ({slot.Item.itemInstance.ManaCost}/{PlayerBody.CurrentMana.value.ToPrecision(2)})");
                 return;
             }
             PlayerBody.CurrentMana.value -= slot.Item.itemInstance.ManaCost;

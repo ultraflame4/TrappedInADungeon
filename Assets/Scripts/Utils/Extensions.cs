@@ -68,5 +68,11 @@ namespace Utils
             Vector2 canvasPoint = Vector2.Scale(centered,canvas.GetComponent<RectTransform>().sizeDelta);
             return canvasPoint;
         }
+
+        public static float ToPrecision(this float number, int decimal_places)
+        {
+            float power = Mathf.Pow(10, decimal_places);
+            return Mathf.Round(number * power) / power;
+        }
     }
 }
