@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Enemies
 {
     [RequireComponent(typeof(EntityBody))]
-    public class EnemyDrops : MonoBehaviour
+    public class EnemyDeathLoot : MonoBehaviour
     {
         private EntityBody enemyBody;
         public GameObject expBallPrefab;

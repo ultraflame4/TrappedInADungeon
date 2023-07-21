@@ -5,7 +5,7 @@ namespace Utils
     /// <summary>
     /// Utility class for creating empty objects to contain other things.
     /// </summary>
-    public static class ContainerObjects
+    public static class ContainerObjectsUtils
     {
 
         public static GameObject CreateEmpty(this Transform parent, string name, Vector3? worldPosition=null)

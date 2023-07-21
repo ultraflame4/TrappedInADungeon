@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.Serialization;
+﻿using System;
+using UnityEngine;
+using Utils;
 
-namespace Level
+namespace Enemies
 {
     [CreateAssetMenu(fileName = "SpawnableEnemy", menuName = "GameContent/SpawnableEnemy", order = 0)]
     public class SpawnableEnemy : ScriptableObject
@@ -14,5 +15,7 @@ namespace Level
         public int difficultyPoints = 1;
         [Tooltip("Minimum player level required to spawn this enemy."), Min(0)]
         public int minPlayerLevel = 0;
+        
+        public LootboxItem[] lootbox;
     }
 }
