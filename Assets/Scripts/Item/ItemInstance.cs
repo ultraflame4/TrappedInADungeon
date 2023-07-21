@@ -23,12 +23,12 @@ namespace Item
             return item.item_description;
         }
 
-        public float Attack => item.base_attack;
-        public float Speed => item.base_speed;
-        public float Defense => item.base_defense;
-        public float Health => item.base_health;
-        public float Mana => item.base_mana;
-        public float ManaCost => item.mana_cost;
+        public float Attack => item.attack;
+        public float Speed => item.speed;
+        public float Defense => item.defense;
+        public float Health => item.health;
+        public float Mana => item.mana;
+        public float ManaCost => item.manaCost;
         public float ManaRegen => 0;
     }
 }

@@ -11,7 +11,7 @@ namespace Item
         /// <returns></returns>
         public float CalculateAttackDamage()
         {
-            return item.base_attack; //todo later on: add in a other factors later such as weapon modifiers
+            return item.attack; //todo later on: add in a other factors later such as weapon modifiers
         }
 
 
