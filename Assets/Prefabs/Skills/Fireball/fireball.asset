@@ -15,11 +15,11 @@ MonoBehaviour:
   item_name: Fireball
   item_description: Shoots a fireball
   itemSprite: {fileID: -3003964101018066756, guid: ce7a090d790ee6942acb9f6993bcec64, type: 3}
+  itemType: 1
   itemPrefab: {fileID: 3309170777301791222, guid: c5903b509ae55a149a6e79aa118378cc, type: 3}
-  base_attack: 100
-  base_defense: 0
-  base_speed: 100
-  base_health: 0
-  base_stamina: 0
-  base_mana: 0
-  mana_cost: 0
+  attack: 0
+  defense: 0
+  speed: 0
+  health: 0
+  mana: 0
+  manaCost: 0

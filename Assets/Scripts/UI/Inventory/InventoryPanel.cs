@@ -10,6 +10,7 @@ namespace UI.Inventory
     {
         public Transform WeaponListContent;
         public Transform SkillListContent;
+        public Transform ItemListContent;
         [FormerlySerializedAs("WeaponListItemPrefab")] public GameObject ListItemPrefab;
         public PlayerInventory playerInventory;
         private void Awake()
@@ -35,11 +36,21 @@ namespace UI.Inventory
                 item.GetComponent<InventoryListItem>().SetItem(instance);
             }
         }
+        void UpdateItemList()
+        {
+            ItemListContent.DestroyChildren();
+            foreach (ItemInstance instance in playerInventory.AllItems.Where(x=>x.item.itemType != ItemType.Skill||x.item.itemType != ItemType.Weapon))
+            {
+                GameObject item = Instantiate(ListItemPrefab, ItemListContent);
+                item.GetComponent<InventoryListItem>().SetItem(instance);
+            }
+        }
 
         void UpdateList()
         {
             UpdateWeaponList();
             UpdateSkillList();
+            UpdateItemList();
         }
         
         void Update()

@@ -1,5 +1,6 @@
 ﻿using System;
 using Entities;
+using Item;
 using Level;
 using Loot;
 using UnityEngine;
@@ -37,7 +38,7 @@ namespace Enemies
                 bool toSpawn = Random.value <= lootboxItem.chance;
                 if (!toSpawn) continue;
                 DroppedLootItem lootItem = Instantiate(droppedItemPrefab, transform.position, Quaternion.identity).GetComponent<DroppedLootItem>();
-                // todo continue
+                lootItem.SetItem(new ItemInstance(lootboxItem.item));
             }
         }
     }

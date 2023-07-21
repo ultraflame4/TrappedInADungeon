@@ -17,7 +17,7 @@ namespace Utils
             List<Transform> children = transform.Cast<Transform>().ToList();
             foreach (var child in children)
             {
-                if (Application.isEditor)
+                if (!Application.isPlaying)
                 {
                     GameObject.DestroyImmediate(child.gameObject);
                     continue;
