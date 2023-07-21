@@ -20,7 +20,7 @@ namespace UI.Inventory
         void UpdateWeaponList()
         {
             WeaponListContent.DestroyChildren();
-            foreach (IItemInstance instance in playerInventory.GetAllItemOfType<WeaponItem>())
+            foreach (ItemInstance instance in playerInventory.GetAllItemOfType(ItemType.Weapon))
             {
                 GameObject item = Instantiate(ListItemPrefab, WeaponListContent);
                 item.GetComponent<InventoryListItem>().SetItem(instance);
@@ -29,7 +29,7 @@ namespace UI.Inventory
         void UpdateSkillList()
         {
             SkillListContent.DestroyChildren();
-            foreach (IItemInstance instance in playerInventory.GetAllItemOfType<SkillItem>())
+            foreach (ItemInstance instance in playerInventory.GetAllItemOfType(ItemType.Skill))
             {
                 GameObject item = Instantiate(ListItemPrefab, SkillListContent);
                 item.GetComponent<InventoryListItem>().SetItem(instance);

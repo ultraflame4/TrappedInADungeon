@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Entities;
+using UnityEngine;
 
 namespace Item
 {
-    public class ItemInstance : IItemInstance
+    public class ItemInstance : IEntityStats
     {
         public ItemScriptableObject item { get; private set; }
         public Sprite sprite => item.itemSprite;

@@ -17,7 +17,7 @@ namespace UI.Inventory
         /// Sets the item instance this list item is showing
         /// </summary>
         /// <param name="item"></param>
-        public void SetItem(IItemInstance item)
+        public void SetItem(ItemInstance item)
         {
             itemImage.sprite = item.sprite;
             title.text = item.GetDisplayName();

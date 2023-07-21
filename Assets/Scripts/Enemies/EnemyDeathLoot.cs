@@ -1,8 +1,9 @@
 ﻿using System;
-using Drops;
 using Entities;
 using Level;
+using Loot;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Enemies
 {
@@ -11,11 +12,12 @@ namespace Enemies
     {
         private EntityBody enemyBody;
         public GameObject expBallPrefab;
+        public GameObject droppedItemPrefab;
         public SpawnableEnemy config;
-        
+
         private const float ExperiencePointsPerBall = 30;
         private const int maxBalls = 20;
-        
+
         private void Start()
         {
             enemyBody = GetComponent<EntityBody>();
@@ -28,6 +30,15 @@ namespace Enemies
             int ballsCount = Math.Min(maxBalls, Mathf.CeilToInt(expDropped / ExperiencePointsPerBall));
             float expPerBall = expDropped / ballsCount;
             Instantiate(expBallPrefab, transform.position, Quaternion.identity).GetComponent<ExpBall>().expValue = expPerBall;
+
+            foreach (var lootboxItem in config.lootbox)
+            {
+                // Whether the lootbox item should be dropped
+                bool toSpawn = Random.value <= lootboxItem.chance;
+                if (!toSpawn) continue;
+                DroppedLootItem lootItem = Instantiate(droppedItemPrefab, transform.position, Quaternion.identity).GetComponent<DroppedLootItem>();
+                // todo continue
+            }
         }
     }
 }

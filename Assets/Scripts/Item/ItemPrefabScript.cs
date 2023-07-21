@@ -9,7 +9,7 @@ namespace Item
         protected ItemPrefabController gateway { get; private set; }
         protected PlayerBody playerBody => gateway.PlayerBody;
         protected Transform player => gateway.Player;
-        protected IItemInstance itemInstance => gateway.slot.Item.itemInstance;
+        protected ItemInstance itemInstance => gateway.slot.Item.itemInstance;
 
         void Start()
         {

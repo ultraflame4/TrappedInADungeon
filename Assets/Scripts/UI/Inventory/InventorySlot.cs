@@ -4,7 +4,6 @@ using Item;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utils;
 
@@ -30,12 +29,12 @@ namespace UI.Inventory
         /// <summary>
         /// This event is fired whenever the item in this slot changes. The value passed is the new item instance or null (if cleared).
         /// </summary>
-        public event Action<IItemInstance> onItemChanged;
+        public event Action<ItemInstance> onItemChanged;
 
         /// <summary>
         /// This event is fired whenever the item in this slot is used. The value passed is the current item instance or null (if empty).
         /// </summary>
-        public event Action<IItemInstance> onItemUsed;
+        public event Action<ItemInstance> onItemUsed;
 
         [ReadOnly(true)] public InputAction inputAction;
         [ReadOnly(true)] public int slotIndex;
@@ -87,8 +86,8 @@ namespace UI.Inventory
                 _SetItem(null);
                 return true;
             }
-
-            if (item.itemInstance is WeaponItem)
+            
+            if (item.itemInstance.item.itemType == ItemType.Weapon)
             {
                 if (!isWeaponSlot) return false;
                 _SetItem(item);

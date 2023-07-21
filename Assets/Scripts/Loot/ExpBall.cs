@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Player;
 using UnityEngine;
 
-namespace Drops
+namespace Loot
 {
     [RequireComponent(typeof(CircleCollider2D))]
     public class ExpBall : MonoBehaviour

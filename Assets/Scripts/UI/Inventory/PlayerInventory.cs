@@ -9,7 +9,7 @@ namespace UI.Inventory
 {
     public class PlayerInventory : MonoBehaviour
     {
-        private List<IItemInstance> items = new ();
+        private List<ItemInstance> items = new ();
         public GameObject inventorySlotsParent;
         [Tooltip("The inventory slots in the ui. Automatically found by the script")]
         public InventorySlot[] itemSlots;
@@ -20,7 +20,7 @@ namespace UI.Inventory
         [Tooltip("This event is invoked whenever an item is added or removed from the inventory")]
         public event Action InventoryUpdate;
         [Tooltip("All items in the inventory")]
-        public List<IItemInstance> AllItems => items.ToList();
+        public List<ItemInstance> AllItems => items.ToList();
 
         private void Awake()
         {
@@ -36,7 +36,7 @@ namespace UI.Inventory
         /// </summary>
         /// <param name="item"></param>
         /// <typeparam name="T"></typeparam>
-        public void AddItem<T>(T item) where T : IItemInstance
+        public void AddItem<T>(T item) where T : ItemInstance
         {
             items.Add(item);
             InventoryUpdate?.Invoke();
@@ -47,7 +47,7 @@ namespace UI.Inventory
         /// </summary>
         /// <param name="item"></param>
         /// <typeparam name="T"></typeparam>
-        public void RemoveItem<T>(T item) where T : IItemInstance
+        public void RemoveItem<T>(T item) where T : ItemInstance
         {
             items.Remove(item);
             InventoryUpdate?.Invoke();
@@ -58,7 +58,7 @@ namespace UI.Inventory
         /// </summary>
         /// <param name="index"></param>
         /// <returns>The item instance removed from the inventory</returns>
-        public IItemInstance RemoveAt(int index)
+        public ItemInstance RemoveAt(int index)
         {
             var obj = items[index];
             items.RemoveAt(index);
@@ -71,9 +71,9 @@ namespace UI.Inventory
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public IItemInstance[] GetAllItemOfType<T>() where T : class, IItemInstance
+        public ItemInstance[] GetAllItemOfType(ItemType itemType)
         {
-            return items.Where(x => x is T).ToArray();
+            return items.Where(x => x.item.itemType==itemType).ToArray();
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace UI.Inventory
         [Button]
         public void GiveDebugWeapon()
         {
-            AddItem(new WeaponItem(debugWeapon));
+            AddItem(new ItemInstance(debugWeapon));
         }
         /// <summary>
         /// Gives the player a fireball
@@ -103,7 +103,7 @@ namespace UI.Inventory
         [Button]
         public void GiveDebugSkill()
         {
-            AddItem(new SkillItem(debugSkill));
+            AddItem(new ItemInstance(debugSkill));
         }
     }
 }

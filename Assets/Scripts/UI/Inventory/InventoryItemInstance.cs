@@ -8,9 +8,9 @@ namespace UI.Inventory
     /// </summary>
     public class InventoryItemInstance
     {
-        public IItemInstance itemInstance;
+        public ItemInstance itemInstance;
         public InventorySlot assignedSlot = null;
-        public InventoryItemInstance(IItemInstance itemInstance)
+        public InventoryItemInstance(ItemInstance itemInstance)
         {
             this.itemInstance = itemInstance;
         }
