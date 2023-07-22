@@ -89,7 +89,7 @@ namespace UI
                         AddText = addDatas.Aggregate((biggest, next) => next.expireTimeMS > biggest.expireTimeMS ? next : biggest).addData,
                         Count = addDatas.Count()
                 }
-            ).Select(x => $"{x.Text} {x.AddText} x {x.Count}");
+            ).Select(x => $"{x.Text} {x.AddText}" + (x.Count > 1 ? $" x {x.Count}" : ""));
             
             // Combine all messages into a single one
             var combinedText = stackedMessages.JoinString("\n");
