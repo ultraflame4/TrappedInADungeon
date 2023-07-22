@@ -39,8 +39,10 @@ namespace UI.Inventory
         void UpdateItemList()
         {
             ItemListContent.DestroyChildren();
-            foreach (ItemInstance instance in playerInventory.AllItems.Where(x=>x.item.itemType != ItemType.Skill||x.item.itemType != ItemType.Weapon))
+            foreach (ItemInstance instance in playerInventory.AllItems)
             {
+                // Ignore weapon and skill items as they have their own section.
+                if (instance.item.itemType == ItemType.Weapon || instance.item.itemType == ItemType.Skill) continue;
                 GameObject item = Instantiate(ListItemPrefab, ItemListContent);
                 item.GetComponent<InventoryListItem>().SetItem(instance);
             }
