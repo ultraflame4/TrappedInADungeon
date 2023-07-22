@@ -30,6 +30,7 @@ namespace UI
         private void Start()
         {
             text = GetComponent<TextMeshProUGUI>();
+            text.text = "";
         }
 
         private void Awake()

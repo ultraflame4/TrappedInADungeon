@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Entities;
+using UI;
 using UnityEngine;
 using Utils;
 
@@ -40,6 +41,9 @@ namespace Player
             if (currentExp > NextLevelExp)
             {
                 Level++;
+                CurrentHealth.value = Health;
+                NotificationManager.Instance.PushNotification($"<size=150%>Leveled Up - Lv {Level}!</size>");
+                NotificationManager.Instance.PushNotification($"<color=\"red\">Health restored</color>");
                 PlayerLevelChanged?.Invoke(Level);
                 currentExp = 0;
             }
