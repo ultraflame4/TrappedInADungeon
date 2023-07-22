@@ -1,8 +1,6 @@
-using System;
-using System.Linq;
+using Player;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +10,6 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
     public static GameControls Controls => Instance.inputs;
-
     
     void Awake()
     {

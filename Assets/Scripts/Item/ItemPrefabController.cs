@@ -1,10 +1,8 @@
 ﻿using System;
-using Entities;
 using Player;
 using UI;
 using UI.Inventory;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Utils;
 
 namespace Item
