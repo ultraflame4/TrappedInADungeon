@@ -16,7 +16,8 @@ namespace Player
 
         public float Mana => BaseMana * Level + StatsModifiers.Sum(modifier => modifier.Mana);
         public float ManaRegen => BaseManaRegen * Level + StatsModifiers.Sum(modifier => modifier.ManaRegen);
-        public VolatileValue<float> CurrentMana = new(); // Automatically set to Mana on start
+        [field: SerializeField]
+        public VolatileValue<float> CurrentMana { get; private set; }  = new(); // Automatically set to Mana on start
         public float currentExp { get; private set; } = 0f;
         public float NextLevelExp => Mathf.Pow(Level*0.65f,2);
         public event Action<int> PlayerLevelChanged;

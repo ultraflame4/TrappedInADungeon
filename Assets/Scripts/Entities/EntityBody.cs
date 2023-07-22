@@ -16,15 +16,14 @@ namespace Entities
     public class EntityBody : MonoBehaviour, IEntityStats
     {
         public float BaseHealth; // Health of entity
-
-        [FormerlySerializedAs("BaseStrength")]
+        
         public int baseAttack; // Increases physical damage
 
         public int BaseSpeed; // Movement speed
         public int BaseDefense; // Reduces damage taken
         
-
-        public VolatileValue<float> CurrentHealth = new(); // Automatically set to Health on start
+        [field: SerializeField]
+        public VolatileValue<float> CurrentHealth { get; private set; } = new(); // Automatically set to Health on start
 
         protected List<StatsModifier> StatsModifiers = new();
         public float Health => BaseHealth * Level + StatsModifiers.Sum(modifier => modifier.Health);

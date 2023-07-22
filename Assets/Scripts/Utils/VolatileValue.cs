@@ -1,10 +1,12 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Utils
 {
     /// <summary>
     /// A value that changes, and have events that can be subscribed to.
     /// </summary>
+    [Serializable]
     public class VolatileValue<T>
     {
         public event Action Changed;
@@ -13,8 +15,10 @@ namespace Utils
         /// The callback to validate the value change.
         /// </summary>
         public delegate T ValidateValueChange(T oldValue, T newValue);
+        [SerializeField]
         private T _value;
         public ValidateValueChange validator;
+        
         public T value
         {
             get => _value;

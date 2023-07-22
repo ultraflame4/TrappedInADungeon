@@ -16971,6 +16971,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7854447c723489c864e1ff72a7c8f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items:
+  - <item>k__BackingField: {fileID: 11400000, guid: 6c1e9d1108d1d824b9f96cf79952485f, type: 2}
+    <Count>k__BackingField: 100
   inventorySlotsParent: {fileID: 1197661376}
   itemSlots:
   - {fileID: 2015262873}
@@ -17528,9 +17531,13 @@ MonoBehaviour:
   baseAttack: 10
   BaseSpeed: 10
   BaseDefense: 10
+  <CurrentHealth>k__BackingField:
+    _value: 0.74
   Level: 1
   BaseMana: 100
   BaseManaRegen: 5
+  <CurrentMana>k__BackingField:
+    _value: 0
 --- !u!81 &8672299159088187458
 AudioListener:
   m_ObjectHideFlags: 0

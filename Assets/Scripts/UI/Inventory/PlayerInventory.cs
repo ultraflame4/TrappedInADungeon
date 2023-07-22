@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using EasyButtons;
@@ -9,6 +10,7 @@ namespace UI.Inventory
 {
     public class PlayerInventory : MonoBehaviour
     {
+        [SerializeField]
         private List<ItemInstance> items = new ();
         public GameObject inventorySlotsParent;
         [Tooltip("The inventory slots in the ui. Automatically found by the script")]
@@ -29,6 +31,19 @@ namespace UI.Inventory
             {
                 itemSlots[i].slotIndex = i; // set the slot index fpr each slot
             }
+        }
+
+        void Start()
+        {
+            // Send out event at end of this frame to force child listeners to update
+            StartCoroutine(LateStart());
+        }
+
+        IEnumerator LateStart()
+        {
+            // Wait till end of frame to wait for listener registration
+            yield return new WaitForEndOfFrame();
+            InventoryUpdate?.Invoke();
         }
 
         /// <summary>

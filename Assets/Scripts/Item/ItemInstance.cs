@@ -1,10 +1,13 @@
-﻿using Entities;
+﻿using System;
+using Entities;
 using UnityEngine;
 
 namespace Item
 {
+    [Serializable]
     public class ItemInstance : IEntityStats
     {
+        [field: SerializeField]
         public ItemScriptableObject item { get; private set; }
 
         /// <summary>
@@ -20,6 +23,7 @@ namespace Item
         /// <summary>
         /// Similar items (such as consumables) can be stacked together.
         /// </summary>
+        [field: SerializeField]
         public int Count { get; private set; } = 1;
 
         // todo implement stats modifiers.
