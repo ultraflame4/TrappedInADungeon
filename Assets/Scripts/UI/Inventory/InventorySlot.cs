@@ -36,8 +36,12 @@ namespace UI.Inventory
         /// </summary>
         public event Action<ItemInstance> onItemUsed;
 
-        [ReadOnly(true)] public InputAction inputAction;
-        [ReadOnly(true)] public int slotIndex;
+        [ReadOnly(true)]
+        public InputAction inputAction;
+
+        [ReadOnly(true)]
+        public int slotIndex;
+
         private InvSlotItemInstance currentItem = null;
         private ItemPrefabController itemGateway = null;
         private PlayerInventory playerInventory;
@@ -64,7 +68,7 @@ namespace UI.Inventory
         {
             if (inputAction is not null)
             {
-                if (inputAction.WasPerformedThisFrame())
+                if (inputAction.WasPressedThisFrame()) // If slot is active
                 {
                     // only activate if player is not pointing at ui
                     if (!EventSystem.current.IsPointerOverGameObject())
@@ -73,6 +77,16 @@ namespace UI.Inventory
                         if (itemGateway) itemGateway.UseItem();
                         onItemUsed?.Invoke(currentItem.itemInstance);
                         spriteButton.UpdateImageSprite();
+                    }
+                    else
+                    {
+                        // Get the currently focused item and set the item in this slot to that item.
+                        var focused = InventoryPanel.Instance.GetFocused();
+                        Debug.Log($"Get Focus! {focused} {Time.frameCount}");
+                        if (focused != null)
+                        {
+                            SetItem(focused);
+                        }
                     }
                 }
 
@@ -97,7 +111,7 @@ namespace UI.Inventory
                 _SetItem(null);
                 return true;
             }
-            
+
             if (item.itemInstance.item.itemType == ItemType.Weapon)
             {
                 if (!isWeaponSlot) return false;
@@ -131,6 +145,7 @@ namespace UI.Inventory
                         Destroy(obj);
                         return; // Cannot instantiate item prefab, do nothing
                     }
+
                     itemGateway.slot = this;
                 }
 

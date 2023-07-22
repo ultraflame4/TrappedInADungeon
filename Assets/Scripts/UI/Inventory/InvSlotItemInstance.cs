@@ -10,6 +10,7 @@ namespace UI.Inventory
     {
         public ItemInstance itemInstance;
         public InventorySlot assignedSlot = null;
+        public bool focused = false;
         public InvSlotItemInstance(ItemInstance itemInstance)
         {
             this.itemInstance = itemInstance;

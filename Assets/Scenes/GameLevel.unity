@@ -8768,6 +8768,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponList
       objectReference: {fileID: 0}
+    - target: {fileID: 583279092942313632, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1637604546434878330, guid: e8b79ebe1d93f824f9f94b97643af65d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
