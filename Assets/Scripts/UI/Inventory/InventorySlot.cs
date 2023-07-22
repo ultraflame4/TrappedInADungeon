@@ -82,7 +82,6 @@ namespace UI.Inventory
                     {
                         // Get the currently focused item and set the item in this slot to that item.
                         var focused = InventoryPanel.Instance.GetFocused();
-                        Debug.Log($"Get Focus! {focused} {Time.frameCount}");
                         if (focused != null)
                         {
                             SetItem(focused);
