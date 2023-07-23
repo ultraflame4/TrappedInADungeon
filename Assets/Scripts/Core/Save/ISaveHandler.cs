@@ -15,7 +15,7 @@ namespace Core.Save
         /// <returns></returns>
         public string OnWriteSave()
         {
-            return JsonUtility.ToJson(this);
+            return JsonUtility.ToJson(this,true);
         }
         
     }
