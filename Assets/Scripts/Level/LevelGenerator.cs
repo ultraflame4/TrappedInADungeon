@@ -17,6 +17,8 @@ namespace Level
         public CinemachineConfiner2D cameraConfiner;
         [Tooltip("The player interactable game object place at the start and end of the level to transport the player between areas")]
         public GameObject levelPortalPrefab;
+        [Tooltip("The area index, enemy level scales of this.")]
+        public int AreaIndex = 0;
         private ParallaxBackground background;
         private EnemySpawnManager enemySpawnManager;
         private Transform player;
@@ -40,7 +42,6 @@ namespace Level
         private void Start()
         {
             player = GameObject.FindWithTag("Player").transform;
-            GenerateLevel();
         }
 
         /// <summary>
@@ -59,6 +60,7 @@ namespace Level
         {
             GetRequiredComponents();
             background.Generate(levelSize);
+            enemySpawnManager.EnemyLevel = AreaIndex * 2 + 1; // arbitrary equation for enemy level scaling.
             enemySpawnManager.GenerateSpawnSections();
             GenerateColliderBounding();
 
@@ -86,6 +88,7 @@ namespace Level
                     Vector2.up * (groundLevel+transform.position.y +
                     prefab.GetComponent<SpriteRenderer>().sprite.bounds.size.y/2);
             startPortal = Instantiate(prefab, LocalLevelLeft + Vector2.right * placementOffset + yOffset,Quaternion.identity,container).GetComponent<PortalInteraction>();
+            startPortal.IsStartPortal = transform;
             endPortal = Instantiate(prefab, LocalLevelRight + Vector2.left * placementOffset+ yOffset,Quaternion.identity,container).GetComponent<PortalInteraction>();
         }
 

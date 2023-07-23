@@ -15,6 +15,8 @@ namespace Level
     {
         public LevelGenerator levelGenerator;
         public PlayerBody player;
+        [Tooltip("Level of enemies to spawn")]
+        public int EnemyLevel = 1;
 
         [Tooltip("Enemy spawning is divided into sections. This determines how big each section is."), Min(0.1f)]
         public float spawnSectionSize = 10f;
