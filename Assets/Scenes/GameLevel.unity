@@ -961,6 +961,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5873252221362138672, guid: c8e46cbdc77d256459e1e50dadc081c6, type: 3}
     - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
+      propertyPath: slotIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
       propertyPath: buttonName
       value: Slot1
       objectReference: {fileID: 0}
@@ -7663,6 +7667,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 738050988356041049, guid: c8e46cbdc77d256459e1e50dadc081c6, type: 3}
     - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
+      propertyPath: slotIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
       propertyPath: buttonName
       value: Slot2
       objectReference: {fileID: 0}
@@ -8612,6 +8620,10 @@ PrefabInstance:
       propertyPath: inputRef
       value: 
       objectReference: {fileID: -5562911940483349107, guid: c8e46cbdc77d256459e1e50dadc081c6, type: 3}
+    - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
+      propertyPath: slotIndex
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
       propertyPath: buttonName
       value: Slot5
@@ -14368,6 +14380,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -785160740346956267, guid: c8e46cbdc77d256459e1e50dadc081c6, type: 3}
     - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
+      propertyPath: slotIndex
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
       propertyPath: buttonName
       value: Slot3
       objectReference: {fileID: 0}
@@ -14774,6 +14790,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6236032096168415964, guid: c8e46cbdc77d256459e1e50dadc081c6, type: 3}
     - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
+      propertyPath: slotIndex
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
       propertyPath: buttonName
       value: Slot4
       objectReference: {fileID: 0}
@@ -14971,6 +14991,10 @@ PrefabInstance:
       propertyPath: inputRef
       value: 
       objectReference: {fileID: 7359152576033603132, guid: c8e46cbdc77d256459e1e50dadc081c6, type: 3}
+    - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
+      propertyPath: slotIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
       propertyPath: buttonName
       value: Fire2
@@ -16623,6 +16647,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6415884914247935055, guid: c8e46cbdc77d256459e1e50dadc081c6, type: 3}
     - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
+      propertyPath: slotIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708496578790470607, guid: d9b90211d3984a04098ae84dec031721, type: 3}
       propertyPath: buttonName
       value: Slot0
       objectReference: {fileID: 0}
@@ -16948,7 +16976,7 @@ Transform:
   m_GameObject: {fileID: 5461211443868745954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.229984, y: 4.85001, z: -10}
+  m_LocalPosition: {x: -51.229992, y: 4.85001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16987,7 +17015,6 @@ MonoBehaviour:
   items:
   - <item>k__BackingField: {fileID: 11400000, guid: 6c1e9d1108d1d824b9f96cf79952485f, type: 2}
     <Count>k__BackingField: 100
-  inventorySlotsParent: {fileID: 1197661376}
   itemSlots:
   - {fileID: 2015262873}
   - {fileID: 507519533}

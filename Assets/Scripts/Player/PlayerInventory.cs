@@ -3,16 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Item;
+using Core.Save;
 using EasyButtons;
+using UI.Inventory;
 using UnityEngine;
 
-namespace UI.Inventory
+namespace Player
 {
-    public class PlayerInventory : MonoBehaviour
+    public class PlayerInventory : MonoBehaviour, ISaveHandler
     {
         [SerializeField]
         private List<ItemInstance> items = new ();
-        public GameObject inventorySlotsParent;
+
         [Tooltip("The inventory slots in the ui. Automatically found by the script")]
         public InventorySlot[] itemSlots;
         [Tooltip("Just a debug weapon to give to the user (when GiveDebugWeapon is called)")]
@@ -26,11 +28,8 @@ namespace UI.Inventory
 
         private void Awake()
         {
-            itemSlots = inventorySlotsParent.GetComponentsInChildren<InventorySlot>(); // automatically finds all item slots
-            for (var i = 0; i < itemSlots.Length; i++)
-            {
-                itemSlots[i].slotIndex = i; // set the slot index fpr each slot
-            }
+
+            GameSaveManager.AddSaveHandler("player_inventory",this);
         }
 
         void Start()

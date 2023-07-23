@@ -3,7 +3,9 @@ using System.ComponentModel;
 using Core.Item;
 using Core.UI;
 using Core.Utils;
+using EasyButtons;
 using Item;
+using Player;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -15,7 +17,7 @@ namespace UI.Inventory
     {
         public Image itemImage;
         public SpriteButton spriteButton;
-
+        
         /// <summary>
         /// The input button name to use for this slot. If this is set, the slot will be activated when the button is pressed.
         /// </summary>
@@ -27,7 +29,8 @@ namespace UI.Inventory
         /// Weapon slots can only hold weapons. non-Weapon slots can hold anything except weapons.
         /// </summary>
         public bool isWeaponSlot = false;
-
+        [Tooltip("Index of this slot")]
+        public int slotIndex;
         /// <summary>
         /// This event is fired whenever the item in this slot changes. The value passed is the new item instance or null (if cleared).
         /// </summary>
@@ -37,13 +40,8 @@ namespace UI.Inventory
         /// This event is fired whenever the item in this slot is used. The value passed is the current item instance or null (if empty).
         /// </summary>
         public event Action<ItemInstance> onItemUsed;
-
-        [ReadOnly(true)]
-        public InputAction inputAction;
-
-        [ReadOnly(true)]
-        public int slotIndex;
-
+        
+        private InputAction inputAction;
         private InvSlotItemInstance currentItem = null;
         private ItemPrefabController itemGateway = null;
         private PlayerInventory playerInventory;
