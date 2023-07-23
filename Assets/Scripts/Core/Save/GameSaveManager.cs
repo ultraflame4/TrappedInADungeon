@@ -86,7 +86,7 @@ namespace Core.Save
             }
             catch (Exception e)
             {
-                Debug.LogError($"Unexpected when deleting save at ${savePath}, Error: {e}");
+                Debug.LogError($"Unexpected error when deleting save at ${savePath}, Error: {e}");
             }
             
         }
