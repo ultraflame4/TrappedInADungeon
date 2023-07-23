@@ -30,7 +30,7 @@ namespace Player
             base.Awake();
             CurrentMana.value = Mana;
             CurrentMana.validator = (value, newValue) => Mathf.Min(Mana, newValue);
-            GameSaveManager.AddSaveHandler("player",this);
+            GameSaveManager.AddSaveHandler("player.body",this);
         }
 
         private void Update()

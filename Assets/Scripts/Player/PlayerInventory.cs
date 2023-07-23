@@ -5,9 +5,10 @@ using System.Linq;
 using Core.Item;
 using Core.Save;
 using EasyButtons;
+using Newtonsoft.Json;
 using UI.Inventory;
 using UnityEngine;
-
+using Newtonsoft.Json.Linq;
 namespace Player
 {
     public class PlayerInventory : MonoBehaviour, ISaveHandler
@@ -29,7 +30,7 @@ namespace Player
         private void Awake()
         {
 
-            GameSaveManager.AddSaveHandler("player_inventory",this);
+            GameSaveManager.AddSaveHandler("player.inventory",this);
         }
 
         void Start()
@@ -153,6 +154,30 @@ namespace Player
         public void GiveDebugSkill()
         {
             AddItem(new ItemInstance(debugSkill));
+        }
+
+        public void OnLoadSave(string json)
+        {
+            var array = JArray.Parse(json);
+            foreach (JToken child in array.Children())
+            {
+                ItemInstance itemInstance = new (null);
+                JsonUtility.FromJsonOverwrite(child.ToString(),itemInstance);
+                items.Add(itemInstance);
+            }
+        }
+
+        public string OnWriteSave()
+        {
+            var jsonObj = new JArray();
+            foreach (ItemInstance item in AllItems)
+            {
+                // Use JsonUtility to serialise unity objects, before parsing the string result into a JObject and adding it to the JArray
+                // Not really efficient but wtv.
+                jsonObj.Add(JObject.Parse(JsonUtility.ToJson(item)));
+            }
+
+            return jsonObj.ToString();
         }
     }
 }

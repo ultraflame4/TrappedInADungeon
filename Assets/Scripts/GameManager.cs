@@ -1,13 +1,16 @@
+using System;
 using Core.Save;
 using EasyButtons;
 using Level;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Player;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ISaveHandler
 {
     public GameObject inventoryUi;
     public LevelGenerator levelGenerator;
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+        GameSaveManager.AddSaveHandler("game", this);
     }
 
     [Button]
@@ -86,4 +90,27 @@ public class GameManager : MonoBehaviour
         CurrentAreaIndex = Mathf.Max(0, CurrentAreaIndex - 1);
         SceneManager.LoadScene("GameLevel");
     }
+
+    [Serializable]
+    class SaveData
+    {
+        public int currentAreaIndex;
+    }
+
+    private SaveData currentSaveData => new SaveData {
+            currentAreaIndex = CurrentAreaIndex
+    };
+    
+    public void OnLoadSave(string json)
+    {
+        var saveData = currentSaveData;
+        JsonUtility.FromJsonOverwrite(json,saveData);
+        CurrentAreaIndex = saveData.currentAreaIndex;
+    }
+
+    public string OnWriteSave()
+    {
+        return JsonUtility.ToJson(currentSaveData,true);
+    }
+    
 }
