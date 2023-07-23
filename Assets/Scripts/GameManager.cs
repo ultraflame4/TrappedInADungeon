@@ -1,5 +1,6 @@
 using System;
 using Core.Save;
+using Core.UI;
 using EasyButtons;
 using Level;
 using Newtonsoft.Json;
@@ -77,6 +78,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
         levelGenerator.AreaIndex = CurrentAreaIndex;
         levelGenerator.GenerateLevel();
         GameSaveManager.LoadSave();
+        NotificationManager.Instance.PushNotification($"<size=150%>Entered Area {CurrentAreaIndex}</size>");
     }
 
     public void LoadNextArea()
