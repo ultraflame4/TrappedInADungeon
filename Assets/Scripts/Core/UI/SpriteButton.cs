@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace UI
+namespace Core.UI
 {
     [RequireComponent(typeof(Image))]
     public class SpriteButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler

@@ -1,5 +1,5 @@
 ﻿using System;
-using Item;
+using Core.Item;
 using UnityEngine;
 
 namespace Enemies

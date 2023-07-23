@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Item
+namespace Core.Item
 {
     [CreateAssetMenu(fileName = "game_item",menuName = "GameContent/Item")]
     public sealed class ItemScriptableObject : ScriptableObject

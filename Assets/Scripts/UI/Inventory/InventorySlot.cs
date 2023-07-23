@@ -1,11 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
+using Core.Item;
+using Core.UI;
+using Core.Utils;
 using Item;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using Utils;
 
 namespace UI.Inventory
 {

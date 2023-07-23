@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Core.Utils;
 using EasyButtons;
 using Enemies;
 using Player;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Utils;
 using Random = UnityEngine.Random;
 
 namespace Level

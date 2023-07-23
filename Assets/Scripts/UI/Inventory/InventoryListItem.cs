@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
-using Item;
+using Core.Item;
+using Core.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;

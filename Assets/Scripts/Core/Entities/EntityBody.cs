@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Utils;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Utils;
 
-namespace Entities
+namespace Core.Entities
 {
     /// <summary>
     /// This class represents the "body" / (virtual)physical conditions of an entity,

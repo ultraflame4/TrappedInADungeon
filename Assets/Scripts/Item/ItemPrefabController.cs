@@ -1,9 +1,9 @@
 ﻿using System;
+using Core.UI;
+using Core.Utils;
 using Player;
-using UI;
 using UI.Inventory;
 using UnityEngine;
-using Utils;
 
 namespace Item
 {

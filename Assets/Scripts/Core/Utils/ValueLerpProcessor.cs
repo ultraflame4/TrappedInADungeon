@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Utils
+namespace Core.Utils
 {
 #if UNITY_EDITOR
     [InitializeOnLoad]

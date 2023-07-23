@@ -1,4 +1,4 @@
-﻿using Item;
+﻿using Core.Item;
 
 namespace UI.Inventory
 {

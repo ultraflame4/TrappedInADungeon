@@ -1,9 +1,9 @@
 ﻿using System;
+using Core.Utils;
 using UnityEngine;
 using UnityEngine.UI;
-using Utils;
 
-namespace UI
+namespace Core.UI
 {
     [RequireComponent(typeof(Image))]
     public class CursorController : MonoBehaviour

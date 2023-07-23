@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Utils
+namespace Core.Utils
 {
     /// <summary>
     /// Utility class for creating empty objects to contain other things.

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Core.Utils;
 using TMPro;
 using UnityEngine;
-using Utils;
 
-namespace UI
+namespace Core.UI
 {
     struct NotificationItem
     {

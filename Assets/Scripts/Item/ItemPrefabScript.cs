@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using Core.Item;
+using Player;
 using UnityEngine;
 
 namespace Item

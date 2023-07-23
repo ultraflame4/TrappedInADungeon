@@ -1,8 +1,8 @@
 using System;
+using Core.Utils;
 using EasyButtons;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Utils;
 
 namespace Level
 {

@@ -1,8 +1,8 @@
 ﻿using System;
-using Entities;
+using Core.Entities;
 using UnityEngine;
 
-namespace Item
+namespace Core.Item
 {
     [Serializable]
     public class ItemInstance : IEntityStats

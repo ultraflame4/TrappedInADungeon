@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace UI
+namespace Core.UI
 {
     public class BarController : MonoBehaviour
     {

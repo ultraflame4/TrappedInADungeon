@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections;
-using Entities;
-using Player;
+﻿using System.Collections;
+using Core.Enemies;
+using Core.Entities;
+using Enemies.Behaviours.Follow;
 using UnityEngine;
 
-namespace Enemies
+namespace Enemies.Behaviours.Attacks
 {
     [RequireComponent(typeof(EnemyFollow), typeof(Rigidbody2D), typeof(EntityBody))]
     public class EnemyDiveAttack : EnemyStateBehaviour

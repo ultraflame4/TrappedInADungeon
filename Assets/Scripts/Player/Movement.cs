@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
+using Core.UI;
+using Core.Utils;
 using Entities;
 using UI;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Utils;
 
 namespace Player
 {

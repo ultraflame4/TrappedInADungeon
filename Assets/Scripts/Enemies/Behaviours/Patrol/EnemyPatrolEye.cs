@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Core.Enemies;
 using UnityEngine;
 
-namespace Enemies
+namespace Enemies.Behaviours.Patrol
 {
     /// <summary>
     /// Gives enemies an "eye" that raycasts forward to detect the player.

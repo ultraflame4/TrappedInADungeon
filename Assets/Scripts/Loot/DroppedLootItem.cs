@@ -1,5 +1,5 @@
 ﻿using System;
-using Item;
+using Core.Item;
 using UI.Inventory;
 using UnityEngine;
 

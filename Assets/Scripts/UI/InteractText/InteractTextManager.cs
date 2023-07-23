@@ -1,9 +1,9 @@
 ﻿using System.Linq;
+using Core.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
-using Utils;
 
 namespace UI.InteractText
 {

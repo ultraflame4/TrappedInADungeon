@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Core.Enemies;
 using UnityEngine;
 
-namespace Enemies
+namespace Enemies.Behaviours.Patrol
 {
     /// <summary>
     /// Similar to EnemyPatrolEye,

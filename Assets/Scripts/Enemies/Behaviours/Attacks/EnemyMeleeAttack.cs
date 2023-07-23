@@ -1,8 +1,9 @@
-﻿using System;
-using Entities;
+﻿using Core.Enemies;
+using Core.Entities;
+using Enemies.Behaviours.Follow;
 using UnityEngine;
 
-namespace Enemies
+namespace Enemies.Behaviours.Attacks
 {
     /// <summary>
     /// Melee attack for enemies. The attacks are triggered by animation events. Call MeleeAttack() from the animation event.

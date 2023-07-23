@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Item;
 using EasyButtons;
-using Item;
 using UnityEngine;
 
 namespace UI.Inventory

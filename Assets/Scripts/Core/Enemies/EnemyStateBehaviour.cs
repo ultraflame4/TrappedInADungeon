@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Enemies;
 using UnityEngine;
 
-namespace Enemies
+namespace Core.Enemies
 {
     public abstract class EnemyStateBehaviour : MonoBehaviour
     {

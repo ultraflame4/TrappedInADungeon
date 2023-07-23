@@ -1,6 +1,6 @@
 ﻿using System;
+using Core.Entities;
 using Entities;
-using Item;
 using UnityEngine;
 
 namespace Projectile

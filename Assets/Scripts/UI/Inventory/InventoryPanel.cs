@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Item;
+using Core.Item;
+using Core.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Utils;
 
 namespace UI.Inventory
 {

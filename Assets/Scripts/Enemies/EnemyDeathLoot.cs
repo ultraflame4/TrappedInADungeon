@@ -1,7 +1,6 @@
 ﻿using System;
-using Entities;
-using Item;
-using Level;
+using Core.Entities;
+using Core.Item;
 using Loot;
 using UnityEngine;
 using Random = UnityEngine.Random;

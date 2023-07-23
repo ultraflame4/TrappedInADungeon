@@ -1,4 +1,5 @@
-﻿using Item;
+﻿using Core.Item;
+using Item;
 using UnityEngine;
 
 namespace Projectile

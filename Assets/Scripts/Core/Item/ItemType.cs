@@ -1,4 +1,4 @@
-﻿namespace Item
+﻿namespace Core.Item
 {
     public enum ItemType
     {

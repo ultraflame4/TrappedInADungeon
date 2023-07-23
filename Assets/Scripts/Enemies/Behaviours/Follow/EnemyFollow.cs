@@ -1,9 +1,8 @@
-﻿using System;
-using Entities;
+﻿using Core.Enemies;
+using Core.Entities;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Enemies
+namespace Enemies.Behaviours.Follow
 {
     public class EnemyFollow : EnemyStateBehaviour
     {

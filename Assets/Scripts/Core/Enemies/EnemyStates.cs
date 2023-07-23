@@ -1,4 +1,4 @@
-﻿namespace Enemies
+﻿namespace Core.Enemies
 {
     public enum EnemyStates
     {

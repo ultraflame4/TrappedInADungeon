@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using Core.Item;
 using EasyButtons;
 using Item;
 using UnityEngine;

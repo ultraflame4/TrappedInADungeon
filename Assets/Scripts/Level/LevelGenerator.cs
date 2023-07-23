@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using Cinemachine;
+using Core.Utils;
 using EasyButtons;
 using UnityEngine;
-using Utils;
 
 namespace Level
 {

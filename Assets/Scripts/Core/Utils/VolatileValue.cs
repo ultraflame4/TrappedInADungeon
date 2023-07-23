@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Utils
+namespace Core.Utils
 {
     /// <summary>
     /// A value that changes, and have events that can be subscribed to.
