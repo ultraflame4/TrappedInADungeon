@@ -2,6 +2,7 @@ using Core.Save;
 using EasyButtons;
 using Level;
 using Player;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -38,7 +39,7 @@ public class GameManager : MonoBehaviour
     [Button]
     public void ClearSave()
     {
-        GameSaveManager.ClearSave();
+        GameSaveManager.DeleteSave();
     }
 
     [Button]
@@ -51,6 +52,11 @@ public class GameManager : MonoBehaviour
     public void WriteSave()
     {
         GameSaveManager.WriteSave();
+    }
+    [Button]
+    public void OpenSaveLocation()
+    {
+        EditorUtility.RevealInFinder(GameSaveManager.GetSavePath());
     }
 
     private void OnDisable()
