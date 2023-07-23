@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UI.InteractText
+namespace Core.UI.InteractText
 {
     public class InteractTextHandler
     {

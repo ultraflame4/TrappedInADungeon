@@ -1,3 +1,4 @@
+using Level;
 using Player;
 using UnityEngine;
 
@@ -40,5 +41,9 @@ public class GameManager : MonoBehaviour
     {
         inventoryUi.SetActive(false);
         Controls.Menus.InventoryToggle.performed += (ctx) => inventoryUi.SetActive(!inventoryUi.activeSelf);
+    }
+
+    public void LoadNewArea()
+    {
     }
 }

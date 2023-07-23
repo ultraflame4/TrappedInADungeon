@@ -1,11 +1,9 @@
-﻿using System.Linq;
-using Core.Utils;
+﻿using Core.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
 
-namespace UI.InteractText
+namespace Core.UI.InteractText
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class InteractTextManager : MonoBehaviour

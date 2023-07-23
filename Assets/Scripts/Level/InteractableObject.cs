@@ -1,6 +1,5 @@
 ﻿using System;
-using UI;
-using UI.InteractText;
+using Core.UI.InteractText;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
