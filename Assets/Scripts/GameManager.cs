@@ -112,5 +112,10 @@ public class GameManager : MonoBehaviour, ISaveHandler
     {
         return JsonUtility.ToJson(currentSaveData,true);
     }
-    
+
+    private void OnDestroy()
+    {
+        GameSaveManager.WriteSave();
+        GameSaveManager.ClearSaveHandlers();
+    }
 }

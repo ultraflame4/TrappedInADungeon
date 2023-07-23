@@ -90,5 +90,13 @@ namespace Core.Save
             }
             
         }
+
+        /// <summary>
+        /// Removes all save handlers.
+        /// </summary>
+        public static void ClearSaveHandlers()
+        {
+            saveHandlers.Clear();
+        }
     }
 }
