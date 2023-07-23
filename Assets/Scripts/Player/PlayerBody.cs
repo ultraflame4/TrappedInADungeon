@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Linq;
 using Core.Entities;
+using Core.Save;
 using Core.UI;
 using Core.Utils;
 using UnityEngine;
 
 namespace Player
 {
-    public class PlayerBody : EntityBody, IMagicStats
+    [Serializable]
+    public class PlayerBody : EntityBody, IMagicStats, ISaveHandler
     {
         [Header("Mana")]
         public int BaseMana; // Used for casting spells
@@ -28,6 +30,7 @@ namespace Player
             base.Awake();
             CurrentMana.value = Mana;
             CurrentMana.validator = (value, newValue) => Mathf.Min(Mana, newValue);
+            GameSaveManager.AddSaveHandler("player",this);
         }
 
         private void Update()
