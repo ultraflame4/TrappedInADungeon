@@ -161,7 +161,7 @@ namespace Player
             }
 
             // Always set toJump to false at the end, regardless whether the jump happened.
-            // This fixes a bug where if the player tries the jump again when jumpsLeft = 0, the moment the player touches the ground they jump again.
+            // This fixes a bug_ where if the player tries the jump again when jumpsLeft = 0, the moment the player touches the ground they jump again.
             toJump = false;
             rb.velocity = move;
         }

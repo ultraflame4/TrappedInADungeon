@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
 
     //todo add ui support for gamepad mouse 
 
-
     private void Start()
     {
         inventoryUi.SetActive(false);

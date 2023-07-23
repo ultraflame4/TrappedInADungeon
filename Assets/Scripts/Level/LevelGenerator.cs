@@ -61,10 +61,7 @@ namespace Level
             background.Generate(levelSize);
             enemySpawnManager.GenerateSpawnSections();
             GenerateColliderBounding();
-            if (player != null) // Transport player to start of level. todo change this later to level start
-            {
-                player.transform.position = LocalLevelLeft + Vector2.right + Vector2.up*groundLevel + Vector2.up;
-            }
+
 
             if (levelPortalPrefab == null)
             {
@@ -74,7 +71,11 @@ namespace Level
 
             PlaceLevelPortals(levelPortalPrefab);
             // spawn player at start portal
-            player.transform.position = startPortal.transform.position;
+            if (player != null) // Transport player to start of level.
+            {
+                player.transform.position = startPortal.transform.position;
+            }
+           
         }
 
         void PlaceLevelPortals(GameObject prefab)

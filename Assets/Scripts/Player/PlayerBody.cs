@@ -3,8 +3,6 @@ using System.Linq;
 using Core.Entities;
 using Core.UI;
 using Core.Utils;
-using Entities;
-using UI;
 using UnityEngine;
 
 namespace Player

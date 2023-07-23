@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Level
 {
-    //todo rework enemy spawning system
     public class EnemySpawner : MonoBehaviour
     {
         public float spawnRect = 5f;
