@@ -159,11 +159,17 @@ namespace Player
         public void OnLoadSave(string json)
         {
             var array = JArray.Parse(json);
+            List<ItemInstance> savedItems = new (); 
             foreach (JToken child in array.Children())
             {
                 ItemInstance itemInstance = new (null);
                 JsonUtility.FromJsonOverwrite(child.ToString(),itemInstance);
-                items.Add(itemInstance);
+                savedItems.Add(itemInstance);
+            }
+
+            if (savedItems.Count > 0)
+            {
+                items = savedItems;
             }
         }
 
