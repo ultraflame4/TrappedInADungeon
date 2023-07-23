@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Core.Save
@@ -9,6 +10,17 @@ namespace Core.Save
     {
         public const string SaveFolder = "Save";
         private static Dictionary<string,ISaveHandler> saveHandlers = new();
+
+
+        static GameSaveManager()
+        {
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings {
+                    Formatting = Formatting.Indented,
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                    
+            };
+            
+        }
 
         /// <summary>
         /// Adds a save handler
@@ -30,6 +42,7 @@ namespace Core.Save
         public static string GetSavePath(string saveName = "DefaultSave") =>Path.Combine(Application.persistentDataPath,SaveFolder, saveName);
         public static void LoadSave(string saveName = "DefaultSave")
         {
+            return;
             string savePath = GetSavePath(saveName);
             foreach ((string saveId, ISaveHandler saveHandler) in saveHandlers)
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using Core.Entities;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Core.Item
@@ -7,7 +8,7 @@ namespace Core.Item
     [Serializable]
     public class ItemInstance : IEntityStats
     {
-        [field: SerializeField]
+        [field: SerializeField,JsonProperty]
         public ItemScriptableObject item { get; private set; }
 
         /// <summary>
@@ -23,7 +24,7 @@ namespace Core.Item
         /// <summary>
         /// Similar items (such as consumables) can be stacked together.
         /// </summary>
-        [field: SerializeField]
+        [field: SerializeField, JsonProperty]
         public int Count { get; private set; } = 1;
 
         // todo implement stats modifiers.

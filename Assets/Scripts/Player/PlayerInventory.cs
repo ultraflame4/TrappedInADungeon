@@ -11,9 +11,10 @@ using UnityEngine;
 using Newtonsoft.Json.Linq;
 namespace Player
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class PlayerInventory : MonoBehaviour, ISaveHandler
     {
-        [SerializeField]
+        [SerializeField,JsonProperty]
         private List<ItemInstance> items = new ();
 
         [Tooltip("The inventory slots in the ui. Automatically found by the script")]
@@ -156,34 +157,22 @@ namespace Player
             AddItem(new ItemInstance(debugSkill));
         }
 
+
+        
+
         public void OnLoadSave(string json)
         {
-            var array = JArray.Parse(json);
-            List<ItemInstance> savedItems = new (); 
-            foreach (JToken child in array.Children())
+            
+            var playerInventory = JsonConvert.DeserializeObject<PlayerInventory>(json);
+            foreach (var item in playerInventory.items)
             {
-                ItemInstance itemInstance = new (null);
-                JsonUtility.FromJsonOverwrite(child.ToString(),itemInstance);
-                savedItems.Add(itemInstance);
-            }
-
-            if (savedItems.Count > 0)
-            {
-                items = savedItems;
+                items.Add(new ItemInstance(ItemManager.Instance.FindItemById(item.item.item_id)));
             }
         }
 
         public string OnWriteSave()
         {
-            var jsonObj = new JArray();
-            foreach (ItemInstance item in AllItems)
-            {
-                // Use JsonUtility to serialise unity objects, before parsing the string result into a JObject and adding it to the JArray
-                // Not really efficient but wtv.
-                jsonObj.Add(JObject.Parse(JsonUtility.ToJson(item)));
-            }
-
-            return jsonObj.ToString();
+            return JsonConvert.SerializeObject(this);
         }
     }
 }

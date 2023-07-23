@@ -72,9 +72,9 @@ public class GameManager : MonoBehaviour, ISaveHandler
     {
         inventoryUi.SetActive(false);
         Controls.Menus.InventoryToggle.performed += (ctx) => inventoryUi.SetActive(!inventoryUi.activeSelf);
+        GameSaveManager.LoadSave();
         levelGenerator.AreaIndex = CurrentAreaIndex;
         levelGenerator.GenerateLevel();
-        GameSaveManager.LoadSave();
         NotificationManager.Instance.PushNotification($"<size=150%>Entered Area {CurrentAreaIndex}</size>");
     }
 

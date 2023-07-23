@@ -2,6 +2,7 @@
         
 namespace Core.Save
 {
+    
     public interface ISaveHandler
     {
         public void OnLoadSave(string json)

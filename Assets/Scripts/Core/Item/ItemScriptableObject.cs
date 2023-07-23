@@ -1,10 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using UnityEditor;
+using UnityEngine;
 
 namespace Core.Item
 {
     [CreateAssetMenu(fileName = "game_item",menuName = "GameContent/Item")]
     public sealed class ItemScriptableObject : ScriptableObject
     {
+        [Tooltip("Unique id for this item")]
+        public string item_id;
         [Tooltip("Name of the item shown in inventory")]
         public string item_name;
         [Tooltip("Description of item shown in inventory"),Multiline(5)]
@@ -31,5 +37,6 @@ namespace Core.Item
         public float mana;
         [Tooltip("The amount of mana this item costs when used.")]
         public float manaCost;
+        
     }
 }

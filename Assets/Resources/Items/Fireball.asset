@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1cf7b30ece5f9545b044bf270826dbb, type: 3}
-  m_Name: WoodSword
+  m_Name: Fireball
   m_EditorClassIdentifier: 
-  item_name: Wood Sword
-  item_description: A basic starting wooden sword.
-  itemSprite: {fileID: 1826216984824387065, guid: bebcaef0c16439541b4e0753adbc1439, type: 3}
-  itemType: 0
-  itemPrefab: {fileID: 4776626329389160853, guid: faa365b493366f746ae12be13d152cf3, type: 3}
-  attack: 30
+  item_id: fireball
+  item_name: Fireball
+  item_description: Shoots a fireball
+  itemSprite: {fileID: -3003964101018066756, guid: ce7a090d790ee6942acb9f6993bcec64, type: 3}
+  itemType: 1
+  itemPrefab: {fileID: 3309170777301791222, guid: c5903b509ae55a149a6e79aa118378cc, type: 3}
+  attack: 50
   defense: 0
-  speed: 0
+  speed: 500
   health: 0
   mana: 0
-  manaCost: 0
+  manaCost: 30

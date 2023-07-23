@@ -51,5 +51,6 @@ namespace Player
                 currentExp = 0;
             }
         }
+        
     }
 }
