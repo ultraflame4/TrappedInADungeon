@@ -15,10 +15,13 @@ namespace Level
     {
         public LevelGenerator levelGenerator;
         public PlayerBody player;
+
         [Tooltip("Level of enemies to spawn. Overriden by LevelGenerator")]
         public int EnemyLevel = 1;
+
         [Tooltip("Addional range of enemy levels to vary the enemy levels")]
         public int EnemyLevelRangeMin = -1;
+
         public int EnemyLevelRangeMax = 5;
 
         [Tooltip("Enemy spawning is divided into sections. This determines how big each section is."), Min(0.1f)]
@@ -33,7 +36,17 @@ namespace Level
         private float yOffset => _yOffset + levelGenerator.groundLevel;
 
         public SpawnableEnemy[] enemyPool;
-        public int difficultyPoints = 200;
+
+        [FormerlySerializedAs("EnemyCount"), Tooltip("Enemy Count Range Per Section ")]
+        public ValueRange<float> MaxEnemyCount = new(8, 25);
+
+        [Tooltip("General difficulty of the spawned enemies.")]
+        public int startDifficultyPoints = 70;
+
+        [Tooltip("General difficulty increase per player level")]
+        public int difficultyPointIncreasePerLevel = 15;
+
+        public int difficultyPoints => startDifficultyPoints + difficultyPointIncreasePerLevel * (player.Level - 1);
 
         /// <summary>
         /// The size of the area where enemies are allowed to spawn, aka levelSize - endsOffset * 2
@@ -69,14 +82,18 @@ namespace Level
             List<GameObject> enemyPrefabs = new();
 
             int pointsRemaining = allocatedPoints;
-            var sortedEnemyPool = enemyPool.OrderBy(x => x.spawnWeight).ToList();
+            int maxEnemyCount = Mathf.RoundToInt(Random.Range(MaxEnemyCount.min, MaxEnemyCount.max));
+
+            int enemyCountLeft = maxEnemyCount+1;
             while (pointsRemaining > 0)
             {
-                SpawnableEnemy chosen = GetRandomEnemy(pointsRemaining, sortedEnemyPool);
+                SpawnableEnemy chosen = GetRandomEnemy(pointsRemaining, 1f - enemyCountLeft / (float)maxEnemyCount, enemyPool);
                 if (chosen is null) break;
 
                 pointsRemaining -= chosen.difficultyPoints;
                 enemyPrefabs.Add(chosen.enemyPrefab);
+                enemyCountLeft--;
+                if (enemyCountLeft == 0) break;
             }
 
             return enemyPrefabs.ToArray();
@@ -86,11 +103,12 @@ namespace Level
         /// Gets a random enemy from the pool, taking into account the player's level, points available & spawn chances weights.
         /// </summary>
         /// <param name="pointsAvailable">Difficulty points available</param>
+        /// <param name="dSkew">How much to skew towards the stronger enemies (0 is easy, 1 is strong)</param>
         /// <param name="sortedEnemyPool">The sorted enemy pool</param>
         /// <returns>Returns the chosen enemy or null if no enemies can be spawned</returns>
-        private SpawnableEnemy GetRandomEnemy(int pointsAvailable, List<SpawnableEnemy> sortedEnemyPool)
+        private SpawnableEnemy GetRandomEnemy(int pointsAvailable, float dSkew, SpawnableEnemy[] enemyPool)
         {
-            SpawnableEnemy[] filteredEnemyPool = sortedEnemyPool
+            SpawnableEnemy[] filteredEnemyPool = enemyPool
                     .Where(x => x.difficultyPoints <= pointsAvailable && x.minPlayerLevel <= player.Level)
                     .ToArray(); // Filter out invalid enemies
 
@@ -111,12 +129,22 @@ namespace Level
              * And if the random position is < end position of 1 section, we know that the position is in that section and hence choose that section as outcome.
              * We can do this because the weight of each enemy (and hence size of each section) is sorted in ascending order.
              */
-            int weightSum = filteredEnemyPool.Sum(x => x.spawnWeight); // Sum of spawnWeights
+            int weightSum = filteredEnemyPool.Sum(x => x.spawnWeight); // Initial Sum of spawnWeights
+            SpawnableEnemy[] skewedPool = filteredEnemyPool.Select(x =>
+                    {
+                        var copy = Instantiate(x);
+                        // Fancy maths to skew spawn weight
+                        copy.spawnWeight = Mathf.RoundToInt(copy.spawnWeight + copy.difficultyPoints * dSkew * weightSum);
+                        return copy;
+                    })
+                    .OrderBy(x => x.spawnWeight)
+                    .ToArray();
+             weightSum = skewedPool.Sum(x => x.spawnWeight); // Re calculate sum of spawnWeights
             int positionCounter = 0;
             Dictionary<int, SpawnableEnemy> positions = new();
-            for (var i = 0; i < filteredEnemyPool.Length; i++)
+            for (var i = 0; i < skewedPool.Length; i++)
             {
-                var enemy = filteredEnemyPool[i];
+                var enemy = skewedPool[i];
                 positionCounter += enemy.spawnWeight;
                 positions.Add(positionCounter, enemy);
             }
@@ -143,8 +171,9 @@ namespace Level
                 sectionObj.transform.SetParent(container.transform);
                 sectionObj.transform.position = section + randomPosition + Vector2.up * yOffset;
                 var spawner = sectionObj.AddComponent<EnemySpawner>();
+                spawner.spawnRect = spawnSectionSize/2;
                 spawner.enemySpawnLevel = EnemyLevel;
-                spawner.enemySpawnLevelRangeMin =EnemyLevelRangeMin;
+                spawner.enemySpawnLevelRangeMin = EnemyLevelRangeMin;
                 spawner.enemySpawnLevelRangeMax = EnemyLevelRangeMax;
                 spawner.enemyPrefabs = ChooseEnemiesFromPool(difficultyPoints / SectionsCount);
             }
