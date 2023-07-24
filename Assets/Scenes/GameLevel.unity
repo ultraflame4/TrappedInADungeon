@@ -17627,9 +17627,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseHealth: 300
-  BaseAttack: 50
+  BaseAttack: 150
   BaseSpeed: 10
-  BaseDefense: 100
+  BaseDefense: 140
   <CurrentHealth>k__BackingField:
     _value: 0.74
   Level: 1
