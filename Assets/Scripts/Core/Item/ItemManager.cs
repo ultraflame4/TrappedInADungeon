@@ -14,6 +14,7 @@ namespace Core.Item
             {
                 Debug.LogError("Warning: multiple instances of ItemManager found! The static instance will be changed to this one!!!! This is probably not what you want!");
             }
+            Instance = this;
             scriptableObjects = Resources.LoadAll<ItemScriptableObject>("Items");
         }
 
