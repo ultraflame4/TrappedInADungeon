@@ -30,9 +30,15 @@ namespace Player
         protected override void Awake()
         {
             base.Awake();
-            CurrentMana.value = Mana;
+
             CurrentMana.validator = (value, newValue) => Mathf.Min(Mana, newValue);
             GameSaveManager.AddSaveHandler("player.body",this);
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+            CurrentMana.value = Mana;
         }
 
         private void Update()
