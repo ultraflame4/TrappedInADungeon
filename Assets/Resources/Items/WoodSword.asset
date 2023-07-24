@@ -18,7 +18,7 @@ MonoBehaviour:
   itemSprite: {fileID: 1826216984824387065, guid: bebcaef0c16439541b4e0753adbc1439, type: 3}
   itemType: 0
   itemPrefab: {fileID: 4776626329389160853, guid: faa365b493366f746ae12be13d152cf3, type: 3}
-  attack: 30
+  attack: 200
   defense: 0
   speed: 0
   health: 0

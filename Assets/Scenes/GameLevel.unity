@@ -17070,7 +17070,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - <item>k__BackingField: {fileID: 11400000, guid: 6c1e9d1108d1d824b9f96cf79952485f, type: 2}
-    <Count>k__BackingField: 100
+    <Count>k__BackingField: 8
+  - <item>k__BackingField: {fileID: 11400000, guid: a577bf1a8fa26d7458b090d358de2e87, type: 2}
+    <Count>k__BackingField: 1
   itemSlots:
   - {fileID: 2015262873}
   - {fileID: 507519533}
@@ -17625,7 +17627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseHealth: 300
-  BaseAttack: 150
+  BaseAttack: 50
   BaseSpeed: 10
   BaseDefense: 100
   <CurrentHealth>k__BackingField:

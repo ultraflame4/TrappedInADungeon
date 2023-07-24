@@ -66,7 +66,7 @@ namespace Core.Entities
         /// <returns></returns>
         public float CalculateAttackDamage(float baseDamage)
         {
-            return baseDamage + Attack;
+            return baseDamage*Level + Attack;
         }
     }
 }
