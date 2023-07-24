@@ -16,21 +16,22 @@ namespace Core.Entities
     public class EntityBody : MonoBehaviour, IEntityStats
     {
         public float BaseHealth; // Health of entity
-        
+
         public int baseAttack; // Increases physical damage
 
         public int BaseSpeed; // Movement speed
         public int BaseDefense; // Reduces damage taken
-        
+
         [field: SerializeField]
         [JsonProperty]
         public VolatileValue<float> CurrentHealth { get; private set; } = new(); // Automatically set to Health on start
 
         [JsonProperty]
         protected List<StatsModifier> StatsModifiers = new();
+
         public float Health => BaseHealth * Level + StatsModifiers.Sum(modifier => modifier.Health);
         public float Attack => baseAttack * Level + StatsModifiers.Sum(modifier => modifier.Attack);
-        public float Speed => BaseSpeed * Level + StatsModifiers.Sum(modifier => modifier.Speed);
+        public float Speed => BaseSpeed +  BaseSpeed * (Level-1) * .001f + StatsModifiers.Sum(modifier => modifier.Speed);
         public float Defense => BaseDefense * Level + StatsModifiers.Sum(modifier => modifier.Defense);
 
         [JsonProperty]
@@ -47,6 +48,7 @@ namespace Core.Entities
 
         public void Damage(float amt)
         {
+            amt = Mathf.Min(1,amt * (1 - Defense/ (Defense+200)));
             CurrentHealth.value -= amt;
             DamagedEvent?.Invoke();
             if (CurrentHealth.value <= 0)

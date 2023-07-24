@@ -1,3 +1,4 @@
+using Core.Entities;
 using UnityEngine;
 
 namespace Level
@@ -5,6 +6,11 @@ namespace Level
     public class EnemySpawner : MonoBehaviour
     {
         public float spawnRect = 5f;
+        public int enemySpawnLevel = 1;
+        [HideInInspector]
+        public int enemySpawnLevelRangeMin = 0;
+        [HideInInspector]
+        public int enemySpawnLevelRangeMax = 0;
         [Tooltip("Enemies to spawn")]
         public GameObject[] enemyPrefabs;
 
@@ -19,7 +25,9 @@ namespace Level
             for (var i = 0; i < enemyPrefabs.Length; i++)
             {
                 float x = i * (spawnRect / enemyPrefabs.Length) - spawnRect / 2f;
-                var obj = Instantiate(enemyPrefabs[i], new Vector3(transform.position.x+x, transform.position.y), Quaternion.identity);
+                EntityBody body = Instantiate(enemyPrefabs[i], new Vector3(transform.position.x+x, transform.position.y), Quaternion.identity)
+                        .GetComponent<EntityBody>();
+                body.Level = enemySpawnLevel + Mathf.RoundToInt(Random.Range(enemySpawnLevelRangeMin,enemySpawnLevelRangeMax));
             }
         }
 

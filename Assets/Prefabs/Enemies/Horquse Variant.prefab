@@ -116,6 +116,14 @@ PrefabInstance:
       propertyPath: BaseSpeed
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 7772803838891208523, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+      propertyPath: BaseHealth
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772803838891208523, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+      propertyPath: BaseDefense
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 8188238271096804955, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: config
       value: 

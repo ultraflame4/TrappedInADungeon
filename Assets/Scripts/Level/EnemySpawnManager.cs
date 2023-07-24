@@ -15,8 +15,11 @@ namespace Level
     {
         public LevelGenerator levelGenerator;
         public PlayerBody player;
-        [Tooltip("Level of enemies to spawn")]
+        [Tooltip("Level of enemies to spawn. Overriden by LevelGenerator")]
         public int EnemyLevel = 1;
+        [Tooltip("Addional range of enemy levels to vary the enemy levels")]
+        public int EnemyLevelRangeMin = -1;
+        public int EnemyLevelRangeMax = 5;
 
         [Tooltip("Enemy spawning is divided into sections. This determines how big each section is."), Min(0.1f)]
         public float spawnSectionSize = 10f;
@@ -140,6 +143,9 @@ namespace Level
                 sectionObj.transform.SetParent(container.transform);
                 sectionObj.transform.position = section + randomPosition + Vector2.up * yOffset;
                 var spawner = sectionObj.AddComponent<EnemySpawner>();
+                spawner.enemySpawnLevel = EnemyLevel;
+                spawner.enemySpawnLevelRangeMin =EnemyLevelRangeMin;
+                spawner.enemySpawnLevelRangeMax = EnemyLevelRangeMax;
                 spawner.enemyPrefabs = ChooseEnemiesFromPool(difficultyPoints / SectionsCount);
             }
         }
