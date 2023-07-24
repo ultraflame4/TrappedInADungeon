@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodParticles: {fileID: 527914753178123709, guid: b4a6ede691e80394a8569ff556cbb00a, type: 3}
+  damageNumbers: {fileID: 7692115672555502504, guid: 076a9c9b748f055438c14f0d05fefbd2, type: 3}
 --- !u!114 &3542403788439501788
 MonoBehaviour:
   m_ObjectHideFlags: 0

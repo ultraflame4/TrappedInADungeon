@@ -38,7 +38,7 @@ namespace Core.Entities
         public int Level = 1; // Level of entity
 
         public event Action DeathEvent; // Event that is invoked when entity dies
-        public event Action DamagedEvent; // Event that is invoked when entity takes damage
+        public event Action<float> DamagedEvent; // Event that is invoked when entity takes damage
 
         protected virtual void Awake()
         {
@@ -50,7 +50,7 @@ namespace Core.Entities
         {
             amt = Mathf.Min(1,amt * (1 - Defense/ (Defense+200)));
             CurrentHealth.value -= amt;
-            DamagedEvent?.Invoke();
+            DamagedEvent?.Invoke(amt);
             if (CurrentHealth.value <= 0)
             {
                 DeathEvent?.Invoke();

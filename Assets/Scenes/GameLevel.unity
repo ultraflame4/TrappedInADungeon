@@ -7185,7 +7185,7 @@ GameObject:
   - component: {fileID: 843571570}
   - component: {fileID: 843571572}
   - component: {fileID: 843571573}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Level
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -17165,6 +17165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodParticles: {fileID: 8110258325600173695, guid: 9aba91a7d9f0a324aaa9b4ead097023b, type: 3}
+  damageNumbers: {fileID: 0}
 --- !u!114 &3925352218739439718
 MonoBehaviour:
   m_ObjectHideFlags: 3
