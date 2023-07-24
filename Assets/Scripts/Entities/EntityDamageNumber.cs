@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Core.Utils;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -22,7 +23,7 @@ namespace Entities
             rb = GetComponent<Rigidbody2D>();
             text = GetComponent<TextMeshPro>();
             
-            text.text = $"{number}";
+            text.text = $"{number.ToPrecision(0)}";
             text.color = Color.Lerp(startColor, endColor, Mathf.Clamp01(number / targetMaxHealth));
             rb.velocity = new Vector2(Random.value, Random.value)* (300 + (Random.value * 100)) * Time.deltaTime;
             StartCoroutine(DeleteSelf());
