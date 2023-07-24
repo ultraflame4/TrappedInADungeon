@@ -58,7 +58,9 @@ public class GameManager : MonoBehaviour, ISaveHandler
     [Button]
     public void OpenSaveLocation()
     {
+        #if UNITY_EDITOR
         EditorUtility.RevealInFinder(GameSaveManager.GetSavePath());
+        #endif
     }
 
     private void OnDisable()
