@@ -36,6 +36,8 @@ namespace Enemies.Behaviours.Follow
             player = GameObject.FindWithTag("Player").transform;
             body = GetComponent<EntityBody>();
             rb = GetComponent<Rigidbody2D>();
+            UpdateDirections();
+            RotateTowardsPlayer();
         }
 
         /// <summary>
