@@ -25,6 +25,7 @@ namespace Core.UI.InteractText
         private void Start()
         {
             text = GetComponent<TextMeshProUGUI>();
+            text.text = "";
         }
 
 
