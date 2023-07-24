@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item_id: heart
   item_name: Heart
-  item_description: Restores 50 health
+  item_description: Restores 10% of health
   itemSprite: {fileID: 5598771626186903569, guid: 4d89171304de9294f9c63a301ac7ff8e, type: 3}
   itemType: 2
   itemPrefab: {fileID: 8686067114625966279, guid: b75429b661681674ea54aca9af8bfe09, type: 3}
   attack: 0
   defense: 0
   speed: 0
-  health: 50
+  health: 10
   mana: 0
   manaCost: 0
