@@ -52,6 +52,7 @@ namespace Player
         /// <typeparam name="T"></typeparam>
         public void AddItem<T>(T item) where T : ItemInstance
         {
+            Debug.Log($"Adding {item.item.item_id}");
             // Search through all items
             foreach (ItemInstance itemInstance in AllItems)
             {
@@ -153,24 +154,6 @@ namespace Player
         public void GiveDebugSkill()
         {
             AddItem(new ItemInstance(debugSkill));
-        }
-
-
-        
-
-        public void OnLoadSave(string json)
-        {
-            
-            var playerInventory = JsonConvert.DeserializeObject<PlayerInventory>(json);
-            foreach (var item in playerInventory.items)
-            {
-                items.Add(new ItemInstance(ItemManager.Instance.FindItemById(item.item.item_id)));
-            }
-        }
-
-        public string OnWriteSave()
-        {
-            return JsonConvert.SerializeObject(this);
         }
     }
 }

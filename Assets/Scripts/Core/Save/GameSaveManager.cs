@@ -16,7 +16,8 @@ namespace Core.Save
         {
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings {
                     Formatting = Formatting.Indented,
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                    ContractResolver = new CustomContractResolver()
             };
             
         }
