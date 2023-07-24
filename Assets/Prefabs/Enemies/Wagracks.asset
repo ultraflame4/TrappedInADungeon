@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 5349017118548454483, guid: fcbffacc27cd3394fb2d23cad41cebe0, type: 3}
   spawnWeight: 30
-  difficultyPoints: 1
-  minPlayerLevel: 0
+  difficultyPoints: 2
+  minPlayerLevel: 5
   lootbox:
   - item: {fileID: 11400000, guid: 6c1e9d1108d1d824b9f96cf79952485f, type: 2}
     chance: 1
