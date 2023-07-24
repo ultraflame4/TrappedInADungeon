@@ -129,8 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ecae3e1f09444e8ab4a0f5a777a785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 100
-  baseAttack: 0
+  BaseHealth: 200
+  BaseAttack: 200
   BaseSpeed: 200
   BaseDefense: 100
   <CurrentHealth>k__BackingField:
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxPosition: {x: 0.4, y: -0.15}
   hitboxRadius: 0.53
-  baseDamage: 10
+  baseDamage: 200
 --- !u!114 &7476105827066563008
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using System.Linq;
 using Core.Utils;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Core.Entities
 {
@@ -17,7 +18,8 @@ namespace Core.Entities
     {
         public float BaseHealth; // Health of entity
 
-        public int baseAttack; // Increases physical damage
+        [FormerlySerializedAs("baseAttack")]
+        public int BaseAttack; // Increases physical damage
 
         public int BaseSpeed; // Movement speed
         public int BaseDefense; // Reduces damage taken
@@ -30,7 +32,7 @@ namespace Core.Entities
         protected List<StatsModifier> StatsModifiers = new();
 
         public float Health => BaseHealth * Level + StatsModifiers.Sum(modifier => modifier.Health);
-        public float Attack => baseAttack * Level + StatsModifiers.Sum(modifier => modifier.Attack);
+        public float Attack => BaseAttack * Level + StatsModifiers.Sum(modifier => modifier.Attack);
         public float Speed => BaseSpeed +  BaseSpeed * (Level-1) * .001f + StatsModifiers.Sum(modifier => modifier.Speed);
         public float Defense => BaseDefense * Level + StatsModifiers.Sum(modifier => modifier.Defense);
 
@@ -48,7 +50,7 @@ namespace Core.Entities
 
         public void Damage(float amt)
         {
-            amt = Mathf.Min(1,amt * (1 - Defense/ (Defense+200)));
+            amt *= Mathf.Min(0.1f,1 - Defense/ (Defense+200));
             CurrentHealth.value -= amt;
             DamagedEvent?.Invoke(amt);
             if (CurrentHealth.value <= 0)
