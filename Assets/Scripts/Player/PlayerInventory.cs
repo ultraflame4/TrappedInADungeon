@@ -52,7 +52,6 @@ namespace Player
         /// <typeparam name="T"></typeparam>
         public void AddItem<T>(T item) where T : ItemInstance
         {
-            Debug.Log($"Adding {item.item.item_id}");
             // Search through all items
             foreach (ItemInstance itemInstance in AllItems)
             {
