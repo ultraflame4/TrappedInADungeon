@@ -8,8 +8,7 @@ namespace Core.Item
     [Serializable, JsonObject(MemberSerialization.OptIn)]
     public class ItemInstance : IEntityStats
     {
-        [field: SerializeField]
-        [JsonProperty]
+        [field: SerializeField] [JsonProperty]
         public ItemScriptableObject item { get; private set; }
         
 

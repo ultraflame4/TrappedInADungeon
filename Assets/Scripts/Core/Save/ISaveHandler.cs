@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
-using UnityEngine;
-        
+
 namespace Core.Save
 {
     [JsonObject(MemberSerialization.OptIn)]

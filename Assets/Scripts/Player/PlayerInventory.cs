@@ -8,7 +8,6 @@ using EasyButtons;
 using Newtonsoft.Json;
 using UI.Inventory;
 using UnityEngine;
-using Newtonsoft.Json.Linq;
 namespace Player
 {
 
@@ -30,8 +29,7 @@ namespace Player
 
         private void Awake()
         {
-
-            // GameSaveManager.AddSaveHandler("player.inventory",this);
+            GameSaveManager.AddSaveHandler("player.inventory",this);
         }
 
         void Start()

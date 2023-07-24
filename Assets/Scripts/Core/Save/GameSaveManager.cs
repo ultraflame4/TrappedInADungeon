@@ -45,6 +45,7 @@ namespace Core.Save
             foreach ((string saveId, ISaveHandler saveHandler) in saveHandlers)
             {
                 string currentPath = Path.Combine(savePath, $"{saveId}.json");
+                Debug.Log($"Loading save: {saveName} - saveId: {saveId} at: {currentPath}");
                 try
                 {
                     string contents = File.ReadAllText(currentPath);
@@ -60,7 +61,7 @@ namespace Core.Save
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"{e} : Error while trying to read save file at path {currentPath}");
+                    Debug.LogError($"Error while trying to read save file at path {currentPath} : {e}");
                 }
                 
             }
