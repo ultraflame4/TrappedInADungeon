@@ -26,12 +26,13 @@ namespace Core.Item
         /// Similar items (such as consumables) can be stacked together.
         /// </summary>
         [field: SerializeField] [JsonProperty]
-        public int Count { get; private set; } = 1;
+        public int Count { get; private set; }
 
         // todo implement stats modifiers.
-        public ItemInstance(ItemScriptableObject item)
+        public ItemInstance(ItemScriptableObject item, int count = 1)
         {
             this.item = item;
+            Count = count;
         }
 
         public string GetDisplayName()
@@ -80,7 +81,7 @@ namespace Core.Item
         }
 
         /// <summary>
-        /// DO NOT USE THIS DIRECTLY! Use PlayerInventory.AdjustItemCount instead!
+        /// DO NOT USE THIS DIRECTLY! Use PlayerInventory.AdjustItemCount instead! <br/>
         /// Sets the number of items in this instance.
         /// </summary>
         /// <param name="count"></param>
