@@ -5,11 +5,13 @@ using UnityEngine;
 
 namespace Core.Item
 {
-    [Serializable]
+    [Serializable, JsonObject(MemberSerialization.OptIn)]
     public class ItemInstance : IEntityStats
     {
-        [field: SerializeField,JsonProperty]
+        [field: SerializeField]
+        [JsonProperty]
         public ItemScriptableObject item { get; private set; }
+        
 
         /// <summary>
         /// Short hand for item.itemSprite

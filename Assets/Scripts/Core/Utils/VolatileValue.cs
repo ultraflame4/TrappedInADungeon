@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Core.Utils
@@ -6,7 +7,7 @@ namespace Core.Utils
     /// <summary>
     /// A value that changes, and have events that can be subscribed to.
     /// </summary>
-    [Serializable]
+    [Serializable, JsonObject(MemberSerialization.OptIn)]
     public class VolatileValue<T>
     {
         public event Action Changed;
@@ -15,7 +16,7 @@ namespace Core.Utils
         /// The callback to validate the value change.
         /// </summary>
         public delegate T ValidateValueChange(T oldValue, T newValue);
-        [SerializeField]
+        [SerializeField,JsonProperty]
         private T _value;
         public ValidateValueChange validator;
         

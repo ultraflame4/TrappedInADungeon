@@ -1,5 +1,8 @@
-﻿namespace Core.Entities
+﻿using Newtonsoft.Json;
+
+namespace Core.Entities
 {
+    [JsonObject(MemberSerialization.Fields)]
     public class StatsModifier: IEntityStats, IItemStats, IMagicStats
     {
         public float Attack { get; set; }

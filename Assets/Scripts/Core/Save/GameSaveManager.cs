@@ -16,8 +16,7 @@ namespace Core.Save
         {
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings {
                     Formatting = Formatting.Indented,
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                    
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             };
             
         }
@@ -42,7 +41,6 @@ namespace Core.Save
         public static string GetSavePath(string saveName = "DefaultSave") =>Path.Combine(Application.persistentDataPath,SaveFolder, saveName);
         public static void LoadSave(string saveName = "DefaultSave")
         {
-            return;
             string savePath = GetSavePath(saveName);
             foreach ((string saveId, ISaveHandler saveHandler) in saveHandlers)
             {

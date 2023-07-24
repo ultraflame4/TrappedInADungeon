@@ -4,6 +4,7 @@ using Core.Entities;
 using Core.Save;
 using Core.UI;
 using Core.Utils;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Player
@@ -19,8 +20,9 @@ namespace Player
 
         public float Mana => BaseMana * Level + StatsModifiers.Sum(modifier => modifier.Mana);
         public float ManaRegen => BaseManaRegen * Level + StatsModifiers.Sum(modifier => modifier.ManaRegen);
-        [field: SerializeField]
+        [field: SerializeField] [JsonProperty]
         public VolatileValue<float> CurrentMana { get; private set; }  = new(); // Automatically set to Mana on start
+        [JsonProperty]
         public float currentExp { get; private set; } = 0f;
         public float NextLevelExp => Mathf.Pow(Level*0.65f,2);
         public event Action<int> PlayerLevelChanged;

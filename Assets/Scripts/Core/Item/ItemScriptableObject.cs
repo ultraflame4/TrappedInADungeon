@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace Core.Item
 {
-    [CreateAssetMenu(fileName = "game_item",menuName = "GameContent/Item")]
+    [CreateAssetMenu(fileName = "game_item",menuName = "GameContent/Item"),JsonObject(MemberSerialization.OptIn)]
     public sealed class ItemScriptableObject : ScriptableObject
     {
-        [Tooltip("Unique id for this item")]
+        [Tooltip("Unique id for this item"),JsonProperty]
         public string item_id;
         [Tooltip("Name of the item shown in inventory")]
         public string item_name;

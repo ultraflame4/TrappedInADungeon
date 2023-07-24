@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core.Utils;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Core.Entities
@@ -22,14 +23,17 @@ namespace Core.Entities
         public int BaseDefense; // Reduces damage taken
         
         [field: SerializeField]
+        [JsonProperty]
         public VolatileValue<float> CurrentHealth { get; private set; } = new(); // Automatically set to Health on start
 
+        [JsonProperty]
         protected List<StatsModifier> StatsModifiers = new();
         public float Health => BaseHealth * Level + StatsModifiers.Sum(modifier => modifier.Health);
         public float Attack => baseAttack * Level + StatsModifiers.Sum(modifier => modifier.Attack);
         public float Speed => BaseSpeed * Level + StatsModifiers.Sum(modifier => modifier.Speed);
         public float Defense => BaseDefense * Level + StatsModifiers.Sum(modifier => modifier.Defense);
 
+        [JsonProperty]
         public int Level = 1; // Level of entity
 
         public event Action DeathEvent; // Event that is invoked when entity dies

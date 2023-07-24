@@ -1,13 +1,14 @@
-﻿using UnityEngine;
+﻿using Newtonsoft.Json;
+using UnityEngine;
         
 namespace Core.Save
 {
-    
+    [JsonObject(MemberSerialization.OptIn)]
     public interface ISaveHandler
     {
         public void OnLoadSave(string json)
         {
-            JsonUtility.FromJsonOverwrite(json,this);
+            JsonConvert.PopulateObject(json,this);
         }
 
         /// <summary>
@@ -16,7 +17,7 @@ namespace Core.Save
         /// <returns></returns>
         public string OnWriteSave()
         {
-            return JsonUtility.ToJson(this,true);
+            return JsonConvert.SerializeObject(this);
         }
         
     }

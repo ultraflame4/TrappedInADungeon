@@ -11,7 +11,7 @@ using UnityEngine;
 using Newtonsoft.Json.Linq;
 namespace Player
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class PlayerInventory : MonoBehaviour, ISaveHandler
     {
         [SerializeField,JsonProperty]
@@ -31,7 +31,7 @@ namespace Player
         private void Awake()
         {
 
-            GameSaveManager.AddSaveHandler("player.inventory",this);
+            // GameSaveManager.AddSaveHandler("player.inventory",this);
         }
 
         void Start()
