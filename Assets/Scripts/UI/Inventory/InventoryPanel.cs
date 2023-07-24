@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Linq;
 using Core.Item;
+using Core.Save;
 using Core.Utils;
+using Newtonsoft.Json;
 using Player;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace UI.Inventory
 {
-    public class InventoryPanel : MonoBehaviour
+    public class InventoryPanel : MonoBehaviour, ISaveHandler
     {
         public Transform WeaponListContent;
         public Transform SkillListContent;
         public Transform ItemListContent;
-        [FormerlySerializedAs("WeaponListItemPrefab")] public GameObject ListItemPrefab;
+        public GameObject ListItemPrefab;
         public PlayerInventory playerInventory;
         private InventoryListItem[] listItems;
         public static InventoryPanel Instance { get; private set; }
@@ -26,6 +27,7 @@ namespace UI.Inventory
                 Debug.LogError("Warning: multiple instances of InventoryPanel found! The static instance will be changed to this one!!!! This is probably not what you want!");
             }
             Instance = this;
+            GameSaveManager.AddSaveHandler("ui.inventory",this);
         }
 
         void UpdateItemLists()
@@ -62,6 +64,12 @@ namespace UI.Inventory
         {
             if (!enabled) return null;
             return listItems.FirstOrDefault(x => x.itemInstance.focused)?.itemInstance;
+        }
+
+        public InvSlotItemInstance GetInvItemByIndex(int itemIndex)
+        {
+            if (itemIndex < 0) return null;
+            return listItems[itemIndex].itemInstance;
         }
     }
 }

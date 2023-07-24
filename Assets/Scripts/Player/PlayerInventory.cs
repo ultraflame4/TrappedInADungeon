@@ -100,6 +100,15 @@ namespace Player
         {
             return items.Where(x => x.item.itemType==itemType).ToArray();
         }
+        /// <summary>
+        /// Returns item by index
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public ItemInstance GetItemByIndex(int index)
+        {
+            return items[index];
+        }
 
         /// <summary>
         /// Adjusts number of items in the specified itemInstance & invokes inventory update event
@@ -124,6 +133,13 @@ namespace Player
         public bool Contains(ItemInstance itemInstance)
         {
             return items.Contains(itemInstance);
+        }
+
+        
+        public int IndexOf(ItemInstance itemInstance)
+        {
+            if (itemInstance == null) return -1;
+            return items.IndexOf(itemInstance);
         }
         
         /// <summary>

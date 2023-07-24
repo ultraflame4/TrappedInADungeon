@@ -1,10 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
 using Core.Item;
+using Core.Save;
 using Core.UI;
 using Core.Utils;
 using EasyButtons;
 using Item;
+using Newtonsoft.Json;
 using Player;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,11 +15,11 @@ using UnityEngine.UI;
 
 namespace UI.Inventory
 {
-    public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
+    public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, ISaveHandler
     {
         public Image itemImage;
         public SpriteButton spriteButton;
-        
+
         /// <summary>
         /// The input button name to use for this slot. If this is set, the slot will be activated when the button is pressed.
         /// </summary>
@@ -29,8 +31,10 @@ namespace UI.Inventory
         /// Weapon slots can only hold weapons. non-Weapon slots can hold anything except weapons.
         /// </summary>
         public bool isWeaponSlot = false;
+
         [Tooltip("Index of this slot")]
         public int slotIndex;
+
         /// <summary>
         /// This event is fired whenever the item in this slot changes. The value passed is the new item instance or null (if cleared).
         /// </summary>
@@ -40,12 +44,27 @@ namespace UI.Inventory
         /// This event is fired whenever the item in this slot is used. The value passed is the current item instance or null (if empty).
         /// </summary>
         public event Action<ItemInstance> onItemUsed;
-        
+
+        // references
         private InputAction inputAction;
         private InvSlotItemInstance currentItem = null;
         private ItemPrefabController itemGateway = null;
         private PlayerInventory playerInventory;
         public InvSlotItemInstance Item => currentItem;
+
+        /// <summary>
+        /// Index of the current item,  Mainly used for serialising to and from json
+        /// </summary>
+        [JsonProperty]
+        private int CurrentItemInventoryIndex;
+
+        [JsonProperty]
+        private ItemInstance CurrentItemName => currentItem?.itemInstance;
+
+        private void Awake()
+        {
+            GameSaveManager.AddSaveHandler($"inventory.slot_{slotIndex}", this);
+        }
 
         private void Start()
         {
@@ -53,10 +72,19 @@ namespace UI.Inventory
             playerInventory = GameObject.FindWithTag("Player").GetComponent<PlayerInventory>();
             inputAction = GameManager.Controls.FindAction(inputRef.action.id.ToString(), true);
             playerInventory.InventoryUpdate += OnInventoryUpdate;
+
+            playerInventory.InventoryUpdate += FirstInventoryUpdate;
+        }
+
+        void FirstInventoryUpdate()
+        {
+            SetItem(InventoryPanel.Instance.GetInvItemByIndex(CurrentItemInventoryIndex));
+            playerInventory.InventoryUpdate -= FirstInventoryUpdate;
         }
 
         void OnInventoryUpdate()
         {
+
             // If the item instance has been removed from the inventory, set this slot to empty.
             if (!playerInventory.Contains(currentItem?.itemInstance))
             {
@@ -153,6 +181,7 @@ namespace UI.Inventory
             }
 
             currentItem = item;
+            CurrentItemInventoryIndex = playerInventory.IndexOf(currentItem?.itemInstance);
             itemImage.SetSprite(currentItem?.itemInstance.sprite);
             onItemChanged?.Invoke(currentItem?.itemInstance);
         }

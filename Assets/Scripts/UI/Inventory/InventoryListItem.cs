@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using Core.Item;
+using Core.Save;
 using Core.UI;
+using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,6 +11,7 @@ using UnityEngine.UI;
 
 namespace UI.Inventory
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class InventoryListItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
     {
         public Image itemImage;
