@@ -17627,7 +17627,7 @@ MonoBehaviour:
   BaseHealth: 300
   BaseAttack: 150
   BaseSpeed: 10
-  BaseDefense: 10
+  BaseDefense: 100
   <CurrentHealth>k__BackingField:
     _value: 0.74
   Level: 1
