@@ -44,8 +44,12 @@ namespace Core.Entities
 
         protected virtual void Awake()
         {
-            CurrentHealth.value = Health;
             CurrentHealth.validator = (value, newValue) => Mathf.Min(Health, newValue);
+        }
+
+        private void Start()
+        {
+            CurrentHealth.value = Health;
         }
 
         public void Damage(float amt)
