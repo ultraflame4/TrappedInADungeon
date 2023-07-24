@@ -33,6 +33,11 @@ namespace Level
             initialEmissionRate = particleSys.emission.rateOverTimeMultiplier;
         }
 
+        int GetEnemiesCount()
+        {
+            return GameObject.FindGameObjectsWithTag("Enemy").Length;
+        }
+
         void OnInteractableChange(bool value)
         {
             ParticleSystem.VelocityOverLifetimeModule velOverLifetime = particleSys.velocityOverLifetime;
@@ -45,6 +50,13 @@ namespace Level
         {
             if (!IsStartPortal)
             {
+                int enemiesLeft = GetEnemiesCount();
+                if ( enemiesLeft> 0)
+                {
+                    NotificationManager.Instance.PushNotification($"<size=120%>All enemies must be Killed!</size>");
+                    NotificationManager.Instance.PushNotification($"<color=\"red\">Enemies left: ",addData:$"{enemiesLeft}</color>");
+                    return;
+                }
                 GameManager.Instance.LoadNextArea();
                 return;
             }
