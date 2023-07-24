@@ -28,7 +28,7 @@ namespace Enemies
         {
             int expDropped = config.difficultyPoints * (enemyBody.Level + 1) / 2;
             int ballsCount = Math.Min(maxBalls, Mathf.CeilToInt(expDropped / ExperiencePointsPerBall));
-            float expPerBall = expDropped / ballsCount;
+            float expPerBall = expDropped / (ballsCount + 1);
             Instantiate(expBallPrefab, transform.position, Quaternion.identity).GetComponent<ExpBall>().expValue = expPerBall;
 
             foreach (var lootboxItem in config.lootbox)
