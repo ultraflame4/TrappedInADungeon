@@ -25,8 +25,8 @@ namespace Enemies.Behaviours.Follow
         [Tooltip("Should the enemy be facing the player when attacking?")]
         public bool checkDirection = true;
 
-        private Vector3 directionToPlayer;
-        private Vector3 directionToPlayerSnapped;
+        public Vector3 directionToPlayer { get; private set; }
+        public Vector3 directionToPlayerSnapped{ get; private set; }
         /// <summary>
         /// Whether the attack animation is playing
         /// </summary>

@@ -1,31 +1,53 @@
 ﻿using System;
+using System.Collections;
+using Core.Entities;
 using Enemies;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Core.Enemies
 {
+    [RequireComponent(typeof(EntityBody)), RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Animator))]
     public class EnemyStateManager : MonoBehaviour
     {
-        public Animator animator;
-        public Rigidbody2D rb;
+        public Animator animator { get; private set; }
+        public Rigidbody2D rb { get; private set; }
+        private EntityBody body;
 
         public EnemyStateBehaviour Idle;
         public EnemyStateBehaviour Alert;
         public EnemyStateBehaviour Attack;
         public EnemyStateBehaviour Stunned;
+
         [field: SerializeField]
         public EnemyStates currentState { get; private set; }
+        
         private EnemyStateBehaviour currentBehaviour;
         public bool isGrounded { get; private set; } = false;
 
         private void Start()
         {
+            body = GetComponent<EntityBody>();
+            rb = GetComponent<Rigidbody2D>();
+            animator = GetComponent<Animator>();
+
             Idle?.StateInit(this);
             Alert?.StateInit(this);
             Attack?.StateInit(this);
             Stunned?.StateInit(this);
+
+            body.DamagedEvent += OnDamaged;
             TransitionState(EnemyStates.PATROL);
         }
+
+        void OnDamaged(float amt)
+        {
+            if (Stunned != null)
+            {
+                TransitionState(EnemyStates.STUNNED);
+            }
+        }
+
 
         /// <summary>
         /// Call this to transition to a new state.
@@ -54,7 +76,9 @@ namespace Core.Enemies
             {
                 Debug.LogWarning($"State {state} does not exist");
                 return;
-            };
+            }
+
+            ;
             currentBehaviour.stateActive = true;
             currentBehaviour.StateEnter();
         }

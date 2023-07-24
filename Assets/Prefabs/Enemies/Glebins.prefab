@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7085540968724973339}
   - component: {fileID: 8348109251440826098}
   - component: {fileID: 4636332432275838779}
+  - component: {fileID: 3680591798568401256}
   - component: {fileID: 7476105827066563008}
   - component: {fileID: 3542403788439501788}
   - component: {fileID: 8188238271096804955}
@@ -148,12 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bec6353430b4d6aa5d08b0eb016fd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 2397109330692920770}
-  rb: {fileID: 2967751085501941301}
   Idle: {fileID: 7085540968724973339}
   Alert: {fileID: 8348109251440826098}
   Attack: {fileID: 4636332432275838779}
-  Stunned: {fileID: 0}
+  Stunned: {fileID: 3680591798568401256}
   <currentState>k__BackingField: 0
 --- !u!114 &7085540968724973339
 MonoBehaviour:
@@ -200,6 +199,19 @@ MonoBehaviour:
   hitboxPosition: {x: 0.4, y: -0.15}
   hitboxRadius: 0.53
   baseDamage: 200
+--- !u!114 &3680591798568401256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713372788904983843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 918328a3afb0443db6cf8fd1ee1c6e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunPeriodSecs: 0.5
 --- !u!114 &7476105827066563008
 MonoBehaviour:
   m_ObjectHideFlags: 0
