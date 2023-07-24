@@ -56,7 +56,7 @@ namespace UI.Inventory
         /// Index of the current item,  Mainly used for serialising to and from json
         /// </summary>
         [JsonProperty]
-        private int CurrentItemInventoryIndex;
+        private int CurrentItemInventoryIndex=-1;
 
         [JsonProperty]
         private ItemInstance CurrentItemName => currentItem?.itemInstance;
@@ -71,13 +71,13 @@ namespace UI.Inventory
             // We need to find the input action from the instance of GameControls
             playerInventory = GameObject.FindWithTag("Player").GetComponent<PlayerInventory>();
             inputAction = GameManager.Controls.FindAction(inputRef.action.id.ToString(), true);
-            playerInventory.InventoryUpdate += OnInventoryUpdate;
-
             playerInventory.InventoryUpdate += FirstInventoryUpdate;
+            playerInventory.InventoryUpdate += OnInventoryUpdate;
         }
 
         void FirstInventoryUpdate()
         {
+            if (CurrentItemInventoryIndex < 0) return;
             SetItem(InventoryPanel.Instance.GetInvItemByIndex(CurrentItemInventoryIndex));
             playerInventory.InventoryUpdate -= FirstInventoryUpdate;
         }
