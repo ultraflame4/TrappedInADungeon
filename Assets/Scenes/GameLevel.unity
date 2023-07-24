@@ -17669,7 +17669,7 @@ MonoBehaviour:
   BaseDefense: 140
   <CurrentHealth>k__BackingField:
     _value: 0.74
-  Level: 15
+  Level: 1
   BaseMana: 100
   BaseManaRegen: 5
   <CurrentMana>k__BackingField:
