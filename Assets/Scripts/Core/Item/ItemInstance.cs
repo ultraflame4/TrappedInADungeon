@@ -25,7 +25,7 @@ namespace Core.Item
         /// <summary>
         /// Similar items (such as consumables) can be stacked together.
         /// </summary>
-        [field: SerializeField, JsonProperty]
+        [field: SerializeField] [JsonProperty]
         public int Count { get; private set; } = 1;
 
         // todo implement stats modifiers.
