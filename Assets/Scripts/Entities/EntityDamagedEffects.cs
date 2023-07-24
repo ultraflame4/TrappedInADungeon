@@ -13,7 +13,8 @@ namespace Entities
         public GameObject bloodParticles;
         public GameObject damageNumbers;
         private EntityBody entityBody;
-        
+        private static int dmgNumberCount = 0;
+        private const int maxDmgNumberCount = 100;
 
         private void Start()
         {
@@ -25,9 +26,12 @@ namespace Entities
         {
             Instantiate(bloodParticles, transform.position, Quaternion.identity);
             if (damageNumbers == null) return;
+            if (dmgNumberCount >= maxDmgNumberCount) return;
+            dmgNumberCount ++;
             var damageNumber = Instantiate(damageNumbers, transform.position, Quaternion.identity).GetComponent<EntityDamageNumber>();
             damageNumber.number = amt;
             damageNumber.targetMaxHealth = entityBody.Health;
+            damageNumber.destroyCallback = () => { dmgNumberCount--; };
         }
     }
 }

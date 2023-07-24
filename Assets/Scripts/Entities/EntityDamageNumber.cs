@@ -15,6 +15,7 @@ namespace Entities
         public float targetMaxHealth;
         public Color startColor;
         public Color endColor;
+        public Action destroyCallback;
 
         private void Start()
         {
@@ -24,17 +25,18 @@ namespace Entities
             text.text = $"{number}";
             text.color = Color.Lerp(startColor, endColor, Mathf.Clamp01(number / targetMaxHealth));
             rb.velocity = new Vector2(Random.value, Random.value)* (300 + (Random.value * 100)) * Time.deltaTime;
-        }
-
-        private void OnCollisionEnter2D(Collision2D other)
-        {
             StartCoroutine(DeleteSelf());
         }
-
+        
         IEnumerator DeleteSelf()
         {
             yield return new WaitForSeconds(1f);
             Destroy(gameObject);
+        }
+
+        private void OnDestroy()
+        {
+            destroyCallback?.Invoke();
         }
     }
 }
