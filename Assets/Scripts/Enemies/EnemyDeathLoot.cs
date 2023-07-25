@@ -13,7 +13,7 @@ namespace Enemies
         private EntityBody enemyBody;
         public GameObject expBallPrefab;
         public GameObject droppedItemPrefab;
-        public SpawnableEnemy config;
+        private SpawnableEnemy config;
 
         private const float ExperiencePointsPerBall = 30;
         private const int maxBalls = 20;
@@ -22,6 +22,11 @@ namespace Enemies
         {
             enemyBody = GetComponent<EntityBody>();
             enemyBody.DeathEvent += OnDeath;
+        }
+
+        public void SetConfig(SpawnableEnemy config)
+        {
+            this.config = config;
         }
 
         void OnDeath()

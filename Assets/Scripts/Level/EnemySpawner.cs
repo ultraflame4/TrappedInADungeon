@@ -1,5 +1,8 @@
 using Core.Entities;
+using Enemies;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Level
 {
@@ -12,7 +15,7 @@ namespace Level
         [HideInInspector]
         public int enemySpawnLevelRangeMax = 0;
         [Tooltip("Enemies to spawn")]
-        public GameObject[] enemyPrefabs;
+        public SpawnableEnemy[] enemies;
 
         void Start()
         {
@@ -22,11 +25,12 @@ namespace Level
         void Spawn()
         {
             if (!GameManager.Instance.SpawnEnemies) return;
-            for (var i = 0; i < enemyPrefabs.Length; i++)
+            for (var i = 0; i < enemies.Length; i++)
             {
-                float x = i * (spawnRect / enemyPrefabs.Length) - spawnRect / 2f;
-                EntityBody body = Instantiate(enemyPrefabs[i], new Vector3(transform.position.x+x, transform.position.y), Quaternion.identity)
+                float x = i * (spawnRect / enemies.Length) - spawnRect / 2f;
+                EntityBody body = Instantiate(enemies[i].enemyPrefab, new Vector3(transform.position.x+x, transform.position.y), Quaternion.identity)
                         .GetComponent<EntityBody>();
+                body.GetComponent<EnemyDeathLoot>()?.SetConfig(enemies[i]);
                 body.Level = enemySpawnLevel + Mathf.RoundToInt(Random.Range(enemySpawnLevelRangeMin,enemySpawnLevelRangeMax));
             }
         }

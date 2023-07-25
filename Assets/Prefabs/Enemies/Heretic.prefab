@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.37602437
       objectReference: {fileID: 0}
+    - target: {fileID: 4446624405490695869, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+      propertyPath: Attack
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5871894113917341172, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_Size.x
       value: 0.45390785
@@ -116,7 +120,8 @@ PrefabInstance:
       propertyPath: followRange
       value: 9.25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4636332432275838779, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

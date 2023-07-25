@@ -77,9 +77,9 @@ namespace Level
             return spawnSections;
         }
 
-        public GameObject[] ChooseEnemiesFromPool(int allocatedPoints)
+        public SpawnableEnemy[] ChooseEnemiesFromPool(int allocatedPoints)
         {
-            List<GameObject> enemyPrefabs = new();
+            List<SpawnableEnemy> enemies = new();
 
             int pointsRemaining = allocatedPoints;
             int maxEnemyCount = Mathf.RoundToInt(Random.Range(MaxEnemyCount.min, MaxEnemyCount.max));
@@ -91,12 +91,12 @@ namespace Level
                 if (chosen is null) break;
 
                 pointsRemaining -= chosen.difficultyPoints;
-                enemyPrefabs.Add(chosen.enemyPrefab);
+                enemies.Add(chosen);
                 enemyCountLeft--;
                 if (enemyCountLeft == 0) break;
             }
 
-            return enemyPrefabs.ToArray();
+            return enemies.ToArray();
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace Level
                 spawner.enemySpawnLevel = EnemyLevel;
                 spawner.enemySpawnLevelRangeMin = EnemyLevelRangeMin;
                 spawner.enemySpawnLevelRangeMax = EnemyLevelRangeMax;
-                spawner.enemyPrefabs = ChooseEnemiesFromPool(difficultyPoints / SectionsCount);
+                spawner.enemies = ChooseEnemiesFromPool(difficultyPoints / SectionsCount);
             }
         }
 
