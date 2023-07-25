@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
     public GameObject inventoryUi;
     public LevelGenerator levelGenerator;
     public bool SpawnEnemies = true;
+    public bool LoadGameSave = true;
     public GameControls inputs;
 
     public static GameManager Instance { get; private set; }
@@ -74,7 +75,10 @@ public class GameManager : MonoBehaviour, ISaveHandler
     {
         inventoryUi.SetActive(false);
         Controls.Menus.InventoryToggle.performed += (ctx) => inventoryUi.SetActive(!inventoryUi.activeSelf);
-        GameSaveManager.LoadSave();
+        if (LoadGameSave)
+        {
+            GameSaveManager.LoadSave();
+        }
         levelGenerator.AreaIndex = CurrentAreaIndex;
         levelGenerator.GenerateLevel();
         NotificationManager.Instance.PushNotification($"<size=150%>Entered Area {CurrentAreaIndex}</size>");
