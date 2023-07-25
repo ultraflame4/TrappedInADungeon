@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &828329325923097783
+--- !u!1001 &2181035005993332200
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,22 +11,18 @@ PrefabInstance:
     - target: {fileID: 2397109330692920770, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 67275f9a07560e146858ed558b045a22, type: 2}
+      objectReference: {fileID: 22100000, guid: 1cc561265569c0641afd33095f77b8c2, type: 2}
     - target: {fileID: 3713372788904983843, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_Name
-      value: Horquse Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 3938233426960143604, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
+      value: Heretic
       objectReference: {fileID: 0}
     - target: {fileID: 3938233426960143604, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.813
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3938233426960143604, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.509
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3938233426960143604, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63,98 +59,62 @@ PrefabInstance:
     - target: {fileID: 4271550116412811328, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -9165865476709379694, guid: a7e3fbb04f0f4114bb570e2bfe803937, type: 3}
-    - target: {fileID: 4281439559219646697, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
-      propertyPath: m_Size.x
-      value: 0.30166054
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3378652050003084756, guid: e06ffebbc52a38e4e9f5d732a447f0bd, type: 3}
     - target: {fileID: 4281439559219646697, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_Size.y
-      value: 0.56279945
-      objectReference: {fileID: 0}
-    - target: {fileID: 4281439559219646697, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.07463646
+      value: 0.72669196
       objectReference: {fileID: 0}
     - target: {fileID: 4281439559219646697, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_Offset.y
-      value: -0.21870899
-      objectReference: {fileID: 0}
-    - target: {fileID: 4636332432275838779, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
-      propertyPath: hitboxRadius
-      value: 0.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 4636332432275838779, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
-      propertyPath: hitboxPosition.x
-      value: 0.36
+      value: -0.37602437
       objectReference: {fileID: 0}
     - target: {fileID: 5871894113917341172, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_Size.x
-      value: 0.87153316
+      value: 0.45390785
       objectReference: {fileID: 0}
     - target: {fileID: 5871894113917341172, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_Size.y
-      value: 0.70481753
+      value: 0.888757
       objectReference: {fileID: 0}
     - target: {fileID: 5871894113917341172, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_Offset.x
-      value: 0.047080636
+      value: -0.0021479428
       objectReference: {fileID: 0}
     - target: {fileID: 5871894113917341172, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_Offset.y
-      value: -0.124171615
+      value: -0.30495918
       objectReference: {fileID: 0}
     - target: {fileID: 5871894113917341172, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.44444445
+      value: 0.42857146
       objectReference: {fileID: 0}
     - target: {fileID: 5871894113917341172, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.6818182
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5871894113917341172, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.84375
+      value: 0.65625
       objectReference: {fileID: 0}
     - target: {fileID: 5871894113917341172, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.6875
+      value: 0.9375
       objectReference: {fileID: 0}
     - target: {fileID: 7085540968724973339, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: eyeSightRange
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7085540968724973339, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
-      propertyPath: eyeSightOffset
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772803838891208523, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
-      propertyPath: BaseSpeed
-      value: 500
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7772803838891208523, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: BaseAttack
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7772803838891208523, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: BaseHealth
-      value: 700
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772803838891208523, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
-      propertyPath: BaseDefense
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 8188238271096804955, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
-      propertyPath: config
-      value: 
-      objectReference: {fileID: 11400000, guid: 2f1a6550ee88e514bb7f667c73edb389, type: 2}
-    - target: {fileID: 8348109251440826098, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
-      propertyPath: stopDist
-      value: 0.73
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 8348109251440826098, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
-      propertyPath: attackDist
-      value: 0.7
+      propertyPath: followRange
+      value: 9.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
