@@ -117,6 +117,10 @@ PrefabInstance:
       value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 8348109251440826098, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
+      propertyPath: stopDist
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348109251440826098, guid: be9ff6a3ad5e0db47af5ad8a23288ce7, type: 3}
       propertyPath: followRange
       value: 9.25
       objectReference: {fileID: 0}
