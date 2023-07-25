@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sawbider
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8302534566139696726, guid: 06352c6f9db5c6a4884df12bc61a9ff9, type: 3}
-  spawnWeight: 20
+  spawnWeight: 200
   difficultyPoints: 8
   minPlayerLevel: 10
   lootbox: []

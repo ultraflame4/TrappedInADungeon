@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wagracks
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 5349017118548454483, guid: fcbffacc27cd3394fb2d23cad41cebe0, type: 3}
-  spawnWeight: 30
+  spawnWeight: 400
   difficultyPoints: 2
   minPlayerLevel: 5
   lootbox:

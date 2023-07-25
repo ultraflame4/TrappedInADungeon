@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7f716874c6943629a5d16cd72c002d6, type: 3}
-  m_Name: Horquse
+  m_Name: Heretic
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4104571200580559252, guid: 735229b534043e44d845dca5d7dd26c1, type: 3}
-  spawnWeight: 300
-  difficultyPoints: 4
-  minPlayerLevel: 10
+  enemyPrefab: {fileID: 3300042489186275531, guid: b33d3d4dad746fb4491f70309e30bd2e, type: 3}
+  spawnWeight: 250
+  difficultyPoints: 12
+  minPlayerLevel: 8
   lootbox: []
