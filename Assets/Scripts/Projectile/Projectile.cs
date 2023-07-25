@@ -12,7 +12,6 @@ namespace Projectile
         /// Stats that affect this projectile
         /// </summary>
         public IEntityStats projectileStats;
-
         public float damageRadius = 1f;
         public Animator animator;
         private static readonly int Explode = Animator.StringToHash("hit");

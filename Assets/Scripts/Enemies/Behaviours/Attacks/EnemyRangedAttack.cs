@@ -15,6 +15,8 @@ namespace Enemies.Behaviours.Attacks
         private EnemyFollow follow;
         [Tooltip("Projectile prefab to spawn.")]
         public GameObject projectilePrefab;
+        [Tooltip("Projectile speed.")]
+        public float projSpeed = 500f;
         private void Start()
         {
             follow = GetComponent<EnemyFollow>();
@@ -45,7 +47,10 @@ namespace Enemies.Behaviours.Attacks
             {
                 Debug.LogWarning($"Could not get Projectile component on prefab {projectilePrefab.name}!");
             }
-            projectile.projectileStats = entityBody;
+
+            var stats = SEntityStats.Create(entityBody);
+            stats.Speed = projSpeed;
+            projectile.projectileStats = stats;
         }
     }
 }
