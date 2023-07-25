@@ -60,8 +60,11 @@ namespace Level
         {
             GetRequiredComponents();
             background.Generate(levelSize);
-            enemySpawnManager.EnemyLevel = AreaIndex * 5 + 1; // arbitrary equation for enemy level scaling.
-            enemySpawnManager.GenerateSpawnSections();
+            if (enemySpawnManager != null)
+            {
+                enemySpawnManager.EnemyLevel = AreaIndex * 5 + 1; // arbitrary equation for enemy level scaling.
+                enemySpawnManager.GenerateSpawnSections();
+            }
             GenerateColliderBounding();
 
 
