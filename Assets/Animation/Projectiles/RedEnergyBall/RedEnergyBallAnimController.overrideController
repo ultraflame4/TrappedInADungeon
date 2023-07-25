@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RedEnergyBallAnimController
+  m_Controller: {fileID: 9100000, guid: 9545800715af18d48aec27db786b15ec, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: d9f506c69ed6d4f449704b6feff91d38, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f2827a71b01bd3a4899d2597a7276289, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ee44927c8a6781b4097e27612034ae26, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 64ed7b085239a7f4f8a7b86c1048febc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 39cf68211aaf9c34392a5e761d5666d1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8ddad0d7102099d428294d802d297af9, type: 2}

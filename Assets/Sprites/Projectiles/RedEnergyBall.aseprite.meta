@@ -1,0 +1,624 @@
+fileFormatVersion: 2
+guid: f9e831de7492ae94899aef3460f44c6a
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Animation
+    second: {fileID: 7400000, guid: 10331e67e2420da41838021ccfe68e39, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Boom
+    second: {fileID: 7400000, guid: f2827a71b01bd3a4899d2597a7276289, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Fly
+    second: {fileID: 7400000, guid: 64ed7b085239a7f4f8a7b86c1048febc, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Grow
+    second: {fileID: 7400000, guid: 8ddad0d7102099d428294d802d297af9, type: 2}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 32
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638258985375187679
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: RedEnergyBall_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 38
+      y: 220
+      width: 6
+      height: 6
+    spriteID: bf8f1951bc432124bad4510c46cdc854
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 38, y: 220}
+  - name: RedEnergyBall_Frame_1
+    originalName: 
+    pivot: {x: 0.5833334, y: 0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 38
+      y: 201
+      width: 12
+      height: 10
+    spriteID: 26250ff68fb8d2e469cfaced6cc86906
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 38, y: 201}
+  - name: RedEnergyBall_Frame_2
+    originalName: 
+    pivot: {x: 0.6875, y: 0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 81
+      width: 16
+      height: 10
+    spriteID: 8763da731ab222e4daa42b0480a17ed9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 81}
+  - name: RedEnergyBall_Frame_3
+    originalName: 
+    pivot: {x: 0.6315789, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 61
+      width: 19
+      height: 12
+    spriteID: 36172cc2c4383294ea505e464edb5dbe
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 61}
+  - name: RedEnergyBall_Frame_4
+    originalName: 
+    pivot: {x: 0.6190476, y: 0.45454544}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 42
+      width: 21
+      height: 11
+    spriteID: 90e6da8643ee6474f9db0372ef7a7757
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 42}
+  - name: RedEnergyBall_Frame_5
+    originalName: 
+    pivot: {x: 0.6666666, y: 0.45454544}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 4
+      width: 24
+      height: 11
+    spriteID: 04405339241eaea4ea8817ccd0787af2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 4}
+  - name: RedEnergyBall_Frame_6
+    originalName: 
+    pivot: {x: 0.6666666, y: 0.45454544}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 23
+      width: 24
+      height: 11
+    spriteID: 7af8bfdfb3484b743bcdf319a014609a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 23}
+  - name: RedEnergyBall_Frame_7
+    originalName: 
+    pivot: {x: 0.68, y: 0.45454544}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 239
+      width: 25
+      height: 11
+    spriteID: 73ad165ff3ff33248858f1a3d4863a7b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 239}
+  - name: RedEnergyBall_Frame_8
+    originalName: 
+    pivot: {x: 0.6923077, y: 0.45454544}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 201
+      width: 26
+      height: 11
+    spriteID: 4027209fac625824280ad8044645ca31
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 201}
+  - name: RedEnergyBall_Frame_9
+    originalName: 
+    pivot: {x: 0.6538462, y: 0.45454544}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 220
+      width: 26
+      height: 11
+    spriteID: 004edbe59b4d32c40b608517033c3be7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 220}
+  - name: RedEnergyBall_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 37
+      y: 239
+      width: 6
+      height: 6
+    spriteID: 6764869d75885fc45a11cadf89230cbe
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 37, y: 239}
+  - name: RedEnergyBall_Frame_11
+    originalName: 
+    pivot: {x: 0.55172414, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 163
+      width: 29
+      height: 30
+    spriteID: fbba26dba6243074a8b50c1f8d3b3e1b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 163}
+  - name: RedEnergyBall_Frame_12
+    originalName: 
+    pivot: {x: 0.511628, y: 0.47727275}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 111
+      width: 43
+      height: 44
+    spriteID: 8e00752f03492ec49b764fd7973ad76b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 111}
+  - name: RedEnergyBall_Frame_13
+    originalName: 
+    pivot: {x: 0.47727275, y: 0.52272725}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 59
+      width: 44
+      height: 44
+    spriteID: b447281fd11a06d40af428b1981e7532
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 59}
+  - name: RedEnergyBall_Frame_14
+    originalName: 
+    pivot: {x: 0.5, y: 0.4893617}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 48
+      height: 47
+    spriteID: 4624b13e88333644795d21c03b4f8cf0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -423849976
+    name: RedEnergyBall
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: RedEnergyBall_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 21
+        y: 21
+        width: 6
+        height: 6
+      spriteId: bf8f1951bc432124bad4510c46cdc854
+    - name: RedEnergyBall_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 17
+        y: 19
+        width: 12
+        height: 10
+      spriteId: 26250ff68fb8d2e469cfaced6cc86906
+    - name: RedEnergyBall_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 13
+        y: 19
+        width: 16
+        height: 10
+      spriteId: 8763da731ab222e4daa42b0480a17ed9
+    - name: RedEnergyBall_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 12
+        y: 18
+        width: 19
+        height: 12
+      spriteId: 36172cc2c4383294ea505e464edb5dbe
+    - name: RedEnergyBall_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 11
+        y: 19
+        width: 21
+        height: 11
+      spriteId: 90e6da8643ee6474f9db0372ef7a7757
+    - name: RedEnergyBall_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 8
+        y: 19
+        width: 24
+        height: 11
+      spriteId: 04405339241eaea4ea8817ccd0787af2
+    - name: RedEnergyBall_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 8
+        y: 19
+        width: 24
+        height: 11
+      spriteId: 7af8bfdfb3484b743bcdf319a014609a
+    - name: RedEnergyBall_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 7
+        y: 19
+        width: 25
+        height: 11
+      spriteId: 73ad165ff3ff33248858f1a3d4863a7b
+    - name: RedEnergyBall_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 6
+        y: 19
+        width: 26
+        height: 11
+      spriteId: 4027209fac625824280ad8044645ca31
+    - name: RedEnergyBall_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 7
+        y: 19
+        width: 26
+        height: 11
+      spriteId: 004edbe59b4d32c40b608517033c3be7
+    - name: RedEnergyBall_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 21
+        y: 21
+        width: 6
+        height: 6
+      spriteId: 6764869d75885fc45a11cadf89230cbe
+    - name: RedEnergyBall_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 8
+        y: 9
+        width: 29
+        height: 30
+      spriteId: fbba26dba6243074a8b50c1f8d3b3e1b
+    - name: RedEnergyBall_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 2
+        y: 3
+        width: 43
+        height: 44
+      spriteId: 8e00752f03492ec49b764fd7973ad76b
+    - name: RedEnergyBall_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 3
+        y: 1
+        width: 44
+        height: 44
+      spriteId: b447281fd11a06d40af428b1981e7532
+    - name: RedEnergyBall_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 0
+        y: 1
+        width: 48
+        height: 47
+      spriteId: 4624b13e88333644795d21c03b4f8cf0
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Windows Store Apps
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 48, y: 48}

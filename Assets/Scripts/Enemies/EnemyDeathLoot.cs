@@ -31,6 +31,7 @@ namespace Enemies
 
         void OnDeath()
         {
+            if (config== null) return;
             int expDropped = config.difficultyPoints * (enemyBody.Level + 1) / 2;
             int ballsCount = Math.Min(maxBalls, Mathf.CeilToInt(expDropped / ExperiencePointsPerBall));
             float expPerBall = expDropped / (ballsCount + 1);

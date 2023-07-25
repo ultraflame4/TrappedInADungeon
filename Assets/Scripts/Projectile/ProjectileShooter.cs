@@ -19,6 +19,7 @@ namespace Projectile
                 projectile.projectileStats = gateway.slot.Item.itemInstance;
             };
         }
+        
 
     }
 }
