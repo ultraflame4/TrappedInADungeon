@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Core.Entities;
 using Entities;
 using UnityEngine;
@@ -18,8 +19,22 @@ namespace Projectile
 
         [Tooltip("Whether this projectile will collide with player (and damage them)")]
         public bool attackPlayer;
-
+        /// <summary>
+        /// Maximum amount of time allowed for this projectile before we kill it.
+        /// </summary>
+        private const float TimeToLiveSecs = 10f;
         private bool isHit;
+
+        private void Start()
+        {
+            StartCoroutine(AutoDestroy());
+        }
+
+        IEnumerator AutoDestroy()
+        {
+            yield return new WaitForSeconds(TimeToLiveSecs);
+            Destroy(gameObject);
+        }
 
         void FixedUpdate()
         {
