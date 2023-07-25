@@ -50,7 +50,7 @@ namespace Projectile
             // If set to  attack player, and trigger enter was not player, return
             if (attackPlayer != other.CompareTag("Player")) return;
 
-            animator.SetTrigger(Explode);
+            ExplodeAnim();
             
             if (!isHit)
             {
@@ -62,6 +62,11 @@ namespace Projectile
             }
 
             isHit = true;
+        }
+
+        public void ExplodeAnim()
+        {
+            animator.SetTrigger(Explode);
         }
 
         public void DestroyProjectile()

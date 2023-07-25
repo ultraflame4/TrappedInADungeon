@@ -18,6 +18,14 @@ namespace Weapon
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (other.gameObject.CompareTag("Projectile"))
+            {
+                Projectile.Projectile projectile = other.gameObject.GetComponent<Projectile.Projectile>();
+                if (projectile == null) return;
+                if (!projectile.attackPlayer) return;
+                projectile.ExplodeAnim();
+                return;
+            }
             if (!other.gameObject.CompareTag("Enemy")) return;
             EntityBody body = other.gameObject.GetComponent<EntityBody>();
             if (body is null) return;
