@@ -10,7 +10,7 @@ namespace Level
     /// <summary>
     /// Responsible for the level generation and putting game objects where they need to be.
     /// </summary>
-    [RequireComponent(typeof(EnemySpawnManager))]
+   
     public class LevelGenerator : MonoBehaviour
     {
         [Tooltip("The Confiner component of the cinemachine virtual camera to restrict camera movement")]
