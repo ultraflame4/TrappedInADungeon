@@ -33,8 +33,11 @@ namespace Projectile
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!attackPlayer && other.CompareTag("Player")) return;
+            // If set to  attack player, and trigger enter was not player, return
+            if (attackPlayer != other.CompareTag("Player")) return;
+
             animator.SetTrigger(Explode);
+            
             if (!isHit)
             {
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, damageRadius, LayerMask.GetMask(attackPlayer ? "Player" : "Enemy"));
