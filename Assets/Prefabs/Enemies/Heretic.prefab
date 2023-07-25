@@ -151,3 +151,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1926768611152344000, guid: 5df1b8e509bd717499c56dff8b0687fa, type: 3}
+  projSpeed: 600
