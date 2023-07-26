@@ -112,7 +112,14 @@ namespace Core.Save
             }
             return Directory.GetDirectories(savesLocation).Select(x=>Path.GetFileName(x)).ToArray();
         }
-
+        
+        public static bool SaveExists(string saveName = "DefaultSave")
+        {
+            string savePath = GetSavePath(saveName);
+            return Directory.Exists(savePath);
+        }
+        
+        
         /// <summary>
         /// Removes all save handlers.
         /// </summary>
