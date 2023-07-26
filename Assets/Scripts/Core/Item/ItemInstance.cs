@@ -55,8 +55,7 @@ namespace Core.Item
 
         public bool Equals(ItemInstance other)
         {
-            // Only allow consumables to be stacked
-            if (other.item.itemType != ItemType.Consumable) return false;
+            // If item is the same, allow them to stack
             return other.item == item &&
                    other.Attack == Attack &&
                    other.Speed == Speed &&
