@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Core.Utils;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -38,13 +39,13 @@ namespace Core.Save
             return saveHandler;
         }
 
-        public static string GetSavePath(string saveName = "DefaultSave") =>Path.Combine(Application.persistentDataPath,SaveFolder, saveName);
+        public static string GetSavePath(string saveName = "DefaultSave") => Path.Combine(Application.persistentDataPath, SaveFolder, $"{saveName.Clean()}.save").FullPath();
         public static void LoadSave(string saveName = "DefaultSave")
         {
             string savePath = GetSavePath(saveName);
             foreach ((string saveId, ISaveHandler saveHandler) in saveHandlers)
             {
-                string currentPath = Path.Combine(savePath, $"{saveId}.json");
+                string currentPath = Path.Combine(savePath, $"{saveId}.json").FullPath();
                 Debug.Log($"Loading save: {saveName} - saveId: {saveId} at: {currentPath}");
                 try
                 {
@@ -116,6 +117,7 @@ namespace Core.Save
         public static bool SaveExists(string saveName = "DefaultSave")
         {
             string savePath = GetSavePath(saveName);
+            Debug.Log(savePath);
             return Directory.Exists(savePath);
         }
         

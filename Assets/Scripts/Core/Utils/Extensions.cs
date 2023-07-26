@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,6 +73,27 @@ namespace Core.Utils
         {
             float power = Mathf.Pow(10, decimal_places);
             return Mathf.Round(number * power) / power;
+        }
+        
+        /// <summary>
+        /// Shorthand for Path.GetFullPath
+        /// </summary>
+        /// <param name="pathString"></param>
+        /// <returns></returns>
+        public static string FullPath(this string pathString)
+        {
+            return Path.GetFullPath(pathString);
+        }
+        
+        /// <summary>
+        /// Cleans a string of all non-ascii characters
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string Clean(this string s)
+        {
+            const string validCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_ ";
+            return s.Where(x => validCharacters.Contains(x)).Aggregate("", (current, x) => current + x);
         }
     }
 }
