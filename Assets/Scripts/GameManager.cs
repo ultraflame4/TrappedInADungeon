@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 [JsonObject(MemberSerialization.OptIn)]
 public class GameManager : MonoBehaviour, ISaveHandler
@@ -24,6 +25,8 @@ public class GameManager : MonoBehaviour, ISaveHandler
 
     public VolatileValue<bool> GamePaused = new();
     public event Action GenerateLevelEvent;
+    [Tooltip("Whether this GameManager is in a level scene or not. If true, level specific events such as GamePaused.Changed will be disabled.")]
+    public bool isLevelScene = false;
 
     void Awake()
     {
@@ -39,9 +42,13 @@ public class GameManager : MonoBehaviour, ISaveHandler
         }
 
         Instance = this;
-        inputs.Menus.Pause.performed += (ctx) => { GamePaused.value = !GamePaused.value; };
-        GamePaused.Changed += OnGamePausedChanged;
-        GameSaveManager.AddSaveHandler("game", this);
+        // No need to register pause event handlers if not in level
+        if (isLevelScene)
+        {
+            inputs.Menus.Pause.performed += (ctx) => { GamePaused.value = !GamePaused.value; };
+            GamePaused.Changed += OnGamePausedChanged;
+            GameSaveManager.AddSaveHandler("game", this);
+        }
     }
 
     private void Start()
