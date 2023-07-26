@@ -41,7 +41,15 @@ namespace Core.Item
 
         public string GetDisplayDescription()
         {
-            return item.item_description;
+            switch (item.itemType)
+            {
+                case ItemType.Weapon:
+                    return $"{item.item_description}\n<color=\"red\">Atk</color>: {Attack}";
+                case ItemType.Skill:
+                    return $"{item.item_description}\n<color=#37faf3>Mana</color>: {ManaCost}";
+                default:
+                    return item.item_description;
+            }
         }
 
         // The stats below may include stats from modifier and hence may differ from the original item stats
