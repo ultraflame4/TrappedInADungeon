@@ -8,12 +8,15 @@ namespace Player
 {
     public class PlayerUIManager : MonoBehaviour
     {
+        public GameObject inventoryUi;
         public PlayerBody playerBody;
         public BarController healthBar;
         public BarController manaBar;
         public TextMeshProUGUI levelText;
         private void Start()
         {
+            inventoryUi.SetActive(false);
+            GameManager.Controls.Menus.InventoryToggle.performed += (ctx) => inventoryUi.SetActive(!inventoryUi.activeSelf);
             UpdateHealthBar();
             UpdateManaBar();
             UpdatePlayerLevel(playerBody.Level);

@@ -10,7 +10,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, ISaveHandler
 {
-    public GameObject inventoryUi;
     public LevelGenerator levelGenerator;
     public bool SpawnEnemies = true;
     public bool LoadGameSave = true;
@@ -73,8 +72,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
 
     private void Start()
     {
-        inventoryUi.SetActive(false);
-        Controls.Menus.InventoryToggle.performed += (ctx) => inventoryUi.SetActive(!inventoryUi.activeSelf);
+     
         if (LoadGameSave)
         {
             GameSaveManager.LoadSave();
