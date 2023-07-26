@@ -15,7 +15,7 @@ MonoBehaviour:
   ticks: 12
   statsOnce:
     <Attack>k__BackingField: 0
-    <Speed>k__BackingField: -999999
+    <Speed>k__BackingField: -200
     <Defense>k__BackingField: 0
     <Health>k__BackingField: 0
     <Mana>k__BackingField: 0
