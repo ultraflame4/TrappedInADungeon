@@ -95,6 +95,21 @@ public class GameManager : MonoBehaviour, ISaveHandler
         CurrentAreaIndex = Mathf.Max(0, CurrentAreaIndex - 1);
         SceneManager.LoadScene("GameLevel");
     }
+
+    public void SetGamePaused(bool value)
+    {
+        
+    }
+    public void QuitToMainMenu()
+    {
+        WriteSave();
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void QuitGame()
+    {
+        WriteSave();
+        Application.Quit();
+    }
     private void OnDestroy()
     {
         GameSaveManager.WriteSave();
