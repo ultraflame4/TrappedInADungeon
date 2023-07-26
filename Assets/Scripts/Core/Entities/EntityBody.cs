@@ -47,7 +47,8 @@ namespace Core.Entities
         public int Level = 1; // Level of entity
 
         public event Action DeathEvent; // Event that is invoked when entity dies
-        public event Action<float> DamagedEvent; // Event that is invoked when entity takes damage
+        public delegate void OnDamagedHandler(float amt, bool knockback); // Event handler for when entity takes damage
+        public event OnDamagedHandler DamagedEvent; // Event that is invoked when entity takes damage
 
         protected virtual void Awake()
         {
@@ -97,19 +98,19 @@ namespace Core.Entities
         /// Deals damage to the entity. Damage is reduced by the entity's defense.
         /// </summary>
         /// <param name="amt"></param>
-        public void Damage(float amt)
+        public void Damage(float amt, bool knockback = true)
         {
             amt *= Mathf.Min(0.1f, 1 - Defense / (Defense + 200));
-            DamageRaw(amt);
+            DamageRaw(amt, knockback );
         }
         /// <summary>
         /// Deals damage directly to the entity's health, bypassing defense.
         /// </summary>
         /// <param name="amt"></param>
-        public void DamageRaw(float amt)
+        public void DamageRaw(float amt, bool knockback = true)
         {
             CurrentHealth.value -= amt;
-            DamagedEvent?.Invoke(amt);
+            DamagedEvent?.Invoke(amt, knockback);
             if (CurrentHealth.value <= 0)
             {
                 DeathEvent?.Invoke();

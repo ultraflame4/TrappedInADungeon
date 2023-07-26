@@ -12,7 +12,7 @@ namespace Core.Enemies
     {
         public Animator animator { get; private set; }
         public Rigidbody2D rb { get; private set; }
-        private EntityBody body;
+        public EntityBody body { get; private set; }
 
         public EnemyStateBehaviour Idle;
         public EnemyStateBehaviour Alert;
@@ -40,9 +40,9 @@ namespace Core.Enemies
             TransitionState(EnemyStates.PATROL);
         }
 
-        void OnDamaged(float amt)
+        void OnDamaged(float amt, bool knockback)
         {
-            if (Stunned != null)
+            if (Stunned != null && knockback)
             {
                 TransitionState(EnemyStates.STUNNED);
             }

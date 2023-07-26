@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a87dbb6ed7c746b3ad354f2a11f57053, type: 3}
-  m_Name: BurnEffect
+  m_Name: BlackholeEffect
   m_EditorClassIdentifier: 
-  ticks: 6
+  ticks: 12
   statsOnce:
     <Attack>k__BackingField: 0
-    <Speed>k__BackingField: 0
+    <Speed>k__BackingField: -999999
     <Defense>k__BackingField: 0
     <Health>k__BackingField: 0
     <Mana>k__BackingField: 0
@@ -30,5 +30,5 @@ MonoBehaviour:
     <Mana>k__BackingField: 0
     <ManaCost>k__BackingField: 0
     <ManaRegen>k__BackingField: 0
-  CurrentHealthPerTick: 10
-  particleEffect: {fileID: 8515566078434374985, guid: accc5440f28e49b4e8d7dd71b48750ed, type: 3}
+  CurrentHealthPerTick: 0
+  particleEffect: {fileID: 7264542437882717669, guid: 394c9a3d9714284468a064406cc902c7, type: 3}

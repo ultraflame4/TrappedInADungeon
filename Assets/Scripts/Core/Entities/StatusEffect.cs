@@ -1,5 +1,6 @@
 ﻿
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Core.Entities
 {
@@ -23,6 +24,8 @@ namespace Core.Entities
         public float CurrentHealthPerTick;
         [Tooltip("Particle prefab to use when this effect is active")]
         public GameObject particleEffect;
-        
+        [Tooltip("Whether this effect will stun the enemy when dealing damage.")]
+        public bool stun = true;
+
     }
 }

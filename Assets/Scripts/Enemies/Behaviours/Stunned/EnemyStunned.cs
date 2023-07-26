@@ -11,6 +11,7 @@ namespace Enemies.Behaviours.Stunned
         private EnemyFollow enemyFollow;
         [Tooltip("Amount of time to stay stunned.")]
         public float stunPeriodSecs = 0.5f;
+
         private void Start()
         {
             enemyFollow = GetComponent<EnemyFollow>();

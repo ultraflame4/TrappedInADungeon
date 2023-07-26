@@ -22,7 +22,7 @@ namespace Entities
             entityBody.DamagedEvent+= OnDamaged;
         }
 
-        void OnDamaged(float amt)
+        void OnDamaged(float amt, bool knockback)
         {
             Instantiate(bloodParticles, transform.position, Quaternion.identity);
             if (damageNumbers == null) return;

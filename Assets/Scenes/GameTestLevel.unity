@@ -6677,6 +6677,8 @@ MonoBehaviour:
     <Count>k__BackingField: 1
   - <item>k__BackingField: {fileID: 11400000, guid: adebc27f40d9d5748bf5545d2d0cb9de, type: 2}
     <Count>k__BackingField: 1
+  - <item>k__BackingField: {fileID: 11400000, guid: bd763313532af9f46bc63fe0e4414191, type: 2}
+    <Count>k__BackingField: 1
   itemSlots:
   - {fileID: 2015262873}
   - {fileID: 507519533}

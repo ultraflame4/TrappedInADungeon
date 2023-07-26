@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2614619375175755839
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8415669972095956414, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5097046d657ff8543b1c500fe89e24e2, type: 2}
+    - target: {fileID: -2142782212438832419, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4683773531629097678, guid: 696cb5d8acad93643ae02d7372cd3e89, type: 3}
+    - target: {fileID: -203759671303655329, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: damageRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -203759671303655329, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: statusEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f4c2ac93bf466a4cb6f74d5c8589e2d, type: 2}
+    - target: {fileID: 7357163255955859145, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: m_Name
+      value: Blackhole Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652868582261907627, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652868582261907627, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652868582261907627, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652868582261907627, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652868582261907627, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652868582261907627, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652868582261907627, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652868582261907627, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652868582261907627, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652868582261907627, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 77d723818112732429e1f9404af485cc, type: 3}

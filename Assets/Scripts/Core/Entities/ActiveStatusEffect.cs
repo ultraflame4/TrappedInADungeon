@@ -18,7 +18,7 @@ namespace Core.Entities
         public void TickStart(EntityBody body)
         {
             body.StatsModifiers.Add(new AppliedStatsModifier(this,statusEffect.statsOnce));
-            body.DamageRaw(statusEffect.CurrentHealthOnce);
+            body.DamageRaw(statusEffect.CurrentHealthOnce,statusEffect.stun);
         }
         
         public void Tick(EntityBody body)
@@ -26,7 +26,7 @@ namespace Core.Entities
             ticksRemaining--;
             body.StatsModifiers.Add(new AppliedStatsModifier(this,statusEffect.statsPerTick));
             Debug.Log($"Tick {statusEffect.statsPerTick.Health}");
-            body.DamageRaw(statusEffect.CurrentHealthPerTick);
+            body.DamageRaw(statusEffect.CurrentHealthPerTick,statusEffect.stun);
         }
 
         public void Remove(EntityBody body)
