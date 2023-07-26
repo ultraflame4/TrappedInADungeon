@@ -19,12 +19,12 @@ namespace UI
 
         public void ResumeBtn()
         {
-            gameObject.SetActive(false);
+            GameManager.Instance.GamePaused.value = false;
         }
 
         public void MainMenuBtn()
         {
-            
+            GameManager.Instance.QuitToMainMenu();
         }
         public void SettingsBtn()
         {
@@ -32,7 +32,7 @@ namespace UI
         }
         public void QuitBtn()
         {
-            
+            GameManager.Instance.QuitGame();
         }
     }
 }
