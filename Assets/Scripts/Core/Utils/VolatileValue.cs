@@ -47,5 +47,7 @@ namespace Core.Utils
             _value = initialValue;
             this.validator = validator;
         }
+        
+        public static implicit operator T(VolatileValue<T> volatileValue) => volatileValue.value;
     }
 }
