@@ -32,3 +32,4 @@ MonoBehaviour:
     <ManaRegen>k__BackingField: 0
   CurrentHealthPerTick: 0
   particleEffect: {fileID: 7264542437882717669, guid: 394c9a3d9714284468a064406cc902c7, type: 3}
+  stun: 0
