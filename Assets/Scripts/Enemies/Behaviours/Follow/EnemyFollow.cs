@@ -76,7 +76,7 @@ namespace Enemies.Behaviours.Follow
                 return;
             }
 
-            Vector3 vel = (allowFlight ? directionToPlayer : directionToPlayerSnapped) * body.Speed;
+            Vector3 vel = (allowFlight ? directionToPlayer : directionToPlayerSnapped) * Mathf.Max(0,body.Speed);
             // Get distance to player and subtract attack distance
             float distance = Vector3.Distance(transform.position, player.position) - stopDist + stopDistBuffer;
             // Clamp distance to 0-1. distFactor makes velocity lower the closer the enemy is to the player
