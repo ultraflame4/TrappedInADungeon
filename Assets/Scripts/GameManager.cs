@@ -3,21 +3,23 @@ using Core.Save;
 using Core.UI;
 using EasyButtons;
 using Level;
+using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
+[JsonObject(MemberSerialization.OptIn)]
 public class GameManager : MonoBehaviour, ISaveHandler
 {
     public LevelGenerator levelGenerator;
     public bool SpawnEnemies = true;
     public bool LoadGameSave = true;
     public GameControls inputs;
-
+    
     public static GameManager Instance { get; private set; }
     public static GameControls Controls => Instance.inputs;
 
+    [JsonProperty]
     public static int CurrentAreaIndex { get; private set; } = 0;
 
     void Awake()
@@ -93,29 +95,6 @@ public class GameManager : MonoBehaviour, ISaveHandler
         CurrentAreaIndex = Mathf.Max(0, CurrentAreaIndex - 1);
         SceneManager.LoadScene("GameLevel");
     }
-
-    [Serializable]
-    class SaveData
-    {
-        public int currentAreaIndex;
-    }
-
-    private SaveData currentSaveData => new SaveData {
-            currentAreaIndex = CurrentAreaIndex
-    };
-    
-    public void OnLoadSave(string json)
-    {
-        var saveData = currentSaveData;
-        JsonUtility.FromJsonOverwrite(json,saveData);
-        CurrentAreaIndex = saveData.currentAreaIndex;
-    }
-
-    public string OnWriteSave()
-    {
-        return JsonUtility.ToJson(currentSaveData,true);
-    }
-
     private void OnDestroy()
     {
         GameSaveManager.WriteSave();

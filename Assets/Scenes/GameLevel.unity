@@ -7667,7 +7667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfda35bdff9d2524392092f16ef1dbec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryUi: {fileID: 694538792}
   levelGenerator: {fileID: 843571571}
   SpawnEnemies: 1
   LoadGameSave: 1
@@ -16974,7 +16973,7 @@ Transform:
   m_GameObject: {fileID: 5461211443868745954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52.188553, y: 4.85001, z: -10}
+  m_LocalPosition: {x: -53.139797, y: 4.85001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17552,6 +17551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9be32ddd77c4b2da1a541b3d32db59f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryUi: {fileID: 694538792}
   playerBody: {fileID: 7960193540920185864}
   healthBar: {fileID: 1676633526}
   manaBar: {fileID: 120557389}
