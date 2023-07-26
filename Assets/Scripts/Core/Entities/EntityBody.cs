@@ -104,6 +104,7 @@ namespace Core.Entities
             }
         }
 
+
         /// <summary>
         /// Calculates the damage to be dealt by an attack based on the current stats of this entity.
         /// </summary>

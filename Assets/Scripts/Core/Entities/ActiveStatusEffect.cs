@@ -18,14 +18,14 @@ namespace Core.Entities
         public void TickStart(EntityBody body)
         {
             body.StatsModifiers.Add(new AppliedStatsModifier(this,statusEffect.statsOnce));
-            body.CurrentHealth.value += statusEffect.CurrentHealthPerTick;
+            body.Damage(statusEffect.CurrentHealthOnce);
         }
         
         public void Tick(EntityBody body)
         {
             ticksRemaining--;
             body.StatsModifiers.Add(new AppliedStatsModifier(this,statusEffect.statsPerTick));
-            body.CurrentHealth.value += statusEffect.CurrentHealthPerTick;
+            body.Damage(statusEffect.CurrentHealthPerTick);
         }
 
         public void Remove(EntityBody body)

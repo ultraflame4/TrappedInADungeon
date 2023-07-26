@@ -6632,7 +6632,7 @@ Transform:
   m_GameObject: {fileID: 5461211443868745954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -53.573048, y: 4.85001, z: -10}
+  m_LocalPosition: {x: -52.188553, y: 4.85001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6674,6 +6674,8 @@ MonoBehaviour:
   - <item>k__BackingField: {fileID: 11400000, guid: 6c1e9d1108d1d824b9f96cf79952485f, type: 2}
     <Count>k__BackingField: 8
   - <item>k__BackingField: {fileID: 11400000, guid: 173618d4777b99e41983c5b9f3455816, type: 2}
+    <Count>k__BackingField: 1
+  - <item>k__BackingField: {fileID: 11400000, guid: adebc27f40d9d5748bf5545d2d0cb9de, type: 2}
     <Count>k__BackingField: 1
   itemSlots:
   - {fileID: 2015262873}

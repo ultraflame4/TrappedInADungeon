@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bff81b9729e4cdcbcf01502771f8a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusEffect: {fileID: 11400000, guid: f713800177da38e47bc722632b543655, type: 2}
   damageRadius: 1
   animator: {fileID: -8415669972095956414}
   attackPlayer: 0

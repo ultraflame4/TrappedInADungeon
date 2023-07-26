@@ -13,7 +13,7 @@ namespace Projectile
         /// Stats that affect this projectile
         /// </summary>
         public IEntityStats projectileStats;
-        [Tooltip("statusEffect applied to entity on hit/explode"),SerializeField,SerializeReference]
+        [Tooltip("statusEffect applied to entity on hit/explode")]
         public StatusEffect statusEffect;
         public float damageRadius = 1f;
         public Animator animator;
@@ -59,7 +59,11 @@ namespace Projectile
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, damageRadius, LayerMask.GetMask(attackPlayer ? "Player" : "Enemy"));
                 foreach (var collider in colliders)
                 {
-                    collider.GetComponent<EntityBody>()?.Damage(projectileStats.Attack);
+                    var body = collider.GetComponent<EntityBody>();
+                    if (body == null) continue;
+                    body.Damage(projectileStats.Attack);
+                    if (statusEffect == null) continue;
+                    body.AddStatusEffect(statusEffect);
                 }
             }
 
