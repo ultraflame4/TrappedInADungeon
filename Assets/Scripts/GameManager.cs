@@ -53,9 +53,12 @@ public class GameManager : MonoBehaviour, ISaveHandler
 
     private void Start()
     {
-        if (LoadGameSave && isLevelScene)
+        if (LoadGameSave)
         {
             GameSaveManager.LoadSave(CurrentSaveName);
+        }
+        if (isLevelScene)
+        {
             GenerateLevelEvent?.Invoke();
         }
     }
