@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
     public VolatileValue<bool> GamePaused = new();
     public event Action GenerateLevelEvent;
     [Tooltip("Whether this GameManager is in a level scene or not. If true, level specific events such as GamePaused.Changed will be disabled.")]
-    public bool isLevelScene = false;
+    public bool isLevelScene = true;
     public static string CurrentSaveName { get; private set; } = "DefaultSave";
     void Awake()
     {
