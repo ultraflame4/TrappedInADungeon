@@ -34,9 +34,13 @@ namespace Core.Item
             this.item = item;
         }
 
-        public string GetDisplayName()
+        public string GetDisplayTitle()
         {
-            return item.item_name;
+            if (Count > 1)
+            {
+                return $"{item.item_name} x <color=#ff7575>{Count}</color>";
+            }
+            return  item.item_name;
         }
 
         public string GetDisplayDescription()

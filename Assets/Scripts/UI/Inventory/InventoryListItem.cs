@@ -29,7 +29,7 @@ namespace UI.Inventory
         public void SetItem(ItemInstance item)
         {
             itemImage.sprite = item.sprite;
-            title.text = $"{item.GetDisplayName()} x {item.Count}";
+            title.text = item.GetDisplayTitle();
             description.text = item.GetDisplayDescription();
             itemInstance = new InvSlotItemInstance(item);
         }
