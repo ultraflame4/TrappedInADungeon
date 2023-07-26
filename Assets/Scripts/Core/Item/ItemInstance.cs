@@ -85,6 +85,7 @@ namespace Core.Item
         /// <returns>true on success, false on failure</returns>
         public bool Combine(ItemInstance other)
         {
+            if (item.itemType == ItemType.Weapon) return false;
             if (!Equals(other)) return false;
             Count += other.Count;
             return true;
