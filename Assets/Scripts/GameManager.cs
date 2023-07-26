@@ -12,7 +12,6 @@ using UnityEngine.SceneManagement;
 [JsonObject(MemberSerialization.OptIn)]
 public class GameManager : MonoBehaviour, ISaveHandler
 {
-    public LevelGenerator levelGenerator;
     public bool SpawnEnemies = true;
     public bool LoadGameSave = true;
     public GameControls inputs;
