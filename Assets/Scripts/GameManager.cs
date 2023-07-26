@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
     [JsonProperty]
     public static int CurrentAreaIndex { get; private set; } = 0;
     public VolatileValue<bool> GamePaused  = new();
-
+    public event Action GenerateLevelEvent;
     void Awake()
     {
         if (inputs == null)
@@ -53,9 +53,8 @@ public class GameManager : MonoBehaviour, ISaveHandler
         {
             GameSaveManager.LoadSave();
         }
-        levelGenerator.AreaIndex = CurrentAreaIndex;
-        levelGenerator.GenerateLevel();
-        NotificationManager.Instance.PushNotification($"<size=150%>Entered Area {CurrentAreaIndex}</size>");
+     
+
 
     }
 

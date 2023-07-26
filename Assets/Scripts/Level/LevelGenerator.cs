@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Cinemachine;
+using Core.UI;
 using Core.Utils;
 using EasyButtons;
 using UnityEngine;
@@ -39,6 +40,20 @@ namespace Level
         public Vector2 WorldLevelLeft => (Vector2)transform.position+LocalLevelLeft;
         public Vector2 WorldLevelRight => (Vector2)transform.position+LocalLevelRight;
 
+
+        private void Awake()
+        {
+            GameManager.Instance.GenerateLevelEvent += BeginLevelGeneration;
+        }
+
+
+        void BeginLevelGeneration()
+        {
+            AreaIndex = GameManager.CurrentAreaIndex;
+            GenerateLevel();
+            NotificationManager.Instance.PushNotification($"<size=150%>Entered Area {AreaIndex}</size>");
+        }
+        
         private void Start()
         {
             player = GameObject.FindWithTag("Player").transform;
