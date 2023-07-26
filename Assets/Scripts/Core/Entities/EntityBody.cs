@@ -35,7 +35,7 @@ namespace Core.Entities
         [JsonProperty]
         protected List<StatsModifier> StatsModifiers = new();
 
-        protected List<StatusEffect> StatusEffects = new();
+        protected List<IStatusEffect> StatusEffects = new();
 
         public float Health => BaseHealth * Level + StatsModifiers.Sum(modifier => modifier.Health);
         public float Attack => BaseAttack * Level + StatsModifiers.Sum(modifier => modifier.Attack);
@@ -60,12 +60,12 @@ namespace Core.Entities
             StartCoroutine(TickStatusEffect());
         }
         
-        public void AddStatusEffect(StatusEffect statusEffect)
+        public void AddStatusEffect(IStatusEffect statusEffect)
         {
             StatusEffects.Add(statusEffect);
             statusEffect.EffectStart(this);
         }
-        public void RemoveStatusEffect(StatusEffect statusEffect)
+        public void RemoveStatusEffect(IStatusEffect statusEffect)
         {
             StatusEffects.Remove(statusEffect);
             statusEffect.EffectEnd(this);
@@ -81,8 +81,8 @@ namespace Core.Entities
                 foreach (var statusEffect in copy)
                 {
                     statusEffect.Tick(this);
-                    statusEffect.ticksLeft--;
-                    if (statusEffect.ticksLeft <= 0)
+                    statusEffect.TicksLeft--;
+                    if (statusEffect.TicksLeft <= 0)
                     {
                         RemoveStatusEffect(statusEffect);
                     }
