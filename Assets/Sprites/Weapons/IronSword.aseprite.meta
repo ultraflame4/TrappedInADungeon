@@ -1,0 +1,512 @@
+fileFormatVersion: 2
+guid: 7e6cf89f926cb124ba23082693bcdb8b
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Attack1
+    second: {fileID: 7400000, guid: 60436cd74c8d61e4b8cad98bc05083c6, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Attack2
+    second: {fileID: 7400000, guid: 8ad96466e319cf340ba89830cc96b95d, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Attack3
+    second: {fileID: 7400000, guid: f6ee96ec05af7b94cb943c0571875fa3, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Idle
+    second: {fileID: 7400000, guid: eaa50704a347dd9408d60484540505e6, type: 2}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 24
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638259660859864998
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: IronSword_Frame_0
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 37
+      width: 16
+      height: 16
+    spriteID: e54c19915cfcf3f4d91d0437629b44db
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: 37}
+  - name: IronSword_Frame_1
+    originalName: 
+    pivot: {x: 0.4666667, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 54
+      y: 37
+      width: 15
+      height: 18
+    spriteID: 6c7f04a9f50dc504ea62751747d92dd6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 54, y: 37}
+  - name: IronSword_Frame_2
+    originalName: 
+    pivot: {x: 0.050000027, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 67
+      y: 4
+      width: 20
+      height: 18
+    spriteID: 050c1db79a8905e48ace910effdaab4f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 67, y: 4}
+  - name: IronSword_Frame_3
+    originalName: 
+    pivot: {x: 0.14285715, y: 0.7407407}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 37
+      width: 21
+      height: 27
+    spriteID: 8060f3030797a2740bb60fa1eac6a541
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 37}
+  - name: IronSword_Frame_4
+    originalName: 
+    pivot: {x: 0.23076923, y: 1.0952381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 33
+      y: 37
+      width: 13
+      height: 21
+    spriteID: 71c6822b6b1cf704e9b26a6d12bb7464
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 33, y: 37}
+  - name: IronSword_Frame_5
+    originalName: 
+    pivot: {x: 0.13333331, y: 0.88888884}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 77
+      y: 37
+      width: 15
+      height: 18
+    spriteID: 3810826c45e0bc04d81778bfafe18f5f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 77, y: 37}
+  - name: IronSword_Frame_6
+    originalName: 
+    pivot: {x: 0.16000001, y: 0.56}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 25
+      height: 25
+    spriteID: 902a182ff6efd7940a31907363aaf597
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: IronSword_Frame_7
+    originalName: 
+    pivot: {x: 0.25000003, y: 0.26315784}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 95
+      y: 4
+      width: 16
+      height: 19
+    spriteID: 34fc3a6b085f54645ac5e09a3ce83d24
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 95, y: 4}
+  - name: IronSword_Frame_8
+    originalName: 
+    pivot: {x: 0, y: 0.0526316}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 37
+      y: 4
+      width: 22
+      height: 19
+    spriteID: d472fdda7941d5741886e0ce54e15b53
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 37, y: 4}
+  - name: IronSword_Frame_9
+    originalName: 
+    pivot: {x: -0.22222218, y: 0.42857143}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 72
+      width: 18
+      height: 28
+    spriteID: 0a51765dfa0a84645bd4da9b954ac38d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 72}
+  - name: IronSword_Frame_10
+    originalName: 
+    pivot: {x: -0.35714293, y: 1.1111112}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 30
+      y: 72
+      width: 14
+      height: 18
+    spriteID: fa88d3783ed2de842b6fa7235922159a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 30, y: 72}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 162694363
+    name: IronSword
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: IronSword_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      spriteId: e54c19915cfcf3f4d91d0437629b44db
+    - name: IronSword_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 17
+        y: 15
+        width: 15
+        height: 18
+      spriteId: 6c7f04a9f50dc504ea62751747d92dd6
+    - name: IronSword_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 23
+        y: 15
+        width: 20
+        height: 18
+      spriteId: 050c1db79a8905e48ace910effdaab4f
+    - name: IronSword_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 21
+        y: 4
+        width: 21
+        height: 27
+      spriteId: 8060f3030797a2740bb60fa1eac6a541
+    - name: IronSword_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 21
+        y: 1
+        width: 13
+        height: 21
+      spriteId: 71c6822b6b1cf704e9b26a6d12bb7464
+    - name: IronSword_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 22
+        y: 8
+        width: 15
+        height: 18
+      spriteId: 3810826c45e0bc04d81778bfafe18f5f
+    - name: IronSword_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 20
+        y: 10
+        width: 25
+        height: 25
+      spriteId: 902a182ff6efd7940a31907363aaf597
+    - name: IronSword_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 20
+        y: 19
+        width: 16
+        height: 19
+      spriteId: 34fc3a6b085f54645ac5e09a3ce83d24
+    - name: IronSword_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 24
+        y: 23
+        width: 22
+        height: 19
+      spriteId: d472fdda7941d5741886e0ce54e15b53
+    - name: IronSword_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 28
+        y: 12
+        width: 18
+        height: 28
+      spriteId: 0a51765dfa0a84645bd4da9b954ac38d
+    - name: IronSword_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 29
+        y: 4
+        width: 14
+        height: 18
+      spriteId: fa88d3783ed2de842b6fa7235922159a
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Windows Store Apps
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 48, y: 48}

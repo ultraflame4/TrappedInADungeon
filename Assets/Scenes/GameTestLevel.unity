@@ -6673,6 +6673,8 @@ MonoBehaviour:
     <Count>k__BackingField: 1
   - <item>k__BackingField: {fileID: 11400000, guid: 6c1e9d1108d1d824b9f96cf79952485f, type: 2}
     <Count>k__BackingField: 8
+  - <item>k__BackingField: {fileID: 11400000, guid: 173618d4777b99e41983c5b9f3455816, type: 2}
+    <Count>k__BackingField: 1
   itemSlots:
   - {fileID: 2015262873}
   - {fileID: 507519533}
@@ -7230,6 +7232,7 @@ MonoBehaviour:
   BaseAttack: 300
   BaseSpeed: 10
   BaseDefense: 140
+  ticksPerSecond: 2
   <CurrentHealth>k__BackingField:
     _value: 0.74
   Level: 1
