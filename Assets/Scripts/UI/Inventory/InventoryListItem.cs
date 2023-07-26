@@ -4,6 +4,7 @@ using Core.Item;
 using Core.Save;
 using Core.UI;
 using Newtonsoft.Json;
+using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,6 +15,7 @@ namespace UI.Inventory
     [JsonObject(MemberSerialization.OptIn)]
     public class InventoryListItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
     {
+        public Button deleteBtn;
         public Image itemImage;
         public Image focusedOutline;
         public bool IsFocused => focusedOutline.enabled;
@@ -21,6 +23,17 @@ namespace UI.Inventory
         public TextMeshProUGUI description;
         public InvSlotItemInstance itemInstance { get; private set; }
         private bool isHovered;
+        private PlayerInventory playerInventory;
+
+        private void Start()
+        {
+            playerInventory = GameObject.FindWithTag("Player").GetComponent<PlayerInventory>();
+        }
+
+        public void OnDeleteBtnClick()
+        {
+            playerInventory.RemoveItem(itemInstance.itemInstance);
+        }
 
         /// <summary>
         /// Sets the item instance this list item is showing
@@ -81,6 +94,7 @@ namespace UI.Inventory
 
             focusedOutline.enabled = value;
             itemInstance.focused = value;
+            deleteBtn.gameObject.SetActive(value);
         }
 
         private void OnDisable()

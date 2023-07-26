@@ -70,8 +70,7 @@ namespace Player
         /// Removes the specific item instance
         /// </summary>
         /// <param name="item"></param>
-        /// <typeparam name="T"></typeparam>
-        public void RemoveItem<T>(T item) where T : ItemInstance
+        public void RemoveItem(ItemInstance item)
         {
             items.Remove(item);
             InventoryUpdate?.Invoke();
