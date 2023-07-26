@@ -593,10 +593,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfda35bdff9d2524392092f16ef1dbec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryUi: {fileID: 0}
-  levelGenerator: {fileID: 0}
   SpawnEnemies: 1
   LoadGameSave: 1
+  GamePaused:
+    _value: 0
 --- !u!1001 &1138379892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -744,7 +744,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.16981131, g: 0.087308645, b: 0.14377883, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

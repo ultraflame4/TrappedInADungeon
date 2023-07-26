@@ -11,7 +11,6 @@ namespace Core.Save
         public const string SaveFolder = "Save";
         private static Dictionary<string,ISaveHandler> saveHandlers = new();
 
-
         static GameSaveManager()
         {
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings {
@@ -19,7 +18,6 @@ namespace Core.Save
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
                     ContractResolver = new CustomContractResolver()
             };
-            
         }
 
         /// <summary>

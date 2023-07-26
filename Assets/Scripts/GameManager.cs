@@ -15,14 +15,16 @@ public class GameManager : MonoBehaviour, ISaveHandler
     public bool SpawnEnemies = true;
     public bool LoadGameSave = true;
     public GameControls inputs;
-    
+
     public static GameManager Instance { get; private set; }
     public static GameControls Controls => Instance.inputs;
 
     [JsonProperty]
     public static int CurrentAreaIndex { get; private set; } = 0;
-    public VolatileValue<bool> GamePaused  = new();
+
+    public VolatileValue<bool> GamePaused = new();
     public event Action GenerateLevelEvent;
+
     void Awake()
     {
         if (inputs == null)
@@ -37,24 +39,14 @@ public class GameManager : MonoBehaviour, ISaveHandler
         }
 
         Instance = this;
-        inputs.Menus.Pause.performed += (ctx) =>
-        {
-            GamePaused.value = !GamePaused.value;
-        };
+        inputs.Menus.Pause.performed += (ctx) => { GamePaused.value = !GamePaused.value; };
         GamePaused.Changed += OnGamePausedChanged;
         GameSaveManager.AddSaveHandler("game", this);
     }
-    
+
     private void Start()
     {
-        
-        if (LoadGameSave)
-        {
-            GameSaveManager.LoadSave();
-        }
-     
-
-
+        if (LoadGameSave) GameSaveManager.LoadSave();
     }
 
 
@@ -75,12 +67,13 @@ public class GameManager : MonoBehaviour, ISaveHandler
     {
         GameSaveManager.WriteSave();
     }
+
     [Button]
     public void OpenSaveLocation()
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         EditorUtility.RevealInFinder(GameSaveManager.GetSavePath());
-        #endif
+#endif
     }
 
     void OnGamePausedChanged()
@@ -102,22 +95,25 @@ public class GameManager : MonoBehaviour, ISaveHandler
         CurrentAreaIndex = Mathf.Max(0, CurrentAreaIndex - 1);
         SceneManager.LoadScene("GameLevel");
     }
-    
+
     public void QuitToMainMenu()
     {
         WriteSave();
         SceneManager.LoadScene("MainMenu");
     }
+
     public void QuitGame()
     {
         WriteSave();
         Application.Quit();
     }
+
     private void OnDestroy()
     {
         GameSaveManager.WriteSave();
         GameSaveManager.ClearSaveHandlers();
     }
+
     private void OnDisable()
     {
         inputs.Disable();
