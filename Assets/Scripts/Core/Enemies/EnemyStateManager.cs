@@ -40,9 +40,9 @@ namespace Core.Enemies
             TransitionState(EnemyStates.PATROL);
         }
 
-        void OnDamaged(float amt, bool knockback)
+        void OnDamaged(float amt, bool stun)
         {
-            if (Stunned != null && knockback)
+            if (Stunned != null && stun)
             {
                 TransitionState(EnemyStates.STUNNED);
             }

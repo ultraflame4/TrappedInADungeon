@@ -47,7 +47,9 @@ namespace Core.Entities
         public int Level = 1; // Level of entity
 
         public event Action DeathEvent; // Event that is invoked when entity dies
-        public delegate void OnDamagedHandler(float amt, bool knockback); // Event handler for when entity takes damage
+
+        public delegate void OnDamagedHandler(float amt, bool stun); // Event handler for when entity takes damage
+
         public event OnDamagedHandler DamagedEvent; // Event that is invoked when entity takes damage
 
         protected virtual void Awake()
@@ -60,6 +62,7 @@ namespace Core.Entities
             CurrentHealth.value = Health;
             StartCoroutine(TickStatusEffect());
         }
+
         /// <summary>
         /// Adds a status effect to this entity.
         /// </summary>
@@ -68,11 +71,11 @@ namespace Core.Entities
         public ActiveStatusEffect AddStatusEffect(StatusEffect statusEffect)
         {
             // Create a new instance of the status effect (to avoid modifying the original)
-            var particle = Instantiate(statusEffect.particleEffect,transform);
-            var active = new ActiveStatusEffect(statusEffect,particle);
-            StatusEffects.Add( active);
+            var particle = Instantiate(statusEffect.particleEffect, transform);
+            var active = new ActiveStatusEffect(statusEffect, particle);
+            StatusEffects.Add(active);
             active.TickStart(this);
-            
+
             return active;
         }
 
@@ -98,19 +101,22 @@ namespace Core.Entities
         /// Deals damage to the entity. Damage is reduced by the entity's defense.
         /// </summary>
         /// <param name="amt"></param>
-        public void Damage(float amt, bool knockback = true)
+        /// <param name="stun">Whether to stun enemy when dealing damage</param>
+        public void Damage(float amt, bool stun = true)
         {
             amt *= Mathf.Min(0.1f, 1 - Defense / (Defense + 200));
-            DamageRaw(amt, knockback );
+            DamageRaw(amt, stun);
         }
+
         /// <summary>
         /// Deals damage directly to the entity's health, bypassing defense.
         /// </summary>
         /// <param name="amt"></param>
-        public void DamageRaw(float amt, bool knockback = true)
+        /// <param name="stun">Whether to stun enemy when dealing damage</param>
+        public void DamageRaw(float amt, bool stun = true)
         {
             CurrentHealth.value -= amt;
-            DamagedEvent?.Invoke(amt, knockback);
+            DamagedEvent?.Invoke(amt, stun);
             if (CurrentHealth.value <= 0)
             {
                 DeathEvent?.Invoke();
