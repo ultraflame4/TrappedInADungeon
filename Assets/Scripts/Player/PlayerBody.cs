@@ -18,8 +18,8 @@ namespace Player
         [Tooltip("Rate of mana regeneration per second")]
         public int BaseManaRegen; // Used for casting spells
 
-        public float Mana => BaseMana * Level + StatsModifiers.Sum(modifier => modifier.Mana);
-        public float ManaRegen => BaseManaRegen * Level + StatsModifiers.Sum(modifier => modifier.ManaRegen);
+        public float Mana => BaseMana * Level + StatsModifiers.Sum(modifier => modifier.statsModifier.Mana);
+        public float ManaRegen => BaseManaRegen * Level + StatsModifiers.Sum(modifier => modifier.statsModifier.ManaRegen);
         [field: SerializeField] [JsonProperty]
         public VolatileValue<float> CurrentMana { get; private set; }  = new(); // Automatically set to Mana on start
         [JsonProperty]

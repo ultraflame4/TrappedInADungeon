@@ -13,6 +13,8 @@ namespace Projectile
         /// Stats that affect this projectile
         /// </summary>
         public IEntityStats projectileStats;
+        [Tooltip("statusEffect applied to entity on hit/explode"),SerializeField,SerializeReference]
+        public StatusEffect statusEffect;
         public float damageRadius = 1f;
         public Animator animator;
         private static readonly int Explode = Animator.StringToHash("hit");

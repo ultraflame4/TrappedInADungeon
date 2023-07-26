@@ -33,14 +33,14 @@ namespace Core.Entities
         public VolatileValue<float> CurrentHealth { get; private set; } = new(); // Automatically set to Health on start
 
         [JsonProperty]
-        protected List<StatsModifier> StatsModifiers = new();
+        protected List<AppliedStatsModifier> StatsModifiers = new();
 
-        protected List<IStatusEffect> StatusEffects = new();
+        protected List<StatusEffect> StatusEffects = new();
 
-        public float Health => BaseHealth * Level + StatsModifiers.Sum(modifier => modifier.Health);
-        public float Attack => BaseAttack * Level + StatsModifiers.Sum(modifier => modifier.Attack);
-        public float Speed => BaseSpeed + BaseSpeed * (Level - 1) * .001f + StatsModifiers.Sum(modifier => modifier.Speed);
-        public float Defense => BaseDefense * Level + StatsModifiers.Sum(modifier => modifier.Defense);
+        public float Health => BaseHealth * Level + StatsModifiers.Sum(modifier => modifier.statsModifier.Health);
+        public float Attack => BaseAttack * Level + StatsModifiers.Sum(modifier => modifier.statsModifier.Attack);
+        public float Speed => BaseSpeed + BaseSpeed * (Level - 1) * .001f + StatsModifiers.Sum(modifier => modifier.statsModifier.Speed);
+        public float Defense => BaseDefense * Level + StatsModifiers.Sum(modifier => modifier.statsModifier.Defense);
 
 
         [JsonProperty]
@@ -59,16 +59,28 @@ namespace Core.Entities
             CurrentHealth.value = Health;
             StartCoroutine(TickStatusEffect());
         }
-        
-        public void AddStatusEffect(IStatusEffect statusEffect)
+        /// <summary>
+        /// Adds a status effect to this entity.<br/>
+        /// Warning THIS ADDS A COPY OF THE INSTANCE OF THE STATUS EFFECT. TO REMOVE IT, USE THE INSTANCE RETURNED BY THIS METHOD.
+        /// </summary>
+        /// <param name="statusEffect"></param>
+        /// <returns></returns>
+        public StatusEffect AddStatusEffect(StatusEffect statusEffect)
         {
+            // Create a new instance of the status effect (to avoid modifying the original)
+            statusEffect = Instantiate(statusEffect);
             StatusEffects.Add(statusEffect);
-            statusEffect.EffectStart(this);
+            StatsModifiers.Add(new AppliedStatsModifier(statusEffect,statusEffect.statsOnce));
+            return statusEffect;
         }
-        public void RemoveStatusEffect(IStatusEffect statusEffect)
+        /// <summary>
+        /// Removes the specified status effect from this entity. Note: Use the instance returned by <see cref="AddStatusEffect"/> to remove the status effect.
+        /// </summary>
+        /// <param name="statusEffect"></param>
+        private void RemoveStatusEffect(StatusEffect statusEffect)
         {
             StatusEffects.Remove(statusEffect);
-            statusEffect.EffectEnd(this);
+            StatsModifiers.RemoveAll(modifier => (modifier.owner as StatusEffect) == statusEffect);
         }
 
         IEnumerator TickStatusEffect()
@@ -80,9 +92,9 @@ namespace Core.Entities
                 var copy = StatusEffects.GetRange(0, StatusEffects.Count);
                 foreach (var statusEffect in copy)
                 {
-                    statusEffect.Tick(this);
-                    statusEffect.TicksLeft--;
-                    if (statusEffect.TicksLeft <= 0)
+                    StatsModifiers.Add(new AppliedStatsModifier(statusEffect,statusEffect.statsOverTime));
+                    statusEffect.ticks--;
+                    if (statusEffect.ticks <= 0)
                     {
                         RemoveStatusEffect(statusEffect);
                     }
