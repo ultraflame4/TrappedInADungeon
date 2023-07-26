@@ -25,7 +25,6 @@ namespace Core.Entities
         {
             ticksRemaining--;
             body.StatsModifiers.Add(new AppliedStatsModifier(this,statusEffect.statsPerTick));
-            Debug.Log($"Tick {statusEffect.statsPerTick.Health}");
             body.DamageRaw(statusEffect.CurrentHealthPerTick,statusEffect.stun);
         }
 
