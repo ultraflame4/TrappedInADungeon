@@ -16,4 +16,6 @@ MonoBehaviour:
   spawnWeight: 250
   difficultyPoints: 12
   minPlayerLevel: 8
-  lootbox: []
+  lootbox:
+  - item: {fileID: 11400000, guid: adebc27f40d9d5748bf5545d2d0cb9de, type: 2}
+    chance: 0.2
