@@ -84,7 +84,7 @@ namespace Level
             int pointsRemaining = allocatedPoints;
             int maxEnemyCount = Mathf.RoundToInt(Random.Range(MaxEnemyCount.min, MaxEnemyCount.max));
 
-            int enemyCountLeft = maxEnemyCount+1;
+            int enemyCountLeft = maxEnemyCount;
             while (pointsRemaining > 0)
             {
                 SpawnableEnemy chosen = GetRandomEnemy(pointsRemaining, 1f - enemyCountLeft / (float)maxEnemyCount, enemyPool);
