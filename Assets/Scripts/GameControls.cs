@@ -540,6 +540,15 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""b6b5ea18-d7eb-4cb8-8808-4d7f08302a14"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -584,6 +593,17 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Computer"",
                     ""action"": ""QuickAssign"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7e92a68-08f4-4784-b84f-fa65bfa32af4"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Computer"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -640,6 +660,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Menus_InventoryToggle = m_Menus.FindAction("Inventory Toggle", throwIfNotFound: true);
         m_Menus_MouseClick = m_Menus.FindAction("MouseClick", throwIfNotFound: true);
         m_Menus_QuickAssign = m_Menus.FindAction("QuickAssign", throwIfNotFound: true);
+        m_Menus_Pause = m_Menus.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -876,6 +897,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Menus_InventoryToggle;
     private readonly InputAction m_Menus_MouseClick;
     private readonly InputAction m_Menus_QuickAssign;
+    private readonly InputAction m_Menus_Pause;
     public struct MenusActions
     {
         private @GameControls m_Wrapper;
@@ -883,6 +905,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         public InputAction @InventoryToggle => m_Wrapper.m_Menus_InventoryToggle;
         public InputAction @MouseClick => m_Wrapper.m_Menus_MouseClick;
         public InputAction @QuickAssign => m_Wrapper.m_Menus_QuickAssign;
+        public InputAction @Pause => m_Wrapper.m_Menus_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Menus; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -901,6 +924,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @QuickAssign.started += instance.OnQuickAssign;
             @QuickAssign.performed += instance.OnQuickAssign;
             @QuickAssign.canceled += instance.OnQuickAssign;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IMenusActions instance)
@@ -914,6 +940,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @QuickAssign.started -= instance.OnQuickAssign;
             @QuickAssign.performed -= instance.OnQuickAssign;
             @QuickAssign.canceled -= instance.OnQuickAssign;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IMenusActions instance)
@@ -972,5 +1001,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnInventoryToggle(InputAction.CallbackContext context);
         void OnMouseClick(InputAction.CallbackContext context);
         void OnQuickAssign(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using Core.Save;
 using Core.UI;
+using Core.Utils;
 using EasyButtons;
 using Level;
 using Newtonsoft.Json;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
 
     [JsonProperty]
     public static int CurrentAreaIndex { get; private set; } = 0;
+    public VolatileValue<bool> GamePaused  = new();
 
     void Awake()
     {
@@ -39,6 +41,20 @@ public class GameManager : MonoBehaviour, ISaveHandler
         Instance = this;
         GameSaveManager.AddSaveHandler("game", this);
     }
+    
+    private void Start()
+    {
+        
+        if (LoadGameSave)
+        {
+            GameSaveManager.LoadSave();
+        }
+        levelGenerator.AreaIndex = CurrentAreaIndex;
+        levelGenerator.GenerateLevel();
+        NotificationManager.Instance.PushNotification($"<size=150%>Entered Area {CurrentAreaIndex}</size>");
+        Controls.Menus.Pause.performed += ctx => GamePaused.value = !GamePaused.value;
+    }
+
 
     [Button]
     public void ClearSave()
@@ -72,17 +88,6 @@ public class GameManager : MonoBehaviour, ISaveHandler
 
     //todo add ui support for gamepad mouse 
 
-    private void Start()
-    {
-     
-        if (LoadGameSave)
-        {
-            GameSaveManager.LoadSave();
-        }
-        levelGenerator.AreaIndex = CurrentAreaIndex;
-        levelGenerator.GenerateLevel();
-        NotificationManager.Instance.PushNotification($"<size=150%>Entered Area {CurrentAreaIndex}</size>");
-    }
 
     public void LoadNextArea()
     {
@@ -95,11 +100,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
         CurrentAreaIndex = Mathf.Max(0, CurrentAreaIndex - 1);
         SceneManager.LoadScene("GameLevel");
     }
-
-    public void SetGamePaused(bool value)
-    {
-        
-    }
+    
     public void QuitToMainMenu()
     {
         WriteSave();

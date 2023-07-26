@@ -1,10 +1,9 @@
 ﻿using Core.UI;
-using Entities;
+using Player;
 using TMPro;
-using UI;
 using UnityEngine;
 
-namespace Player
+namespace UI
 {
     public class PlayerUIManager : MonoBehaviour
     {
@@ -34,6 +33,7 @@ namespace Player
                 UpdateHealthBar();
                 UpdateManaBar();
             };
+            
         }
 
         void UpdateHealthBar()
