@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 4683773531629097678, guid: 696cb5d8acad93643ae02d7372cd3e89, type: 3}
     - target: {fileID: -203759671303655329, guid: 77d723818112732429e1f9404af485cc, type: 3}
       propertyPath: damageRadius
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -203759671303655329, guid: 77d723818112732429e1f9404af485cc, type: 3}
       propertyPath: statusEffect

@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusEffect: {fileID: 11400000, guid: f713800177da38e47bc722632b543655, type: 2}
-  damageRadius: 1
+  damageRadius: 2
   animator: {fileID: -8415669972095956414}
   attackPlayer: 0
 --- !u!95 &-8415669972095956414
