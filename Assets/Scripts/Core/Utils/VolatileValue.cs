@@ -28,9 +28,11 @@ namespace Core.Utils
                 if (validator == null)
                 {
                     _value = value;
-                    return;
                 }
-                _value = validator.Invoke(_value, value);
+                else
+                {
+                    _value = validator.Invoke(_value, value);    
+                }
                 Changed?.Invoke();
             }
         }
