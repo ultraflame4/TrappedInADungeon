@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
     public event Action GenerateLevelEvent;
     [Tooltip("Whether this GameManager is in a level scene or not. If true, level specific events such as GamePaused.Changed will be disabled.")]
     public bool isLevelScene = false;
-
+    public static string CurrentSaveName { get; private set; } = "DefaultSave";
     void Awake()
     {
         if (inputs == null)
@@ -53,26 +53,42 @@ public class GameManager : MonoBehaviour, ISaveHandler
 
     private void Start()
     {
-        if (LoadGameSave) GameSaveManager.LoadSave();
+        if (LoadGameSave && isLevelScene) GameSaveManager.LoadSave(CurrentSaveName);
+    }
+    
+    public void LoadGame(string saveName = "DefaultSave")
+    {
+        CurrentSaveName = saveName;
+        SceneManager.LoadScene("GameLevel");
     }
 
-
+    /// <summary>
+    /// Clears the current save
+    /// </summary>
     [Button]
     public void ClearSave()
     {
-        GameSaveManager.DeleteSave();
+        GameSaveManager.DeleteSave(CurrentSaveName);
     }
 
+    /// <summary>
+    /// Loads the current save
+    /// </summary>
+    /// <param name="saveName"></param>
     [Button]
     public void LoadSave()
     {
-        GameSaveManager.LoadSave();
+        GameSaveManager.LoadSave(CurrentSaveName);
     }
 
+    /// <summary>
+    /// Writes to the current save
+    /// </summary>
     [Button]
     public void WriteSave()
     {
-        GameSaveManager.WriteSave();
+        if (!isLevelScene) return; // No need to write to save if not in level as WriteSave is intended for level progress / saves
+        GameSaveManager.WriteSave(CurrentSaveName);
     }
 
     [Button]
@@ -117,7 +133,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
 
     private void OnDestroy()
     {
-        GameSaveManager.WriteSave();
+        WriteSave();
         GameSaveManager.ClearSaveHandlers();
     }
 

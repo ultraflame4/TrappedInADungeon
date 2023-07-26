@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -100,6 +101,16 @@ namespace Core.Save
                 Debug.LogError($"Unexpected error when deleting save at ${savePath}, Error: {e}");
             }
             
+        }
+
+        public static string[] GetSaves()
+        {
+            string savesLocation = Path.Combine(Application.persistentDataPath,SaveFolder);
+            if (!Directory.Exists(savesLocation))
+            {
+                return Array.Empty<string>();
+            }
+            return Directory.GetDirectories(savesLocation).Select(x=>Path.GetFileName(x)).ToArray();
         }
 
         /// <summary>
