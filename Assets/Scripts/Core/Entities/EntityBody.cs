@@ -93,9 +93,21 @@ namespace Core.Entities
             }
         }
 
+        /// <summary>
+        /// Deals damage to the entity. Damage is reduced by the entity's defense.
+        /// </summary>
+        /// <param name="amt"></param>
         public void Damage(float amt)
         {
             amt *= Mathf.Min(0.1f, 1 - Defense / (Defense + 200));
+            DamageRaw(amt);
+        }
+        /// <summary>
+        /// Deals damage directly to the entity's health, bypassing defense.
+        /// </summary>
+        /// <param name="amt"></param>
+        public void DamageRaw(float amt)
+        {
             CurrentHealth.value -= amt;
             DamagedEvent?.Invoke(amt);
             if (CurrentHealth.value <= 0)
