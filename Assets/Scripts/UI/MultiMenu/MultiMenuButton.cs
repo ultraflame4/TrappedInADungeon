@@ -1,0 +1,22 @@
+﻿using UnityEngine;
+
+namespace UI.MultiMenu
+{
+    public class MultiMenuButton : MonoBehaviour
+    {
+        [Tooltip("The manager for the menu")]
+        public MultiMenuManager manager;
+        [Tooltip("The current menu to close")]
+        public GameObject currentMenu;
+        [Tooltip("Ui object of the menu to open")]
+        public GameObject targetMenu;
+        
+        public void OpenMenu()
+        {
+            targetMenu.SetActive(true);
+            currentMenu.SetActive(false);
+            manager.PushHistory(targetMenu);
+        }
+        
+    }
+}
