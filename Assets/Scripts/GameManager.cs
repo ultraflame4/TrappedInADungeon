@@ -32,13 +32,17 @@ public class GameManager : MonoBehaviour, ISaveHandler
         }
 
         inputs.Enable();
-
         if (Instance != null)
         {
             Debug.LogError("Warning: multiple instances of GameManager found! The static instance will be changed to this one!!!! This is probably not what you want!");
         }
 
         Instance = this;
+        inputs.Menus.Pause.performed += (ctx) =>
+        {
+            GamePaused.value = !GamePaused.value;
+        };
+        GamePaused.Changed += OnGamePausedChanged;
         GameSaveManager.AddSaveHandler("game", this);
     }
     
@@ -52,7 +56,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
         levelGenerator.AreaIndex = CurrentAreaIndex;
         levelGenerator.GenerateLevel();
         NotificationManager.Instance.PushNotification($"<size=150%>Entered Area {CurrentAreaIndex}</size>");
-        Controls.Menus.Pause.performed += ctx => GamePaused.value = !GamePaused.value;
+
     }
 
 
@@ -81,9 +85,9 @@ public class GameManager : MonoBehaviour, ISaveHandler
         #endif
     }
 
-    private void OnDisable()
+    void OnGamePausedChanged()
     {
-        inputs.Disable();
+        Time.timeScale = GamePaused.value ? 0 : 1;
     }
 
     //todo add ui support for gamepad mouse 
@@ -115,5 +119,9 @@ public class GameManager : MonoBehaviour, ISaveHandler
     {
         GameSaveManager.WriteSave();
         GameSaveManager.ClearSaveHandlers();
+    }
+    private void OnDisable()
+    {
+        inputs.Disable();
     }
 }

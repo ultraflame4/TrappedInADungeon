@@ -8,12 +8,13 @@ namespace UI
         private void Awake()
         {
             GameManager.Instance.GamePaused.Changed += UpdatePauseMenu;
-            
+            gameObject.SetActive(false);
         }
 
         void UpdatePauseMenu()
         {
-            gameObject.SetActive(GameManager.Instance.GamePaused.value);
+            Debug.Log("Test");
+            gameObject.SetActive(GameManager.Instance.GamePaused);
         }
 
         public void ResumeBtn()
