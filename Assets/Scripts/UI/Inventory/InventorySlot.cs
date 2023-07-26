@@ -154,32 +154,32 @@ namespace UI.Inventory
         private void _SetItem(InvSlotItemInstance item)
         {
             if (currentItem == item) return; // If item instance is the same in this slot, do nothing
-            if (item is null) // If clearing this slot
+            if (currentItem!=null) // If slot has existing item, clear it
             {
                 currentItem.assignedSlot = null; // First clear the reference to this slot
                 if (itemGateway != null) Destroy(itemGateway.gameObject); // Then destroy the item prefab object
             }
-            else
+
+            if (item != null)
             {
                 // Instantiate the item prefab
                 if (item.itemInstance.prefab != null)
                 {
                     var obj = Instantiate(item.itemInstance.prefab);
                     itemGateway = obj.GetComponent<ItemPrefabController>();
-                    if (itemGateway is null)
+                    if (itemGateway == null)
                     {
                         Debug.Log($"Prefab  {currentItem.itemInstance.prefab} does not have ItemPrefabController component!");
-                        Destroy(obj);
-                        return; // Cannot instantiate item prefab, do nothing
                     }
-
-                    itemGateway.slot = this;
+                    else
+                    {
+                        itemGateway.slot = this;
+                    }
                 }
 
                 item.assignedSlot?.SetItem(null); // If new item is already in a slot, clear that slot first
                 item.assignedSlot = this; // Set reference (for new item) before setting this slot
             }
-
             currentItem = item;
             CurrentItemInventoryIndex = playerInventory.IndexOf(currentItem?.itemInstance);
             itemImage.SetSprite(currentItem?.itemInstance.sprite);
