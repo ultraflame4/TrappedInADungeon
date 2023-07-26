@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: attackPlayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -203759671303655329, guid: 77d723818112732429e1f9404af485cc, type: 3}
+      propertyPath: statusEffect
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7357163255955859145, guid: 77d723818112732429e1f9404af485cc, type: 3}
       propertyPath: m_Name
       value: RedEnergyBall Projectile
