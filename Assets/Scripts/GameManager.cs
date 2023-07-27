@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
     public void LoadGame(string saveName = "DefaultSave")
     {
         CurrentSaveName = saveName;
-        SceneManager.LoadScene("GameLevel");
+        sceneTrans.TransitionToScene("GameLevel");
     }
 
     /// <summary>

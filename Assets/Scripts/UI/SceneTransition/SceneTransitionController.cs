@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI.SceneTransition
@@ -15,6 +16,8 @@ namespace UI.SceneTransition
         private Coroutine currentCoroutine;
         private int counter = 0;
         private static readonly int Threshold = Shader.PropertyToID("_Threshold");
+        public float sceneLoadProgress { get; private set; }
+
         void Start()
         {
             image = GetComponent<Image>();
@@ -27,6 +30,7 @@ namespace UI.SceneTransition
 
         IEnumerator FadeToBlackCoroutine()
         {
+            counter = transitionSteps;
             while (counter>0)
             {
                 image.material.SetFloat(Threshold, counter/(float)transitionSteps);
@@ -36,6 +40,7 @@ namespace UI.SceneTransition
         }
         IEnumerator FadeToClearCoroutine()
         {
+            counter = 0;
             while (counter<transitionSteps)
             {
                 image.material.SetFloat(Threshold, counter/(float)transitionSteps);
@@ -43,19 +48,38 @@ namespace UI.SceneTransition
                 yield return new WaitForSeconds(transitionTime / transitionSteps);
             }
         }
-
-        public void FadeToBlack()
-        {
-            if (currentCoroutine != null) StopCoroutine(currentCoroutine);
-            counter = transitionSteps;
-            currentCoroutine=StartCoroutine(FadeToBlackCoroutine());
-        }
+        
 
         public void FadeToClear()
         {
             if (currentCoroutine != null) StopCoroutine(currentCoroutine);
-            counter = 0;
+
             currentCoroutine=StartCoroutine(FadeToClearCoroutine());
+        }
+        
+        public IEnumerator TransitionToSceneCoroutine(string sceneName)
+        {
+            yield return null;
+            
+            Debug.Log("Wait");
+            yield return FadeToBlackCoroutine();
+            Debug.Log("Load");
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
+            
+            while (!asyncOperation.isDone)
+            {
+                sceneLoadProgress = asyncOperation.progress;
+                yield return null;
+            }
+            yield return null;
+        }
+        /// <summary>
+        /// Loads & transitions to a scene with the given name.
+        /// </summary>
+        /// <param name="sceneName"></param>
+        public void TransitionToScene(string sceneName)
+        {
+            StartCoroutine(TransitionToSceneCoroutine(sceneName));
         }
     }
 }

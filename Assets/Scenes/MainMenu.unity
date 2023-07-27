@@ -6210,7 +6210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnEnemies: 1
   LoadGameSave: 1
-  sceneTrans: {fileID: 0}
+  sceneTrans: {fileID: 1836012633}
   GamePaused:
     _value: 0
   isLevelScene: 0
@@ -7100,6 +7100,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7946647483948564984, guid: 0b1eb4176f1194f45828427268fb1f7b, type: 3}
   m_PrefabInstance: {fileID: 1836012631}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1836012633 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5548401724096560020, guid: 0b1eb4176f1194f45828427268fb1f7b, type: 3}
+  m_PrefabInstance: {fileID: 1836012631}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20b80ca3a55462c92f0578073c11d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1844000637
 GameObject:
   m_ObjectHideFlags: 0
