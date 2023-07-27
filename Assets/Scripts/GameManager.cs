@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
         if (isLevelScene)
         {
             GenerateLevelEvent?.Invoke();
-            sceneTrans.FadeToClear();
+            sceneTrans?.FadeToClear();
         }
     }
     
