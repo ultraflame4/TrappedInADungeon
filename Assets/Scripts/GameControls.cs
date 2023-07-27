@@ -222,7 +222,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a8f919cb-6e6f-4aeb-80f3-05bb147ef4cb"",
-                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -244,7 +244,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4aa5106a-3d51-4e65-a984-15b62ea8379b"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -311,24 +311,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Slot4"",
-                    ""type"": ""Button"",
-                    ""id"": ""db7ed996-e0fd-44cc-8434-31725091a801"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Slot5"",
-                    ""type"": ""Button"",
-                    ""id"": ""c042e6e4-c9fd-4a53-b960-4b479b5d0190"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -390,7 +372,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""01a7c36b-5f69-4907-bff4-c7697c209866"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -412,7 +394,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5b7e75af-9437-4603-b6f4-846206f75fad"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -434,7 +416,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d8c952a0-3a25-449b-a05c-65ec393279d0"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -456,55 +438,11 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""cf9bb48c-9f42-4c44-921b-fc15871783ec"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""Slot3"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""59942d06-0b79-4e0d-8232-a8b572e1ffd2"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Computer"",
-                    ""action"": ""Slot4"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0458fa32-a5f9-43b7-92cc-fd692e5078a5"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""Slot4"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""26aec151-5304-4589-b6fa-bb49e0a095c0"",
-                    ""path"": ""<Keyboard>/6"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Computer"",
-                    ""action"": ""Slot5"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2d7b6062-9566-4b83-8a91-acdb072dbd9e"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
-                    ""action"": ""Slot5"",
+                    ""action"": ""Slot3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -653,8 +591,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Hotbar_Slot1 = m_Hotbar.FindAction("Slot1", throwIfNotFound: true);
         m_Hotbar_Slot2 = m_Hotbar.FindAction("Slot2", throwIfNotFound: true);
         m_Hotbar_Slot3 = m_Hotbar.FindAction("Slot3", throwIfNotFound: true);
-        m_Hotbar_Slot4 = m_Hotbar.FindAction("Slot4", throwIfNotFound: true);
-        m_Hotbar_Slot5 = m_Hotbar.FindAction("Slot5", throwIfNotFound: true);
         // Menus
         m_Menus = asset.FindActionMap("Menus", throwIfNotFound: true);
         m_Menus_InventoryToggle = m_Menus.FindAction("Inventory Toggle", throwIfNotFound: true);
@@ -798,8 +734,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Hotbar_Slot1;
     private readonly InputAction m_Hotbar_Slot2;
     private readonly InputAction m_Hotbar_Slot3;
-    private readonly InputAction m_Hotbar_Slot4;
-    private readonly InputAction m_Hotbar_Slot5;
     public struct HotbarActions
     {
         private @GameControls m_Wrapper;
@@ -810,8 +744,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         public InputAction @Slot1 => m_Wrapper.m_Hotbar_Slot1;
         public InputAction @Slot2 => m_Wrapper.m_Hotbar_Slot2;
         public InputAction @Slot3 => m_Wrapper.m_Hotbar_Slot3;
-        public InputAction @Slot4 => m_Wrapper.m_Hotbar_Slot4;
-        public InputAction @Slot5 => m_Wrapper.m_Hotbar_Slot5;
         public InputActionMap Get() { return m_Wrapper.m_Hotbar; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -839,12 +771,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Slot3.started += instance.OnSlot3;
             @Slot3.performed += instance.OnSlot3;
             @Slot3.canceled += instance.OnSlot3;
-            @Slot4.started += instance.OnSlot4;
-            @Slot4.performed += instance.OnSlot4;
-            @Slot4.canceled += instance.OnSlot4;
-            @Slot5.started += instance.OnSlot5;
-            @Slot5.performed += instance.OnSlot5;
-            @Slot5.canceled += instance.OnSlot5;
         }
 
         private void UnregisterCallbacks(IHotbarActions instance)
@@ -867,12 +793,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Slot3.started -= instance.OnSlot3;
             @Slot3.performed -= instance.OnSlot3;
             @Slot3.canceled -= instance.OnSlot3;
-            @Slot4.started -= instance.OnSlot4;
-            @Slot4.performed -= instance.OnSlot4;
-            @Slot4.canceled -= instance.OnSlot4;
-            @Slot5.started -= instance.OnSlot5;
-            @Slot5.performed -= instance.OnSlot5;
-            @Slot5.canceled -= instance.OnSlot5;
         }
 
         public void RemoveCallbacks(IHotbarActions instance)
@@ -993,8 +913,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnSlot1(InputAction.CallbackContext context);
         void OnSlot2(InputAction.CallbackContext context);
         void OnSlot3(InputAction.CallbackContext context);
-        void OnSlot4(InputAction.CallbackContext context);
-        void OnSlot5(InputAction.CallbackContext context);
     }
     public interface IMenusActions
     {
