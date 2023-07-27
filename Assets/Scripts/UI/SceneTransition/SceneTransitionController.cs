@@ -60,10 +60,7 @@ namespace UI.SceneTransition
         public IEnumerator TransitionToSceneCoroutine(string sceneName)
         {
             yield return null;
-            
-            Debug.Log("Wait");
             yield return FadeToBlackCoroutine();
-            Debug.Log("Load");
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
             
             while (!asyncOperation.isDone)
