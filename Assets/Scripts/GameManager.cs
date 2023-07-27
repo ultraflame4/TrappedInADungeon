@@ -5,6 +5,7 @@ using Core.Utils;
 using EasyButtons;
 using Level;
 using Newtonsoft.Json;
+using UI.SceneTransition;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,7 +16,8 @@ public class GameManager : MonoBehaviour, ISaveHandler
 {
     public bool SpawnEnemies = true;
     public bool LoadGameSave = true;
-    public GameControls inputs;
+    private GameControls inputs;
+    public SceneTransitionController sceneTrans;
 
     public static GameManager Instance { get; private set; }
     public static GameControls Controls => Instance.inputs;
@@ -46,11 +48,12 @@ public class GameManager : MonoBehaviour, ISaveHandler
         if (isLevelScene)
         {
             inputs.Menus.Pause.performed += (ctx) => { GamePaused.value = !GamePaused.value; };
-            GamePaused.Changed += OnGamePausedChanged;
+            GamePaused.Changed += UpdateTimeScale;
             GameSaveManager.AddSaveHandler("game", this);
         }
+        
     }
-
+    
     private void Start()
     {
         if (LoadGameSave)
@@ -60,7 +63,14 @@ public class GameManager : MonoBehaviour, ISaveHandler
         if (isLevelScene)
         {
             GenerateLevelEvent?.Invoke();
+            sceneTrans.FadeToClear();
         }
+    }
+    
+
+    void UpdateTimeScale()
+    {
+        Time.timeScale = (GamePaused.value) ? 0 : 1;
     }
     
     public void LoadGame(string saveName = "DefaultSave")
@@ -104,11 +114,6 @@ public class GameManager : MonoBehaviour, ISaveHandler
 #if UNITY_EDITOR
         EditorUtility.RevealInFinder(GameSaveManager.GetSavePath());
 #endif
-    }
-
-    void OnGamePausedChanged()
-    {
-        Time.timeScale = GamePaused.value ? 0 : 1;
     }
 
     //todo add ui support for gamepad mouse 
