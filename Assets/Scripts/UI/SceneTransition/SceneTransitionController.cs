@@ -15,7 +15,8 @@ namespace UI.SceneTransition
         public TextMeshProUGUI loadingText;
         public Image logo;
         private Image image;
-
+        private Coroutine currentCoroutine;
+        
         private void Start()
         {
             image = GetComponent<Image>();
@@ -25,6 +26,22 @@ namespace UI.SceneTransition
             effectB.BlackOut();
         }
 
+        /// <summary>
+        /// Starts a new coroutine and ensures that only one coroutine is running at a time
+        /// </summary>
+        /// <param name="newCurrent"></param>
+        /// <returns></returns>
+        private Coroutine StartSingle(IEnumerator newCurrent)
+        {
+            if (currentCoroutine != null)
+            {
+                StopCoroutine(currentCoroutine);
+            }
+            currentCoroutine = StartCoroutine(newCurrent);;
+            return currentCoroutine;
+        }
+
+        
         IEnumerator FadeOutCoroutine()
         {
             loadingText.gameObject.SetActive(true);
@@ -49,7 +66,7 @@ namespace UI.SceneTransition
 
         public void FadeOut()
         {
-            StartCoroutine(FadeOutCoroutine());
+            StartSingle(FadeOutCoroutine());
         }
 
         public IEnumerator TransitionToSceneCoroutine(string sceneName)
@@ -75,7 +92,7 @@ namespace UI.SceneTransition
         /// <param name="sceneName"></param>
         public void TransitionToScene(string sceneName)
         {
-            StartCoroutine(TransitionToSceneCoroutine(sceneName));
+            StartSingle(TransitionToSceneCoroutine(sceneName));
         }
     }
 }

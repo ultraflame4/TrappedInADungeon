@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,13 +32,13 @@ namespace UI.SceneTransition
             image.material.SetFloat(Threshold, 1);
         }
 
+
         public IEnumerator FadeToBlackCoroutine()
         {
-            
             counter = transitionSteps;
             while (counter > 0)
             {
-                Debug.Log($"{gameObject.name} fading to black");
+                
                 image.material.SetFloat(Threshold, counter / (float)transitionSteps);
                 counter--;
                 yield return new WaitForSecondsRealtime(transitionTime / transitionSteps);
