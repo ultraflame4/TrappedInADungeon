@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
     public static string CurrentSaveName { get; private set; } = "DefaultSave";
     void Awake()
     {
+        Time.timeScale = 1; // Make sure time scale is set to 1 when starting
         if (inputs == null)
         {
             inputs = new GameControls();
