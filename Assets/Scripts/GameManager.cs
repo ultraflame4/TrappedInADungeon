@@ -123,19 +123,19 @@ public class GameManager : MonoBehaviour, ISaveHandler
     public void LoadNextArea()
     {
         CurrentAreaIndex++;
-        SceneManager.LoadScene("GameLevel");
+        sceneTrans.TransitionToScene("GameLevel");
     }
 
     public void LoadPrevArea()
     {
         CurrentAreaIndex = Mathf.Max(0, CurrentAreaIndex - 1);
-        SceneManager.LoadScene("GameLevel");
+        sceneTrans.TransitionToScene("GameLevel");
     }
 
     public void QuitToMainMenu()
     {
         WriteSave();
-        SceneManager.LoadScene("MainMenu");
+        sceneTrans.TransitionToScene("MainMenu");
     }
 
     public void QuitGame()
