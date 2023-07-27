@@ -64,8 +64,8 @@ public class GameManager : MonoBehaviour, ISaveHandler
         if (isLevelScene)
         {
             GenerateLevelEvent?.Invoke();
-            sceneTrans?.FadeToClear();
         }
+        sceneTrans?.FadeOut();
     }
     
 
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
     public void LoadGame(string saveName = "DefaultSave")
     {
         CurrentSaveName = saveName;
-        sceneTrans.TransitionToScene("GameLevel");
+        sceneTrans?.TransitionToScene("GameLevel");
     }
 
     /// <summary>
@@ -123,19 +123,19 @@ public class GameManager : MonoBehaviour, ISaveHandler
     public void LoadNextArea()
     {
         CurrentAreaIndex++;
-        sceneTrans.TransitionToScene("GameLevel");
+        sceneTrans?.TransitionToScene("GameLevel");
     }
 
     public void LoadPrevArea()
     {
         CurrentAreaIndex = Mathf.Max(0, CurrentAreaIndex - 1);
-        sceneTrans.TransitionToScene("GameLevel");
+        sceneTrans?.TransitionToScene("GameLevel");
     }
 
     public void QuitToMainMenu()
     {
         WriteSave();
-        sceneTrans.TransitionToScene("MainMenu");
+        sceneTrans?.TransitionToScene("MainMenu");
     }
 
     public void QuitGame()
