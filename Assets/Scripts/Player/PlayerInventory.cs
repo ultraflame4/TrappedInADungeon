@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.Item;
 using Core.Save;
+using Core.UI;
 using EasyButtons;
 using Newtonsoft.Json;
 using UI.Inventory;
@@ -52,8 +53,9 @@ namespace Player
         /// <typeparam name="T"></typeparam>
         public void AddItem<T>(T item) where T : ItemInstance
         {
+            NotificationManager.Instance.PushNotification($"Picked up <color=#41f0d0>{item.item.itemType} - {item.item.item_name}!</color>");
             // Search through all items
-            foreach (ItemInstance itemInstance in AllItems)
+            foreach (ItemInstance itemInstance in AllItems) 
             {
                 if (itemInstance.Combine(item)) 
                 {
