@@ -11,6 +11,7 @@ namespace Core.Save
     public static class GameSaveManager
     {
         public const string SaveFolder = "Save";
+        public const string SaveFolderExt = ".save";
         private static Dictionary<string,ISaveHandler> saveHandlers = new();
 
         static GameSaveManager()
@@ -39,7 +40,7 @@ namespace Core.Save
             return saveHandler;
         }
 
-        public static string GetSavePath(string saveName = "DefaultSave") => Path.Combine(Application.persistentDataPath, SaveFolder, $"{saveName.Clean()}.save").FullPath();
+        public static string GetSavePath(string saveName = "DefaultSave") => Path.Combine(Application.persistentDataPath, SaveFolder, $"{saveName.Clean()}{SaveFolderExt}").FullPath();
         public static void LoadSave(string saveName = "DefaultSave")
         {
             string savePath = GetSavePath(saveName);
@@ -111,7 +112,11 @@ namespace Core.Save
             {
                 return Array.Empty<string>();
             }
-            return Directory.GetDirectories(savesLocation).Select(x=>Path.GetFileName(x)).ToArray();
+            return Directory.GetDirectories(savesLocation)
+                    .Select(x=>Path.GetFileName(x))
+                    .Where(x=>x.EndsWith(SaveFolderExt))
+                    .Select(x=>x.Substring(0,x.Length - SaveFolderExt.Length))
+                    .ToArray();
         }
         
         public static bool SaveExists(string saveName = "DefaultSave")
