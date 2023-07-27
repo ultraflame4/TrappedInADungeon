@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour, ISaveHandler
     }
     
 
-    void UpdateTimeScale()
+    public void UpdateTimeScale()
     {
         Time.timeScale = (GamePaused.value) ? 0 : 1;
     }
