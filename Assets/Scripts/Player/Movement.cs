@@ -10,20 +10,25 @@ using UnityEngine.Serialization;
 
 namespace PlayerScripts
 {
-    [RequireComponent(typeof(Rigidbody2D)),RequireComponent(typeof(Animator)),RequireComponent(typeof(PlayerBody))]
+    [RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Animator)), RequireComponent(typeof(PlayerBody))]
     public class Movement : MonoBehaviour
     {
         private Rigidbody2D rb;
         private Animator anim;
         private PlayerBody body;
-        
+
         [Header("Movement")]
-        [ReadOnly] public Vector3 currentDirection = Vector3.right;
+        [ReadOnly]
+        public Vector3 currentDirection = Vector3.right;
+
         public float moveSpeed = 10f;
+
         [Header("Dash")]
         public float dashSpeed = 100f;
+
         [Tooltip("The period of time the player will dash for in ms")]
         public float dashPeriod = 1f;
+
         [Tooltip("% of total mana consumed by dash")]
         public float dashManaCostPercent = 0.2f;
 
@@ -40,10 +45,15 @@ namespace PlayerScripts
 
         private bool alreadyJumping = false;
 
-        private static readonly int IsWalking = Animator.StringToHash("IsWalking");
-        private static readonly int IsJumping = Animator.StringToHash("IsJumping");
+        private static readonly int AnimIdWalking = Animator.StringToHash("IsWalking"); // Apparently this is better then just using the raw string value
+        private static readonly int AnimIdJumping = Animator.StringToHash("IsJumping");
 
+        public event Action DashEvent;
+        public event Action JumpEvent;
+        public event Action LandEvent;
+        public bool IsWalking => inputFactor != 0 && !isInAir;
         private float dashCost => body.Mana * dashManaCostPercent;
+
         private void Awake()
         {
             body = GetComponent<PlayerBody>();
@@ -54,7 +64,7 @@ namespace PlayerScripts
         private void Start()
         {
             jumpsLeft = jumpTimes;
-            currentDirection=Vector3.right;
+            currentDirection = Vector3.right;
         }
 
         // Update is called once per frame
@@ -66,7 +76,7 @@ namespace PlayerScripts
             // include toJump in its own condition to prevent Input.GetButtonDown from setting toJump to false
             // We only set toJump to false if we have did the physics in the FixedUpdate
             toJump = GameManager.Controls.Player.Jump.triggered || toJump;
-            if (GameManager.Controls.Player.Dash.triggered )
+            if (GameManager.Controls.Player.Dash.triggered)
             {
                 if (body.CurrentMana.value > dashCost)
                 {
@@ -76,7 +86,7 @@ namespace PlayerScripts
                 }
                 else
                 {
-                    NotificationManager.Instance.PushNotification("Not enough mana to dash!",addData:$"<color=\"yellow\">({body.CurrentMana.value.ToPrecision(2)}/{dashCost})</color>");
+                    NotificationManager.Instance.PushNotification("Not enough mana to dash!", addData: $"<color=\"yellow\">({body.CurrentMana.value.ToPrecision(2)}/{dashCost})</color>");
                 }
             }
 
@@ -89,9 +99,11 @@ namespace PlayerScripts
                     StopCoroutine(dashCoroutine); // Stop end dash coroutine
                 }
             }
+
             UpdateAnimationsParameters();
             UpdateSpriteDirection();
         }
+        
 
         void UpdatePlayerDirection()
         {
@@ -106,8 +118,8 @@ namespace PlayerScripts
 
         void UpdateAnimationsParameters()
         {
-            anim.SetBool(IsWalking, inputFactor != 0);
-            anim.SetBool(IsJumping, isInAir || toDash);
+            anim.SetBool(AnimIdWalking, IsWalking);
+            anim.SetBool(AnimIdJumping, isInAir || toDash);
         }
 
         /**
@@ -143,12 +155,14 @@ namespace PlayerScripts
                 move.x = currentDirection.normalized.x * dashSpeed * Time.deltaTime;
                 if (!isDashing) // If just started dashing, start the end dash coroutine
                 {
+                    DashEvent?.Invoke();
                     if (dashCoroutine is not null) // If there is a dash coroutine running, stop it
                     {
                         isDashing = false;
                         StopCoroutine(dashCoroutine); // Stop end dash coroutine
                     }
-                    dashCoroutine=StartCoroutine(EndDash()); // Start end dash coroutine
+
+                    dashCoroutine = StartCoroutine(EndDash()); // Start end dash coroutine
                 }
 
                 isDashing = true;
@@ -161,6 +175,7 @@ namespace PlayerScripts
                 isInAir = true;
                 jumpsLeft--;
                 alreadyJumping = true;
+                JumpEvent?.Invoke();
             }
 
             // On jump button release, toJump will be false. Reset alreadyJumping
@@ -188,6 +203,7 @@ namespace PlayerScripts
             {
                 jumpsLeft = jumpTimes;
                 isInAir = false;
+                LandEvent?.Invoke();
             }
         }
     }
