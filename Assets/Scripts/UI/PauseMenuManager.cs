@@ -1,4 +1,5 @@
 ﻿using System;
+using PlayerScripts;
 using UnityEngine;
 
 namespace UI
@@ -16,8 +17,7 @@ namespace UI
 
         void UpdatePauseMenu()
         {
-            Debug.Log("Test");
-            gameObject.SetActive(GameManager.Instance.GamePaused);
+            gameObject.SetActive(GameManager.Instance.GamePaused || Player.Body.IsDead);
         }
 
         public void ResumeBtn()

@@ -34,12 +34,9 @@ namespace PlayerScripts
             }
 
             Instance = this;
-        }
-
-        private void Start()
-        {
             body = GetComponent<PlayerBody>();
             inventory = GetComponent<PlayerInventory>();
         }
+
     }
 }
