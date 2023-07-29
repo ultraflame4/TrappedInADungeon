@@ -105,6 +105,7 @@ namespace Core.Entities
         /// <param name="stun">Whether to stun enemy when dealing damage</param>
         public void Damage(float amt, bool stun = true)
         {
+            if (IsDead) return;
             amt *= Mathf.Min(0.1f, 1 - Defense / (Defense + 200));
             DamageRaw(amt, stun);
         }
