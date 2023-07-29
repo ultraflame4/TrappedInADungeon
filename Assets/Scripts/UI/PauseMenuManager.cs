@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace UI
 {
+    /// <summary>
+    /// The Pause Menu also handles death
+    /// </summary>
     public class PauseMenuManager : MonoBehaviour
     {
         private void Awake()

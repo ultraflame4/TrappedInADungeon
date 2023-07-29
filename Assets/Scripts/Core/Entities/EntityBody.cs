@@ -47,7 +47,7 @@ namespace Core.Entities
         public int Level = 1; // Level of entity
         
         public event Action DeathEvent; // Event that is invoked when entity dies
-        private bool _isAlreadyDead = false;
+        public bool IsDead { get; private set; } = false;
 
         public delegate void OnDamagedHandler(float amt, bool stun); // Event handler for when entity takes damage
 
@@ -118,9 +118,9 @@ namespace Core.Entities
         {
             CurrentHealth.value -= amt;
             DamagedEvent?.Invoke(amt, stun);
-            if (CurrentHealth.value <= 0 && !_isAlreadyDead)
+            if (CurrentHealth.value <= 0 && !IsDead)
             {
-                _isAlreadyDead = true;
+                IsDead = true;
                 DeathEvent?.Invoke();
             }
         }

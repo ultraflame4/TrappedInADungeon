@@ -5,6 +5,7 @@ using Core.Utils;
 using EasyButtons;
 using Level;
 using Newtonsoft.Json;
+using Player;
 using UI.SceneTransition;
 using UnityEditor;
 using UnityEngine;
