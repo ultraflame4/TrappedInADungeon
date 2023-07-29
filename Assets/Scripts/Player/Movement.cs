@@ -10,11 +10,13 @@ using UnityEngine.Serialization;
 
 namespace PlayerScripts
 {
+    [RequireComponent(typeof(Rigidbody2D)),RequireComponent(typeof(Animator)),RequireComponent(typeof(PlayerBody))]
     public class Movement : MonoBehaviour
     {
-        public Rigidbody2D rb;
-        public Animator anim;
-        public PlayerBody body;
+        private Rigidbody2D rb;
+        private Animator anim;
+        private PlayerBody body;
+        
         [Header("Movement")]
         [ReadOnly] public Vector3 currentDirection = Vector3.right;
         public float moveSpeed = 10f;
@@ -42,6 +44,13 @@ namespace PlayerScripts
         private static readonly int IsJumping = Animator.StringToHash("IsJumping");
 
         private float dashCost => body.Mana * dashManaCostPercent;
+        private void Awake()
+        {
+            body = GetComponent<PlayerBody>();
+            anim = GetComponent<Animator>();
+            rb = GetComponent<Rigidbody2D>();
+        }
+
         private void Start()
         {
             jumpsLeft = jumpTimes;
