@@ -7,10 +7,11 @@ namespace Core.Sound
     [Serializable]
     public class SoundEffect
     {
-        [SerializeField]
+        [SerializeField, Tooltip("The clip for the audio source component")]
         private AudioClip clip;
-        [SerializeField, Range(0,1)]
+        [SerializeField, Range(0,1), Tooltip("The volume to initialise the audio source component with.")]
         private float volume; // initial
+
         public AudioSource audioSrc { get; private set; }
 
         /// <summary>
@@ -24,6 +25,5 @@ namespace Core.Sound
              audioSrc.loop = false;
              audioSrc.volume = volume;
         }
-        
     }
 }
