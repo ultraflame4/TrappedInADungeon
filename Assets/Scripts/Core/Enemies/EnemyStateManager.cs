@@ -7,12 +7,14 @@ using UnityEngine.Serialization;
 
 namespace Core.Enemies
 {
-    [RequireComponent(typeof(EntityBody)), RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(SpriteRenderer)),RequireComponent(typeof(EntityBody)), RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Animator))]
     public class EnemyStateManager : MonoBehaviour
     {
         public Animator animator { get; private set; }
         public Rigidbody2D rb { get; private set; }
         public EntityBody body { get; private set; }
+        private SpriteRenderer spriteRenderer;
+        
 
         public EnemyStateBehaviour Idle;
         public EnemyStateBehaviour Alert;
@@ -27,6 +29,7 @@ namespace Core.Enemies
 
         private void Start()
         {
+            spriteRenderer = GetComponent<SpriteRenderer>();
             body = GetComponent<EntityBody>();
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
@@ -37,6 +40,7 @@ namespace Core.Enemies
             Stunned?.StateInit(this);
 
             body.DamagedEvent += OnDamaged;
+            body.DeathEvent += OnDeath;
             TransitionState(EnemyStates.PATROL);
         }
 
@@ -48,6 +52,12 @@ namespace Core.Enemies
             }
         }
 
+        void OnDeath()
+        {
+            TransitionState(EnemyStates.DEAD);
+            rb.velocity= Vector2.zero;
+            spriteRenderer.enabled = false;
+        }
 
         /// <summary>
         /// Call this to transition to a new state.
@@ -71,6 +81,8 @@ namespace Core.Enemies
             {
                 animator.SetTrigger("Stun");
             }
+            
+            if (currentState == EnemyStates.DEAD) return; // Dead no need to enter another state
 
             if (currentBehaviour is null)
             {
@@ -95,6 +107,8 @@ namespace Core.Enemies
                     return Alert;
                 case EnemyStates.ATTACK:
                     return Attack;
+                case EnemyStates.DEAD:
+                    return null;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }

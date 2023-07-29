@@ -12,6 +12,8 @@
         ALERT,
 
         // Attacking player
-        ATTACK
+        ATTACK,
+        // Is dead
+        DEAD
     }
 }

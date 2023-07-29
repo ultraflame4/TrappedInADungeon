@@ -132,6 +132,7 @@ MonoBehaviour:
   BaseAttack: 200
   BaseSpeed: 300
   BaseDefense: 0
+  ticksPerSecond: 2
   <CurrentHealth>k__BackingField:
     _value: 0
   Level: 1
@@ -147,8 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bec6353430b4d6aa5d08b0eb016fd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 6410650209128400050}
-  rb: {fileID: 5808688839359174469}
   Idle: {fileID: 1210255643535073663}
   Alert: {fileID: 750266570400352130}
   Attack: {fileID: 75553948717123761}
@@ -213,6 +212,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodParticles: {fileID: 527914753178123709, guid: b4a6ede691e80394a8569ff556cbb00a, type: 3}
   damageNumbers: {fileID: 7692115672555502504, guid: 076a9c9b748f055438c14f0d05fefbd2, type: 3}
+  soundEffect:
+    clip: {fileID: 8300000, guid: f066f3ebedc79dc429b921d5076e5491, type: 3}
+    volume: 0.52
 --- !u!50 &5808688839359174469
 Rigidbody2D:
   serializedVersion: 4
@@ -253,6 +255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeadShadowPrefab: {fileID: 7715831331796477733, guid: 568f0fee3973e1d41bf8aec4c81585b6, type: 3}
+  DeathSoundEffect:
+    clip: {fileID: 8300000, guid: 5f81bdff582c2fc4488e1129bc037245, type: 3}
+    volume: 0.525
 --- !u!61 &5747528118239820976
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -312,4 +317,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expBallPrefab: {fileID: 5029425239786961008, guid: cdcd62e37ebe53c4ab11e41bf2a52781, type: 3}
   droppedItemPrefab: {fileID: 2045963181314464266, guid: ff08c33cd2892d94e99a8f8549454754, type: 3}
-  config: {fileID: 11400000, guid: dfda6ce909c28d443b43c4a36a5f6ccc, type: 2}

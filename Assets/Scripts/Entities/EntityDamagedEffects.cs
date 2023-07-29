@@ -1,5 +1,6 @@
 ﻿using System;
 using Core.Entities;
+using Core.Sound;
 using UnityEngine;
 
 namespace Entities
@@ -12,12 +13,17 @@ namespace Entities
     {
         public GameObject bloodParticles;
         public GameObject damageNumbers;
+
+        [SerializeField]
+        private SoundEffect soundEffect;
         private EntityBody entityBody;
         private static int dmgNumberCount = 0;
         private const int maxDmgNumberCount = 100;
 
-        private void Start()
+        private void Awake()
         {
+            soundEffect.Init(gameObject);
+            
             entityBody = GetComponent<EntityBody>();
             entityBody.DamagedEvent+= OnDamaged;
         }
@@ -32,6 +38,7 @@ namespace Entities
             damageNumber.number = amt;
             damageNumber.targetMaxHealth = entityBody.Health;
             damageNumber.destroyCallback = () => { dmgNumberCount--; };
+            if (!soundEffect.audioSrc.isPlaying) soundEffect.audioSrc.Play();
         }
     }
 }

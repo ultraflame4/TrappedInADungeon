@@ -1,4 +1,6 @@
-﻿using Core.Entities;
+﻿using System;
+using Core.Entities;
+using Core.Sound;
 using Entities;
 using PlayerScripts;
 using UnityEngine;
@@ -8,7 +10,10 @@ namespace Weapon
     [RequireComponent(typeof(WeaponController))]
     public class WeaponHit : MonoBehaviour
     {
+        [SerializeField]
         private WeaponController controller;
+        
+
         private void Start()
         {
             controller = GetComponent<WeaponController>();
