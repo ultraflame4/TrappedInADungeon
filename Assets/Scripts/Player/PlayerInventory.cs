@@ -25,6 +25,9 @@ namespace PlayerScripts
         public ItemScriptableObject debugSkill;
         [Tooltip("This event is invoked whenever an item is added or removed from the inventory")]
         public event Action InventoryUpdate;
+        /// <summary>
+        /// Returns a shallow list copy of all items in the inventory. Safe to loop over.
+        /// </summary>
         [Tooltip("All items in the inventory")]
         public List<ItemInstance> AllItems => items.ToList();
 

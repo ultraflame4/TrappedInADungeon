@@ -10,7 +10,7 @@ namespace Loot
     public class DroppedLootItem : MonoBehaviour
     {
         private SpriteRenderer spriteRenderer;
-        private ItemInstance itemInstance;
+        public ItemInstance itemInstance { get; private set; }
         private void Start()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
@@ -22,11 +22,6 @@ namespace Loot
             itemInstance = item;
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            if (!other.collider.CompareTag("Player")) return;
-            other.collider.GetComponent<PlayerInventory>().AddItem(itemInstance);
-            Destroy(gameObject);
-        }
+
     }
 }

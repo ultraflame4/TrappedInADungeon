@@ -18120,7 +18120,7 @@ GameObject:
   - component: {fileID: 3747500502270974231}
   - component: {fileID: 7960193540920185863}
   - component: {fileID: 7960193540920185865}
-  - component: {fileID: 7960193540920185866}
+  - component: {fileID: 7960193540920185868}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -18338,20 +18338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeadShadowPrefab: {fileID: 7715831331796477733, guid: 568f0fee3973e1d41bf8aec4c81585b6, type: 3}
---- !u!114 &7960193540920185866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7112775179100180397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7a5ff1e7eeb47be8d15ee8916043b0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Inventory>k__BackingField: {fileID: 0}
-  <Body>k__BackingField: {fileID: 0}
+  droppedItemPrefab: {fileID: 2045963181314464266, guid: ff08c33cd2892d94e99a8f8549454754, type: 3}
 --- !u!114 &7960193540920185867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18362,6 +18349,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f67817e00661990418bbd60d7f3a08f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7960193540920185868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112775179100180397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d681384f302f4489825fc088c1a423d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!81 &8672299159088187458
