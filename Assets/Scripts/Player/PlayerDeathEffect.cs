@@ -1,4 +1,5 @@
-﻿using Core.Item;
+﻿using System.Collections;
+using Core.Item;
 using Core.UI;
 using Loot;
 using Unity.VisualScripting;
@@ -23,6 +24,8 @@ namespace PlayerScripts
             spriteRenderer = GetComponent<SpriteRenderer>();
             body.DeathEvent += OnDeath;
         }
+        
+
 
         private void OnDeath()
         {
@@ -35,10 +38,11 @@ namespace PlayerScripts
             foreach (ItemInstance item in inventory.AllItems)
             {
                 DroppedLootItem lootItem = Instantiate(droppedItemPrefab, transform.position, Quaternion.identity).GetComponent<DroppedLootItem>();
+                lootItem.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1f,1f), Random.value);
                 lootItem.SetItem(item);
                 inventory.RemoveItem(item);
             }
-            
+            inventory.ResetInventory(); // Reset the player inventory
         }
     }
 }

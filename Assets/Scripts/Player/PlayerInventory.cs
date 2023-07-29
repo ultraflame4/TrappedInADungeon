@@ -14,8 +14,11 @@ namespace PlayerScripts
 
     public class PlayerInventory : MonoBehaviour, ISaveHandler
     {
+        [field: SerializeField, Tooltip("List of items to spawn with if player has no items.")]
+        public ItemInstance[] defaultItems { get; private set; }
         [SerializeField,JsonProperty]
         private List<ItemInstance> items = new ();
+        
 
         [Tooltip("The inventory slots in the ui. Automatically found by the script")]
         public InventorySlot[] itemSlots;
@@ -34,8 +37,9 @@ namespace PlayerScripts
         private void Awake()
         {
             GameSaveManager.AddSaveHandler("player.inventory",this);
+            ResetInventory();
         }
-
+        
         void Start()
         {
             // Send out event at end of this frame to force child listeners to update
@@ -47,6 +51,14 @@ namespace PlayerScripts
             // Wait till end of frame to wait for listener registration
             yield return new WaitForEndOfFrame();
             InventoryUpdate?.Invoke();
+        }
+
+        /// <summary>
+        /// Reset inventory to the default items
+        /// </summary>
+        public void ResetInventory()
+        {
+            items = defaultItems.ToList();
         }
 
         /// <summary>

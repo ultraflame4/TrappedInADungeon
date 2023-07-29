@@ -615,6 +615,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da44385464e4ca082b95b41b73fd491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &158722669 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1731484373764970664, guid: 560b0a654160f514b8ce4ce86aa1f241, type: 3}
+  m_PrefabInstance: {fileID: 1747059097}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &307904244
 GameObject:
   m_ObjectHideFlags: 0
@@ -8013,7 +8024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14150941, g: 0.0233624, b: 0.0680104, a: 0.98039216}
+  m_Color: {r: 0.509434, g: 0, b: 0.14504723, a: 0.18431373}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8051,7 +8062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <titleText>k__BackingField: {fileID: 307904246}
-  <resumeText>k__BackingField: {fileID: 0}
+  <resumeText>k__BackingField: {fileID: 158722669}
 --- !u!1001 &1039374597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17549,11 +17560,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7854447c723489c864e1ff72a7c8f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
+  <defaultItems>k__BackingField:
   - <item>k__BackingField: {fileID: 11400000, guid: a577bf1a8fa26d7458b090d358de2e87, type: 2}
     <Count>k__BackingField: 1
   - <item>k__BackingField: {fileID: 11400000, guid: 6c1e9d1108d1d824b9f96cf79952485f, type: 2}
     <Count>k__BackingField: 8
+  items: []
   itemSlots:
   - {fileID: 2015262873}
   - {fileID: 507519533}

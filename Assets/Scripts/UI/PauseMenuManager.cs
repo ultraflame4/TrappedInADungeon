@@ -36,7 +36,7 @@ namespace UI
 
             if (resumeText != null)
             {
-                titleText.text = Player.Body.IsDead ? "Respawn" : "Resume";
+                resumeText.text = Player.Body.IsDead ? "Respawn" : "Resume";
             }
         }
 
