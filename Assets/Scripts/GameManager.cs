@@ -1,16 +1,12 @@
 using System;
 using Core.Save;
-using Core.UI;
 using Core.Utils;
 using EasyButtons;
-using Level;
 using Newtonsoft.Json;
-using PlayerScripts;
 using UI.SceneTransition;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
+
 
 [JsonObject(MemberSerialization.OptIn)]
 public class GameManager : MonoBehaviour, ISaveHandler
@@ -25,6 +21,8 @@ public class GameManager : MonoBehaviour, ISaveHandler
 
     [JsonProperty]
     public static int CurrentAreaIndex { get; private set; } = 0;
+    [JsonProperty]
+    public int PlayerDeaths { get; private set; }  = 0;
 
     public VolatileValue<bool> GamePaused = new();
     public event Action GenerateLevelEvent;
@@ -130,6 +128,17 @@ public class GameManager : MonoBehaviour, ISaveHandler
     public void LoadPrevArea()
     {
         CurrentAreaIndex = Mathf.Max(0, CurrentAreaIndex - 1);
+        sceneTrans.TransitionToScene("GameLevel");
+    }
+
+    /// <summary>
+    /// Respawns the player. (Which sends them back to the first area)
+    /// </summary>
+    /// <param name="notDeath">When true, respawns the player without adding to the death counter.</param>
+    public void RespawnPlayer(bool notDeath = false)
+    {
+        CurrentAreaIndex = 0;
+        if (!notDeath) PlayerDeaths += 1;
         sceneTrans.TransitionToScene("GameLevel");
     }
 

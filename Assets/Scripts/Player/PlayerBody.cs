@@ -33,12 +33,18 @@ namespace PlayerScripts
 
             CurrentMana.validator = (value, newValue) => Mathf.Min(Mana, newValue);
             GameSaveManager.AddSaveHandler("player.body",this);
+            DeathEvent += OnDeath;
         }
 
         protected override void Start()
         {
             base.Start();
             CurrentMana.value = Mana;
+        }
+
+        void OnDeath()
+        {
+            CurrentHealth.value = Health;
         }
 
         private void Update()
