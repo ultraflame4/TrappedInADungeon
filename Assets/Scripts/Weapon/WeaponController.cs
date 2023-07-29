@@ -2,6 +2,7 @@ using System.ComponentModel;
 using Core.Item;
 using EasyButtons;
 using Item;
+using PlayerScripts;
 using UnityEngine;
 
 namespace Weapon
@@ -28,10 +29,7 @@ namespace Weapon
 
         [field: SerializeField, Tooltip("Current combo counter"), ReadOnly(true)]
         public int ComboCounter { get; private set; } = 0;
-
-        [HideInInspector]
-        public Transform player;
-
+        
         private float lastAttackTime = 0f;
         private static readonly int AttackTrigger = Animator.StringToHash("Attack");
         private static readonly int AttackIndex = Animator.StringToHash("AttackIndex");
@@ -53,8 +51,6 @@ namespace Weapon
                 gateway.OnItemUsed += Attack;
                 gateway.OnItemReleased += AttackRelease;
             }
-
-            player = GameObject.FindWithTag("Player").transform;
         }
 
 
@@ -63,13 +59,13 @@ namespace Weapon
             if (IsAttacking) // Using if else statement to avoid many tenery operators (?:) checking for IsAttacking
             {
                 float offset = -attack_offset;
-                transform.position = Vector3.Lerp(transform.position, player.transform.position - player.transform.right * offset, followConfig.attackTravelSpeed);
-                transform.rotation = player.transform.rotation;
+                transform.position = Vector3.Lerp(transform.position, Player.Transform.position - Player.Transform.right * offset, followConfig.attackTravelSpeed);
+                transform.rotation = Player.Transform.rotation;
             }
             else
             {
                 float offset = followConfig.followOffset + gateway.slot.slotIndex * followConfig.indexOffset;
-                transform.position = Vector3.Lerp(transform.position, player.transform.position - player.transform.right * offset, followConfig.travelSpeed);
+                transform.position = Vector3.Lerp(transform.position, Player.Transform.position - Player.Transform.right * offset, followConfig.travelSpeed);
                 transform.rotation = Quaternion.Euler(0, 0, RotationWhenIdle);
             }
         }

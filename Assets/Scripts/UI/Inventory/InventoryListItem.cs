@@ -23,16 +23,11 @@ namespace UI.Inventory
         public TextMeshProUGUI description;
         public InvSlotItemInstance itemInstance { get; private set; }
         private bool isHovered;
-        private PlayerInventory playerInventory;
 
-        private void Start()
-        {
-            playerInventory = GameObject.FindWithTag("Player").GetComponent<PlayerInventory>();
-        }
 
         public void OnDeleteBtnClick()
         {
-            playerInventory.RemoveItem(itemInstance.itemInstance);
+            Player.Inventory.RemoveItem(itemInstance.itemInstance);
         }
 
         /// <summary>

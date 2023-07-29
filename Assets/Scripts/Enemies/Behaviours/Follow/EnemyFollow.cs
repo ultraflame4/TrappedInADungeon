@@ -1,5 +1,6 @@
 ﻿using Core.Enemies;
 using Core.Entities;
+using PlayerScripts;
 using UnityEngine;
 
 namespace Enemies.Behaviours.Follow
@@ -9,8 +10,7 @@ namespace Enemies.Behaviours.Follow
         // references
         private EntityBody body;
         private Rigidbody2D rb;
-        private Transform player;
-        
+
         [Tooltip("Should the enemy be allowed to fly?")]
         public bool allowFlight;
         [Tooltip("How far will the enemy follow the player before stopping")]
@@ -33,7 +33,6 @@ namespace Enemies.Behaviours.Follow
         private bool attackAnimPlaying => stateManager.animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
         private void Start()
         {
-            player = GameObject.FindWithTag("Player").transform;
             body = GetComponent<EntityBody>();
             rb = GetComponent<Rigidbody2D>();
             UpdateDirections();
@@ -46,7 +45,7 @@ namespace Enemies.Behaviours.Follow
         void UpdateDirections()
         {
             // Direction to player
-            directionToPlayer = (player.position - transform.position).normalized;
+            directionToPlayer = (Player.Transform.position - transform.position).normalized;
             // Direction to player but snapped to the x axis. (y=0)
             // Using boolean logic to determine whether to snap to 1 or -1 else when x=0, the Vector normalisation will freak out between 1 and -1
             directionToPlayerSnapped = new Vector3(directionToPlayer.x > 0 ? 1 : -1, 0);
@@ -62,7 +61,7 @@ namespace Enemies.Behaviours.Follow
             if (!stateManager.isGrounded && !allowFlight) return;
 
             // If player is out of range, go back to patrol
-            if (Vector3.Distance(transform.position, player.position) > followRange)
+            if (Vector3.Distance(transform.position, Player.Transform.position) > followRange)
             {
                 rb.velocity = Vector2.zero; // Stop moving when player out of range
                 stateManager.TransitionState(EnemyStates.PATROL);
@@ -78,7 +77,7 @@ namespace Enemies.Behaviours.Follow
 
             Vector3 vel = (allowFlight ? directionToPlayer : directionToPlayerSnapped) * Mathf.Max(0,body.Speed);
             // Get distance to player and subtract attack distance
-            float distance = Vector3.Distance(transform.position, player.position) - stopDist + stopDistBuffer;
+            float distance = Vector3.Distance(transform.position, Player.Transform.position) - stopDist + stopDistBuffer;
             // Clamp distance to 0-1. distFactor makes velocity lower the closer the enemy is to the player
             float distFactor = Mathf.Clamp(Mathf.Pow(2 * distance, 2), 0, 1);
             // Scale velocity by distFactor
@@ -98,14 +97,14 @@ namespace Enemies.Behaviours.Follow
 
         public bool CheckPlayerWithinAttackRange()
         {
-            if (Vector3.Distance(transform.position, player.position) <= stopDist)
+            if (Vector3.Distance(transform.position, Player.Transform.position) <= stopDist)
             {
                 // If the enemy should be facing the player when attacking, check if the player is within 90 degrees of the enemy's right
                 if (checkDirection && Vector2.Angle(directionToPlayer, transform.right) >= 90) return false;
                 stateManager.TransitionState(EnemyStates.ATTACK);
                 return true;
             }
-            if (!allowFlight && Mathf.Abs(player.position.x - transform.position.x) <= stopDist)
+            if (!allowFlight && Mathf.Abs(Player.Transform.position.x - transform.position.x) <= stopDist)
             {
                 stateManager.TransitionState(EnemyStates.ATTACK);
                 return true;

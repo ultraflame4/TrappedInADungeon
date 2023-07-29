@@ -49,7 +49,6 @@ namespace UI.Inventory
         private InputAction inputAction;
         private InvSlotItemInstance currentItem = null;
         private ItemPrefabController itemGateway = null;
-        private PlayerInventory playerInventory;
         public InvSlotItemInstance Item => currentItem;
 
         /// <summary>
@@ -69,24 +68,23 @@ namespace UI.Inventory
         private void Start()
         {
             // We need to find the input action from the instance of GameControls
-            playerInventory = GameObject.FindWithTag("Player").GetComponent<PlayerInventory>();
             inputAction = GameManager.Controls.FindAction(inputRef.action.id.ToString(), true);
-            playerInventory.InventoryUpdate += FirstInventoryUpdate;
-            playerInventory.InventoryUpdate += OnInventoryUpdate;
+            Player.Inventory.InventoryUpdate += FirstInventoryUpdate;
+            Player.Inventory.InventoryUpdate += OnInventoryUpdate;
         }
 
         void FirstInventoryUpdate()
         {
             if (CurrentItemInventoryIndex < 0) return;
             SetItem(InventoryPanel.Instance.GetInvItemByIndex(CurrentItemInventoryIndex));
-            playerInventory.InventoryUpdate -= FirstInventoryUpdate;
+            Player.Inventory.InventoryUpdate -= FirstInventoryUpdate;
         }
 
         void OnInventoryUpdate()
         {
 
             // If the item instance has been removed from the inventory, set this slot to empty.
-            if (!playerInventory.Contains(currentItem?.itemInstance))
+            if (!Player.Inventory.Contains(currentItem?.itemInstance))
             {
                 SetItem(null);
             }
@@ -181,7 +179,7 @@ namespace UI.Inventory
                 item.assignedSlot = this; // Set reference (for new item) before setting this slot
             }
             currentItem = item;
-            CurrentItemInventoryIndex = playerInventory.IndexOf(currentItem?.itemInstance);
+            CurrentItemInventoryIndex = Player.Inventory.IndexOf(currentItem?.itemInstance);
             itemImage.SetSprite(currentItem?.itemInstance.sprite);
             onItemChanged?.Invoke(currentItem?.itemInstance);
         }

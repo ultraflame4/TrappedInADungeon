@@ -4,6 +4,7 @@ using Cinemachine;
 using Core.UI;
 using Core.Utils;
 using EasyButtons;
+using PlayerScripts;
 using UnityEngine;
 
 namespace Level
@@ -21,8 +22,7 @@ namespace Level
         [Tooltip("The area index, enemy level scales of this.")]
         public int AreaIndex = 0;
         private ParallaxBackground background;
-        private EnemySpawnManager enemySpawnManager;
-        private Transform player;
+        private EnemySpawnManager enemySpawnManager; 
         private PortalInteraction startPortal;
         private PortalInteraction endPortal;
 
@@ -54,10 +54,6 @@ namespace Level
             NotificationManager.Instance.PushNotification($"<size=150%>Entered Area {AreaIndex}</size>");
         }
         
-        private void Start()
-        {
-            player = GameObject.FindWithTag("Player").transform;
-        }
 
         /// <summary>
         /// Retrieves the required components for the level manager.
@@ -91,9 +87,9 @@ namespace Level
 
             PlaceLevelPortals(levelPortalPrefab);
             // spawn player at start portal
-            if (player != null) // Transport player to start of level.
+            if (Player.Transform != null) // Transport player to start of level.
             {
-                player.transform.position = startPortal.transform.position;
+                Player.Transform.position = startPortal.transform.position;
             }
            
         }

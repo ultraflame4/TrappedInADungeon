@@ -10,11 +10,9 @@ namespace Loot
         public float expValue;
         public float moveDelaySecs = 0.3f;
         private bool move = false;
-        private PlayerBody player;
 
         private void Start()
         {
-            player = GameObject.FindWithTag("Player").GetComponent<PlayerBody>();
             StartCoroutine(MoveToPlayer());
         }
 
@@ -26,14 +24,14 @@ namespace Loot
         private void FixedUpdate()
         {
             if (!move) return;
-            transform.position = Vector3.Lerp(transform.position,player.transform.position , 0.1f);
+            transform.position = Vector3.Lerp(transform.position,Player.Transform.position , 0.1f);
         }
 
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.CompareTag("Player")) return;
-            player.AddExperiencePoints(expValue);
+            Player.Body.AddExperiencePoints(expValue);
             Destroy(gameObject);
         }
     }

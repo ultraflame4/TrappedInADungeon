@@ -2,6 +2,7 @@
 using Core.Enemies;
 using Core.Entities;
 using Enemies.Behaviours.Follow;
+using PlayerScripts;
 using UnityEngine;
 
 namespace Enemies.Behaviours.Attacks
@@ -23,7 +24,6 @@ namespace Enemies.Behaviours.Attacks
         [Tooltip("Offset of the circle used to check if the player is within damage range")]
         public Vector2 playerCheckOffset;
         
-        private Transform player;
         private Vector3 targetPos; // target position to dive from. Should always be 45 degrees above player
         private Vector2 diveTarget; // The target position to dive to. Aka the player's last calculated position
         private bool isNavigating = false; // whether the enemy is navigating to the target position
@@ -33,7 +33,6 @@ namespace Enemies.Behaviours.Attacks
         private Coroutine diveAttackCoroutine;
         private void Start()
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
             follow = GetComponent<EnemyFollow>();
             rb = GetComponent<Rigidbody2D>();
             body = GetComponent<EntityBody>();
@@ -41,8 +40,8 @@ namespace Enemies.Behaviours.Attacks
 
         public override void StateEnter()
         {
-            Vector3 toPlayer = player.position - transform.position;
-            targetPos = player.transform.position + new Vector3(toPlayer.x > 0 ? 1 : -1, 1, 0);
+            Vector3 toPlayer = Player.Transform.position - transform.position;
+            targetPos = Player.Transform.position + new Vector3(toPlayer.x > 0 ? 1 : -1, 1, 0);
             isNavigating = true;
         }
 
@@ -109,7 +108,7 @@ namespace Enemies.Behaviours.Attacks
         {
             yield return new WaitForSeconds(diveWaitTime);
             follow.RotateTowardsPlayer();
-            diveTarget = player.position;
+            diveTarget = Player.Transform.position;
             isDiving = true;
             stateManager.SetAttackAnim(true);
         }
@@ -124,7 +123,7 @@ namespace Enemies.Behaviours.Attacks
             Collider2D playerCollider = Physics2D.OverlapCircle(playerCheckPos, playerCheckRadius, LayerMask.GetMask("Player"));
             if (playerCollider is not null)
             {
-                player.GetComponent<EntityBody>().Damage(body.Attack);
+                Player.Body.Damage(body.Attack);
                 EndDive(); // End the dive attack if the player is hit
             }
             
