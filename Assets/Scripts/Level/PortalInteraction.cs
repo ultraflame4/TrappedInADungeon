@@ -21,6 +21,7 @@ namespace Level
         private float initialRadialMulti;
         private float initialEmissionRate;
         private ParticleSystem particleSys;
+        private bool alreadyLoading = false;
 
         private void Start()
         {
@@ -48,6 +49,13 @@ namespace Level
 
         void OnInteractedWith()
         {
+            if (alreadyLoading)
+            {
+                NotificationManager.Instance.PushNotification("<color=#f5c400>Already loading! Please Wait!</color>");
+                return;
+            }
+
+
             if (!IsStartPortal)
             {
                 int enemiesLeft = GetEnemiesCount();
@@ -57,6 +65,9 @@ namespace Level
                     NotificationManager.Instance.PushNotification($"<color=\"red\">Enemies left: ",addData:$"{enemiesLeft}</color>");
                     return;
                 }
+
+                alreadyLoading = true;
+                NotificationManager.Instance.PushNotification($"Moving to next area - Area {GameManager.CurrentAreaIndex+1}");
                 GameManager.Instance.LoadNextArea();
                 return;
             }
@@ -66,7 +77,8 @@ namespace Level
                 NotificationManager.Instance.PushNotification("<color=\"red\">In 1st area! No more previous area!</color>");
                 return;
             }
-
+            alreadyLoading = true;
+            NotificationManager.Instance.PushNotification($"Moving to previous area - Area {GameManager.CurrentAreaIndex-1}");
             GameManager.Instance.LoadPrevArea();
         }
     }
