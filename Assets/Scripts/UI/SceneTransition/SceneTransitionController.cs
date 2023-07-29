@@ -50,6 +50,7 @@ namespace UI.SceneTransition
             effectB.ClearOut();
             yield return effectA.FadeToClearCoroutine();
             image.raycastTarget = false; // Disable so that the player can interact with ui
+            
         }
         IEnumerator FadeInCoroutine()
         {
