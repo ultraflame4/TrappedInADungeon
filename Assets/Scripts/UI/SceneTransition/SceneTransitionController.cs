@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Core.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,16 +13,15 @@ namespace UI.SceneTransition
     {
         public TransitionEffect effectA;
         public TransitionEffect effectB;
-        public TextMeshProUGUI loadingText;
-        public Image logo;
+        public GameObject contents;
+        public VolatileValue<float> loadProgress { get; private set; } = new();
         private Image image;
         private Coroutine currentCoroutine;
         
         private void Start()
         {
             image = GetComponent<Image>();
-            loadingText.gameObject.SetActive(false);
-            logo.gameObject.SetActive(false);
+            contents.SetActive(false);
             effectA.BlackOut();
             effectB.BlackOut();
         }
@@ -44,11 +44,9 @@ namespace UI.SceneTransition
         
         IEnumerator FadeOutCoroutine()
         {
-            loadingText.gameObject.SetActive(true);
-            logo.gameObject.SetActive(true);
+            contents.SetActive(true);
             yield return effectB.FadeToBlackCoroutine();
-            loadingText.gameObject.SetActive(false);
-            logo.gameObject.SetActive(false);
+            contents.SetActive(false);
             effectB.ClearOut();
             yield return effectA.FadeToClearCoroutine();
             image.raycastTarget = false; // Disable so that the player can interact with ui
@@ -59,8 +57,7 @@ namespace UI.SceneTransition
             image.raycastTarget = true; // Block ui interaction
             yield return effectA.FadeToBlackCoroutine();
             effectB.BlackOut();
-            loadingText.gameObject.SetActive(true);
-            logo.gameObject.SetActive(true);
+            contents.SetActive(true);
             yield return effectB.FadeToClearCoroutine();
         }
 
@@ -77,11 +74,12 @@ namespace UI.SceneTransition
             asyncOperation.allowSceneActivation = false;
             while (!asyncOperation.isDone)
             {
-                loadingText.text = $"Loading - {asyncOperation.progress * 100}%";
+                loadProgress.value = asyncOperation.progress;
                 if (asyncOperation.progress >= 0.9f) break;
                 yield return null;
             }
-
+            loadProgress.value = 1f;
+            yield return new WaitForSecondsRealtime(0.5f);
             asyncOperation.allowSceneActivation = true;
             yield return null;
         }
