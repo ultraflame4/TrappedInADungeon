@@ -1,5 +1,5 @@
 ﻿using Core.Item;
-using Player;
+using PlayerScripts;
 using UnityEngine;
 
 namespace Item
@@ -8,8 +8,7 @@ namespace Item
     public abstract class ItemPrefabScript : MonoBehaviour
     {
         protected ItemPrefabController gateway { get; private set; }
-        protected PlayerBody playerBody => gateway.PlayerBody;
-        protected Transform player => gateway.Player;
+        
         protected ItemInstance itemInstance => gateway.slot.Item.itemInstance;
 
         void Start()

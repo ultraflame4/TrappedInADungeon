@@ -4,7 +4,7 @@ using Core.Item;
 using Core.Save;
 using Core.UI;
 using Newtonsoft.Json;
-using Player;
+using PlayerScripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;

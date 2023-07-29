@@ -1,5 +1,6 @@
 ﻿using Core.Item;
 using Item;
+using PlayerScripts;
 using UnityEngine;
 
 namespace Projectile
@@ -15,7 +16,7 @@ namespace Projectile
             gateway = GetComponent<ItemPrefabController>();
             gateway.OnItemUsed += () =>
             {
-                var projectile = Instantiate(ProjectilePrefab, gateway.Player.position, gateway.Player.rotation).GetComponent<Projectile>();
+                var projectile = Instantiate(ProjectilePrefab, Player.Transform.position, Player.Transform.rotation).GetComponent<Projectile>();
                 projectile.projectileStats = gateway.slot.Item.itemInstance;
             };
         }

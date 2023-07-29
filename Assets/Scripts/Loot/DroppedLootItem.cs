@@ -1,6 +1,6 @@
 ﻿using System;
 using Core.Item;
-using Player;
+using PlayerScripts;
 using UI.Inventory;
 using UnityEngine;
 

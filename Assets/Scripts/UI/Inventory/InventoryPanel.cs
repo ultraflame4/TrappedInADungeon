@@ -4,7 +4,7 @@ using Core.Item;
 using Core.Save;
 using Core.Utils;
 using Newtonsoft.Json;
-using Player;
+using PlayerScripts;
 using UnityEngine;
 
 namespace UI.Inventory

@@ -1,7 +1,7 @@
 ﻿using System;
 using Core.UI;
 using Core.Utils;
-using Player;
+using PlayerScripts;
 using UI.Inventory;
 using UnityEngine;
 
@@ -27,26 +27,17 @@ namespace Item
         [HideInInspector]
         public InventorySlot slot;
 
-        public Transform Player { get; private set; }
-        public PlayerBody PlayerBody { get; private set; }
-        public PlayerInventory PlayerInventory { get; private set; }
 
-        private void Awake()
-        {
-            Player = GameObject.FindWithTag("Player").transform;
-            PlayerBody = Player.GetComponent<PlayerBody>();
-            PlayerInventory = Player.GetComponent<PlayerInventory>();
-        }
 
         public void UseItem()
         {
-            if (PlayerBody.CurrentMana.value < slot.Item.itemInstance.ManaCost)
+            if (PlayerScripts.Player.Body.CurrentMana.value < slot.Item.itemInstance.ManaCost)
             {
                 NotificationManager.Instance.PushNotification("Not enough <color=\"blue\">mana</color>!",
-                    addData:$"<color=\"yellow\">({PlayerBody.CurrentMana.value.ToPrecision(2)}/{slot.Item.itemInstance.ManaCost})</color>");
+                    addData:$"<color=\"yellow\">({PlayerScripts.Player.Body.CurrentMana.value.ToPrecision(2)}/{slot.Item.itemInstance.ManaCost})</color>");
                 return;
             }
-            PlayerBody.CurrentMana.value -= slot.Item.itemInstance.ManaCost;
+            PlayerScripts.Player.Body.CurrentMana.value -= slot.Item.itemInstance.ManaCost;
             
             OnItemUsed?.Invoke();
         }

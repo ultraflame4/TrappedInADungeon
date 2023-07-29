@@ -8,7 +8,7 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Player
+namespace PlayerScripts
 {
     public class Movement : MonoBehaviour
     {

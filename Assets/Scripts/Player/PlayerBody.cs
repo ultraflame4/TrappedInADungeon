@@ -7,7 +7,7 @@ using Core.Utils;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace Player
+namespace PlayerScripts
 {
     [Serializable]
     public class PlayerBody : EntityBody, IMagicStats, ISaveHandler

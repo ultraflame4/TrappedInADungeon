@@ -1,5 +1,5 @@
 ﻿using Core.UI;
-using Player;
+using PlayerScripts;
 using TMPro;
 using UnityEngine;
 

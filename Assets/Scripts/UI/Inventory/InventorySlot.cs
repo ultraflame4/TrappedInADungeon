@@ -7,7 +7,7 @@ using Core.Utils;
 using EasyButtons;
 using Item;
 using Newtonsoft.Json;
-using Player;
+using PlayerScripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;

@@ -9,7 +9,7 @@ using EasyButtons;
 using Newtonsoft.Json;
 using UI.Inventory;
 using UnityEngine;
-namespace Player
+namespace PlayerScripts
 {
 
     public class PlayerInventory : MonoBehaviour, ISaveHandler

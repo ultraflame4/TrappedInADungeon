@@ -3,7 +3,7 @@ using System.Linq;
 using Core.Utils;
 using EasyButtons;
 using Enemies;
-using Player;
+using PlayerScripts;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;

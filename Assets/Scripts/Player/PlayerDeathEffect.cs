@@ -1,7 +1,7 @@
 ﻿using Core.UI;
 using UnityEngine;
 
-namespace Player
+namespace PlayerScripts
 {
     [RequireComponent(typeof(Movement)),RequireComponent(typeof(SpriteRenderer)),RequireComponent(typeof(PlayerBody))]
     public class PlayerDeathEffect : MonoBehaviour

@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Player;
+using PlayerScripts;
 using UnityEngine;
 
 namespace Loot

@@ -1,6 +1,7 @@
 ﻿using System;
 using Core.Item;
 using Item;
+using PlayerScripts;
 using UnityEngine;
 
 namespace Consumable
@@ -10,9 +11,9 @@ namespace Consumable
 
         protected override void OnItemUse()
         {
-            playerBody.CurrentHealth.value += itemInstance.item.health/100*playerBody.Health;
-            playerBody.CurrentMana.value += itemInstance.item.mana/100*playerBody.Mana;
-            gateway.PlayerInventory.AdjustItemCount(itemInstance,itemInstance.Count-1);
+            Player.Body.CurrentHealth.value += itemInstance.item.health/100*Player.Body.Health;
+            Player.Body.CurrentMana.value += itemInstance.item.mana/100*Player.Body.Mana;
+            Player.Inventory.AdjustItemCount(itemInstance,itemInstance.Count-1);
         }
     }
 }
