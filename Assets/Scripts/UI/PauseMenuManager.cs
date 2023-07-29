@@ -1,5 +1,5 @@
-﻿using System;
-using PlayerScripts;
+﻿using PlayerScripts;
+using TMPro;
 using UnityEngine;
 
 namespace UI
@@ -9,15 +9,19 @@ namespace UI
     /// </summary>
     public class PauseMenuManager : MonoBehaviour
     {
+        [field: SerializeField]
+        public TextMeshProUGUI titleText { get; private set; }
         private void Awake()
         {
-            GameManager.Instance.GamePaused.Changed += UpdatePauseMenu;
             gameObject.SetActive(false);
+            GameManager.Instance.GamePaused.Changed += UpdatePauseMenu;
+            Player.Body.DeathEvent += UpdatePauseMenu;
         }
 
         void UpdatePauseMenu()
         {
             gameObject.SetActive(GameManager.Instance.GamePaused || Player.Body.IsDead);
+            titleText.text = Player.Body.IsDead ? "You Died" : "Game Paused";
         }
 
         public void ResumeBtn()

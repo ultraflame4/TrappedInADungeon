@@ -31,13 +31,13 @@ namespace Item
 
         public void UseItem()
         {
-            if (PlayerScripts.Player.Body.CurrentMana.value < slot.Item.itemInstance.ManaCost)
+            if (Player.Body.CurrentMana.value < slot.Item.itemInstance.ManaCost)
             {
                 NotificationManager.Instance.PushNotification("Not enough <color=\"blue\">mana</color>!",
-                    addData:$"<color=\"yellow\">({PlayerScripts.Player.Body.CurrentMana.value.ToPrecision(2)}/{slot.Item.itemInstance.ManaCost})</color>");
+                    addData:$"<color=\"yellow\">({Player.Body.CurrentMana.value.ToPrecision(2)}/{slot.Item.itemInstance.ManaCost})</color>");
                 return;
             }
-            PlayerScripts.Player.Body.CurrentMana.value -= slot.Item.itemInstance.ManaCost;
+            Player.Body.CurrentMana.value -= slot.Item.itemInstance.ManaCost;
             
             OnItemUsed?.Invoke();
         }

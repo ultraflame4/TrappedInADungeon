@@ -20,7 +20,7 @@ namespace Weapon
             if (!other.gameObject.CompareTag("Enemy")) return;
             EntityBody body = other.gameObject.GetComponent<EntityBody>();
             if (body is null) return;
-            body.Damage(PlayerScripts.Player.Body.CalculateAttackDamage(controller.weaponItem.Attack));
+            body.Damage(Player.Body.CalculateAttackDamage(controller.weaponItem.Attack));
         }
         
     }
