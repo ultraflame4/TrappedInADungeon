@@ -46,11 +46,10 @@ namespace Entities
         {
             Instantiate(bloodParticles, transform.position, Quaternion.identity);
             SpawnDamageNumbers(amt);
-            soundEffect.audioSrc.Play();
-            if (entityBody.GetType() == typeof(PlayerBody))
-            {
-                Debug.Log($"Player damaged damaged playing: {soundEffect.audioSrc.isPlaying}");
-            }
+            // Check if audioSource component is enabled -> fixes Cannot Play Audio when component is disabled warnings 
+            // (prob due to it trying to play when the entity died & is being destroyed)
+            if (soundEffect.audioSrc.isActiveAndEnabled) soundEffect.audioSrc.Play();
+            
         }
     }
 }
