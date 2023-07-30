@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Core.Item
 {
+    /// <summary>
+    /// This class handles the conversion of ItemScriptableObject to and from json 
+    /// </summary>
     public class ItemScriptableObjectConverter : JsonConverter<ItemScriptableObject>
     {
         public override void WriteJson(JsonWriter writer, ItemScriptableObject value, JsonSerializer serializer)

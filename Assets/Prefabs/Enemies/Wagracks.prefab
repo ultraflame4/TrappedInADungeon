@@ -257,7 +257,7 @@ MonoBehaviour:
   DeadShadowPrefab: {fileID: 7715831331796477733, guid: 568f0fee3973e1d41bf8aec4c81585b6, type: 3}
   DeathSoundEffect:
     clip: {fileID: 8300000, guid: 5f81bdff582c2fc4488e1129bc037245, type: 3}
-    volume: 0.525
+    volume: 0.3
 --- !u!61 &5747528118239820976
 BoxCollider2D:
   m_ObjectHideFlags: 0

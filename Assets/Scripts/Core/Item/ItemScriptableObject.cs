@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Core.Sound;
 using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
@@ -49,5 +50,8 @@ namespace Core.Item
 
         [Tooltip("The amount of mana this item costs when used.")]
         public float manaCost;
+
+        [Tooltip("The sound this item makes when the item is used.")]
+        public SoundEffect itemUseSoundEffect = null;
     }
 }

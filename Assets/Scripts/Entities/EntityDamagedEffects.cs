@@ -22,7 +22,7 @@ namespace Entities
 
         private void Awake()
         {
-            soundEffect.Init(gameObject);
+            soundEffect.Create(gameObject);
             
             entityBody = GetComponent<EntityBody>();
             entityBody.DamagedEvent+= OnDamaged;

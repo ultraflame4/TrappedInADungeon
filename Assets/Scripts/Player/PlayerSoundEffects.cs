@@ -26,10 +26,10 @@ namespace PlayerScripts
         private void Awake()
         {
             movement = GetComponent<Movement>();
-            walk.Init(gameObject);
-            jump.Init(gameObject);
-            land.Init(gameObject);
-            dash.Init(gameObject);
+            walk.Create(gameObject);
+            jump.Create(gameObject);
+            land.Create(gameObject);
+            dash.Create(gameObject);
             
             movement.JumpEvent += OnJump;
             movement.LandEvent += OnLand;

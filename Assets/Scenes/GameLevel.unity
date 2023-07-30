@@ -17674,7 +17674,7 @@ Transform:
   m_GameObject: {fileID: 5461211443868745954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -53.40782, y: 4.85001, z: -10}
+  m_LocalPosition: {x: -53.059315, y: 4.85001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17808,6 +17808,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodParticles: {fileID: 8110258325600173695, guid: 9aba91a7d9f0a324aaa9b4ead097023b, type: 3}
   damageNumbers: {fileID: 0}
+  soundEffect:
+    clip: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
+    volume: 0.51
 --- !u!1001 &3751199570631572809
 PrefabInstance:
   m_ObjectHideFlags: 0

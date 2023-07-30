@@ -12,18 +12,23 @@ namespace Core.Sound
         [SerializeField, Range(0,1), Tooltip("The volume to initialise the audio source component with.")]
         private float volume; // initial
 
+        /// <summary>
+        /// The latest audio source created for this sound effect.
+        /// </summary>
         public AudioSource audioSrc { get; private set; }
 
         /// <summary>
-        /// Initialises the sound effect
+        /// Initialises the sound effect & adds the audio source component to the game object
         /// </summary>
         /// <param name="gameObject">The game object that has this object</param>
-        public void Init(GameObject gameObject)
+        /// <returns>Audio source created</returns>
+        public AudioSource Create(GameObject gameObject,bool loop = false)
         {
              audioSrc = gameObject.AddComponent<AudioSource>();
              audioSrc.clip = clip;
-             audioSrc.loop = false;
+             audioSrc.loop = loop;
              audioSrc.volume = volume;
+             return audioSrc;
         }
     }
 }

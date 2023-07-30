@@ -29,7 +29,7 @@ namespace Entities
         {
             var shadow = Instantiate(DeadShadowPrefab, transform.position, transform.rotation);
             shadow.GetComponent<SpriteRenderer>().sprite = spriteRenderer.sprite; // Set shadow sprite to the sprite of this entity
-            DeathSoundEffect.Init(shadow); // Add the audio source to the shadow
+            DeathSoundEffect.Create(shadow); // Add the audio source to the shadow
             DeathSoundEffect.audioSrc.Play(); // play it
             Destroy(gameObject);
             
