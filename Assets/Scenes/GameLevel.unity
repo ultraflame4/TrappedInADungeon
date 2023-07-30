@@ -17810,7 +17810,7 @@ MonoBehaviour:
   damageNumbers: {fileID: 0}
   soundEffect:
     clip: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
-    volume: 0.51
+    volume: 0.734
 --- !u!1001 &3751199570631572809
 PrefabInstance:
   m_ObjectHideFlags: 0
