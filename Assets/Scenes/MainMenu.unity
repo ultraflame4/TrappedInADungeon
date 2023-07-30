@@ -915,6 +915,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: by NotLivingStudios | <color=#dd4a4a><u><link="itch">itch.io</link></u></color>
+    | <color=#92f0eb><u><link="creator">Creator</link></u></color>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e258cc9fe9110e146933bcafde81cc46, type: 2}
   m_sharedMaterial: {fileID: 5844975044651656415, guid: e258cc9fe9110e146933bcafde81cc46, type: 2}
@@ -1008,6 +1009,9 @@ MonoBehaviour:
   links:
   - id: itch
     uri: https://notlivingstudios.itch.io/
+    type: 0
+  - id: creator
+    uri: ultraflame4.github.io
     type: 0
 --- !u!1 &724659932
 GameObject:
