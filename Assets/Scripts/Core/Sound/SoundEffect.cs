@@ -30,5 +30,14 @@ namespace Core.Sound
              audioSrc.volume = volume;
              return audioSrc;
         }
+
+        /// <summary>
+        /// Plays this at a point in the world position. <br/>
+        /// This is essentially a wrapper for <see cref="AudioSource.PlayClipAtPoint(UnityEngine.AudioClip,UnityEngine.Vector3)">AudioSource.PlayClipAtPoint</see>
+        /// </summary>
+        public void PlayAtPoint(Vector3 worldPosition)
+        {
+            AudioSource.PlayClipAtPoint(clip,worldPosition,volume);
+        }
     }
 }

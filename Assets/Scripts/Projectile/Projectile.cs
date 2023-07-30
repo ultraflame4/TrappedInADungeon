@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using Core.Entities;
+using Core.Sound;
+using Core.Utils;
 using Entities;
 using UnityEngine;
 
@@ -17,7 +19,8 @@ namespace Projectile
         public StatusEffect statusEffect;
         public float damageRadius = 1f;
         public Animator animator;
-        private static readonly int Explode = Animator.StringToHash("hit");
+        public SoundEffect hitSound = null;
+        private static readonly int AnimIdHit = Animator.StringToHash("hit");
 
         [Tooltip("Whether this projectile will collide with player (and damage them)")]
         public bool attackPlayer;
@@ -52,7 +55,7 @@ namespace Projectile
             // If set to  attack player, and trigger enter was not player, return
             if (attackPlayer != other.CompareTag("Player")) return;
 
-            ExplodeAnim();
+            Explode();
             
             if (!isHit)
             {
@@ -70,9 +73,10 @@ namespace Projectile
             isHit = true;
         }
 
-        public void ExplodeAnim()
+        public void Explode()
         {
-            animator.SetTrigger(Explode);
+            animator.SetTrigger(AnimIdHit);
+            hitSound?.PlayAtPoint(transform.position);
         }
 
         public void DestroyProjectile()

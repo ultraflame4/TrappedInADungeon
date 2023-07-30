@@ -19,6 +19,7 @@ namespace Core.Utils
 
             return obj;
         }
+        
         /// <summary>
         /// Tries to find a child game object with the same name, else creates it.
         /// </summary>
