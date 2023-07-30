@@ -914,7 +914,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Created by: NotLivingStudios <color=#dd4a4a><u><link="itch">itch.io</link></u></color>'
+  m_text: by NotLivingStudios | <color=#dd4a4a><u><link="itch">itch.io</link></u></color>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e258cc9fe9110e146933bcafde81cc46, type: 2}
   m_sharedMaterial: {fileID: 5844975044651656415, guid: e258cc9fe9110e146933bcafde81cc46, type: 2}
@@ -941,8 +941,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7162,6 +7162,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5108877946888886283, guid: 0b1eb4176f1194f45828427268fb1f7b, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498701988042572917, guid: 0b1eb4176f1194f45828427268fb1f7b, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7038365805378405450, guid: 0b1eb4176f1194f45828427268fb1f7b, type: 3}
