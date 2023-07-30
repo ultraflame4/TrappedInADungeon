@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100118518449055753, guid: 38b213998a5327145aa13e4e08b9322c, type: 3}
+      propertyPath: disableAudio
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2721865117694275544, guid: 38b213998a5327145aa13e4e08b9322c, type: 3}
       propertyPath: m_Controller
       value: 
@@ -188,9 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08d6e8bd08a4ddd954d394be70205e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAudio:
-    clip: {fileID: 8300000, guid: 5f81bdff582c2fc4488e1129bc037245, type: 3}
-    volume: 1
+  controller: {fileID: 0}
 --- !u!58 &7716529873135479074
 CircleCollider2D:
   m_ObjectHideFlags: 0

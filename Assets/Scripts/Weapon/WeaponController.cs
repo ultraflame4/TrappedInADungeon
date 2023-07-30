@@ -114,6 +114,7 @@ namespace Weapon
 
             SwapAttackClip();
             animator.SetTrigger(AttackTrigger);
+            weaponItem.item.itemUseSoundEffect?.PlayAtPoint(transform.position);
             ExecuteComboCheck();
         }
 

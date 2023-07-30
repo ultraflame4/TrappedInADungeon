@@ -26,4 +26,4 @@ MonoBehaviour:
   manaCost: 0
   itemUseSoundEffect:
     clip: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
-    volume: 0.527
+    volume: 1

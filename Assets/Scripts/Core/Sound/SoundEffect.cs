@@ -1,4 +1,5 @@
 ﻿using System;
+using PlayerScripts;
 using UnityEngine;
 
 namespace Core.Sound
@@ -7,6 +8,7 @@ namespace Core.Sound
     [Serializable]
     public class SoundEffect
     {
+        
         [SerializeField, Tooltip("The clip for the audio source component")]
         private AudioClip clip;
         [SerializeField, Range(0,1), Tooltip("The volume to initialise the audio source component with.")]
@@ -32,15 +34,20 @@ namespace Core.Sound
         }
 
         /// <summary>
-        /// Plays this at a point in the world position. <br/>
+        /// Plays this sound effect at a point in the world position. <br/>
         /// This is essentially a wrapper for <see cref="AudioSource.PlayClipAtPoint(UnityEngine.AudioClip,UnityEngine.Vector3)">AudioSource.PlayClipAtPoint</see>
         /// </summary>
         public void PlayAtPoint(Vector3 worldPosition)
         {
-            if (clip != null)
-            {
-                AudioSource.PlayClipAtPoint(clip,worldPosition,volume);
-            }
+            if (Player.Body.IsDead) return;
+            if (clip == null) return;
+            var obj = new GameObject("SoundEffect PlayAtPoint");
+            var audio = obj.AddComponent<AudioSource>();
+            audio.clip = clip;
+            audio.loop = false;
+            audio.volume = volume;
+            obj.transform.position = worldPosition;
+            audio.Play();
         }
     }
 }

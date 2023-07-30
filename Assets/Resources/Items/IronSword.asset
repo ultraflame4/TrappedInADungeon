@@ -24,3 +24,6 @@ MonoBehaviour:
   health: 0
   mana: 0
   manaCost: 0
+  itemUseSoundEffect:
+    clip: {fileID: 0}
+    volume: 1

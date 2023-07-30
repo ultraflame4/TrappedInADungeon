@@ -27,11 +27,8 @@ namespace Item
         [HideInInspector]
         public InventorySlot slot;
 
-        private AudioSource audio;
-        private void Start()
-        {
-            audio = slot.Item.itemInstance.item.itemUseSoundEffect?.Create(gameObject);
-        }
+        [Tooltip("Don't play the itemUseSoundEffect")]
+        public bool disableAudio;
 
         public void UseItem()
         {
@@ -42,7 +39,7 @@ namespace Item
                 return;
             }
             Player.Body.CurrentMana.value -= slot.Item.itemInstance.ManaCost;
-            if (audio != null) if (!audio.isPlaying) audio.Play();
+            if (!disableAudio) slot.Item.itemInstance.item.itemUseSoundEffect?.PlayAtPoint(Player.Transform.position);
             OnItemUsed?.Invoke();
         }
         public void ReleaseItem() => OnItemReleased?.Invoke();
