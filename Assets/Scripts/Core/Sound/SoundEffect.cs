@@ -37,7 +37,10 @@ namespace Core.Sound
         /// </summary>
         public void PlayAtPoint(Vector3 worldPosition)
         {
-            AudioSource.PlayClipAtPoint(clip,worldPosition,volume);
+            if (clip != null)
+            {
+                AudioSource.PlayClipAtPoint(clip,worldPosition,volume);
+            }
         }
     }
 }
