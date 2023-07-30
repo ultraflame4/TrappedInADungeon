@@ -85,6 +85,9 @@ MonoBehaviour:
   statusEffect: {fileID: 11400000, guid: f713800177da38e47bc722632b543655, type: 2}
   damageRadius: 2
   animator: {fileID: -8415669972095956414}
+  hitSound:
+    clip: {fileID: 8300000, guid: fc96116dc3c141440aabb5605744fea2, type: 3}
+    volume: 1
   attackPlayer: 0
 --- !u!95 &-8415669972095956414
 Animator:
