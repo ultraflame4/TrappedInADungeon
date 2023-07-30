@@ -6062,8 +6062,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000022888, y: 252}
-  m_SizeDelta: {x: 995.4584, y: 87.6985}
+  m_AnchoredPosition: {x: -0.000022888, y: 233}
+  m_SizeDelta: {x: 1211.9467, y: 87.6985}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &961931307
 MonoBehaviour:
@@ -6087,15 +6087,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Trapped In A Dungeon
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e258cc9fe9110e146933bcafde81cc46, type: 2}
-  m_sharedMaterial: {fileID: 5844975044651656415, guid: e258cc9fe9110e146933bcafde81cc46, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ac010b50c4c1664468f2604abb804a02, type: 2}
+  m_sharedMaterial: {fileID: -8659777949834603376, guid: ac010b50c4c1664468f2604abb804a02, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288446592
-  m_fontColor: {r: 0.50040054, g: 0.5023455, b: 0.6132076, a: 1}
+    rgba: 4289561220
+  m_fontColor: {r: 0.5191555, g: 0.509434, b: 0.6792453, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6118,7 +6118,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 4
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
