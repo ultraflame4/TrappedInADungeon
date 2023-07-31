@@ -25,17 +25,26 @@ namespace UI.SceneTransition
             image.material = new Material(image.material);
         }
 
+        /// <summary>
+        /// Sets the image to black
+        /// </summary>
         public void BlackOut()
         {
             image.material.SetFloat(ShaderPropIdThreshold, 0);
         }
 
+        /// <summary>
+        /// Sets the image to clear
+        /// </summary>
         public void ClearOut()
         {
             image.material.SetFloat(ShaderPropIdThreshold, 1);
         }
 
-
+        /// <summary>
+        /// Fades the image from clear to black
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator FadeToBlackCoroutine()
         {
             counter = transitionSteps;
@@ -47,9 +56,13 @@ namespace UI.SceneTransition
             }
         }
 
+        
+        /// <summary>
+        /// Fades the image from black to clear
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator FadeToClearCoroutine()
         {
-            Debug.Log("Fading,,");
             counter = 0;
             while (counter < transitionSteps)
             {
