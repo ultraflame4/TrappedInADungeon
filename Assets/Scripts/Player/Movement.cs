@@ -80,6 +80,7 @@ namespace PlayerScripts
             {
                 if (body.CurrentMana.value > dashCost)
                 {
+                    body.invulnerable = true;
                     toDash = true;
                     // Dash consumes 5% of mana or 10 whichever is greater
                     body.CurrentMana.value -= dashCost;
@@ -92,6 +93,7 @@ namespace PlayerScripts
 
             if (GameManager.Controls.Player.Dash.WasReleasedThisFrame()) // If dash button is released, stop dashing
             {
+                body.invulnerable = false;
                 toDash = false; // Reset dash variables
                 isDashing = false;
                 if (dashCoroutine != null)

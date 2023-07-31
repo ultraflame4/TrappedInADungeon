@@ -48,6 +48,10 @@ namespace Core.Entities
         
         public event Action DeathEvent; // Event that is invoked when entity dies
         public bool IsDead { get; private set; } = false;
+        /// <summary>
+        /// Set this to true to make the entity invulnerable to damage.
+        /// </summary>
+        public bool invulnerable = false;
 
         public delegate void OnDamagedHandler(float amt, bool stun); // Event handler for when entity takes damage
 
@@ -117,6 +121,7 @@ namespace Core.Entities
         /// <param name="stun">Whether to stun enemy when dealing damage</param>
         public void DamageRaw(float amt, bool stun = true)
         {
+            if (invulnerable) return;
             CurrentHealth.value -= amt;
             DamagedEvent?.Invoke(amt, stun);
             if (CurrentHealth.value <= 0 && !IsDead)
