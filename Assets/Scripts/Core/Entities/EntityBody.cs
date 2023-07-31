@@ -18,8 +18,7 @@ namespace Core.Entities
     public class EntityBody : MonoBehaviour, IEntityStats
     {
         public float BaseHealth; // Health of entity
-
-        [FormerlySerializedAs("baseAttack")]
+        
         public int BaseAttack; // Increases physical damage
 
         public int BaseSpeed; // Movement speed
@@ -37,6 +36,7 @@ namespace Core.Entities
 
         public List<ActiveStatusEffect> StatusEffects { get; private set; } = new();
 
+        // ---- Final stats of entity -----
         public float Health => BaseHealth * Level + StatsModifiers.Sum(modifier => modifier.statsModifier.Health);
         public float Attack => BaseAttack * Level + StatsModifiers.Sum(modifier => modifier.statsModifier.Attack);
         public float Speed => BaseSpeed + BaseSpeed * (Level - 1) * .001f + StatsModifiers.Sum(modifier => modifier.statsModifier.Speed);

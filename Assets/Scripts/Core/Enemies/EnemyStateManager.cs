@@ -29,23 +29,31 @@ namespace Core.Enemies
 
         private void Start()
         {
+            // Get the components
             spriteRenderer = GetComponent<SpriteRenderer>();
             body = GetComponent<EntityBody>();
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
-
+            // Init all the states
             Idle?.StateInit(this);
             Alert?.StateInit(this);
             Attack?.StateInit(this);
             Stunned?.StateInit(this);
-
+            // Register events
             body.DamagedEvent += OnDamaged;
             body.DeathEvent += OnDeath;
+            // Start in the patrol state
             TransitionState(EnemyStates.PATROL);
         }
 
+        /// <summary>
+        /// Callback for when the enemy is damaged.
+        /// </summary>
+        /// <param name="amt">Amount the enemy is damaged for</param>
+        /// <param name="stun">Whether the enemy is stunned</param>
         void OnDamaged(float amt, bool stun)
         {
+            // On damaged, transition to stunned state if it exists (and stun is true)
             if (Stunned != null && stun)
             {
                 TransitionState(EnemyStates.STUNNED);
@@ -69,28 +77,28 @@ namespace Core.Enemies
             // Debug.Log($"Transitioning to {state}");
             if (currentState == state) return;
 
-            if (currentBehaviour is not null)
+            if (currentBehaviour != null) // currently has a state so exit it 
             {
                 currentBehaviour.stateActive = false;
                 currentBehaviour.StateExit();
             }
 
-            currentBehaviour = GetStateBehavior(state);
-            currentState = state;
-            if (state == EnemyStates.STUNNED)
+            currentBehaviour = GetStateBehavior(state); // Get the behaviour script for the new state
+            currentState = state; // set the current state
+            if (state == EnemyStates.STUNNED) // if the new state is stunned, play the stun animation
             {
                 animator.SetTrigger("Stun");
             }
             
-            if (currentState == EnemyStates.DEAD) return; // Dead no need to enter another state
+            if (currentState == EnemyStates.DEAD) return; // Dead, no need to enter another state
 
-            if (currentBehaviour is null)
+            if (currentBehaviour is null) // If cannot find the state, log a warning and exit
             {
                 Debug.LogWarning($"State {state} does not exist");
                 return;
             }
-
-            ;
+            
+            // Set new behaviour to active and call the enter function
             currentBehaviour.stateActive = true;
             currentBehaviour.StateEnter();
         }

@@ -22,7 +22,7 @@ namespace Core.Enemies
         public virtual void StateEnter() { }
 
         /// <summary>
-        /// Called when state exitss
+        /// Called when state exits
         /// </summary>
         public virtual void StateExit(){}
         
