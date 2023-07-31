@@ -11,7 +11,9 @@ namespace UI.SceneTransition
     [RequireComponent(typeof(Image))]
     public class SceneTransitionController : MonoBehaviour
     {
+        [Tooltip("Transition to hide the main scene")]
         public TransitionEffect effectA;
+        [Tooltip("Transition to hide the ui elements in transition itself")]
         public TransitionEffect effectB;
         public GameObject contents;
         public VolatileValue<float> loadProgress { get; private set; } = new();
