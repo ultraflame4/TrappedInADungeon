@@ -22,7 +22,7 @@ namespace UI.SceneTransition
         void Start()
         {
             image = GetComponent<Image>();
-            image.material = new Material(image.material);
+            image.material = new Material(image.material); // Duplicate the material such that we don't change the material for all images using it
         }
 
         /// <summary>
@@ -50,6 +50,7 @@ namespace UI.SceneTransition
             counter = transitionSteps;
             while (counter > 0)
             {
+                // Decrease threshold for disintegration shader so that less of the image is visible
                 image.material.SetFloat(ShaderPropIdThreshold, counter / (float)transitionSteps);
                 counter--;
                 yield return new WaitForSecondsRealtime(transitionTime / transitionSteps);
@@ -66,6 +67,7 @@ namespace UI.SceneTransition
             counter = 0;
             while (counter < transitionSteps)
             {
+                // Increase threshold for disintegration shader so that more of the image is visible
                 image.material.SetFloat(ShaderPropIdThreshold, counter / (float)transitionSteps);
                 counter++;
                 yield return new WaitForSecondsRealtime(transitionTime / transitionSteps);
