@@ -94,7 +94,8 @@ namespace PlayerScripts
             if (GameManager.Controls.Player.Dash.WasReleasedThisFrame()) // If dash button is released, stop dashing
             {
                 body.invulnerable = false;
-                toDash = false; // Reset dash variables
+                // Reset dash variables
+                toDash = false;
                 isDashing = false;
                 if (dashCoroutine != null)
                 {
@@ -106,7 +107,6 @@ namespace PlayerScripts
             UpdateSpriteDirection();
         }
         
-
         void UpdatePlayerDirection()
         {
             float horizontal = GameManager.Controls.Player.Movement.ReadValue<float>();
