@@ -44,7 +44,10 @@ namespace UI.SceneTransition
             return currentCoroutine;
         }
 
-        
+        /// <summary>
+        /// Fades out of the transition
+        /// </summary>
+        /// <returns></returns>
         IEnumerator FadeOutCoroutine()
         {
             contents.SetActive(true);
@@ -55,6 +58,10 @@ namespace UI.SceneTransition
             image.raycastTarget = false; // Disable so that the player can interact with ui
             
         }
+        /// <summary>
+        /// Fades into of the transition
+        /// </summary>
+        /// <returns></returns>
         IEnumerator FadeInCoroutine()
         {
             image.raycastTarget = true; // Block ui interaction
@@ -63,25 +70,38 @@ namespace UI.SceneTransition
             contents.SetActive(true);
             yield return effectB.FadeToClearCoroutine();
         }
-
+        
+        /// <summary>
+        /// Fades out of transition and into the scene
+        /// </summary>
         public void FadeOut()
         {
             StartSingle(FadeOutCoroutine());
         }
 
+        /// <summary>
+        /// Coroutine to transitions to the scene with the given name (somewhat) smoothly
+        /// </summary>
+        /// <param name="sceneName"></param>
+        /// <returns></returns>
         public IEnumerator TransitionToSceneCoroutine(string sceneName)
         {
-            yield return null;
-            yield return FadeInCoroutine();
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
-            asyncOperation.allowSceneActivation = false;
-            while (!asyncOperation.isDone)
+            yield return null; // Skip a frame
+            yield return FadeInCoroutine(); // Wait for the fade into transition
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName); // Start asynchronously loading the new scene
+            asyncOperation.allowSceneActivation = false; // Don't allow the scene to activate until we say so
+            while (!asyncOperation.isDone) // Wait for the scene to load
             {
-                loadProgress.value = asyncOperation.progress;
+                // Increase the load progress (so that other components can use it)
+                loadProgress.value = asyncOperation.progress; 
+                // If the scene is loaded, break out of the loop. Unity stops progress at 0.9f when allowSceneActivation is false
                 if (asyncOperation.progress >= 0.9f) break;
+                // Wait a frame before looping again
                 yield return null;
             }
+            // Set load progress to 100%
             loadProgress.value = 1f;
+            // Wait a bit before allowing the scene to activate
             yield return new WaitForSecondsRealtime(0.5f);
             asyncOperation.allowSceneActivation = true;
             yield return null;
