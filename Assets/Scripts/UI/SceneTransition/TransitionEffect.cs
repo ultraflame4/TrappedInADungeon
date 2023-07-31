@@ -16,7 +16,7 @@ namespace UI.SceneTransition
         [Tooltip("How many steps to take to fade to black / fade to clear")]
         public int transitionSteps = 1000;
         private int counter = 0;
-        private static readonly int Threshold = Shader.PropertyToID("_Threshold");
+        private static readonly int ShaderPropIdThreshold = Shader.PropertyToID("_Threshold");
         private Image image;
 
         void Start()
@@ -27,12 +27,12 @@ namespace UI.SceneTransition
 
         public void BlackOut()
         {
-            image.material.SetFloat(Threshold, 0);
+            image.material.SetFloat(ShaderPropIdThreshold, 0);
         }
 
         public void ClearOut()
         {
-            image.material.SetFloat(Threshold, 1);
+            image.material.SetFloat(ShaderPropIdThreshold, 1);
         }
 
 
@@ -41,7 +41,7 @@ namespace UI.SceneTransition
             counter = transitionSteps;
             while (counter > 0)
             {
-                image.material.SetFloat(Threshold, counter / (float)transitionSteps);
+                image.material.SetFloat(ShaderPropIdThreshold, counter / (float)transitionSteps);
                 counter--;
                 yield return new WaitForSecondsRealtime(transitionTime / transitionSteps);
             }
@@ -53,7 +53,7 @@ namespace UI.SceneTransition
             counter = 0;
             while (counter < transitionSteps)
             {
-                image.material.SetFloat(Threshold, counter / (float)transitionSteps);
+                image.material.SetFloat(ShaderPropIdThreshold, counter / (float)transitionSteps);
                 counter++;
                 yield return new WaitForSecondsRealtime(transitionTime / transitionSteps);
             }
