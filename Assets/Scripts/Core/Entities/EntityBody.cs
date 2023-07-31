@@ -65,6 +65,7 @@ namespace Core.Entities
         protected virtual void Start()
         {
             CurrentHealth.value = Health;
+            // Start coroutine for ticking status effects
             StartCoroutine(TickStatusEffect());
         }
 
@@ -75,26 +76,25 @@ namespace Core.Entities
         /// <returns></returns>
         public ActiveStatusEffect AddStatusEffect(StatusEffect statusEffect)
         {
-            // Create a new instance of the status effect (to avoid modifying the original)
-            var particle = Instantiate(statusEffect.particleEffect, transform);
-            var active = new ActiveStatusEffect(statusEffect, particle);
-            StatusEffects.Add(active);
-            active.TickStart(this);
-
+            var particle = Instantiate(statusEffect.particleEffect, transform); // Instantiate particle effect
+            var active = new ActiveStatusEffect(statusEffect, particle); // Create active status effect
+            StatusEffects.Add(active); // Add to list of active status effects
+            active.TickStart(this); // Call start event
             return active;
         }
 
-        IEnumerator TickStatusEffect()
+        private IEnumerator TickStatusEffect()
         {
             while (true)
             {
                 yield return new WaitForSeconds(1f / ticksPerSecond);
                 // Create shallow copy to avoid modification while iterating
                 var copy = StatusEffects.GetRange(0, StatusEffects.Count);
+                // Loop through all status effects and update them
                 foreach (var activeStatusEffect in copy)
                 {
                     activeStatusEffect.Tick(this);
-                    if (activeStatusEffect.ticksRemaining <= 0)
+                    if (activeStatusEffect.ticksRemaining <= 0) // If status effect has expired, remove it
                     {
                         activeStatusEffect.Remove(this);
                     }
@@ -110,7 +110,7 @@ namespace Core.Entities
         public void Damage(float amt, bool stun = true)
         {
             if (IsDead) return;
-            amt *= Mathf.Min(0.1f, 1 - Defense / (Defense + 200));
+            amt *= Mathf.Min(0.1f, 1 - Defense / (Defense + 200)); // Fancy math to reduce damage by defense
             DamageRaw(amt, stun);
         }
 
@@ -121,10 +121,10 @@ namespace Core.Entities
         /// <param name="stun">Whether to stun enemy when dealing damage</param>
         public void DamageRaw(float amt, bool stun = true)
         {
-            if (invulnerable) return;
+            if (invulnerable) return; // If invulnerable, don't take damage
             CurrentHealth.value -= amt;
             DamagedEvent?.Invoke(amt, stun);
-            if (CurrentHealth.value <= 0 && !IsDead)
+            if (CurrentHealth.value <= 0 && !IsDead) // If health is lesser than 0, set entity to dead
             {
                 IsDead = true;
                 DeathEvent?.Invoke();

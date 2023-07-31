@@ -63,8 +63,8 @@ namespace Core.Enemies
         void OnDeath()
         {
             TransitionState(EnemyStates.DEAD);
-            rb.velocity= Vector2.zero;
-            spriteRenderer.enabled = false;
+            rb.velocity= Vector2.zero; // Stop moving when dead
+            spriteRenderer.enabled = false; // Hide the sprite
         }
 
         /// <summary>
