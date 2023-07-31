@@ -29,10 +29,9 @@ namespace UI
         {
             text = GetComponent<TextMeshProUGUI>();
         }
-
+        
         public void OnPointerClick(PointerEventData eventData)
         {
-            
             int linkIndex = TMP_TextUtilities.FindIntersectingLink(text, eventData.position, eventData.pressEventCamera);
             if (linkIndex == -1) return;
             var linkinfo = text.textInfo.linkInfo[linkIndex];
