@@ -1011,7 +1011,7 @@ MonoBehaviour:
     uri: https://notlivingstudios.itch.io/
     type: 0
   - id: creator
-    uri: ultraflame4.github.io
+    uri: https://ultraflame4.github.io
     type: 0
 --- !u!1 &724659932
 GameObject:
@@ -7133,8 +7133,8 @@ RectTransform:
   - {fileID: 724659933}
   - {fileID: 455758459}
   - {fileID: 152069419}
-  - {fileID: 1836012632}
   - {fileID: 644165746}
+  - {fileID: 1836012632}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
