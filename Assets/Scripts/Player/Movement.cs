@@ -13,6 +13,7 @@ namespace PlayerScripts
     [RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Animator)), RequireComponent(typeof(PlayerBody))]
     public class Movement : MonoBehaviour
     {
+        // Components references
         private Rigidbody2D rb;
         private Animator anim;
         private PlayerBody body;
@@ -71,7 +72,6 @@ namespace PlayerScripts
         void Update()
         {
             UpdatePlayerDirection();
-
             // This line basically checks if it is ok to jump
             // include toJump in its own condition to prevent Input.GetButtonDown from setting toJump to false
             // We only set toJump to false if we have did the physics in the FixedUpdate
