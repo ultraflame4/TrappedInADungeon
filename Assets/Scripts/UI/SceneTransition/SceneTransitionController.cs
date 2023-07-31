@@ -15,9 +15,10 @@ namespace UI.SceneTransition
         public TransitionEffect effectA;
         [Tooltip("Transition to hide the ui elements in transition itself")]
         public TransitionEffect effectB;
+        [Tooltip("The ui contents to show during the transition")]
         public GameObject contents;
         public VolatileValue<float> loadProgress { get; private set; } = new();
-        private Image image;
+        private Image image; // Image component. Used to block raycasts
         private Coroutine currentCoroutine;
         
         private void Start()
