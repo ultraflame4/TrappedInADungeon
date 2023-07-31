@@ -30,12 +30,6 @@ namespace UI
             text = GetComponent<TextMeshProUGUI>();
         }
 
-        [Button]
-        public void Test()
-        {
-            Application.OpenURL("https://www.google.com");
-        }
-
         public void OnPointerClick(PointerEventData eventData)
         {
             
