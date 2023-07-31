@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Core.Entities
 {
+    /// <summary>
+    /// Modifier for stats. Used by items, buffs, etc.
+    /// </summary>
     [JsonObject(MemberSerialization.Fields),Serializable]
     public class StatsModifier: IEntityStats, IItemStats, IMagicStats
     {
