@@ -13,7 +13,7 @@ namespace Core.Utils
         public event Action Changed;
 
         /// <summary>
-        /// The callback to validate the value change.
+        /// The callback to validate / intercept any value changes. Should return the new value.
         /// </summary>
         public delegate T ValidateValueChange(T oldValue, T newValue);
         [SerializeField,JsonProperty]
