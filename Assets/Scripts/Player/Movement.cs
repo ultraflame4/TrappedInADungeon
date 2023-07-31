@@ -36,14 +36,14 @@ namespace PlayerScripts
         public int jumpTimes = 1;
         private int jumpsLeft = 0;
 
-        private float inputFactor;
-        private bool toJump;
-        private bool toDash;
-        private bool isDashing;
-        private bool isInAir;
-        private Coroutine dashCoroutine;
+        private float inputFactor; // 0 if no input, 1 if input
+        private bool toJump; // Whether the character should be jumping
+        private bool toDash; // Whether the character should be dashing
+        private bool isDashing; // Whether the character is currently dashing
+        private bool isInAir; // Whether the character is in the air
+        private Coroutine dashCoroutine; // Coroutine for ending the dash
 
-        private bool alreadyJumping = false;
+        private bool alreadyJumping = false; // Whether the player is already jumping. Used to prevent jumping when no jumps left.
 
         private static readonly int AnimIdWalking = Animator.StringToHash("IsWalking"); // Apparently this is better then just using the raw string value
         private static readonly int AnimIdJumping = Animator.StringToHash("IsJumping");
