@@ -1,5 +1,8 @@
 ﻿namespace Core.Entities
 {
+    /// <summary>
+    /// Interface for common stats shared between entities
+    /// </summary>
     public interface IEntityStats
     {
         public float Attack { get; }
@@ -8,8 +11,16 @@
         public float Health { get; }
     }
 
+    /// <summary>
+    /// A very useful struct that implements IEntityStats and ease in doing some operations
+    /// </summary>
     public struct SEntityStats : IEntityStats
     {
+        /// <summary>
+        /// Creates a new SEntityStats from an IEntityStats
+        /// </summary>
+        /// <param name="stats">stats to copy</param>
+        /// <returns></returns>
         public static SEntityStats Create(IEntityStats stats)
         {
             return new SEntityStats() {
