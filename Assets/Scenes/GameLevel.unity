@@ -11188,7 +11188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e28b7085d494c228b34e983d24b7408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 1567137021}
 --- !u!1 &1592158348
 GameObject:
   m_ObjectHideFlags: 0
@@ -19127,7 +19126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94258703ff94461595ec741174cc7fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeadShadowPrefab: {fileID: 7715831331796477733, guid: 568f0fee3973e1d41bf8aec4c81585b6, type: 3}
+  DeadShadowPrefab: {fileID: 2470795377839662836, guid: 05bfe2183812f2b47990e1fbb19b374a, type: 3}
   droppedItemPrefab: {fileID: 2045963181314464266, guid: ff08c33cd2892d94e99a8f8549454754, type: 3}
 --- !u!114 &7960193540920185867
 MonoBehaviour:
