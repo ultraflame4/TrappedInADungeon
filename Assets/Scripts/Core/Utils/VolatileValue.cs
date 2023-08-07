@@ -25,11 +25,11 @@ namespace Core.Utils
             get => _value;
             set
             {
-                if (validator == null)
+                if (validator == null) // If no validator, just set the value
                 {
                     _value = value;
                 }
-                else
+                else // Let validator intercept the value change
                 {
                     _value = validator.Invoke(_value, value);    
                 }
@@ -48,6 +48,7 @@ namespace Core.Utils
             this.validator = validator;
         }
         
+        // Convenient implicit conversion
         public static implicit operator T(VolatileValue<T> volatileValue) => volatileValue.value;
     }
 }

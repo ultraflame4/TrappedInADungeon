@@ -2,6 +2,10 @@
 
 namespace Core.Utils
 {
+    /// <summary>
+    /// Utility class for storing a range of values.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [Serializable]
     public class ValueRange <T>
     {
