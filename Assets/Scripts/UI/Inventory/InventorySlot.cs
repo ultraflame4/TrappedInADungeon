@@ -192,25 +192,25 @@ namespace UI.Inventory
             if (currentItem == null) return;
             // hide item image
             itemImage.enabled = false;
-            CursorController.GetInstance().StartDrag(this, currentItem.itemInstance.sprite);
+            CursorController.Instance.StartDrag(this, currentItem.itemInstance.sprite);
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
             // if the item was not dropped in another slot, count as user throwing the item into the void
-            if (!CursorController.GetInstance().optionalDropSuccess)
+            if (!CursorController.Instance.optionalDropSuccess)
             {
                 SetItem(null);
             }
 
             // show item image if there is an item in this slot
             itemImage.enabled = currentItem != null;
-            CursorController.GetInstance().EndDrag();
+            CursorController.Instance.EndDrag();
         }
 
         public void OnDrop(PointerEventData eventData)
         {
-            var draggedData = CursorController.GetInstance().GetDraggedData();
+            var draggedData = CursorController.Instance.GetDraggedData();
             if (draggedData is InvSlotItemInstance item)
             {
                 SetItem(item);
@@ -224,7 +224,7 @@ namespace UI.Inventory
                 }
 
                 // Tell the other slot that the item was dropped in another slot (regardless of whether the inventorySlot.SetItem() was successful
-                CursorController.GetInstance().optionalDropSuccess = true;
+                CursorController.Instance.optionalDropSuccess = true;
             }
         }
     }

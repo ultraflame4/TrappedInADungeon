@@ -8,9 +8,11 @@ namespace Core.UI
     [RequireComponent(typeof(Image))]
     public class CursorController : MonoBehaviour
     {
-        public Image image;
-        private static CursorController instance;
+        // Reference to the image component
+        private Image image;
+        public static CursorController Instance {get; private set;}
         private object draggedData;
+
         /// <summary>
         /// Optionally to be set by the drop target. If true, the drop was successful.
         /// This is only really meant to be used between the drop target and drag source during the drop and drag end event.
@@ -21,27 +23,14 @@ namespace Core.UI
         public bool optionalDropSuccess = false;
         private void Awake()
         {
-            if (instance != null)
+            image = GetComponent<Image>();
+            image.SetSprite(null); // Clear the sprite
+            if (Instance != null)
             {
                 Debug.LogError("WARNING! Multiple CursorControllers in scene! Current static instance will be replaced!");
             }
 
-            instance = this;
-        }
-
-        private void Start()
-        {
-            image.SetSprite(null);
-        }
-
-        public static CursorController GetInstance()
-        {
-            if (instance == null)
-            {
-                Debug.LogError("WARNING! No CursorController in scene!");
-            }
-
-            return instance;
+            Instance = this;
         }
 
         /// <summary>
@@ -55,6 +44,7 @@ namespace Core.UI
             draggedData = data;
             image.SetSprite(cursorSprite);
         }
+        
         /// <summary>
         /// Ends the dragging. Clears draggedData. The cursor sprite will be set to null.
         /// </summary>
@@ -63,11 +53,10 @@ namespace Core.UI
         public void EndDrag()
         {
             draggedData = null;
-            image.SetSprite(null);
+            image.SetSprite(null); // Clear the sprite
         }
 
         public object GetDraggedData() => draggedData;
-
 
         void Update()
         {

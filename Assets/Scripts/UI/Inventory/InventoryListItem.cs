@@ -46,12 +46,12 @@ namespace UI.Inventory
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            CursorController.GetInstance().StartDrag(itemInstance,itemInstance.itemInstance.sprite);
+            CursorController.Instance.StartDrag(itemInstance,itemInstance.itemInstance.sprite);
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            CursorController.GetInstance().EndDrag();
+            CursorController.Instance.EndDrag();
         }
 
         public void OnPointerEnter(PointerEventData eventData)
