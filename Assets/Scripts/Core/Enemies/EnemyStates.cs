@@ -1,5 +1,8 @@
 ﻿namespace Core.Enemies
 {
+    /// <summary>
+    /// The various states an enemy can be in.
+    /// </summary>
     public enum EnemyStates
     {
         // Stunned
@@ -13,6 +16,7 @@
 
         // Attacking player
         ATTACK,
+
         // Is dead
         DEAD
     }

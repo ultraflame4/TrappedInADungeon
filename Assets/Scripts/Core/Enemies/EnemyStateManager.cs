@@ -7,14 +7,14 @@ using UnityEngine.Serialization;
 
 namespace Core.Enemies
 {
-    [RequireComponent(typeof(SpriteRenderer)),RequireComponent(typeof(EntityBody)), RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(SpriteRenderer)), RequireComponent(typeof(EntityBody)), RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Animator))]
     public class EnemyStateManager : MonoBehaviour
     {
         public Animator animator { get; private set; }
         public Rigidbody2D rb { get; private set; }
         public EntityBody body { get; private set; }
         private SpriteRenderer spriteRenderer;
-        
+
 
         public EnemyStateBehaviour Idle;
         public EnemyStateBehaviour Alert;
@@ -23,8 +23,9 @@ namespace Core.Enemies
 
         [field: SerializeField]
         public EnemyStates currentState { get; private set; }
-        
+
         private EnemyStateBehaviour currentBehaviour;
+        private static readonly int AnimIdStun = Animator.StringToHash("Stun");
         public bool isGrounded { get; private set; } = false;
 
         private void Start()
@@ -54,16 +55,13 @@ namespace Core.Enemies
         void OnDamaged(float amt, bool stun)
         {
             // On damaged, transition to stunned state if it exists (and stun is true)
-            if (Stunned != null && stun)
-            {
-                TransitionState(EnemyStates.STUNNED);
-            }
+            if (Stunned != null && stun) TransitionState(EnemyStates.STUNNED);
         }
 
         void OnDeath()
         {
             TransitionState(EnemyStates.DEAD);
-            rb.velocity= Vector2.zero; // Stop moving when dead
+            rb.velocity = Vector2.zero; // Stop moving when dead
             spriteRenderer.enabled = false; // Hide the sprite
         }
 
@@ -77,19 +75,20 @@ namespace Core.Enemies
             // Debug.Log($"Transitioning to {state}");
             if (currentState == state) return;
 
-            if (currentBehaviour != null) // currently has a state so exit it 
+            // If there is a current state, exit the state
+            if (currentBehaviour != null)
             {
-                currentBehaviour.stateActive = false;
-                currentBehaviour.StateExit();
+                currentBehaviour.stateActive = false; // state is should no longer active
+                currentBehaviour.StateExit(); // Exit event
             }
 
             currentBehaviour = GetStateBehavior(state); // Get the behaviour script for the new state
             currentState = state; // set the current state
             if (state == EnemyStates.STUNNED) // if the new state is stunned, play the stun animation
             {
-                animator.SetTrigger("Stun");
+                animator.SetTrigger(AnimIdStun); // Play the stun animation
             }
-            
+
             if (currentState == EnemyStates.DEAD) return; // Dead, no need to enter another state
 
             if (currentBehaviour is null) // If cannot find the state, log a warning and exit
@@ -97,12 +96,16 @@ namespace Core.Enemies
                 Debug.LogWarning($"State {state} does not exist");
                 return;
             }
-            
+
             // Set new behaviour to active and call the enter function
             currentBehaviour.stateActive = true;
             currentBehaviour.StateEnter();
         }
 
+        /// <summary>
+        /// Returns the corresponding state behaviour script for the given state.
+        /// </summary>
+        /// <param name="state">The specified state</param>
         public EnemyStateBehaviour GetStateBehavior(EnemyStates state)
         {
             switch (state)
