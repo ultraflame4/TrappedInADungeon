@@ -26,10 +26,11 @@ namespace Core.Sound
         /// <returns>Audio source created</returns>
         public AudioSource Create(GameObject gameObject,bool loop = false)
         {
+            // Add audio source component
              audioSrc = gameObject.AddComponent<AudioSource>();
-             audioSrc.clip = clip;
-             audioSrc.loop = loop;
-             audioSrc.volume = volume;
+             audioSrc.clip = clip; // Set clip
+             audioSrc.loop = loop; // Set loop
+             audioSrc.volume = volume; // Set volume
              return audioSrc;
         }
 
@@ -39,15 +40,12 @@ namespace Core.Sound
         /// </summary>
         public void PlayAtPoint(Vector3 worldPosition)
         {
-            if (Player.Body.IsDead) return;
-            if (clip == null) return;
-            var obj = new GameObject("SoundEffect PlayAtPoint");
-            var audio = obj.AddComponent<AudioSource>();
-            audio.clip = clip;
-            audio.loop = false;
-            audio.volume = volume;
-            obj.transform.position = worldPosition;
-            audio.Play();
+            if (Player.Body.IsDead) return; // Don't play sound if player is dead
+            if (clip == null) return; // Don't play sound if clip is null
+            var obj = new GameObject("SoundEffect PlayAtPoint"); // Create new game object
+            var audio = Create(obj,false); // Add audio source component stuff to the game object
+            obj.transform.position = worldPosition; // Move game object to world position
+            audio.Play(); // Play audio
         }
     }
 }
