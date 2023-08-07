@@ -8,9 +8,11 @@ namespace Core.UI.InteractText
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class InteractTextManager : MonoBehaviour
     {
+        // refernce to The text mesh pro component
         private TextMeshProUGUI text;
-        public string currentText { get; private set; }
+        // The current handler that is displaying text
         private InteractTextHandler current;
+        
         public static InteractTextManager Instance { get; private set; }
         void Awake()
         {
@@ -25,7 +27,7 @@ namespace Core.UI.InteractText
         private void Start()
         {
             text = GetComponent<TextMeshProUGUI>();
-            text.text = "";
+            text.text = ""; // Clear the text shown
         }
 
 
@@ -46,23 +48,36 @@ namespace Core.UI.InteractText
         public void PushInteractText(string description, Vector2 worldPosition, InteractTextHandler handler)
         {
             current = handler;
+            // Get the current key binding name for the interact action
             string currentBindingName = GameManager.Controls.Player.Interact.GetBindingDisplayString();
+            // Create the full text to display
             string fullText = $"Press <color=\"yellow\">[{currentBindingName}]</color> to {description}";
-            text.text = fullText;
+            text.text = fullText; // Set the text to display
+            // Size of canvas
             Rect canvasRect = text.canvas.GetComponent<RectTransform>().rect;
+            // Half the size of the canvas and the text
             Vector2 canvasSizeHalf = new Vector2(canvasRect.width, canvasRect.height) / 2;
             Vector2 textSizeHalf = new Vector2(text.preferredWidth, text.preferredHeight) / 2;
-            // The min and max position so that the text does not appear off the screen
+            
+            // Calculate the min and max position for the text so that it does not appear off the screen
             Vector2 minPosition = textSizeHalf - canvasSizeHalf + Vector2.right*10; // Vector2.right * 10 to add some padding to the edge of the screen
             Vector2 maxPosition = textSizeHalf + canvasSizeHalf + Vector2.left*10; // Vector2.left * 10 to add some padding to the edge of the screen
+            // Convert the world position to a canvas position
             Vector2 textPos = text.canvas.WorldToCanvasPoint(worldPosition);
+            // Set the text position to the clamped position
             text.rectTransform.anchoredPosition = Vector2.Max(Vector2.Min(textPos, maxPosition), minPosition);
         }
         
-
+        /// <summary>
+        /// Removes the current interact text from the screen.
+        /// Does nothing if the current handler is not the same as the one passed in.
+        /// </summary>
+        /// <param name="handler"></param>
         public void RemoveInteractText(InteractTextHandler handler)
         {
+            // Only remove the text if the current handler is the same as the one passed in!
             if (current != handler) return;
+            current = null;
             text.text = "";
         }
 
