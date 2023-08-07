@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Enemies
 {
+    /// <summary>
+    /// Represents configuration for an item that can be dropped from an enemy
+    /// </summary>
     [Serializable]
     public struct LootboxItem
     {

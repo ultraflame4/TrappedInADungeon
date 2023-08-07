@@ -10,11 +10,13 @@ namespace Enemies
     [RequireComponent(typeof(EntityBody))]
     public class EnemyDeathLoot : MonoBehaviour
     {
+        // --- References to other scripts & prefaabs---
         private EntityBody enemyBody;
         public GameObject expBallPrefab;
         public GameObject droppedItemPrefab;
         private SpawnableEnemy config;
 
+        // --- Constants ---
         private const float ExperiencePointsPerBall = 30;
         private const int maxBalls = 20;
 
@@ -24,6 +26,10 @@ namespace Enemies
             enemyBody.DeathEvent += OnDeath;
         }
 
+        /// <summary>
+        /// Sets the enemy configuration for this enemy
+        /// </summary>
+        /// <param name="config"></param>
         public void SetConfig(SpawnableEnemy config)
         {
             this.config = config;
@@ -31,18 +37,26 @@ namespace Enemies
 
         void OnDeath()
         {
-            if (config== null) return;
+            // If the enemy has no config, don't drop anything
+            if (config == null) return;
+            // Calculate the amount of experience balls to drop
             int expDropped = config.difficultyPoints * (enemyBody.Level + 1) / 2;
+            // Calculate number of balls to drop
             int ballsCount = Math.Min(maxBalls, Mathf.CeilToInt(expDropped / ExperiencePointsPerBall));
+            // Calculate the experience value of each ball
             float expPerBall = expDropped / (ballsCount + 1);
+            // Instantiate the exp balls
             Instantiate(expBallPrefab, transform.position, Quaternion.identity).GetComponent<ExpBall>().expValue = expPerBall;
 
+            // Loop through all lootbox items in the enemy config
             foreach (var lootboxItem in config.lootbox)
             {
-                // Whether the lootbox item should be dropped
+                // Randomly decide whether to spawn the item based on the chance
                 bool toSpawn = Random.value <= lootboxItem.chance;
-                if (!toSpawn) continue;
+                if (!toSpawn) continue; // If not, skip this item
+                // Spawn the loot item prefab
                 DroppedLootItem lootItem = Instantiate(droppedItemPrefab, transform.position, Quaternion.identity).GetComponent<DroppedLootItem>();
+                // Tell the loot item prefab what item it is.
                 lootItem.SetItem(new ItemInstance(lootboxItem.item));
             }
         }
