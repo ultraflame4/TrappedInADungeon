@@ -6,6 +6,7 @@ namespace Core.Entities
 {
     /// <summary>
     /// Modifier for stats. Used by items, buffs, etc.
+    /// The properties represent how much the each stats will be modified by.
     /// </summary>
     [JsonObject(MemberSerialization.Fields),Serializable]
     public class StatsModifier: IEntityStats, IItemStats, IMagicStats

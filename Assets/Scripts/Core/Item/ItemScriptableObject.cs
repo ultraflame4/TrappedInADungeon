@@ -7,8 +7,13 @@ using UnityEngine;
 
 namespace Core.Item
 {
-    [CreateAssetMenu(fileName = "game_item", menuName = "GameContent/Item"), JsonObject(MemberSerialization.OptIn),
-     JsonConverter(typeof(ItemScriptableObjectConverter))]
+    /// <summary>
+    /// This scriptable object represents items that can be used in the game.
+    /// </summary>
+    [CreateAssetMenu(fileName = "game_item", menuName = "GameContent/Item"), // Create a menu for this scriptable object
+     JsonObject(MemberSerialization.OptIn), // Serialize only the fields marked with [JsonProperty]
+     JsonConverter(typeof(ItemScriptableObjectConverter)) // Use custom converter to serialize/deserialize this scriptable object
+    ]
     public sealed class ItemScriptableObject : ScriptableObject
     {
         [Tooltip("Unique id for this item"), JsonProperty]

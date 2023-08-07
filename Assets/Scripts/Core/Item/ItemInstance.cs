@@ -5,13 +5,18 @@ using UnityEngine;
 
 namespace Core.Item
 {
+    /// <summary>
+    /// Represents an instance of an item. This is also used to store the number of items in a stack.
+    /// </summary>
     [Serializable, JsonObject(MemberSerialization.OptIn)]
     public class ItemInstance : IEntityStats
     {
+        /// <summary>
+        /// The item of this instance.
+        /// </summary>
         [field: SerializeField] [JsonProperty]
         public ItemScriptableObject item { get; private set; }
         
-
         /// <summary>
         /// Short hand for item.itemSprite
         /// </summary>
@@ -23,12 +28,12 @@ namespace Core.Item
         public GameObject prefab => item.itemPrefab;
 
         /// <summary>
-        /// Similar items (such as consumables) can be stacked together.
+        /// Similar items (such as consumables) can be stacked together. This represents the number of items in this stack.
         /// </summary>
         [field: SerializeField] [JsonProperty]
         public int Count { get; private set; } = 1;
 
-        // todo implement stats modifiers.
+        
         public ItemInstance(ItemScriptableObject item)
         {
             this.item = item;
@@ -57,6 +62,7 @@ namespace Core.Item
         }
 
         // The stats below may include stats from modifier and hence may differ from the original item stats
+        // (Due to time constraints, we are not implementing modifiers and hence these stats are the same as the original item stats)
         public float Attack => item.attack;
         public float Speed => item.speed;
         public float Defense => item.defense;
@@ -85,15 +91,18 @@ namespace Core.Item
         /// <returns>true on success, false on failure</returns>
         public bool Combine(ItemInstance other)
         {
+            // Weapons cannot stack
             if (item.itemType == ItemType.Weapon) return false;
+            // If item is not the same, do not allow them to stack
             if (!Equals(other)) return false;
+            // If item is the same, add them to the stack (by increasing the count)
             Count += other.Count;
             return true;
         }
 
         /// <summary>
         /// DO NOT USE THIS DIRECTLY! Use PlayerInventory.AdjustItemCount instead!
-        /// Sets the number of items in this instance.
+        /// Sets the number of items in this item instance.
         /// </summary>
         /// <param name="count"></param>
         public void _SetCount(int count)
