@@ -19,12 +19,16 @@ namespace Enemies.Behaviours.Patrol
         
         private bool CheckPlayerVisible()
         {
+            // Raycast forward to check if player is visible to this enemy
             RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, transform.right, eyeSightRange, LayerMask.GetMask("Player"));
+            // If raycast didnt hit anything, return false
             if (!hit.transform) return false;
+            // If raycast hit player, return true
             if (hit.transform.CompareTag("Player"))
             {
                 return true;
             }
+            // If raycast hit something else, return false
             return false;
         }
 

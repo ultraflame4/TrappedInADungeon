@@ -10,9 +10,13 @@ namespace Enemies
     [RequireComponent(typeof(EntityBody))]
     public class EnemyDeathLoot : MonoBehaviour
     {
-        // --- References to other scripts & prefaabs---
+        // --- References to other scripts & prefabs---
         private EntityBody enemyBody;
+
+        [Tooltip("Exp ball prefab to spawn when the enemy dies")]
         public GameObject expBallPrefab;
+
+        [Tooltip("dropped item prefab to spawn when the enemy dies")]
         public GameObject droppedItemPrefab;
         private SpawnableEnemy config;
 

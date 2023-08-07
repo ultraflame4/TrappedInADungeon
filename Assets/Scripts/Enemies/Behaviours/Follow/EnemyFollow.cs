@@ -33,8 +33,10 @@ namespace Enemies.Behaviours.Follow
         private bool attackAnimPlaying => stateManager.animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
         private void Start()
         {
+            // Get component references
             body = GetComponent<EntityBody>();
             rb = GetComponent<Rigidbody2D>();
+            // Update directions to player and rotate towards player
             UpdateDirections();
             RotateTowardsPlayer();
         }
@@ -60,7 +62,7 @@ namespace Enemies.Behaviours.Follow
             // If enemy is not grounded and can't fly, skip moving
             if (!stateManager.isGrounded && !allowFlight) return;
 
-            // If player is out of range, go back to patrol
+            // If player is out of range, transition back to patrol
             if (Vector3.Distance(transform.position, Player.Transform.position) > followRange)
             {
                 rb.velocity = Vector2.zero; // Stop moving when player out of range
@@ -97,13 +99,16 @@ namespace Enemies.Behaviours.Follow
 
         public bool CheckPlayerWithinAttackRange()
         {
+            // If enemy is flying type and player within stopDist, transition to attack state
             if (Vector3.Distance(transform.position, Player.Transform.position) <= stopDist)
             {
-                // If the enemy should be facing the player when attacking, check if the player is within 90 degrees of the enemy's right
+                // If the enemy should be facing the player when attacking, Check if the player is within 90 degrees of the enemy's right
                 if (checkDirection && Vector2.Angle(directionToPlayer, transform.right) >= 90) return false;
+                // transition to attack state
                 stateManager.TransitionState(EnemyStates.ATTACK);
                 return true;
             }
+            // If enemy is non flying and the player is within stopDist, transition to attack state
             if (!allowFlight && Mathf.Abs(Player.Transform.position.x - transform.position.x) <= stopDist)
             {
                 stateManager.TransitionState(EnemyStates.ATTACK);

@@ -13,8 +13,11 @@ namespace Enemies.Behaviours.Patrol
         public float radarRange = 2f;
         private void FixedUpdate()
         {
+            // If the state is not active, do nothing
             if (!stateActive) return;
+            // Check if player is within attack range
             Collider2D hit = Physics2D.OverlapCircle(transform.position, radarRange, LayerMask.GetMask("Player"));
+            // If hit box overlaps with player, transition to alert state
             if (hit is not null)
             {
                 stateManager.TransitionState(EnemyStates.ALERT);
