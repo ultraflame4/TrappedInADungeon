@@ -38,6 +38,13 @@ namespace UI
 
         void UpdateHealthBar()
         {
+            // If player is dead, set health bar to 0
+            if (playerBody.IsDead)
+            {
+                healthBar.filledPercentage = 0;
+                healthBar.UpdateBar();
+                return;
+            } 
             healthBar.filledPercentage = playerBody.CurrentHealth.value / playerBody.Health;
             healthBar.UpdateBar();
         }
