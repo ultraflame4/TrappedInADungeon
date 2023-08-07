@@ -46,6 +46,7 @@ namespace Core.Sound
             var audio = Create(obj,false); // Add audio source component stuff to the game object
             obj.transform.position = worldPosition; // Move game object to world position
             audio.Play(); // Play audio
+            GameObject.Destroy(obj, clip.length+0.1f); // Destroy game object after the clip has finished playing
         }
     }
 }
