@@ -22,6 +22,7 @@ namespace PlayerScripts
         [ReadOnly]
         public Vector3 currentDirection = Vector3.right;
 
+        [Tooltip("The speed at which the player moves")]
         public float moveSpeed = 10f;
 
         [Header("Dash")]

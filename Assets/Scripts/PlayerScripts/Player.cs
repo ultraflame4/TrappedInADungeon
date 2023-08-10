@@ -8,8 +8,17 @@ namespace PlayerScripts
     [RequireComponent(typeof(PlayerBody)), RequireComponent(typeof(PlayerInventory))]
     public class Player : MonoBehaviour
     {
+        /// <summary>
+        /// Reference to the player inventory
+        /// </summary>
         public PlayerInventory inventory { get; private set; }
+        /// <summary>
+        /// Reference to the player body
+        /// </summary>
         public PlayerBody body { get; private set; }
+        /// <summary>
+        /// The singleton static instance
+        /// </summary>
         public static Player Instance { get; private set; }
         /// <summary>
         /// Shorthand for PlayerController.Instance.<see cref="body"/>
@@ -33,6 +42,7 @@ namespace PlayerScripts
             }
 
             Instance = this;
+            // Get references
             body = GetComponent<PlayerBody>();
             inventory = GetComponent<PlayerInventory>();
         }

@@ -9,25 +9,29 @@ using EasyButtons;
 using Newtonsoft.Json;
 using UI.Inventory;
 using UnityEngine;
+
 namespace PlayerScripts
 {
-
     public class PlayerInventory : MonoBehaviour, ISaveHandler
     {
         [field: SerializeField, Tooltip("List of items to spawn with if player has no items.")]
         public ItemInstance[] defaultItems { get; private set; }
-        [SerializeField,JsonProperty]
-        private List<ItemInstance> items = new ();
-        
+
+        [SerializeField, JsonProperty]
+        private List<ItemInstance> items = new();
 
         [Tooltip("The inventory slots in the ui. Automatically found by the script")]
         public InventorySlot[] itemSlots;
+
         [Tooltip("Just a debug weapon to give to the user (when GiveDebugWeapon is called)")]
         public ItemScriptableObject debugWeapon;
+
         [Tooltip("Skill to give to the player (when GiveDebugSkill is called)")]
         public ItemScriptableObject debugSkill;
+
         [Tooltip("This event is invoked whenever an item is added or removed from the inventory")]
         public event Action InventoryUpdate;
+
         /// <summary>
         /// Returns a shallow list copy of all items in the inventory. Safe to loop over.
         /// </summary>
@@ -36,10 +40,12 @@ namespace PlayerScripts
 
         private void Awake()
         {
-            GameSaveManager.AddSaveHandler("player.inventory",this);
+            // Register this object to be saved & loaded
+            GameSaveManager.AddSaveHandler("player.inventory", this);
+            // Set player inventory default items
             ResetInventory();
         }
-        
+
         void Start()
         {
             // Send out event at end of this frame to force child listeners to update
@@ -68,18 +74,21 @@ namespace PlayerScripts
         /// <typeparam name="T"></typeparam>
         public void AddItem<T>(T item) where T : ItemInstance
         {
+            // push helpful notifications :D
             NotificationManager.Instance.PushNotification($"Picked up <color=#41f0d0>{item.item.itemType} - {item.item.item_name}!</color>");
             // Search through all items
-            foreach (ItemInstance itemInstance in AllItems) 
+            foreach (ItemInstance itemInstance in AllItems)
             {
-                if (itemInstance.Combine(item)) 
+                if (itemInstance.Combine(item))
                 {
                     // If current item combines successfully, invoke event & return
                     InventoryUpdate?.Invoke();
                     return;
                 }
             }
+
             items.Add(item);
+            // inventory has updated, invoke event.
             InventoryUpdate?.Invoke();
         }
 
@@ -90,54 +99,23 @@ namespace PlayerScripts
         public void RemoveItem(ItemInstance item)
         {
             items.Remove(item);
-            InventoryUpdate?.Invoke();
+            InventoryUpdate?.Invoke(); // inventory has updated, invoke event.
         }
-
-        /// <summary>
-        /// Removes an item instance by index
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns>The item instance removed from the inventory</returns>
-        public ItemInstance RemoveAt(int index)
-        {
-            var obj = items[index];
-            items.RemoveAt(index);
-            InventoryUpdate?.Invoke();
-            return obj;
-        }
-
-        /// <summary>
-        /// Returns all item instances in the inventory that matches type T
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public ItemInstance[] GetAllItemOfType(ItemType itemType)
-        {
-            return items.Where(x => x.item.itemType==itemType).ToArray();
-        }
-        /// <summary>
-        /// Returns item by index
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public ItemInstance GetItemByIndex(int index)
-        {
-            return items[index];
-        }
+        
 
         /// <summary>
         /// Adjusts number of items in the specified itemInstance & invokes inventory update event
         /// </summary>
         /// <param name="itemInstance"></param>
         /// <param name="newCount"></param>
-        public void AdjustItemCount(ItemInstance itemInstance,int newCount)
+        public void AdjustItemCount(ItemInstance itemInstance, int newCount)
         {
-            
             itemInstance._SetCount(newCount);
             if (itemInstance.Count <= 0) // if count is 0, remove from inventory
             {
                 items.Remove(itemInstance);
             }
+
             InventoryUpdate?.Invoke();
         }
 
@@ -150,13 +128,13 @@ namespace PlayerScripts
             return items.Contains(itemInstance);
         }
 
-        
+
         public int IndexOf(ItemInstance itemInstance)
         {
             if (itemInstance == null) return -1;
             return items.IndexOf(itemInstance);
         }
-        
+
         /// <summary>
         /// Clears the player inventory
         /// Mainly for debugging purposes
@@ -177,6 +155,7 @@ namespace PlayerScripts
         {
             AddItem(new ItemInstance(debugWeapon));
         }
+
         /// <summary>
         /// Gives the player a fireball
         /// Mainly for debugging purposes
