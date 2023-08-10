@@ -23,37 +23,50 @@ namespace Level
         /// Invoked when the player has interacted with this object.
         /// </summary>
         public event Action InteractedWith; 
+        /// <summary>
+        /// When true, player can interact with this object
+        /// </summary>
         public bool interactableZoneActive { get; private set; }
 
-        private CircleCollider2D circleCollider2D;
-        private uint popupTextId;
+        /// <summary>
+        /// Use this to push interaction text popups
+        /// </summary>
         private InteractTextHandler interactText;
         private void Awake()
         {
-            circleCollider2D = GetComponent<CircleCollider2D>();
+            // Create a new interactTextHandler to easily push text
             interactText = InteractTextManager.Instance.Create();
+            // Register callback for player interact input action
             GameManager.Controls.Player.Interact.performed += OnInteractInput;
         }
 
-        private void OnInteractInput(InputAction.CallbackContext callbackContext)
+        private void OnInteractInput(InputAction.CallbackContext callbackContext) // Called when user press the interact keybind
         {
-            if (interactableZoneActive)
+            if (interactableZoneActive) // If player is in the interact zone (aka in the collider or wtv)
             {
+                // Push event
                 InteractedWith?.Invoke();
             }
         }
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.gameObject.CompareTag("Player")) return;
+            if (!other.gameObject.CompareTag("Player")) return; // If object that entered the interactZone isn't player,ignore.
+            // update var
             interactableZoneActive = true;
+            // Inform listeners that this object is now interactable with player
             InteractableChange?.Invoke(true);
+            // Push the interact popup text
             interactText.PushText(popupText,(Vector2)transform.position+offset);
         }
         private void OnTriggerExit2D(Collider2D other)
         {
+            // If object that exits isn't player, ignore
             if (!other.gameObject.CompareTag("Player")) return;
+            // update var
             interactableZoneActive = false;
+            // Inform listeners that this object is now no longer interactable with player
             InteractableChange?.Invoke(false);
+            // Remove the text popup
             interactText.RemoveText();
         }
 

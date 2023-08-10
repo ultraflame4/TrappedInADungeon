@@ -115,8 +115,11 @@ namespace Level
         // Update is called once per frame
         void Update()
         {
+            // If cannot find camera, skip
             if (cam == null) return;
+            // The distance to travel. 
             float travelX = (cam.position - startPos).x;
+            // Iterate through all background layers & move them accordingly to travelX and parallaxFactor
             for (var i = 0; i < layerObjects.Length; i++)
             {
                 var layer = layerObjects[i];
