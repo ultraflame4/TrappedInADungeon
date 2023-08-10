@@ -2,6 +2,9 @@
 
 namespace Weapon
 {
+    /// <summary>
+    /// Scriptable object that holds weapon follow configs
+    /// </summary>
     [CreateAssetMenu(fileName = "WeaponFollowConfig", menuName = "GameConfig/WeaponFollowConfig", order = 0)]
     public class WeaponFollowConfig : ScriptableObject
     {

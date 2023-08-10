@@ -10,9 +10,11 @@ namespace Weapon
     [RequireComponent(typeof(ItemPrefabController)), RequireComponent(typeof(Animator))]
     public class WeaponController : MonoBehaviour
     {
+        // componeeeennttss referreeennceeess
         private Animator animator;
         private ItemPrefabController gateway;
-
+        
+        // weapon follow config
         public WeaponFollowConfig followConfig;
 
         [Tooltip("x offset from player when attacking")]
@@ -39,15 +41,18 @@ namespace Weapon
         // Start is called before the first frame update
         void Start()
         {
+            // Get references to components
             gateway = GetComponent<ItemPrefabController>();
             animator = GetComponent<Animator>();
+            
             if (AttacksCount == 0)
             {
                 Debug.LogError("No Available Attacks!");
             }
 
-            if (gateway)
+            if (gateway) // If gateway is not null
             {
+                // Subscribe to item used and released events
                 gateway.OnItemUsed += Attack;
                 gateway.OnItemReleased += AttackRelease;
             }
@@ -59,13 +64,17 @@ namespace Weapon
             if (IsAttacking) // Using if else statement to avoid many tenery operators (?:) checking for IsAttacking
             {
                 float offset = -attack_offset;
+                // Lerp towards player with attack offset
                 transform.position = Vector3.Lerp(transform.position, Player.Transform.position - Player.Transform.right * offset, followConfig.attackTravelSpeed);
+                // Have same rotation as player (So that the weapon is always facing the same direction as the player)
                 transform.rotation = Player.Transform.rotation;
             }
             else
             {
                 float offset = followConfig.followOffset + gateway.slot.slotIndex * followConfig.indexOffset;
+                // Lerp towards player with follow offset
                 transform.position = Vector3.Lerp(transform.position, Player.Transform.position - Player.Transform.right * offset, followConfig.travelSpeed);
+                // Use idle rotation
                 transform.rotation = Quaternion.Euler(0, 0, RotationWhenIdle);
             }
         }
