@@ -4,7 +4,6 @@ using Core.Utils;
 using EasyButtons;
 using Newtonsoft.Json;
 using UI.SceneTransition;
-using UnityEditor;
 using UnityEngine;
 
 
@@ -109,11 +108,9 @@ public class GameManager : MonoBehaviour, ISaveHandler
     }
 
     [Button]
-    public void OpenSaveLocation()
+    public void OpenSavesLocation()
     {
-#if UNITY_EDITOR
-        EditorUtility.RevealInFinder(GameSaveManager.GetSavePath());
-#endif
+        Application.OpenURL($"file://{GameSaveManager.SavesLocation}");
     }
 
     //todo add ui support for gamepad mouse 

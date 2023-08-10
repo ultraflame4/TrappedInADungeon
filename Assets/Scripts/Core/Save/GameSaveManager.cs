@@ -49,6 +49,8 @@ namespace Core.Save
             return saveHandler;
         }
 
+        public static string SavesLocation => Path.Combine(Application.persistentDataPath, SaveFolder).FullPath();
+        
         /// <summary>
         /// Returns the save path to store save data at.
         /// </summary>
@@ -150,15 +152,13 @@ namespace Core.Save
         /// <returns></returns>
         public static string[] GetSaves()
         {
-            // Get to the save location
-            string savesLocation = Path.Combine(Application.persistentDataPath, SaveFolder);
             // If the save location does not exist, return an empty array
-            if (!Directory.Exists(savesLocation))
+            if (!Directory.Exists(SavesLocation))
             {
                 return Array.Empty<string>();
             }
             
-            return Directory.GetDirectories(savesLocation) // Get all directories in the save location
+            return Directory.GetDirectories(SavesLocation) // Get all directories in the save location
                     .Select(x => Path.GetFileName(x)) // Get the name of each directory from the full path (GetDirectories returns full path)
                     .Where(x => x.EndsWith(SaveFolderExt)) // Only get directories that has the correct suffix
                     .Select(x => x.Substring(0, x.Length - SaveFolderExt.Length)) // Remove the suffix from the directory name
