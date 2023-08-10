@@ -15,8 +15,12 @@ using UnityEngine.UI;
 
 namespace UI.Inventory
 {
+    /// <summary>
+    /// Represents a slot in the inventory UI. Such as the weapon slot, or the skill slot.
+    /// </summary>
     public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, ISaveHandler
     {
+        // Component references
         public Image itemImage;
         public SpriteButton spriteButton;
 
@@ -52,10 +56,10 @@ namespace UI.Inventory
         public InvSlotItemInstance Item => currentItem;
 
         /// <summary>
-        /// Index of the current item,  Mainly used for serialising to and from json
+        /// Index of the current item in the inventory,  Mainly used for serialising to and from json
         /// </summary>
         [JsonProperty]
-        private int CurrentItemInventoryIndex=-1;
+        private int CurrentItemInventoryIndex = -1;
 
         [JsonProperty]
         private ItemInstance CurrentItemName => currentItem?.itemInstance;
@@ -69,25 +73,25 @@ namespace UI.Inventory
         {
             // We need to find the input action from the instance of GameControls
             inputAction = GameManager.Controls.FindAction(inputRef.action.id.ToString(), true);
+            // Register for inventory update events
             Player.Inventory.InventoryUpdate += FirstInventoryUpdate;
             Player.Inventory.InventoryUpdate += OnInventoryUpdate;
         }
 
         void FirstInventoryUpdate()
         {
+            // On first inventory update, if there is a CurrentItemInventoryIndex stored in the save,
+            // retrieve the item from the inventory and set it as the current item.
             if (CurrentItemInventoryIndex < 0) return;
             SetItem(InventoryPanel.Instance.GetInvItemByIndex(CurrentItemInventoryIndex));
+            // Remove this listener so that it only runs once
             Player.Inventory.InventoryUpdate -= FirstInventoryUpdate;
         }
 
         void OnInventoryUpdate()
         {
-
             // If the item instance has been removed from the inventory, set this slot to empty.
-            if (!Player.Inventory.Contains(currentItem?.itemInstance))
-            {
-                SetItem(null);
-            }
+            if (!Player.Inventory.Contains(currentItem?.itemInstance)) SetItem(null);
         }
 
         void Update()
@@ -99,6 +103,7 @@ namespace UI.Inventory
                     // only activate if player is not pointing at ui
                     if (!EventSystem.current.IsPointerOverGameObject())
                     {
+                        // override the sprite button's active state so that it appears to be active when item is used
                         spriteButton.activeOverride = true;
                         if (itemGateway) itemGateway.UseItem();
                         onItemUsed?.Invoke(currentItem.itemInstance);
@@ -115,9 +120,11 @@ namespace UI.Inventory
                     }
                 }
 
+                // If keybind for slot is released, call the release item method on the item gateway
                 if (inputAction.WasReleasedThisFrame())
                 {
                     if (itemGateway) itemGateway.ReleaseItem();
+                    // stop overriding the active state of the button
                     spriteButton.activeOverride = false;
                     spriteButton.UpdateImageSprite();
                 }
@@ -131,12 +138,14 @@ namespace UI.Inventory
         /// <returns>Returns true if successful, vice versa</returns>
         public bool SetItem(InvSlotItemInstance item)
         {
+            // If item is null, set the item to null (clear the slot)
             if (item == null)
             {
                 _SetItem(null);
                 return true;
             }
 
+            // If item is weapon, check if this slot is a weapon slot, if not, return false (and don't set the item)
             if (item.itemInstance.item.itemType == ItemType.Weapon)
             {
                 if (!isWeaponSlot) return false;
@@ -144,26 +153,34 @@ namespace UI.Inventory
                 return true;
             }
 
+            // If item is not weapon, check if this slot is a weapon slot, if so, return false (and don't set the item)
             if (isWeaponSlot) return false;
+            // if passed all checks, set the item
             _SetItem(item);
             return true;
         }
 
+        /// <summary>
+        /// Raw method to set item in this slot. Does not do any checks on the item type.
+        /// </summary>
+        /// <param name="item"></param>
         private void _SetItem(InvSlotItemInstance item)
         {
             if (currentItem == item) return; // If item instance is the same in this slot, do nothing
-            if (currentItem!=null) // If slot has existing item, clear it
+            if (currentItem != null) // If slot has existing item, clear it
             {
                 currentItem.assignedSlot = null; // First clear the reference to this slot
                 if (itemGateway != null) Destroy(itemGateway.gameObject); // Then destroy the item prefab object
             }
 
-            if (item != null)
+            if (item != null) // If new item is not null, configure the new item
             {
-                // Instantiate the item prefab
+                // Create the item prefab for the item
                 if (item.itemInstance.prefab != null)
                 {
                     var obj = Instantiate(item.itemInstance.prefab);
+
+                    // Update the item gateway slot reference
                     itemGateway = obj.GetComponent<ItemPrefabController>();
                     if (itemGateway == null)
                     {
@@ -174,13 +191,16 @@ namespace UI.Inventory
                         itemGateway.slot = this;
                     }
                 }
-
+                
                 item.assignedSlot?.SetItem(null); // If new item is already in a slot, clear that slot first
                 item.assignedSlot = this; // Set reference (for new item) before setting this slot
             }
+
+            // Set the current item, inventory index and update the item image
             currentItem = item;
             CurrentItemInventoryIndex = Player.Inventory.IndexOf(currentItem?.itemInstance);
             itemImage.SetSprite(currentItem?.itemInstance.sprite);
+            // Invoke the item changed event
             onItemChanged?.Invoke(currentItem?.itemInstance);
         }
 
