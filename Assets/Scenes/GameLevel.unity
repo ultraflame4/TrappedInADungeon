@@ -606,8 +606,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRect: 5.155
   enemySpawnLevel: 1
-  enemySpawnLevelRangeMin: -1
-  enemySpawnLevelRangeMax: 5
+  enemySpawnLevelRange:
+    min: 0
+    max: 0
   enemies: []
 --- !u!1 &120557387
 GameObject:
@@ -7458,8 +7459,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRect: 5.155
   enemySpawnLevel: 1
-  enemySpawnLevelRangeMin: -1
-  enemySpawnLevelRangeMax: 5
+  enemySpawnLevelRange:
+    min: 0
+    max: 0
   enemies: []
 --- !u!1 &747529531
 GameObject:
@@ -8598,8 +8600,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRect: 5.155
   enemySpawnLevel: 1
-  enemySpawnLevelRangeMin: -1
-  enemySpawnLevelRangeMax: 5
+  enemySpawnLevelRange:
+    min: 0
+    max: 0
   enemies: []
 --- !u!1 &1042043428
 GameObject:
@@ -8920,8 +8923,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRect: 5.155
   enemySpawnLevel: 1
-  enemySpawnLevelRangeMin: -1
-  enemySpawnLevelRangeMax: 5
+  enemySpawnLevelRange:
+    min: 0
+    max: 0
   enemies: []
 --- !u!1 &1079924781
 GameObject:
@@ -8969,8 +8973,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRect: 5.155
   enemySpawnLevel: 1
-  enemySpawnLevelRangeMin: -1
-  enemySpawnLevelRangeMax: 5
+  enemySpawnLevelRange:
+    min: 0
+    max: 0
   enemies: []
 --- !u!1 &1122971553
 GameObject:
@@ -9018,8 +9023,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRect: 5.155
   enemySpawnLevel: 1
-  enemySpawnLevelRangeMin: -1
-  enemySpawnLevelRangeMax: 5
+  enemySpawnLevelRange:
+    min: 0
+    max: 0
   enemies: []
 --- !u!1001 &1129302319
 PrefabInstance:
@@ -9258,8 +9264,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRect: 5.155
   enemySpawnLevel: 1
-  enemySpawnLevelRangeMin: -1
-  enemySpawnLevelRangeMax: 5
+  enemySpawnLevelRange:
+    min: 0
+    max: 0
   enemies: []
 --- !u!1001 &1167247311
 PrefabInstance:
@@ -17123,8 +17130,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRect: 5.155
   enemySpawnLevel: 1
-  enemySpawnLevelRangeMin: -1
-  enemySpawnLevelRangeMax: 5
+  enemySpawnLevelRange:
+    min: 0
+    max: 0
   enemies: []
 --- !u!1 &1967065881
 GameObject:
@@ -18163,8 +18171,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRect: 5.155
   enemySpawnLevel: 1
-  enemySpawnLevelRangeMin: -1
-  enemySpawnLevelRangeMax: 5
+  enemySpawnLevelRange:
+    min: 0
+    max: 0
   enemies: []
 --- !u!1 &2147275146
 GameObject:
@@ -18295,7 +18304,7 @@ Transform:
   m_GameObject: {fileID: 5461211443868745954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -53.307575, y: 4.85001, z: -10}
+  m_LocalPosition: {x: -53.78274, y: 4.85001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18428,7 +18437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodParticles: {fileID: 8110258325600173695, guid: 9aba91a7d9f0a324aaa9b4ead097023b, type: 3}
-  damageNumbers: {fileID: 0}
+  dmgNumberPrefab: {fileID: 0}
   soundEffect:
     clip: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
     volume: 0.734
