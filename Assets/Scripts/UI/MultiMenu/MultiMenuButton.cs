@@ -13,8 +13,10 @@ namespace UI.MultiMenu
         
         public void OpenMenu()
         {
+            // When the button is clicked, open the target menu and close the current menu
             targetMenu.SetActive(true);
             currentMenu.SetActive(false);
+            // Push the target menu to the history
             manager.PushHistory(targetMenu);
         }
         
