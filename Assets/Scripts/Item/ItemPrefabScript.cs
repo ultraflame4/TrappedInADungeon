@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Item
 {
+    /// <summary>
+    /// Base class for controller scripts in item prefabs
+    /// </summary>
     [RequireComponent(typeof(ItemPrefabController))]
     public abstract class ItemPrefabScript : MonoBehaviour
     {

@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Item
 {
     /// <summary>
-    /// This component is used to communicate between the item prefab and the hotbar.
+    /// This component is used to communicate between the item prefab and the hot bar.
     /// </summary>
     public class ItemPrefabController : MonoBehaviour
     {
@@ -30,16 +30,20 @@ namespace Item
         [Tooltip("Don't play the itemUseSoundEffect")]
         public bool disableAudio;
 
-        public void UseItem()
+        public void UseItem() // Called when the item is to be used
         {
-            if (Player.Body.CurrentMana.value < slot.Item.itemInstance.ManaCost)
+            // If Player doesn't have enough mana to use the item, show error notification
+            if (Player.Body.CurrentMana.value < slot.Item.itemInstance.ManaCost) 
             {
                 NotificationManager.Instance.PushNotification("Not enough <color=\"blue\">mana</color>!",
                     addData:$"<color=\"yellow\">({Player.Body.CurrentMana.value.ToPrecision(2)}/{slot.Item.itemInstance.ManaCost})</color>");
                 return;
             }
+            // Apply item usage mana cost
             Player.Body.CurrentMana.value -= slot.Item.itemInstance.ManaCost;
+            // If audio has not been disabled, play audio
             if (!disableAudio) slot.Item.itemInstance.item.itemUseSoundEffect?.PlayAtPoint(Player.Transform.position);
+            // Invoke item use event so that things like projectiles can be fired.
             OnItemUsed?.Invoke();
         }
         public void ReleaseItem() => OnItemReleased?.Invoke();
