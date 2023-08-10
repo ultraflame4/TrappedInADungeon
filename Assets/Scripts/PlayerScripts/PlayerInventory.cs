@@ -79,9 +79,9 @@ namespace PlayerScripts
             // Search through all items
             foreach (ItemInstance itemInstance in AllItems)
             {
+                // If current item combines successfully, invoke event & return
                 if (itemInstance.Combine(item))
                 {
-                    // If current item combines successfully, invoke event & return
                     InventoryUpdate?.Invoke();
                     return;
                 }
