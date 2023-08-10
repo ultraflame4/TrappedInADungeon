@@ -222,4 +222,22 @@ public class GameManager : MonoBehaviour, ISaveHandler
     {
         inputs.Disable();
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F11))
+        {
+            
+            if (Screen.fullScreen)
+            {
+                Screen.fullScreen = false;
+                Screen.SetResolution(Screen.width,Screen.height,FullScreenMode.Windowed);
+            }
+            else
+            {
+                Screen.fullScreen = true;
+                Screen.SetResolution(Screen.currentResolution.width,Screen.currentResolution.height,FullScreenMode.FullScreenWindow);
+            }
+        }
+    }
 }
