@@ -14,7 +14,7 @@ namespace Enemies
         public int difficultyPoints = 1;
         [Tooltip("Minimum player level required to spawn this enemy."), Min(0)]
         public int minPlayerLevel = 0;
-        [Tooltip("The lootbox configuration for this enemy / Item drops for this enemy")]
+        [Tooltip("Enemy lootbox configuration - What it will drop on death")]
         public LootboxItem[] lootbox;
     }
 }
