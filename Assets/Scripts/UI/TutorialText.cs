@@ -5,20 +5,12 @@ namespace UI
     public class TutorialText : MonoBehaviour
     {
         [Header("Automatically disables tutorial text if not in first area")]
-        private string _;
-        
+        private string _; // This is a hack to make the header show up in the inspector
+
         void Start()
         {
-            if (GameManager.CurrentAreaIndex != 0)
-            {
-                gameObject.SetActive(false);
-            }
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
+            // Disable tutorial text if not in first area
+            if (GameManager.CurrentAreaIndex != 0) gameObject.SetActive(false);
         }
     }
 }

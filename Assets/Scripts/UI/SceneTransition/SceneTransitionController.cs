@@ -25,6 +25,7 @@ namespace UI.SceneTransition
         {
             image = GetComponent<Image>();
             contents.SetActive(false);
+            // Black out both transitions
             effectA.BlackOut();
             effectB.BlackOut();
         }
@@ -50,11 +51,11 @@ namespace UI.SceneTransition
         /// <returns></returns>
         IEnumerator FadeOutCoroutine()
         {
-            contents.SetActive(true);
-            yield return effectB.FadeToBlackCoroutine();
-            contents.SetActive(false);
-            effectB.ClearOut();
-            yield return effectA.FadeToClearCoroutine();
+            contents.SetActive(true); // ensure that the transition ui contents are visible
+            yield return effectB.FadeToBlackCoroutine(); // secondary fades in to make contents transition out
+            contents.SetActive(false); // Hide the transition ui contents
+            effectB.ClearOut(); // make secondary transition clear
+            yield return effectA.FadeToClearCoroutine(); // Wait for the primary fade out transition
             image.raycastTarget = false; // Disable so that the player can interact with ui
             
         }
@@ -65,10 +66,10 @@ namespace UI.SceneTransition
         IEnumerator FadeInCoroutine()
         {
             image.raycastTarget = true; // Block ui interaction
-            yield return effectA.FadeToBlackCoroutine();
-            effectB.BlackOut();
-            contents.SetActive(true);
-            yield return effectB.FadeToClearCoroutine();
+            yield return effectA.FadeToBlackCoroutine(); // Primary fades in to block the main scene
+            effectB.BlackOut(); // black out secondary transition to hide transition ui contents
+            contents.SetActive(true); // enable the transition ui contents
+            yield return effectB.FadeToClearCoroutine(); // Fade out secondary transition to show transition ui contents
         }
         
         /// <summary>

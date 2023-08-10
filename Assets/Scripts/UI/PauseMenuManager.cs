@@ -10,10 +10,11 @@ namespace UI
     /// </summary>
     public class PauseMenuManager : MonoBehaviour
     {
-        [field: SerializeField]
-        public TextMeshProUGUI titleText { get; private set; }
-        [field: SerializeField]
-        public TextMeshProUGUI resumeText { get; private set; }
+        // Component references
+        [SerializeField, Tooltip("The text that displays the title of the pause menu")]
+        private TextMeshProUGUI titleText;
+        [SerializeField, Tooltip("The text that displays the resume button text")]
+        private TextMeshProUGUI resumeText;
 
         private void Awake()
         {
@@ -29,6 +30,7 @@ namespace UI
 
         private void OnEnable()
         {
+            // Update the text when the menu is enabled (whenever the game is paused)
             if (titleText != null)
             {
                 titleText.text = Player.Body.IsDead ? "You Died" : "Game Paused";
@@ -42,11 +44,13 @@ namespace UI
 
         public void ResumeBtn()
         {
+            // If the player is dead, respawn them instead of resuming
             if (Player.Body.IsDead)
             {
                 GameManager.Instance.RespawnPlayer();
                 return;
             }
+            // Otherwise, resume the game
             GameManager.Instance.GamePaused.value = false;
         }
 
@@ -55,6 +59,7 @@ namespace UI
             GameManager.Instance.QuitToMainMenu();
         }
 
+        // Settings button is not implemented yet (and probably won't be)
         public void SettingsBtn() { }
 
         public void QuitBtn()

@@ -9,8 +9,7 @@ namespace UI.SceneTransition
     [RequireComponent(typeof(Image))]
     public class TransitionEffect : MonoBehaviour
     {
-
-
+        
         [Tooltip("Time in seconds to fade to black / fade to clear")]
         public float transitionTime = 0.5f;
         [Tooltip("How many steps to take to fade to black / fade to clear")]

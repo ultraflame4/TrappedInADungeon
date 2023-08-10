@@ -7229,8 +7229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b749c986bf424ba4a82d057a32776ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <titleText>k__BackingField: {fileID: 0}
-  <resumeText>k__BackingField: {fileID: 0}
+  titleText: {fileID: 0}
+  resumeText: {fileID: 0}
 --- !u!1 &708613825
 GameObject:
   m_ObjectHideFlags: 0
@@ -8421,8 +8421,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b749c986bf424ba4a82d057a32776ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <titleText>k__BackingField: {fileID: 307904246}
-  <resumeText>k__BackingField: {fileID: 158722669}
+  titleText: {fileID: 307904246}
+  resumeText: {fileID: 158722669}
 --- !u!95 &996124007
 Animator:
   serializedVersion: 5
@@ -17230,7 +17230,6 @@ MonoBehaviour:
   SkillListContent: {fileID: 1216385104}
   ItemListContent: {fileID: 1129302321}
   ListItemPrefab: {fileID: 3241950385909181290, guid: 20ca5ec9134df824890dfff98fe20bb7, type: 3}
-  playerInventory: {fileID: 2420718636818332390}
 --- !u!1 &1967923810
 GameObject:
   m_ObjectHideFlags: 0
@@ -18304,7 +18303,7 @@ Transform:
   m_GameObject: {fileID: 5461211443868745954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -53.78274, y: 4.85001, z: -10}
+  m_LocalPosition: {x: -53.80999, y: 4.85001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
