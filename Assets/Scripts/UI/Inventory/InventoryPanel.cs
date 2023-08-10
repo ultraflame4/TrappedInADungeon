@@ -11,16 +11,21 @@ namespace UI.Inventory
 {
     public class InventoryPanel : MonoBehaviour, ISaveHandler
     {
+        [Tooltip("Scrollable content for the weapon list")]
         public Transform WeaponListContent;
+        [Tooltip("Scrollable content for the skill list")]
         public Transform SkillListContent;
+        [Tooltip("Scrollable content for the item list")]
         public Transform ItemListContent;
+        [Tooltip("Prefab for the list item")]
         public GameObject ListItemPrefab;
-        public PlayerInventory playerInventory;
+        
+        
         private InventoryListItem[] listItems;
         public static InventoryPanel Instance { get; private set; }
         private void Awake()
         {
-            playerInventory.InventoryUpdate += UpdateItemLists;
+            Player.Inventory.InventoryUpdate += UpdateItemLists;
                     
             if (Instance != null)
             {
@@ -35,10 +40,10 @@ namespace UI.Inventory
             WeaponListContent.DestroyChildren();
             SkillListContent.DestroyChildren();
             ItemListContent.DestroyChildren();
-            listItems = new InventoryListItem[playerInventory.AllItems.Count];
-            for (var i = 0; i < playerInventory.AllItems.Count; i++)
+            listItems = new InventoryListItem[Player.Inventory.AllItems.Count];
+            for (var i = 0; i < Player.Inventory.AllItems.Count; i++)
             {
-                var instance = playerInventory.AllItems[i];
+                var instance = Player.Inventory.AllItems[i];
                 GameObject item;
                 switch (instance.item.itemType)
                 {
