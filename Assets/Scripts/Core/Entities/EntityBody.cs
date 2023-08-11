@@ -39,7 +39,8 @@ namespace Core.Entities
         public float Health => BaseHealth * Level + StatsModifiers.Sum(modifier => modifier.statsModifier.Health);
         public float Attack => BaseAttack * Level + StatsModifiers.Sum(modifier => modifier.statsModifier.Attack);
         // Formula for speed is a bit different else it would be too fast
-        public float Speed => BaseSpeed + BaseSpeed * (Level - 1) * .001f + StatsModifiers.Sum(modifier => modifier.statsModifier.Speed);
+        // Clamp to 0 to prevent negative speed
+        public float Speed => Mathf.Max(0,BaseSpeed + BaseSpeed * (Level - 1) * .001f + StatsModifiers.Sum(modifier => modifier.statsModifier.Speed));
         public float Defense => BaseDefense * Level + StatsModifiers.Sum(modifier => modifier.statsModifier.Defense);
 
 
