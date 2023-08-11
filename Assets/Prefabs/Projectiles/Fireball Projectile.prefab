@@ -87,7 +87,7 @@ MonoBehaviour:
   animator: {fileID: -8415669972095956414}
   hitSound:
     clip: {fileID: 8300000, guid: fc96116dc3c141440aabb5605744fea2, type: 3}
-    volume: 1
+    volume: 0.5
   attackPlayer: 0
 --- !u!95 &-8415669972095956414
 Animator:
