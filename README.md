@@ -2,7 +2,7 @@
 This was done as part of a school project.
 
 You fell down a random hole into a very deep dungeon and some how miraculously survived.
-However you are now surrounded by monsters that seem to find you very delicous and enticing, in other words, they want to eat you.
+However you are now surrounded by monsters that seem to find you very delicious and enticing, in other words, they want to eat you.
 Your objective is to now survive the seemingly infinite waves of monster, and find a way out.
 Luckily the monsters drop random skills and items you can use.
 Killing the monsters also for whatever reason seem to strengthen your body.
